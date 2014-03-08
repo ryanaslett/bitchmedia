@@ -1,0 +1,26 @@
+diff --git a/imagecache_token.module b/imagecache_token.module
+index adabe04..c13f522 100644
+--- a/imagecache_token.module
++++ b/imagecache_token.module
+@@ -79,18 +79,19 @@ function imagecache_token_tokens($type, $tokens, array $data = array(), array $o
+   }
+ 
+   if ($type == 'image-field' && !empty($data['image-field'])) {
++  //if ($type == 'node' && !empty($data['node'])) {
+     foreach ($tokens as $token => $original) {
+       $output = array();
+       foreach ($data['image-field'] as $field) {
+         $explode = explode(':', $token);
+-        
++
+         $type = isset($explode[0]) ? $explode[0] : FALSE;
+         $attribute = isset($explode[1]) ? $explode[1] : FALSE;
+ 
+         if ($attribute == 'render') {
+           $output[] = theme('image_formatter', array('item' => $field, 'image_style' => $type));
+         }
+-        elseif (isset($attribute) && !empty($attribute)) {
++        elseif (isset($field[$attribute]) && !empty($attribute)) {
+           $output[] = $field[$attribute];
+         }
+         else {

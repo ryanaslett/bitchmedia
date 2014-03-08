@@ -1,0 +1,14 @@
+name = Imagecache Token
+description = Provides additional image tokens for use with ImageCache
+dependencies[] = image
+dependencies[] = token
+package = Image
+core = 7.x
+
+
+
+; Information added by drush on 2013-09-05
+version = ""
+project = "imagecache_token"
+datestamp = "1378423089"
+
