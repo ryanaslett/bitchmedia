@@ -1,0 +1,55 @@
+diff --git a/inc/form.inc b/inc/form.inc
+index 694688b..49dcc1c 100644
+--- a/inc/form.inc
++++ b/inc/form.inc
+@@ -62,10 +62,35 @@ function zurb_foundation_form_alter(&$form, &$form_state, $form_id) {
+     }
+   }
+ }
++
+ /**
+- * Implements theme_form_element_label()
++ * Implements theme_form_element_label().
+  */
+ function zurb_foundation_form_element_label($variables) {
++  _zurb_foundation_add_tooltips($variables);
++  return theme_form_element_label($variables);
++}
++
++/**
++ * Implements theme_text_format_wrapper().
++ */
++function zurb_foundation_text_format_wrapper($variables) {
++  _zurb_foundation_add_tooltips($variables);
++  return theme_text_format_wrapper($variables);
++}
++
++/**
++ * Implements theme_field_multiple_value_form().
++ */
++function zurb_foundation_field_multiple_value_form($variables) {
++  _zurb_foundation_add_tooltips($variables);
++  return theme_field_multiple_value_form($variables);
++}
++
++/**
++ * Modifies description to display the description in a tooltip.
++ */
++function _zurb_foundation_add_tooltips(&$variables) {
+   if (!empty($variables['element']['#title'])) {
+     $variables['element']['#title'] = '<label>' . $variables['element']['#title'] . '</label>';
+   }
+@@ -80,11 +105,11 @@ function zurb_foundation_form_element_label($variables) {
+       $variables['element']['#description'] = ' <span data-tooltip ' . $touch . 'class="has-tip ' . $position . '" title="' . strip_tags($variables['element']['#description']) . '">' . t($text) . '</span>';
+     }
+     else {
+-      // Hide description field, we add it directly to the form element's "title" attribute.
++      // Hide description field, we add it directly to the form element's
++      // "title" attribute.
+       $variables['element']['#description'] = '';
+     }
+   }
+-  return theme_form_element_label($variables);
+ }
+ 
+ /**
