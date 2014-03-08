@@ -1,0 +1,48 @@
+diff --git a/googleanalytics.admin.inc b/googleanalytics.admin.inc
+index c78b215..8e372a7 100644
+--- a/googleanalytics.admin.inc
++++ b/googleanalytics.admin.inc
+@@ -201,6 +201,12 @@ function googleanalytics_admin_settings_form($form_state) {
+     '#description' => t('A file extension list separated by the | character that will be tracked as download when clicked. Regular expressions are supported. For example: !extensions', array('!extensions' => GOOGLEANALYTICS_TRACKFILES_EXTENSIONS)),
+     '#maxlength' => 255,
+   );
++  $form['tracking']['linktracking']['googleanalytics_tracklinkid'] = array(
++    '#type' => 'checkbox',
++    '#title' => t('Enable enhanced link attribution'),
++    '#default_value' => variable_get('googleanalytics_tracklinkid', 0),
++    '#description' => t('Enhancements: separate click tracking for multiple links on a page with the same destination, better tracking for search buttons, and tracking for javascript links/buttons. To use this you must enable <a href="@url">enhanced link attribution</a> for this site on your Google Analytics account.', array('@url' => url('http://support.google.com/analytics/bin/answer.py', array('query' => array('answer' => '2558867'))))),
++    );
+ 
+   // Message specific configurations.
+   $form['tracking']['messagetracking'] = array(
+diff --git a/googleanalytics.install b/googleanalytics.install
+index e1b8aa7..9aa3de8 100644
+--- a/googleanalytics.install
++++ b/googleanalytics.install
+@@ -41,6 +41,7 @@ function googleanalytics_uninstall() {
+   variable_del('googleanalytics_tracker_anonymizeip');
+   variable_del('googleanalytics_trackfiles');
+   variable_del('googleanalytics_trackfiles_extensions');
++  variable_del('googleanalytics_tracklinkid');
+   variable_del('googleanalytics_trackmailto');
+   variable_del('googleanalytics_trackmessages');
+   variable_del('googleanalytics_trackoutbound');
+diff --git a/googleanalytics.module b/googleanalytics.module
+index ee50390..3911913 100644
+--- a/googleanalytics.module
++++ b/googleanalytics.module
+@@ -223,6 +223,14 @@ function googleanalytics_page_alter(&$page) {
+ 
+     // Build tracker code.
+     $script = 'var _gaq = _gaq || [];';
++
++    // Link ID tracking needs to be set before the account.
++    // @see http://support.google.com/analytics/bin/answer.py?hl=en&answer=2558867
++    if (variable_get('googleanalytics_tracklinkid', 0)) {
++      $script .= 'var pluginUrl = "//www.google-analytics.com/plugins/ga/inpage_linkid.js";';
++      $script .= '_gaq.push(["_require", "inpage_linkid", pluginUrl]);';
++    }
++
+     $script .= '_gaq.push(["_setAccount", ' . drupal_json_encode($id) . ']);';
+     if (variable_get('googleanalytics_tracker_anonymizeip', 0)) {
+       // FIXME: The Google API is currently broken and "_gat._anonymizeIp" is only

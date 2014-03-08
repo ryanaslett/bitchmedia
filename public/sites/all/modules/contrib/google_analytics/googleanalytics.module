@@ -223,6 +223,14 @@ function googleanalytics_page_alter(&$page) {
 
     // Build tracker code.
     $script = 'var _gaq = _gaq || [];';
+
+    // Link ID tracking needs to be set before the account.
+    // @see http://support.google.com/analytics/bin/answer.py?hl=en&answer=2558867
+    if (variable_get('googleanalytics_tracklinkid', 0)) {
+      $script .= 'var pluginUrl = "//www.google-analytics.com/plugins/ga/inpage_linkid.js";';
+      $script .= '_gaq.push(["_require", "inpage_linkid", pluginUrl]);';
+    }
+
     $script .= '_gaq.push(["_setAccount", ' . drupal_json_encode($id) . ']);';
     if (variable_get('googleanalytics_tracker_anonymizeip', 0)) {
       // FIXME: The Google API is currently broken and "_gat._anonymizeIp" is only
