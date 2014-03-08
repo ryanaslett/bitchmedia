@@ -1,0 +1,14 @@
+name = Multifield
+description = Provides a combo field type.
+package = Fields
+core = 7.x
+dependencies[] = ctools
+dependencies[] = field
+configure = admin/structure/multifield
+files[] = MultifieldEntityController.php
+files[] = tests/MultifieldAdministrationTestCase.test
+files[] = tests/MultifieldDevelGenerateTestCase.test
+files[] = tests/MultifieldEntityTranslationTestCase.test
+files[] = tests/MultifieldUnitTestCase.test
+test_dependencies[] = entity_translation
+test_dependencies[] = devel

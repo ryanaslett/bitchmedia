@@ -1,0 +1,99 @@
+<?php
+
+/**
+ * Implementation of hook_enable().
+ */
+function paging_enable() {
+  drupal_set_message(t('Paging has been installed enabled. [<a href="@url">Goto configuration</a>]', array('@url' => url('admin/settings/paging'))));
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function paging_uninstall() {
+  // Delete all variables starting with "paging" in their name.
+  db_query("DELETE FROM {variable} WHERE name LIKE 'paging%'");
+  db_query("DELETE FROM {filters} WHERE module = 'paging'");
+}
+
+/**
+ * Implementation of hook_update_N().
+ */
+function paging_update_1() {
+  $ret = array();
+  if (module_exists('search')) {
+    module_invoke('node', 'search', 'reset');
+    module_invoke('node', 'update_index');
+    node_update_shutdown();
+    $status = module_invoke('node', 'search', 'status');
+    $percentage = ((int)min(100, 100 * ($status['total'] - $status['remaining']) / max(1, $status['total']))) . '%';
+    $ret[] = array('success' => TRUE, 'query' => t('!percentage of the site has been indexed.', array('!percentage' => $percentage)));
+  }
+  return $ret;
+}
+
+/**
+ * Implementation of hook_update_N().
+ */
+function paging_update_2() {
+  if (db_result(db_query("
+    SELECT 1 FROM {system}
+    WHERE type = 'module' AND name = 'paging_gsitemap' AND (status = 1 OR schema_version >= 0)
+  "))) {
+    drupal_install_modules(array('paging_xmlsitemap'));
+  }
+  return array();
+}
+
+/**
+ * Drupal 5 -> Drupal 6 upgrade path.
+ */
+function paging_update_6000() {
+  $ret = array();
+
+  // Get rid of phantom <!--page_filter--> tags by weighting Paging after
+  // HTML corrector.
+  $result = db_query('SELECT format FROM {filter_formats}');
+  while ($format = db_fetch_object($result)) {
+    $filters = filter_list_format($format->format);
+    // filter/3 = HTML corrector; paging/0 = Paging.
+    if (isset($filters['filter/3']) && isset($filters['paging/0'])) {
+      $html_corrector = $filters['filter/3'];
+      $weight = $html_corrector->weight + 1;
+      $ret[] = update_sql("UPDATE {filters} SET weight = $weight WHERE format = $format->format AND module = 'paging' AND delta = 0");
+    }
+  }
+
+  // Move variables to their new format.
+  $variables = array(
+    'paging_separator'             => variable_get('paging_separator', NULL),
+    'paging_read_more_enabled'     => variable_get('paging_read_more_enabled', NULL),
+    'paging_pager_widget_position' => variable_get('paging_pager_widget_position', NULL),
+    'paging_automatic_chars'       => variable_get('paging_automatic_chars', NULL),
+    'paging_automatic_words'       => variable_get('paging_automatic_words', NULL),
+  );
+
+  $enabled_types = variable_get('paging_node_types_enabled', array());
+  foreach ($enabled_types as $type => $enabled) {
+    if ($enabled) {
+      variable_set("paging_enabled_$type", TRUE);
+      foreach ($variables as $name => $value) {
+        if (!is_null($value)) {
+          variable_set($name .'_'. $type, $value);
+        }
+      }
+    }
+  }
+
+  variable_del('paging_node_types_enabled');
+  foreach ($variables as $name => $value) {
+    variable_del($name);
+  }
+
+  return $ret;
+}
+
+/**
+ * Drupal 6 -> Drupal 7 upgrade path.
+ */
+// @todo

@@ -1,0 +1,16 @@
+name = "Bean - Entitycache"
+description = "Integrates the Bean module with the Entitycache module"
+
+core = 7.x
+package = Performance and scalability
+
+dependencies[] = bean
+dependencies[] = entitycache
+
+
+; Information added by drush on 2013-08-06
+version = "7.x-1.2"
+core = "7.x"
+project = "bean"
+datestamp = "1375811366"
+

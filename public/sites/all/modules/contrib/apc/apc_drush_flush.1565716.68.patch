@@ -1,0 +1,136 @@
+diff --git a/apc.module b/apc.module
+index 31c5f2c..a7e2248 100644
+--- a/apc.module
++++ b/apc.module
+@@ -1,4 +1,44 @@
+ <?php
++/**
++ * Implements hook_xmlrpc().
++ */
++function apc_xmlrpc() {
++  $methods[] = array(
++    'apc_drush_flush',
++    'apc_drush_flush',
++    array(
++      'array',
++      'array',
++    ),
++    t('XMLRPC callback to enable cache clear from Drush/CLI.'),
++  );
++
++  return $methods;
++}
++
++/**
++ * XMLRPC callback to enable cache clear from Drush/CLI.
++ */
++function apc_drush_flush($variables) {
++
++  $cron_key = isset($variables['cron_key']) ? $variables['cron_key'] : NULL;
++
++  if (empty($cron_key) || variable_get('cron_key', 'drupal') != $cron_key) {
++    watchdog('apc', 'APC could not flush cache(s) because an invalid key was used.', array(), WATCHDOG_ERROR);
++    return array(
++      'success' => FALSE,
++      'message' => t('APC could not flush cache(s) because an invalid key was used.'),
++    );
++  }
++  else {
++    // Being invoked from drush. Clear out *all* caches.
++    apc_clear_cache('user');
++    return array(
++      'success' => TRUE,
++      'message' => t('APC user object cache flushed'),
++    );
++  }
++}
+ 
+ /**
+  * Implementation of hook_init().
+@@ -35,6 +75,16 @@ function apc_permission() {
+ }
+ 
+ /**
++ * Implements of hook_exit().
++ */
++function apc_exit() {
++  // Clear drush variable for the next request.
++  global $conf;
++  unset($conf['apc_drush_flushed']);
++
++}
++
++/**
+  * See apc_init() which registers this function as a shutdown function.
+  * Displays apc stats in the footer.
+  */
+diff --git a/drupal_apc_cache.inc b/drupal_apc_cache.inc
+index 2099c55..9e6e96b 100644
+--- a/drupal_apc_cache.inc
++++ b/drupal_apc_cache.inc
+@@ -37,6 +37,12 @@ class DrupalAPCCache implements DrupalCacheInterface {
+   protected $prefix;
+ 
+   /**
++   * @var boolean
++   */
++  protected $drush_environment;
++
++
++  /**
+    * Get prefix for bin using the configuration.
+    *
+    * @param string $bin
+@@ -74,6 +80,7 @@ class DrupalAPCCache implements DrupalCacheInterface {
+ 
+   function __construct($bin) {
+     $this->bin = $bin;
++    $this->drush_environment = function_exists('drush_main');
+ 
+     // First we determine the prefix from a setting.
+     $prefix = self::getPrefixSettingForBin($this->bin);
+@@ -255,8 +262,42 @@ class DrupalAPCCache implements DrupalCacheInterface {
+   }
+ 
+   function clear($cid = NULL, $wildcard = FALSE) {
+-    if (drupal_is_cli() && function_exists('drush_log')) {
+-      drush_log($this->bin . '(' . $cid . ') was not cleared. APC cli uses a different memory storage than the webserver. For more info see: http://drupal.org/node/1278232', 'warning');
++    global $conf;
++
++    // If this is a drush command, we need to wipe the whole cache.
++    // Otherwise we end up with multitudes of xmlrpc requests.
++    // Note that this means blowing away the entire cache on a production
++    // Site if you are using drush.
++    if ($this->drush_environment && !isset($conf['apc_drush_flushed'])) {
++
++      // APC uses separate storage for CLI mode, bounce the clear request back
++      // into this method on all server nodes via XMLRPC.
++      $apc_nodes = variable_get('apc_nodes', NULL);
++      if (!empty($apc_nodes)) {
++        foreach ($apc_nodes as $apc_node) {
++          $args = array(
++            'apc_drush_flush' => array(
++              array(
++                'cron_key' => variable_get('cron_key', 'drupal'),
++              ),
++            ),
++          );
++          $uri = $apc_node . '/xmlrpc.php';
++          $response = xmlrpc($uri, $args);
++
++          if ($response === FALSE) {
++            drush_log('xmlrpc() error: (' . xmlrpc_errno() . ') ' . xmlrpc_error_msg(), 'error');
++          }
++          elseif (!$response['success']) {
++            drush_log('APC could not flush cache(s) because ' . $apc_node . ' returned code ' . $response['message'], 'error');
++          }
++          else {
++            $conf['apc_drush_flushed'] = TRUE;
++            // Skip logging
++            // drush_log($response['message'], 'success');
++          }
++        }
++      }
+       return;
+     }
+ 

@@ -1,0 +1,16 @@
+name = Bean UUID
+description = Allow deploying bean blocks through Deploy and UUID modules.
+core = 7.x
+
+dependencies[] = bean
+dependencies[] = uuid
+
+package = Bean
+
+
+; Information added by drush on 2013-08-06
+version = "7.x-1.2"
+core = "7.x"
+project = "bean"
+datestamp = "1375811366"
+

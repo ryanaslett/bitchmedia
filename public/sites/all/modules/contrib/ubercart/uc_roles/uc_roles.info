@@ -1,0 +1,17 @@
+name = Roles
+description = Assigns permanent or expirable roles based on product purchases.
+dependencies[] = uc_product
+dependencies[] = uc_order
+package = Ubercart - core (optional)
+core = 7.x
+
+; Test cases
+files[] = tests/uc_roles.test
+
+
+; Information added by drush on 2013-09-20
+version = "7.x-3.5"
+core = "7.x"
+project = "ubercart"
+datestamp = "1379712868"
+

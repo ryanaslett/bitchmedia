@@ -1,0 +1,19 @@
+Upgrade notes:
+===============
+
+The upgrade path from Drupal 6 Paging module to Drupal 7 is underway, but it is not done yet. For now, this file will serve as documentation between the differences between the D6 and D7 versions of the modules.
+
+
+Unsupported Features in D7:
+----------------------------
+Paging separator sting per content type.
+- in D7 one paging separator string will be set for the whole site.
+  - Configuration of this separator will be moved to the filter settings.
+- Page names will not be configurable.
+
+
+Upgrading from D6 to D7:
+-------------------------
+- Old separators will continue to work, as in D6.
+  - After you choose a site-wide paging separator, node_save will parse and update any existing content to use the new separator.
+- Page names entered in D6 will be ignored.

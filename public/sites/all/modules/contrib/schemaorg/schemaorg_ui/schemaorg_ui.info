@@ -1,0 +1,15 @@
+name = Schema.org UI
+description = User interface for setting the schema.org module mappings.
+package = "Schema.org"
+dependencies[] = rdf
+dependencies[] = schemaorg
+core = 7.x
+files[] = schemaorg.test
+
+
+; Information added by drush on 2013-09-25
+version = "7.x-1.0-beta3"
+core = "7.x"
+project = "schemaorg"
+datestamp = "1380173338"
+

@@ -1,0 +1,137 @@
+diff -u b/apc.module b/apc.module
+--- b/apc.module
++++ b/apc.module
+@@ -3,14 +3,14 @@
+  * Implements hook_xmlrpc().
+  */
+ function apc_xmlrpc() {
+-  $methods[] =  array(
+-    'apc_drush_flush', // Method name.
+-    'apc_drush_flush', // Callback.
++  $methods[] = array(
++    'apc_drush_flush',
++    'apc_drush_flush',
+     array(
+-      'array', // Return variable.
+-      'array', // Input variable.
++      'array',
++      'array',
+     ),
+-    t('XMLRPC callback to enable cache clear from Drush/CLI.'), // Description
++    t('XMLRPC callback to enable cache clear from Drush/CLI.'),
+   );
+ 
+   return $methods;
+@@ -20,10 +20,8 @@
+  * XMLRPC callback to enable cache clear from Drush/CLI.
+  */
+ function apc_drush_flush($variables) {
++
+   $cron_key = isset($variables['cron_key']) ? $variables['cron_key'] : NULL;
+-  $bin = isset($variables['bin']) ? $variables['bin'] : NULL;
+-  $cid = isset($variables['cid']) ? unserialize($variables['cid']) : NULL;
+-  $wildcard = isset($variables['wildcard']) ? $variables['wildcard'] : FALSE;
+ 
+   if (empty($cron_key) || variable_get('cron_key', 'drupal') != $cron_key) {
+     watchdog('apc', 'APC could not flush cache(s) because an invalid key was used.', array(), WATCHDOG_ERROR);
+@@ -33,12 +31,11 @@
+     );
+   }
+   else {
+-    $apc = _cache_get_object($bin);
+-    $apc->clear($cid, $wildcard == 1);
+-
++    // Being invoked from drush. Clear out *all* caches.
++    apc_clear_cache('user');
+     return array(
+       'success' => TRUE,
+-      'message' => t('APC bin "@bin" flushed', array('@bin' => $bin)),
++      'message' => t('APC user object cache flushed'),
+     );
+   }
+ }
+@@ -78,6 +75,16 @@
+ }
+ 
+ /**
++ * Implements of hook_exit().
++ */
++function apc_exit() {
++  // Clear drush variable for the next request.
++  global $conf;
++  unset($conf['apc_drush_flushed']);
++
++}
++
++/**
+  * See apc_init() which registers this function as a shutdown function.
+  * Displays apc stats in the footer.
+  */
+diff -u b/drupal_apc_cache.inc b/drupal_apc_cache.inc
+--- b/drupal_apc_cache.inc
++++ b/drupal_apc_cache.inc
+@@ -39,7 +39,8 @@
+   /**
+    * @var boolean
+    */
+-  protected $drush;
++  protected $drush_environment;
++
+ 
+   /**
+    * Get prefix for bin using the configuration.
+@@ -79,7 +80,7 @@
+ 
+   function __construct($bin) {
+     $this->bin = $bin;
+-    $this->drush = (drupal_is_cli() && function_exists('drush_log'));
++    $this->drush_environment = function_exists('drush_main');
+ 
+     // First we determine the prefix from a setting.
+     $prefix = self::getPrefixSettingForBin($this->bin);
+@@ -261,18 +262,25 @@
+   }
+ 
+   function clear($cid = NULL, $wildcard = FALSE) {
+-    if ($this->drush) {
++    global $conf;
++
++    // If this is a drush command, we need to wipe the whole cache.
++    // Otherwise we end up with multitudes of xmlrpc requests.
++    // Note that this means blowing away the entire cache on a production
++    // Site if you are using drush.
++    if ($this->drush_environment && !isset($conf['apc_drush_flushed'])) {
++
+       // APC uses separate storage for CLI mode, bounce the clear request back
+       // into this method on all server nodes via XMLRPC.
+-      if (!empty($GLOBALS['conf']['apc_nodes'])) {
+-        foreach ($GLOBALS['conf']['apc_nodes'] as $apc_node) {
++      $apc_nodes = variable_get('apc_nodes', NULL);
++      if (!empty($apc_nodes)) {
++        foreach ($apc_nodes as $apc_node) {
+           $args = array(
+-            'apc_drush_flush' => array(array(
+-              'bin' => $this->bin,
+-              'cid' => serialize($cid),
+-              'wildcard' => $wildcard,
+-              'cron_key' => variable_get('cron_key', 'drupal'),
+-            )),
++            'apc_drush_flush' => array(
++              array(
++                'cron_key' => variable_get('cron_key', 'drupal'),
++              ),
++            ),
+           );
+           $uri = $apc_node . '/xmlrpc.php';
+           $response = xmlrpc($uri, $args);
+@@ -284,8 +292,9 @@
+             drush_log('APC could not flush cache(s) because ' . $apc_node . ' returned code ' . $response['message'], 'error');
+           }
+           else {
++            $conf['apc_drush_flushed'] = TRUE;
+             // Skip logging
+-            //drush_log($response['message'], 'success');
++            // drush_log($response['message'], 'success');
+           }
+         }
+       }

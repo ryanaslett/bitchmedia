@@ -1,0 +1,11 @@
+/* CSS for pagebreak WYSIWYG plugin */
+
+.paging-pagebreak {
+  clear: both;
+  border: 0;
+  border-top: 1px dotted #ccc;
+  margin-top: 1em;
+  width: 100%;
+  height: 12px;
+  background: #fff url(images/pagebreaktext.gif) no-repeat center top;
+}

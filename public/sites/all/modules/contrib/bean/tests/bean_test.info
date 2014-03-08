@@ -1,0 +1,16 @@
+name = Bean Test
+description = Creates test plugins for bean
+core = 7.x
+
+dependencies[] = bean
+files[] = bean_test.module
+
+hidden = TRUE
+
+
+; Information added by drush on 2013-08-06
+version = "7.x-1.2"
+core = "7.x"
+project = "bean"
+datestamp = "1375811366"
+

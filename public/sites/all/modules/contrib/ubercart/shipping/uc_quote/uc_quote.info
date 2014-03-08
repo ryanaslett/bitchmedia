@@ -1,0 +1,18 @@
+name = Shipping quotes
+description = Enables shipping quotes to be calculated and displayed at checkout.
+dependencies[] = uc_cart
+package = Ubercart - core (optional)
+core = 7.x
+
+configure = admin/store/settings/quotes
+
+; Test cases
+files[] = tests/uc_quote.test
+
+
+; Information added by drush on 2013-09-20
+version = "7.x-3.5"
+core = "7.x"
+project = "ubercart"
+datestamp = "1379712868"
+

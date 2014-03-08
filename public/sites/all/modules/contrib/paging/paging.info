@@ -1,0 +1,10 @@
+name = Paging
+description = "Allows users to use a tag to break up a node into multiple pages."
+core = 7.x
+
+
+; Information added by drush on 2013-09-24
+version = ""
+project = "paging"
+datestamp = "1380070715"
+

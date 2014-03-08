@@ -1,0 +1,432 @@
+<?php
+
+/**
+ * @file
+ * Allows a node to be broken into multiple pages via a tag.
+ *
+ * Original module written by Marco Scutari.
+ * Rewritten, considerably shortened & made more Drupal-friendly by Earl Miles.
+ * Yet again rewritten, extended, and currently maintained by Gurpartap Singh.
+ * Upgraded to Drupal 7 by Jen Lampton.
+ */
+
+/**
+ * Implements hook_help().
+ */
+function paging_help($path, $arg) {
+  switch ($path) {
+    // Main module help for the block module
+    case 'admin/help#paging':
+      return '<p>' . t('Break long pages into smaller ones by means of a page break tag (e.g. %separator):</p>
+<pre>First page here.
+%separator 
+Second page here. 
+%separator
+More pages here.</pre>', array('%separator' => variable_get('paging_separator', '<!--pagebreak-->'))) . '<p>' . t('Automatic page breaking based on character or word count is also supported.') . '</p>';
+  }
+}
+
+/**
+ * Implements hook_menu().
+ */
+function paging_menu() {
+  $items = array();
+
+  $items['admin/config/content/paging'] = array(
+    'title' => 'Paging',
+    'description' => 'Enable or disable paging, configure separator string, toggle automatic paging and more for each content types.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('paging_settings'),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'paging.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implementation of hook_filter_info().
+ */
+function paging_filter_info() {
+  $filters['paging'] = array(
+    'title' => t('Break content into multiple pages.'), 
+    'description' => t('Allows content to be broken into multiple pages, using a separator tag (e.g. %separator), configurable on the <a href="!url">paging settings page</a>.', array('%separator' => variable_get('paging_separator', '<!--pagebreak-->'), '!url' => url('admin/config/content/paging'))),
+    'process callback' => 'paging_filter_paging_process', 
+    'tips callback' => 'paging_filter_paging_tips',
+  );
+
+  return $filters;
+}
+
+/**
+ * Implements hook_filter_FILTER_tips().
+ */
+function paging_filter_paging_tips($filter, $format, $long) {
+  if ($long) {
+    return t('Allows content to be broken up into multiple pages, using a
+      separator tag (e.g. %separator), configurable on the <a href="!url">paging settings page</a>.', array(
+        '%separator' => variable_get('paging_separator', '<!--pagebreak-->'),
+        '!url' => url('admin/config/content/paging')));
+  }
+  else {
+    return t('Allows content to be broken up into multiple pages using the separator: %separator.', array(
+      '%separator' => variable_get('paging_separator', '<!--pagebreak-->')));
+  }
+}
+
+/**
+ * Implements hook_node_load().
+ */
+function paging_node_load($nodes, $types) {
+  // We can use $types to figure out if we need to process any of these nodes.
+  $our_types = array();
+  foreach ($types as $type) {
+    if (variable_get('paging_enabled_' . $type, FALSE)) {
+      $our_types[] = $type;
+    }
+  }
+
+  // Now $our_types contains all the types from $types that we want
+  // to deal with. If it's empty, we can safely return.
+  if (!count($our_types)) {
+    return;
+  }
+
+  foreach ($nodes as $node) {
+    // Get the field to use as the body.
+    $body = paging_fetch_body($node);
+    // Load the separator for the content type (backwards compatability w 1.0)
+    $paging_separator = variable_get('paging_separator_' . $node->type, FALSE);
+    // Load the global separator.
+    if (!$paging_separator) {
+      $paging_separator = variable_get('paging_separator', '<!--pagebreak-->');
+    }
+
+    // Check if manual page separators were used.
+    if (strpos($body, $paging_separator) !== FALSE) {
+      $node->pages = explode($paging_separator, $body);
+      $node->page_count = count($node->pages);
+    }
+    else {
+      $body_parts = $body;
+
+      // Automatic paging based on character count.
+      if (variable_get('paging_automatic_method_' . $node->type, 0) == 1 && ($max_chars = variable_get('paging_automatic_chars_' . $node->type, 4000)) != 0) {
+        $total_chars = strlen($body);
+        // Check if pagination is possible.
+        if ($total_chars > $max_chars) {
+          $body = $body;
+          $breaks = (int)($total_chars / $max_chars);
+          $bodypart = array();
+          for ($i = 0; $i <= $breaks; $i++) {
+            $bodypart[$i] = node_teaser($body, NULL, $max_chars);
+            $bodycount = strlen($bodypart[$i]);
+            $body = substr($body, $bodycount);
+          }
+          $body_parts = implode($paging_separator, $bodypart);
+        }
+      }
+
+      // Automatic paging based on word count.
+      elseif (variable_get('paging_automatic_method_' . $node->type, 0) == 2 && ($max_words = variable_get('paging_automatic_words_' . $node->type, 400)) != 0) {
+        $words = explode(' ', $body);
+        $total_words = count($words);
+        // Check if pagination is possible.
+        if ($total_words > $max_words) {
+          $breaks = (int)($total_words / $max_words);
+          for ($i = 1; $i < $breaks; $i++) {
+            $index = $i * $max_words;
+            $words[$index] .= $paging_separator;
+          }
+        }
+        $body_parts = implode(' ', $words);
+      }
+      $node->pages = explode($paging_separator, $body_parts);
+      $node->page_count = count($node->pages);
+    }
+  }
+}
+
+/**
+ * Implements hook_node_view().
+ */
+function paging_node_view($node, $view_mode, $langcode) {
+  // If paging is enabled for this node type.
+  if (variable_get('paging_enabled_' . $node->type, 0) == TRUE && property_exists($node, 'page_count')) {
+    // Get the paging field name.
+    $field = variable_get('paging_field_' . $node->type, 0);
+    // Get the field to use as the body.
+    $body = paging_fetch_body($node, TRUE);
+    // Get the summary version of the field to use as the body.
+    $summary = paging_fetch_body_summary($node, TRUE);
+    // Fetch a structured array containing page names.
+    $node->page_names = paging_fetch_names($body);
+
+    // Check if view_mode is teaser.
+    if ($view_mode == 'teaser') {
+      // Check to see if the summary is longer than our first page.
+      if ($node->page_count > 1 && strlen($summary) > strlen($node->pages[0])) {
+        $node->pagemore = true;
+      }
+    }
+
+    // Set an element value for this pager.
+    $element = 0;
+    // Pull page from the URL query string.
+    $page = isset($_GET['page']) ? $_GET['page'] : '';
+
+    // Only do paging
+    // a) if not in teaser view mode;
+    // b) if there is more than one page;
+    // c) if a printable version is not being requested; or
+    // d) if a non-paged version is not being explicitly requested
+    //    e.g. http://www.example.com/node/1?page=full or node/1/full.
+
+    if (($view_mode != 'teaser') && $node->page_count > 1 && arg(2) != 'print' && arg(2) != 'full' && $page != 'full') {
+
+      pager_default_initialize($node->page_count, 1, $element);
+
+      // Store the page in here, for safe keeping.
+      $current_page = explode(',', $page);
+
+      // Clean up page number for use later on.
+      $page = ($current_page[$element] != '') ? $current_page[$element] : 0 ;
+      // Put the current page contents into the body.
+      $lang = $node->language;
+      $format = $node->{$field}[$lang][0]['format'];
+      $node->content[$field][0]['#markup'] = check_markup($node->pages[$page], $format, FALSE);
+
+      // Mapping the pages in $node->page_names and $node->page_count to set number of pages as the array length.
+      $fake = array_fill(0, ($node->page_count - 1) + 1, '');
+      $length = count($fake) > count($node->page_names) ? count($fake) : count($node->page_names);
+      for ($i=0; $i<$length; ++$i) {
+        $merged[$i] = array_key_exists($i, $node->page_names) ? $node->page_names[$i] : '';
+      }
+      // Fill the empty names with node title and page number.
+      $node->page_names = _paging_populate_empty_names($merged, $node->title);
+
+      // Generate the pager.
+      $pager = theme('pager', array('element' => $element));
+
+      // Add pager to node content.
+      $node->content['paging']['#markup'] = $pager;
+      // Add the second pager if requested.
+      $setting = variable_get('paging_pager_count', 'one');
+      if ($setting == 'two') {
+        $node->content['paging_above']['#markup'] = $pager;
+      }
+
+      if (variable_get('paging_name_title_' . $node->type, 0) && !empty($page)) {
+        // Set the browser title to page's name.
+        drupal_set_title($node->page_names[$page]);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_field_extra_fields().
+ */
+function paging_field_extra_fields() {
+  $setting = variable_get('paging_pager_count', 'one');
+  $extra = array();
+  foreach (entity_get_info() as $entity_type => $entity_info) {
+    foreach (array_keys($entity_info['bundles']) as $bundle) {
+      $extra[$entity_type][$bundle]['display']['paging'] = array(
+        'label' => t('Paging pager'),
+        'description' => t('Pager for paging module.'),
+        'weight' => 20,
+      );
+
+      if ($setting == 'two') {
+        $extra[$entity_type][$bundle]['display']['paging_above'] = array(
+          'label' => t('Paging top pager'),
+          'description' => t('A second pager for paging module, useful when you want one at both the top and bottom.'),
+          'weight' => -20,
+        );
+      }
+    }
+  }
+
+  return $extra;
+}
+
+/**
+ * Implementation of hook_wysiwyg_include_directory().
+ */
+function paging_wysiwyg_include_directory($type) {
+  switch ($type) {
+    case 'plugins':
+      return $type;
+  }
+}
+
+/**
+ * Implements hook_block_info().
+ */
+// @TODO need an update hook for this.
+function paging_block_info() {
+  $blocks['paging_pager'] = array(
+    'info' => t('Page Navigation (Paging)'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function paging_block_view($delta = '') {
+  // This example is adapted from node.module.
+  $block = array();
+
+  switch ($delta) {
+    case 'paging_pager':
+      $block['subject'] = t('Page navigation');
+      $block['content'] = array(
+        '#markup' => paging_build_names(), 
+      );
+      break;
+  }
+
+  return $block;
+}
+
+/**
+ * Returns a rendered list of page links.
+ *
+ * @param $nid
+ *   Node ID to render page links for.
+ *
+ * @return
+ *   An array of page names linked to the pages of the post.
+ */
+function paging_build_names($nid = NULL) {
+  global $pager_page_array;
+  // Load node ID form URL, if none was supplied.
+  $nid = $nid ? $nid : arg(1);
+  // Fetch a structured array containing page names.
+  $names = paging_fetch_names($nid);
+  // Load the node object to counting total number of expected pages.
+  $node = node_load($nid);
+  // Invoke 'load' operation in hook_nodeapi() implementation to calculate the actual number of pages in the node body.
+  paging_node_load(array($node), array($node->type));
+  // Comparing and mapping the number of pages in $names and $node->page_count.
+  $fake = array_fill(0, (($node->page_count - 1) < 1 ? 1 : ($node->page_count - 1)) + 1, '');
+  $length = count($fake) > count($names) ? count($fake) : count($names);
+  $merged = array();
+  for ($i=0; $i<$length; ++$i) {
+    $merged[$i] = array_key_exists($i, $names) ? $names[$i] : '';
+  }
+  // Fill the empty names with node title and page number.
+  $names = _paging_populate_empty_names($merged, $node->title);
+  $rendered_links = array();
+  // Element value to distinguish between multiple pagers on one page.
+  $element = 1;
+  // Convert the names into links.
+  foreach ($names as $key => $name) {
+    $page_new = pager_load_array($key, $element, $pager_page_array);
+    $rendered_links[] = theme('pager_link', array('text' => $name, 'page_new' => $page_new, 'element' => $element));
+  }
+
+  return theme('item_list', array('items' => $rendered_links));
+}
+
+/**
+ * Return an array of page names for a node.
+ *
+ * @param $nid
+ *   Either the nid of the node or the node object itself.
+ *
+ * @return
+ *   An array of page names found in the node body.
+ */
+function paging_fetch_names($nid) {
+  if (is_numeric($nid)) {
+    $node = node_load($nid);
+    $body = paging_fetch_body($node);
+    preg_match("/<!--pagenames:(.*?)-->/", $body, $matches);
+    if (count($matches) > 0) {
+      return explode('||', $matches[1]);
+    }
+  }
+
+  return array();
+}
+
+/**
+ * Return the contents of the body that will be split by breaks.
+ *
+ * @param $node
+ *   A fully loaded node object.
+ * @param $safe
+ *   Weather requesting the safe value or not.
+ *
+ * @return
+ *   The complete text from the body, or main field of that node.
+ */
+function paging_fetch_body($node, $safe = FALSE) {
+  $body = '';
+  $field = variable_get('paging_field_' . $node->type, 0);
+  if ($field && property_exists($node, $field)) {
+    $lang = $node->language;
+    if ($safe) {
+      $body = $node->{$field}[$lang][0]['safe_value'];
+    }
+    else {
+      $body = $node->{$field}[$lang][0]['value'];
+    }
+  }
+
+  return $body;
+}
+
+/**
+ * Return the summary view of the body that will be split by breaks.
+ *
+ * @param $node
+ *   A fully loaded node object.
+ * @param $safe
+ *   Weather requesting the safe value or not.
+ *
+ * @return
+ *   The summary text from the body, or main field of that node.
+ */
+function paging_fetch_body_summary($node, $safe = FALSE) {
+  $summary = '';
+  $field = variable_get('paging_field_' . $node->type, 0);
+  if ($field) {
+    $lang = $node->language;
+    if ($safe) {
+      $body = $node->{$field}[$lang][0]['safe_summary'];
+    }
+    else {
+      $summary = $node->{$field}[$lang][0]['summary'];
+    }
+  }
+
+  return $summary;
+}
+
+/**
+ * Helper function to populate empty page names.
+ *
+ * @param $names
+ *   An array of page names found in the node body.
+ * @param $title
+ *   The title of the node.
+ *
+ * @return
+ *   A complete array of page names, even if not provided.
+ */
+function _paging_populate_empty_names($names, $title) {
+  foreach ($names as $key => $name) {
+    trim($names[$key]);
+    if (empty($names[$key])) {
+      $names[$key] = t('!title - page !number', array('!title' => check_plain($title), '!number' => ($key + 1)));;
+    }
+  }
+
+  return $names;
+}
