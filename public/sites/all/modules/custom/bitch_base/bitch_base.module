@@ -1,0 +1,171 @@
+<?php
+/**
+* @file
+* A description of what your module does.
+*/
+
+
+/**
+ * Implements hook_theme().
+ */
+function bitch_base_theme() {
+  return array(
+    'tracked_link' => array(
+      'render element' => 'element',
+      'function' => 'bitch_base_tracked_link',
+    ),
+    'tracked_image_link' => array(
+      'render element' => 'element',
+      'function' => 'bitch_base_tracked_image_link',
+    ),
+  );
+}
+
+
+/**
+ * Implements hook_image_effect_info_alter().
+ */
+function bitch_base_image_effect_info_alter(&$effects) {
+  $effects['manualcrop_reuse']['dimensions passthrough'] = TRUE;
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function bitch_base_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+  $settings = $display['settings'];
+
+  switch ($display['type']) {
+    case 'field_collection_view':
+      // TODO: elminate the goddamn add edit things from the displays.
+  }
+
+}
+function bitch_base_form_alter(&$form, &$form_state){
+
+}
+
+function bitch_base_field_read_field($field) {
+  if ($field['field_name'] === 'field_column_name'){
+    $field['settings']['options_list_callback'] = 'bitch_base_filtered_taxonomy_list';
+  }
+}
+
+/**
+ * Makes it so that taxonomy options in a dropdown do not include the archived items.
+ */
+function bitch_base_filtered_taxonomy_list($field){
+  $foo = "";
+}
+
+
+/**
+ * Implements of hook_element_info_alter().
+ */
+function bitch_base_element_info_alter(&$type) {
+  // Our process callback must run immediately after filter_process_format().
+  $filter_process_format_location = array_search('filter_process_format', $type['text_format']['#process']);
+  unset($type['text_format']['#process'][$filter_process_format_location]);
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+
+function bitch_base_preprocess_node(&$vars) {
+  if ($vars['node']->type == 'article' && $vars['view_mode'] == 'search_result') {
+    $vars['theme_hook_suggestions'][] = 'node__article__search_result';
+  }
+}
+
+function bitch_base_preprocess_taxonomy_term(&$vars) {
+  $foo = 'bar';
+}
+
+
+/**
+ * Implements hook_preprocess_field().
+ *
+ * Adds a theme suggestions for multifield so we can theme multifields
+ * like single fields.
+ *
+ */
+function bitch_base_preprocess_field(&$variables, $hook) {
+
+  if ($variables['element']['#formatter'] == 'multifield_default') {
+    if ($variables['element']['#field_type'] == 'tracked_link'){
+      $variables['theme_hook_suggestions'][] = 'tracked_link';
+    }
+
+    if ($variables['element']['#field_type'] == 'tracked_image_link'){
+      $variables['theme_hook_suggestions'][] = 'tracked_image_link';
+    }
+
+  }
+}
+
+/**
+ * This theme function formats a tracked-link with
+ * google analytics event tracking codes.
+ *
+ */
+
+function bitch_base_tracked_image_link($variables){
+
+  $output = '<a href="' . $variables['element'][0]['field_link_url'][0]['#markup'] . '" title="' . $variables['element'][0]['field_link_title'][0]['#markup'] . '" onClick="_gaq.push([\'_trackEvent\', \'' . $variables['element'][0]['field_analytics_event'][0]['#markup'] . '\', \'' . $variables['element'][0]['field_analytics_action'][0]['#markup'] . '\', \'' . $variables['element'][0]['field_analytics_label'][0]['#markup'] . '\']);">' . $variables['element'][0]['field_link_label'][0]['#markup'] . '</a>';
+
+  hide($variables);
+
+  $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
+  return $output;
+}
+
+
+/**
+ * This theme function formats a tracked-link with
+ * google analytics event tracking codes.
+ *
+ */
+
+function bitch_base_tracked_link($variables){
+
+  $output = '<a href="' . $variables['element'][0]['field_link_url'][0]['#markup'] . '" title="' . $variables['element'][0]['field_link_title'][0]['#markup'] . '" onClick="_gaq.push([\'_trackEvent\', \'' . $variables['element'][0]['field_analytics_event'][0]['#markup'] . '\', \'' . $variables['element'][0]['field_analytics_action'][0]['#markup'] . '\', \'' . $variables['element'][0]['field_analytics_label'][0]['#markup'] . '\']);">' . $variables['element'][0]['field_link_label'][0]['#markup'] . '</a>';
+
+  hide($variables);
+
+  $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
+  return $output;
+}
+
+function bitch_base_field_attach_view_alter(&$output, $context) {
+  $foo = 'bar';
+}
+
+/**
+ * Implements hook_entity_info_alter().
+ *
+ * Alters the multifield module to include view modes.
+ *
+ */
+function bitch_base_entity_info_alter(&$entity_info) {
+  $foo = 'bar';
+  if (!empty($entity_info['multifield'])) {
+    $entity_info['multifield']['view modes'] = array(
+      'full' => array(
+      'label' => t('Multifield Default Display'),
+      'custom settings' => FALSE,
+      ),
+    );
+  }
+}
+
+//function bitch_base_theme_registry_alter(&$theme_registry){
+//  $preserved_function = $theme_registry['field']['function'];
+//  $theme_registry =
+//
+//}
+
+function bitch_base_page_alter(&$variables) {
+  $foo = 'bar';
+}
