@@ -5,13 +5,67 @@
  */
 
 /**
+ * Implements hook_requirements().
+ */
+function manualcrop_requirements($phase) {
+  $requirements = array();
+
+  if ($phase == 'runtime') {
+    $requirements['manualcrop_jquery_imagesloaded'] = array(
+      'title' => 'jQuery imagesLoaded',
+      'value' => t('Not installed'),
+      'description' => t('The %name plugin could not be detected.', array('%name' => 'jQuery imagesLoaded')),
+      'severity' => REQUIREMENT_ERROR,
+    );
+
+    $requirements['manualcrop_jquery_imgareaselect'] = array(
+      'title' => 'jQuery imageAreaSelect',
+      'value' => t('Not installed'),
+      'description' => t('The %name plugin could not be detected.', array('%name' => 'jQuery imagesLoaded')),
+      'severity' => REQUIREMENT_ERROR,
+    );
+
+    if (module_exists('libraries')) {
+      $libraries = array('jquery.imagesloaded', 'jquery.imgareaselect');
+
+      foreach ($libraries as $name) {
+        $key = 'manualcrop_' . str_replace('.', '_', $name);
+        $info = libraries_detect($name);
+
+        if ($info['installed']) {
+          $requirements[$key]['description'] = t('The %name plugin is installed at %path', array(
+            '%name' => $requirements[$key]['title'],
+            '%path' => libraries_get_path($name),
+          ));
+          $requirements[$key]['severity'] = REQUIREMENT_OK;
+
+          if (!empty($info['version'])) {
+            $requirements[$key]['value'] = $info['version'];
+          }
+          else {
+            $requirements[$key]['value'] = t('Installed');
+          }
+        }
+        else {
+          $requirements[$key]['value'] = drupal_ucfirst($info['error']);
+          $requirements[$key]['description'] = $info['error message'];
+        }
+      }
+    }
+  }
+
+  return $requirements;
+}
+
+/**
  * Implements hook_install().
  */
 function manualcrop_install() {
-  variable_set('manualcrop_cache_control', TRUE);
-
-  // Hooks have to run after the Insert module.
+  // Our hooks should run after the Insert module.
   db_query("UPDATE {system} SET weight = 20 WHERE name = 'manualcrop'");
+
+  // Grant the crop permission to all user roles.
+  _manualcrop_grant_crop_permission();
 }
 
 /**
@@ -19,6 +73,7 @@ function manualcrop_install() {
  */
 function manualcrop_uninstall() {
   variable_del('manualcrop_cache_control');
+  variable_del('manualcrop_skip_js_check');
 }
 
 /**
@@ -188,4 +243,117 @@ function manualcrop_update_7102(&$sandbox) {
   }
 
   field_cache_clear();
+}
+
+/**
+ * Update the image fields so the settings no longer contain the styles that
+ * weren't selected in the interface.
+ */
+function manualcrop_update_7103(&$sandbox) {
+  foreach (field_info_fields() as $field_name => $field) {
+    // Only update image fields.
+    if ($field['type'] == 'image') {
+      foreach ($field['bundles'] as $entity_type => $bundles) {
+        foreach ($bundles as $bundle_name) {
+          // Get the field instance and its settings.
+          $instance = field_info_instance($entity_type, $field_name, $bundle_name);
+          $settings = &$instance['widget']['settings'];
+
+          // Update the image styles settings.
+          if (!empty($settings['manualcrop_styles_list']) || !empty($settings['manualcrop_require_cropping'])) {
+            if (!empty($settings['manualcrop_styles_list'])) {
+              $settings['manualcrop_styles_list'] = array_filter($settings['manualcrop_styles_list']);
+            }
+
+            if (!empty($settings['manualcrop_require_cropping'])) {
+              $settings['manualcrop_require_cropping'] = array_filter($settings['manualcrop_require_cropping']);
+            }
+
+            field_update_instance($instance);
+          }
+        }
+      }
+    }
+  }
+
+  field_cache_clear();
+}
+
+/**
+ * Remove unneeded image effect data and rename the "reusestyle" setting
+ * to "reuse_crop_style".
+ */
+function manualcrop_update_7104(&$sandbox) {
+  require_once 'manualcrop.helpers.inc';
+
+  foreach (manualcrop_styles_with_crop(TRUE) as $info) {
+    $effect = $info['effect'];
+    $save = FALSE;
+
+    if (_manualcrop_is_own_effect($effect, FALSE)) {
+      // Remove the style_name setting.
+      if (isset($effect['data']['style_name'])) {
+        unset($effect['data']['style_name']);
+        $save = TRUE;
+      }
+
+      // Rename the reusestyle setting.
+      if (isset($effect['data']['reusestyle'])) {
+        $effect['data']['reuse_crop_style'] = $effect['data']['reusestyle'];
+        unset($effect['data']['reusestyle']);
+        $save = TRUE;
+      }
+
+      if ($save) {
+        image_effect_save($effect);
+      }
+    }
+  }
+}
+
+/**
+ * Grant the "Crop images" pemission to all user roles.
+ */
+function manualcrop_update_7105(&$sandbox) {
+  _manualcrop_grant_crop_permission();
+}
+
+/**
+ * Add the style_priority setting to all auto reuse image effects.
+ */
+function manualcrop_update_7106(&$sandbox) {
+  require_once 'manualcrop.helpers.inc';
+
+  foreach (manualcrop_styles_with_crop(TRUE) as $info) {
+    $effect = $info['effect'];
+
+    if (_manualcrop_is_own_effect($effect, FALSE) && $effect['name'] == 'manualcrop_auto_reuse') {
+      $effect['data'] += array('style_priority' => array());
+      image_effect_save($effect);
+    }
+  }
+}
+
+/**
+ * Re-run update 7103 to remove all styles that weren't selected in the interface.
+ */
+function manualcrop_update_7107(&$sandbox) {
+  manualcrop_update_7103($sandbox);
+}
+
+/**
+ * Grant the crop permission to all user roles.
+ */
+function _manualcrop_grant_crop_permission() {
+  foreach (user_roles() as $rid => $role) {
+    db_merge('role_permission')
+      ->key(array(
+        'rid' => $rid,
+        'permission' => 'use manualcrop',
+      ))
+      ->fields(array(
+        'module' => 'manualcrop',
+      ))
+      ->execute();
+  }
 }
