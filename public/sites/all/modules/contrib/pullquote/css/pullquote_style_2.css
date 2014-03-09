@@ -8,6 +8,7 @@
 }
 
 .pullquote-quote {
+  position: relative;
   z-index:1;
   background: #F5F5F5;
   border-left: 0.8em solid #ccc;
@@ -21,20 +22,34 @@
 }
 
 /* inserts quotation marks around pullquoted text */
-.pullquote-quote:before {
+.pullquote-quote .pullquote-content:before {
   content: open-quote;
+  font-size: 250%;
+  font-weight: bold;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: -2;
 }
 
-.pullquote-quote:after {
+.pullquote-quote .pullquote-content:after {
   content: close-quote;
 }
 
-.pullquote-quote:first-letter {
-  font-size: 250%;
-  font-weight: bold;
+.pullquote-quote .pullquote-content {
+  display: inline-block;
+  margin-left: 15px;
+  padding-left: 15px;
 }
 
 .pullquote-quote.pullquote-left {
   margin: 1em 1em 0.4em 0em;
   float: left;
+}
+
+.pullquote-quote .attribution {
+  float: right;
+  color: gray;
+  font-variant: small-caps;
+  font-style: normal;
 }

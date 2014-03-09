@@ -1,4 +1,9 @@
-﻿Pullquote 7.x-2.x 2013-03-10
+﻿Pullquote 7.x-2.2 2013-03-10
+-----------------------------
+Fix issue in which display suite css was being overwritten by pullquote.
+Document usage of left aligned pullquotes.
+
+Pullquote 7.x-2.x 2013-03-10
 -----------------------------
 Make stylesheets work with left pullquote class.
 Fix issue when trying to determine if we should load pullquote on view modes that aren't in the set variable.

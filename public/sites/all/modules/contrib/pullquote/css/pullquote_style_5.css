@@ -17,16 +17,16 @@
   font: italic 120% Georgia, "Times New Roman", Times, serif;
   line-height: 150%;
   margin: 1em 0 0.4em 1em;
-  padding: 1em 1em 0 1em;
+  padding: 1em 1em .7em 1em;
   width: 30%;
 }
 
 /* inserts quotation marks around pullquoted text */
-.pullquote-quote:before {
+.pullquote-quote .pullquote-content:before {
   content: open-quote;
 }
 
-.pullquote-quote:after {
+.pullquote-quote .pullquote-content:after {
   content: close-quote;
 }
 
@@ -34,4 +34,9 @@
   float: left;
   margin-left: 0em;
   margin-right: 1em;
+}
+
+.pullquote-quote .attribution {
+  float: right;
+  padding-top: 1em;
 }
