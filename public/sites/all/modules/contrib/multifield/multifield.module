@@ -315,23 +315,15 @@ function multifield_field_create_instance($instance) {
   }
 }
 
-function _multifield_field_item_to_entity($machine_name, array $item, array $additional = array()) {
-  $pseudo_entity = new stdClass();
-  $pseudo_entity->id = !empty($item['id']) ? $item['id'] : NULL;
+function _multifield_field_item_to_entity($machine_name, array $item) {
+  $pseudo_entity = (object) ($item + array('id' => NULL));
   $pseudo_entity->type = $machine_name;
-  foreach (array_intersect_key($item, field_info_instances('multifield', $machine_name)) as $field => $values) {
-    $pseudo_entity->{$field} = $item[$field];
-  }
-  foreach ($additional as $key => $value) {
-    $pseudo_entity->{$key} = $value;
-  }
   return $pseudo_entity;
 }
 
 function _multifield_field_entity_to_item($pseudo_entity) {
   $item = (array) $pseudo_entity;
-  $item = array_intersect_key($item, field_info_instances('multifield', $pseudo_entity->type));
-  $item['id'] = $pseudo_entity->id;
+  unset($item['type']);
   //$item['#pseudo_entity'] = $pseudo_entity;
   return $item;
 }
@@ -351,7 +343,7 @@ function multifield_item_unserialize(&$item, $delta, $multifield) {
 function multifield_item_serialize(&$item, $delta, $multifield) {
   // Serialize the multifield values into separate columns for saving into the
   // field table.
-  foreach (field_info_instances('multifield', $multifield['type']) as $subfield_name => $subfield_instance) {
+  foreach (multifield_type_get_subfields($multifield['type']) as $subfield_name) {
     $subfield = field_info_field($subfield_name);
     foreach ($subfield['columns'] as $column => $details) {
       if (isset($item[$subfield_name][LANGUAGE_NONE][0][$column])) {
@@ -413,7 +405,7 @@ function multifield_form_field_ui_field_overview_form_alter(&$form, &$form_state
 
   // Prevent multifields from being added to multifields themselves.
   $form['fields']['_add_new_field']['type']['#options'] = array_diff_key($form['fields']['_add_new_field']['type']['#options'], multifield_load_all());
-  if (isset($form['fields']['_add_existing_field'])){
+  if (isset($form['fields']['_add_existing_field'])) {
     $form['fields']['_add_existing_field']['field_name']['#options'] = array_diff_key($form['fields']['_add_existing_field']['field_name']['#options'], multifield_get_fields());
   }
 
@@ -523,4 +515,35 @@ function multifield_admin_menu_map() {
   );
 
   return $map;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function multifield_theme() {
+  return array(
+    'multifield' => array(
+      'render element' => 'element',
+    ),
+  );
+}
+
+/**
+ * Implements hook_preprocess_field().
+ *
+ * Adds a theme suggestions for multifield so we can theme multifields
+ * independently of their subordinate fields. *
+ */
+function multifield_preprocess_field(&$variables, $hook) {
+  $element = $variables['element'];
+
+  if ($variables['element']['#formatter'] == 'multifield_default') {
+    $variables['theme_hook_suggestions'] = array_merge($variables['theme_hook_suggestions'], array(
+    'multifield',
+    'multifield__' . $element['#field_type'],
+    'multifield__' . $element['#field_name'],
+    'multifield__' . $element['#bundle'],
+    'multifield__' . $element['#field_name'] . '__' . $element['#bundle'],
+    ));
+  }
 }
