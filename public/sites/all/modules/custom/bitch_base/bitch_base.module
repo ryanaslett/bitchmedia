@@ -10,16 +10,17 @@
  */
 function bitch_base_theme() {
   return array(
-    'tracked_link' => array(
+    'multifield__tracked_link' => array(
       'render element' => 'element',
-      'function' => 'bitch_base_tracked_link',
+      'function' => 'bitch_base_multifield__tracked_link',
     ),
-    'tracked_image_link' => array(
+    'multifield__tracked_image_link' => array(
       'render element' => 'element',
-      'function' => 'bitch_base_tracked_image_link',
+      'function' => 'bitch_base_multifield__tracked_image_link',
     ),
   );
 }
+
 
 
 /**
@@ -91,19 +92,19 @@ function bitch_base_preprocess_taxonomy_term(&$vars) {
  * like single fields.
  *
  */
-function bitch_base_preprocess_field(&$variables, $hook) {
-
-  if ($variables['element']['#formatter'] == 'multifield_default') {
-    if ($variables['element']['#field_type'] == 'tracked_link'){
-      $variables['theme_hook_suggestions'][] = 'tracked_link';
-    }
-
-    if ($variables['element']['#field_type'] == 'tracked_image_link'){
-      $variables['theme_hook_suggestions'][] = 'tracked_image_link';
-    }
-
-  }
-}
+//function bitch_base_preprocess_field(&$variables, $hook) {
+//
+//  if ($variables['element']['#formatter'] == 'multifield_default') {
+//    if ($variables['element']['#field_type'] == 'tracked_link'){
+//      $variables['theme_hook_suggestions'][] = 'tracked_link';
+//    }
+//
+//    if ($variables['element']['#field_type'] == 'tracked_image_link'){
+//      $variables['theme_hook_suggestions'][] = 'tracked_image_link';
+//    }
+//
+//  }
+//}
 
 /**
  * This theme function formats a tracked-link with
@@ -111,7 +112,7 @@ function bitch_base_preprocess_field(&$variables, $hook) {
  *
  */
 
-function bitch_base_tracked_image_link($variables){
+function bitch_base_multifield__tracked_image_link($variables){
 
   $output = '<a href="' . $variables['element'][0]['field_link_url'][0]['#markup'] . '" title="' . $variables['element'][0]['field_link_title'][0]['#markup'] . '" onClick="_gaq.push([\'_trackEvent\', \'' . $variables['element'][0]['field_analytics_event'][0]['#markup'] . '\', \'' . $variables['element'][0]['field_analytics_action'][0]['#markup'] . '\', \'' . $variables['element'][0]['field_analytics_label'][0]['#markup'] . '\']);">' . $variables['element'][0]['field_link_label'][0]['#markup'] . '</a>';
 
@@ -125,11 +126,8 @@ function bitch_base_tracked_image_link($variables){
 /**
  * This theme function formats a tracked-link with
  * google analytics event tracking codes.
- *
  */
-
-function bitch_base_tracked_link($variables){
-
+function bitch_base_multifield__tracked_link($variables){
   $output = '<a href="' . $variables['element'][0]['field_link_url'][0]['#markup'] . '" title="' . $variables['element'][0]['field_link_title'][0]['#markup'] . '" onClick="_gaq.push([\'_trackEvent\', \'' . $variables['element'][0]['field_analytics_event'][0]['#markup'] . '\', \'' . $variables['element'][0]['field_analytics_action'][0]['#markup'] . '\', \'' . $variables['element'][0]['field_analytics_label'][0]['#markup'] . '\']);">' . $variables['element'][0]['field_link_label'][0]['#markup'] . '</a>';
 
   hide($variables);
