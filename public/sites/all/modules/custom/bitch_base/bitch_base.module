@@ -14,13 +14,16 @@ function bitch_base_theme() {
       'render element' => 'element',
       'function' => 'bitch_base_multifield__tracked_link',
     ),
+    'multifield__social_media_link' => array(
+      'render element' => 'element',
+      'function' => 'bitch_base_multifield__social_media_link',
+    ),
     'multifield__tracked_image_link' => array(
       'render element' => 'element',
       'function' => 'bitch_base_multifield__tracked_image_link',
     ),
   );
 }
-
 
 
 /**
@@ -43,23 +46,10 @@ function bitch_base_field_formatter_view($entity_type, $entity, $field, $instanc
   }
 
 }
-function bitch_base_form_alter(&$form, &$form_state){
 
-}
-
-function bitch_base_field_read_field($field) {
-  if ($field['field_name'] === 'field_column_name'){
-    $field['settings']['options_list_callback'] = 'bitch_base_filtered_taxonomy_list';
-  }
-}
-
-/**
- * Makes it so that taxonomy options in a dropdown do not include the archived items.
- */
-function bitch_base_filtered_taxonomy_list($field){
-  $foo = "";
-}
-
+//function bitch_base_form_alter(&$form, &$form_state) {
+//
+//}
 
 /**
  * Implements of hook_element_info_alter().
@@ -73,16 +63,15 @@ function bitch_base_element_info_alter(&$type) {
 /**
  * Implements hook_preprocess_node().
  */
-
 function bitch_base_preprocess_node(&$vars) {
   if ($vars['node']->type == 'article' && $vars['view_mode'] == 'search_result') {
     $vars['theme_hook_suggestions'][] = 'node__article__search_result';
   }
 }
 
-function bitch_base_preprocess_taxonomy_term(&$vars) {
-  $foo = 'bar';
-}
+//function bitch_base_preprocess_taxonomy_term(&$vars) {
+//  $foo = 'bar';
+//}
 
 
 /**
@@ -124,27 +113,50 @@ function bitch_base_multifield__tracked_image_link($variables){
 
 
 /**
- * This theme function formats a tracked-link with
- * google analytics event tracking codes.
+ * Formats a tracked-link with google analytics event tracking codes.
  */
-function bitch_base_multifield__tracked_link($variables){
-  $output = '<a href="' . $variables['element'][0]['field_link_url'][0]['#markup'] . '" title="' . $variables['element'][0]['field_link_title'][0]['#markup'] . '" onClick="_gaq.push([\'_trackEvent\', \'' . $variables['element'][0]['field_analytics_event'][0]['#markup'] . '\', \'' . $variables['element'][0]['field_analytics_action'][0]['#markup'] . '\', \'' . $variables['element'][0]['field_analytics_label'][0]['#markup'] . '\']);">' . $variables['element'][0]['field_link_label'][0]['#markup'] . '</a>';
+function bitch_base_multifield__tracked_link($variables) {
+  if (isset($variables['element'][0]['field_link_url'])) {
+    $output = '<a href="' . $variables['element'][0]['field_link_url'][0]['#markup'] . '" target="_blank" onClick="_gaq.push([\'_trackEvent\', \'' . $variables['element'][0]['field_analytics_event'][0]['#markup'] . '\', \'' . $variables['element'][0]['field_analytics_action'][0]['#markup'] . '\', \'' . $variables['element'][0]['field_analytics_label'][0]['#markup'] . '\']);">' . $variables['element'][0]['field_link_label'][0]['#markup'] . '</a>';
 
-  hide($variables);
+    $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
+    hide($variables['element']);
 
-  $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
-  return $output;
+    return $output;
+  }
+  else {
+
+    // A "space" means stop further rendering. Nothing else seems to matter.
+    return ' ';
+  }
+
 }
 
-function bitch_base_field_attach_view_alter(&$output, $context) {
-  $foo = 'bar';
+/**
+ * Formats a tracked-link with google analytics event tracking codes.
+ */
+function bitch_base_multifield__social_media_link($variables) {
+  if (isset($variables['element'][0]['field_link_url'])) {
+    $output = '<a href="' . $variables['element'][0]['field_link_url'][0]['#markup'] . '" target="_blank" onClick="_gaq.push([\'_trackEvent\', \'' . $variables['element'][0]['field_analytics_event'][0]['#markup'] . '\', \'' . $variables['element'][0]['field_analytics_action'][0]['#markup'] . '\', \'' . $variables['element'][0]['field_analytics_label'][0]['#markup'] . '\']);">' . drupal_render($variables['element'][0]['field_social_media_reference']) . '</a>';
+
+    $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
+    hide($variables['element']);
+    return $output;
+  }
+  else {
+    return ' ';
+  }
+
 }
+
+//function bitch_base_field_attach_view_alter(&$output, $context) {
+//  $foo = 'bar';
+//}
 
 /**
  * Implements hook_entity_info_alter().
  *
  * Alters the multifield module to include view modes.
- *
  */
 function bitch_base_entity_info_alter(&$entity_info) {
   $foo = 'bar';
@@ -163,7 +175,7 @@ function bitch_base_entity_info_alter(&$entity_info) {
 //  $theme_registry =
 //
 //}
-
-function bitch_base_page_alter(&$variables) {
-  $foo = 'bar';
-}
+//
+//function bitch_base_page_alter(&$variables) {
+//  $foo = 'bar';
+//}
