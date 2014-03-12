@@ -1,0 +1,12 @@
+name = Field default token
+description = Enables to use tokens as field default values.
+package = Fields
+core = 7.x
+
+
+; Information added by drush on 2014-03-11
+version = "7.x-1.2"
+core = "7.x"
+project = "field_default_token"
+datestamp = "1394597624"
+
