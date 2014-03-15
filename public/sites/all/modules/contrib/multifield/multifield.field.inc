@@ -424,6 +424,18 @@ function multifield_field_widget_form(&$form, &$form_state, $field, $instance, $
   //$form['#validate'][] = 'multifield_field_widget_validate';
   //$form['#multifields'][] = $element['#parents'];
 
+  // Call hook_field_attach_form with our subset of data.
+  $bundlesave = $element['#bundle'];
+  $entitysave = $element['#entity_type'];
+  $element['#bundle'] = $field['type'];
+  $element['#entity_type'] = 'multifield';
+  foreach (module_implements('field_attach_form') as $module) {
+    $function = $module . '_field_attach_form';
+    $function('multifield', $pseudo_entity, $element, $form_state, $element['#language']);
+  }
+  $element['#bundle'] = $bundlesave;
+  $element['#entity_type'] = $entitysave;
+
   return $element;
 }
 
