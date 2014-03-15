@@ -79,21 +79,24 @@ function bitch_base_preprocess_node(&$vars) {
  *
  * Adds a theme suggestions for multifield so we can theme multifields
  * like single fields.
- *
  */
-//function bitch_base_preprocess_field(&$variables, $hook) {
-//
-//  if ($variables['element']['#formatter'] == 'multifield_default') {
-//    if ($variables['element']['#field_type'] == 'tracked_link'){
-//      $variables['theme_hook_suggestions'][] = 'tracked_link';
-//    }
-//
-//    if ($variables['element']['#field_type'] == 'tracked_image_link'){
-//      $variables['theme_hook_suggestions'][] = 'tracked_image_link';
-//    }
-//
-//  }
-//}
+function bitch_base_preprocess_field(&$variables, $hook) {
+
+ // $foo = drupal_array_get_nested_value($variables,array$element['#formatter'])
+
+  $element = &$variables['element'];
+  if ($element['#formatter'] == 'multifield_default') {
+    if (in_array($element['#field_type'], array('tracked_link', 'social_media_link', 'tracked_image_link'))) {
+      if ($element['#bundle'] == 'user') {
+        $label = $element['#object']->name;
+        $element[0]['field_analytics_label'][0]['#markup'] = $label;
+      }
+      else if ($element['#bundle'] == 'podcast_series') {
+        $element[0]['field_analytics_label'][0]['#markup'] = $element['#object']->name;
+      }
+    }
+  }
+}
 
 /**
  * This theme function formats a tracked-link with
@@ -102,8 +105,10 @@ function bitch_base_preprocess_node(&$vars) {
  */
 
 function bitch_base_multifield__tracked_image_link($variables){
+  $element = &$variables['element'];
 
-  $output = '<a href="' . $variables['element'][0]['field_link_url'][0]['#markup'] . '" title="' . $variables['element'][0]['field_link_title'][0]['#markup'] . '" onClick="_gaq.push([\'_trackEvent\', \'' . $variables['element'][0]['field_analytics_event'][0]['#markup'] . '\', \'' . $variables['element'][0]['field_analytics_action'][0]['#markup'] . '\', \'' . $variables['element'][0]['field_analytics_label'][0]['#markup'] . '\']);">' . $variables['element'][0]['field_link_label'][0]['#markup'] . '</a>';
+
+  $output = '<a href="' . $element[0]['field_link_url'][0]['#markup'] . '" onClick="_gaq.push([\'_trackEvent\', \'' . $element[0]['field_analytics_event'][0]['#markup'] . '\', \'' . $element[0]['field_analytics_action'][0]['#markup'] . '\', \'' . $element[0]['field_analytics_label'][0]['#markup'] . '\']);">' . $element[0]['field_link_label'][0]['#markup'] . '</a>';
 
   hide($variables);
 
@@ -116,42 +121,53 @@ function bitch_base_multifield__tracked_image_link($variables){
  * Formats a tracked-link with google analytics event tracking codes.
  */
 function bitch_base_multifield__tracked_link($variables) {
-  if (isset($variables['element'][0]['field_link_url'])) {
-    $output = '<a href="' . $variables['element'][0]['field_link_url'][0]['#markup'] . '" target="_blank" onClick="_gaq.push([\'_trackEvent\', \'' . $variables['element'][0]['field_analytics_event'][0]['#markup'] . '\', \'' . $variables['element'][0]['field_analytics_action'][0]['#markup'] . '\', \'' . $variables['element'][0]['field_analytics_label'][0]['#markup'] . '\']);">' . $variables['element'][0]['field_link_label'][0]['#markup'] . '</a>';
+  $element = &$variables['element'];
+
+  if (isset($element[0]['field_link_url'])) {
+    $output = '<a href="' . $element[0]['field_link_url'][0]['#markup'] . '" target="_blank" onClick="_gaq.push([\'_trackEvent\', \'' . $element[0]['field_analytics_event'][0]['#markup'] . '\', \'' . $element[0]['field_analytics_action'][0]['#markup'] . '\', \'' . $element[0]['field_analytics_label'][0]['#markup'] . '\']);">' . $element[0]['field_link_label'][0]['#markup'] . '</a>';
 
     $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
-    hide($variables['element']);
+    hide($element);
 
     return $output;
   }
   else {
-
     // A "space" means stop further rendering. Nothing else seems to matter.
     return ' ';
   }
-
 }
 
 /**
  * Formats a tracked-link with google analytics event tracking codes.
  */
 function bitch_base_multifield__social_media_link($variables) {
-  if (isset($variables['element'][0]['field_link_url'])) {
-    $output = '<a href="' . $variables['element'][0]['field_link_url'][0]['#markup'] . '" target="_blank" onClick="_gaq.push([\'_trackEvent\', \'' . $variables['element'][0]['field_analytics_event'][0]['#markup'] . '\', \'' . $variables['element'][0]['field_analytics_action'][0]['#markup'] . '\', \'' . $variables['element'][0]['field_analytics_label'][0]['#markup'] . '\']);">' . drupal_render($variables['element'][0]['field_social_media_reference']) . '</a>';
+  $element = &$variables['element'];
+
+  if (isset($element[0]['field_link_url'])) {
+    $output = '<a href="' . $element[0]['field_link_url'][0]['#markup'] . '" target="_blank" onClick="_gaq.push([\'_trackEvent\', \'' . $element[0]['field_analytics_event'][0]['#markup'] . '\', \'' . $element[0]['field_analytics_action'][0]['#markup'] . '\', \'' . $element[0]['field_analytics_label'][0]['#markup'] . '\']);">' . drupal_render($element[0]['field_social_media_reference']) . '</a>';
 
     $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
-    hide($variables['element']);
+    hide($element);
     return $output;
   }
   else {
     return ' ';
   }
-
 }
 
-//function bitch_base_field_attach_view_alter(&$output, $context) {
-//  $foo = 'bar';
-//}
+/**
+ * @param $variables
+ * @param $hook
+ */
+
+function bitch_base_preprocess_multifield__social_media_link(&$variables, $hook){
+  $foo = 'bar';
+}
+
+function bitch_base_preprocess_multifield(&$variables, $hook){
+  $foo = 'bar';
+}
+
 
 /**
  * Implements hook_entity_info_alter().
@@ -169,13 +185,3 @@ function bitch_base_entity_info_alter(&$entity_info) {
     );
   }
 }
-
-//function bitch_base_theme_registry_alter(&$theme_registry){
-//  $preserved_function = $theme_registry['field']['function'];
-//  $theme_registry =
-//
-//}
-//
-//function bitch_base_page_alter(&$variables) {
-//  $foo = 'bar';
-//}
