@@ -21,11 +21,13 @@ class DrupalFile7Migration extends DrupalFileMigration {
     }
     parent::__construct($arguments);
 
-    $this->highwaterField = array(
-      'name' => 'timestamp',
-      'alias' => 'f',
-      'type' => 'int',
-    );
+    if (!$this->newOnly) {
+      $this->highwaterField = array(
+        'name' => 'timestamp',
+        'alias' => 'f',
+        'type' => 'int',
+      );
+    }
 
     $this->addFieldMapping('value', 'uri')
          ->callbacks(array($this, 'fixUri'));
@@ -46,7 +48,6 @@ class DrupalFile7Migration extends DrupalFileMigration {
 
   protected function query() {
     $query = $this->baseQuery();
-    $query->condition('uri', 'youtube://%', 'NOT LIKE');
     if ($this->skipPictures) {
       $query->leftJoin('users', 'u', 'f.fid=u.picture');
       $query->isNull('u.uid');
@@ -64,6 +65,19 @@ class DrupalFile7Migration extends DrupalFileMigration {
     }
 
     $this->version->getSourceValues($row, $row->fid);
+
+    // Do our best to apply the appropriate file_class to the import of this
+    // "file". Assume if we don't recognize a special case, we'll treat it as
+    // a real file to be copied.
+    if ($row->filemime == 'video/youtube' && class_exists('MigrateExtrasFileYoutube')) {
+      $this->destination->setFileClass('MigrateExtrasFileYoutube');
+    }
+    elseif (preg_match('|/oembed$|i', $row->filemime)) {
+      $this->destination->setFileClass('MigrateFileUriAsIs');
+    }
+    else {
+      $this->destination->setFileClass('MigrateFileUri');
+    }
   }
 
   protected function fixUri($uri) {
