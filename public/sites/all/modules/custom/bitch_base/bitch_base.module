@@ -175,7 +175,6 @@ function bitch_base_preprocess_multifield(&$variables, $hook){
  * Alters the multifield module to include view modes.
  */
 function bitch_base_entity_info_alter(&$entity_info) {
-  $foo = 'bar';
   if (!empty($entity_info['multifield'])) {
     $entity_info['multifield']['view modes'] = array(
       'full' => array(
@@ -184,4 +183,90 @@ function bitch_base_entity_info_alter(&$entity_info) {
       ),
     );
   }
+}
+
+/**
+ * Implements hook_field_info_alter().
+ *
+ * Alters the multifield module to include a function
+ * to set the proper defaults on multifields.
+ */
+function bitch_base_field_read_instance($instance) {
+  //$['social_media_link']['default_value_function'] = 'bitch_base_social_media_link_defaults';
+  $field_info['tracked_link']['default_value_function'] = 'bitch_base_social_media_link_defaults';
+
+}
+function bitch_base_field_update_instance($instance, $prior_instance) {
+
+  // Checks to see whether or not the instance *should* have the default value
+  // function set to use the one from field_default_token.
+
+// $update=FALSE;
+// //$instance['default_value_function'] = 'bitch_base_social_media_link_defaults';
+//
+//
+//  if ($update) {
+//    // Save the instance and clear caches again without hook invoking.
+//    // @see field_update_instance()
+//    _field_write_instance($instance, TRUE);
+//    field_cache_clear();
+//  }
+}
+function bitch_base_social_media_link_defaults($entity_type, $entity, $field, $instance, $langcode){
+
+}
+
+function bitch_base_multifield_field_presave($entity_type, $entity, $field, $instance, &$items){
+
+  if(($field['type'] == 'tracked_link') || ($field['type'] == 'social_media_link')){
+    $things = multifield_type_get_subfields($field['type']);
+
+    // If the label is set to default and its on a user object, that label should be the username.
+    if ($entity_type == 'user') {
+      $items[0]['field_analytics_label'][LANGUAGE_NONE][0]['value'] = $entity->name;
+    }
+
+    if (!empty($items[0]['field_link_url'][LANGUAGE_NONE][0]['value'])) {
+      // We want to make sure that the multifields retain their default values if nothing is set.
+      foreach ($things as $field) {
+        // If the label is still default, set it to username
+        if (empty($items[0][$field][LANGUAGE_NONE][0]['value'])) {
+          $items[0][$field] = $instance['default_value'][0][$field];
+        }
+      }
+    }
+    // If the label is still not set, set it to the URL.
+    if (empty($items[0]['field_link_label'][LANGUAGE_NONE][0]['value'])) {
+      $items[0]['field_link_label'][LANGUAGE_NONE][0]['value'] = $items[0]['field_link_url'][LANGUAGE_NONE][0]['value'];
+    }
+  }
+}
+
+function bitch_base_entity_presave($entity, $type) {
+  $entity_wrapper = entity_metadata_wrapper($type, $entity);
+  $fields = field_info_instances('user','user');
+
+  foreach ($fields as $fieldname => $field) {
+      if ($field['widget']['module'] == 'multifield'){
+        $field_info = field_info_field($fieldname);
+        switch ($field_info['type']) {
+          // dont save tracked links or social media links
+          // If they dont have enough data on them.
+          case 'tracked_link':
+//            $whut = empty($entity->$fieldname['und']);
+//            $foo = $entity->$fieldname['und'];
+//            $food = empty($entity->$fieldname['und'][0]['field_link_url']['und']);
+//            if (!empty($entity->$fieldname['und']) && empty($entity->$fieldname['und'][0]['field_link_url']['und'])) {
+//              unset($entity->$fieldname);
+//            }
+          case 'social_media_link':
+//            if (empty($entity->$fieldname['und'][0]['field_link_url'])) {
+//              unset($entity[$fieldname]);
+//            }
+        }
+
+      }
+ }
+
+
 }
