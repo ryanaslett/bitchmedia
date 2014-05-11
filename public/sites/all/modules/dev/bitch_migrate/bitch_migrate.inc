@@ -119,7 +119,7 @@ class BitchProfilePictureMigration extends DrupalFile6Migration {
 }
 
 
-class BitchMigrateFileMigration extends DrupalUser6Migration {
+class BitchMigrateFileMigration extends DrupalFile6Migration {
   public function __construct(array $arguments) {
     // Set the machine name to the thing we put in the database.
     $this->machineName = 'BitchMediaFile';
