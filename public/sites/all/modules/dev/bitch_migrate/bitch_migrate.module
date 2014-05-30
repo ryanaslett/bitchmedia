@@ -11,6 +11,13 @@ function bitch_migrate_migrate_api() {
         'source_version' => 6,
         'description' => 'Hack around',
         'source_connection' => 'legacy_d6',
+        'format_mappings' => array(
+          1 => 'brief_wysiwyg',
+          2 => 'raw_html',
+          3 => 'wysywyg_format',
+          4 => 'wysywyg_format',
+          5 => 'raw_html',
+        ),
       ),
     ),
     'migrations' => array(
