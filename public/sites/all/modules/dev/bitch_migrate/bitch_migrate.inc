@@ -160,3 +160,68 @@ class BitchMigrateFileMigration extends DrupalFile6Migration {
   }
 
 }
+
+
+/**
+ * Migrate the Articles
+ */
+class BitchMigrateBlogMigration extends DrupalNode6Migration {
+  public function __construct(array $arguments) {
+    // Set the machine name to the thing we put in the database.
+    $this->machineName = 'BitchMediaNodeblog';
+    $arguments['group_name'] = 'BitchMedia';
+    $arguments['source_type'] = 'blog';
+    $arguments['destination_type'] = 'article';
+
+    parent::__construct($arguments);
+
+    $this->machineName = 'BitchMediaNodeblog';
+    $this->description = 'Node blog Import overrides';
+
+    $this->loadFieldMappings();
+    $this->storedFieldMappingsRetrieved = TRUE;
+
+
+    $this->storedFieldMappings['field_body:format']->callbacks(array($this, 'mapFormat'));
+    $this->storedFieldMappings['field_teaser:format']->callbacks(array($this, 'mapFormat'));
+    $this->machineName = 'ModBitchMediaNodeblog';
+
+    $this->rollbackBatchSize = 500;
+    $this->highwaterField = array(
+      'name' => 'nid',
+      'alias' => 'n',
+      'type' => 'int',
+    );
+
+  }
+
+  /**
+   * Implementation of Migration::prepareRow().
+   *
+   * Here we pull in additional data from a non-core, non-CCK table.
+   *
+   * @param $row
+   */
+  public function prepareRow($row) {
+    if (parent::prepareRow($row) === FALSE) {
+      return FALSE;
+    }
+//    $row->full_name = $row->field_first_name . ' ' . $row->field_last_name;
+
+  }
+  /**
+   * Actions to take after a user account has been saved.
+   *
+   * @param $account
+   * @param $row
+   */
+  public function complete($account, $row) {
+    // If we've migrated a picture, update its ownership
+//    if (!empty($this->destinationValues->field_profile_photo)) {
+//      db_update('file_managed')
+//        ->fields(array('uid' => (int)$account->uid))
+//        ->condition('fid', (int)$account->field_profile_photo['und'][0]['fid'])
+//        ->execute();
+//    }
+  }
+}

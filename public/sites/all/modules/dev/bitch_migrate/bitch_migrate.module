@@ -32,6 +32,11 @@ function bitch_migrate_migrate_api() {
         'group_name' => 'Modified Bitch Media',
         'description' => 'Modified Bitch Media User Migration'
       ),
+      'ModBitchMediaNodeblog' => array(
+        'class_name' => 'BitchMigrateBlogMigration',
+        'group_name' => 'Modified Bitch Media',
+        'description' => 'Modified Bitch Media Node Migration'
+      ),
       'ModBitchMediaFile' => array(
         'class_name' => 'BitchMigrateFileMigration',
         'group_name' => 'Modified Bitch Media',
