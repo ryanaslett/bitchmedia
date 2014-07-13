@@ -1,0 +1,9 @@
+uc_paymentxp; $Id: uc_paymentxp.info,v 1.1 2010/11/13 10:55:43 mixologic Exp $
+name = paymentXP.com
+description = Accept ACH and Credit Cards using paymentXP
+dependencies[] = uc_order
+dependencies[] = uc_payment
+dependencies[] = uc_store
+package = Ubercart - payment
+core = 6.x
+php = 5.0
