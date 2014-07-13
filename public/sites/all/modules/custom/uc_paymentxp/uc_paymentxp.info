@@ -5,5 +5,5 @@ dependencies[] = uc_order
 dependencies[] = uc_payment
 dependencies[] = uc_store
 package = Ubercart - payment
-core = 6.x
+core = 7.x
 php = 5.0

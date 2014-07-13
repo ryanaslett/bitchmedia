@@ -8,7 +8,7 @@
 
 
 /**
- * Implementation of hook_schema().
+ * Implements hook_schema().
  */
 function uc_paymentxp_schema() {
   $schema = array();
@@ -69,38 +69,38 @@ function uc_paymentxp_schema() {
     'primary key' => array('paymentxp_ach_id'),
   );
   $schema['uc_payment_paymentxp_profiles'] = array(
-  'description' => t('Stores payment profiles in paymentxp Vault'),
-  'fields' => array(
-    'pay_id' => array(
-      'description' => t('Autoincrement ID for uid/payment type combo'),
-      'type' => 'serial',
-      'not null' => TRUE,
+    'description' => 'Stores payment profiles in paymentxp Vault',
+    'fields' => array(
+      'pay_id' => array(
+        'description' => 'Autoincrement ID for uid/payment type combo',
+        'type' => 'serial',
+        'not null' => TRUE,
+      ),
+      'uid' => array(
+        'description' => 'uid of profile in the vault. This may be a text_id to handle testing mode',
+        'type' => 'varchar',
+        'length' => '40',
+        'not null' => TRUE,
+      ),
+      'payment_type' => array(
+        'description' => 'payment type ach/credit',
+        'type' => 'varchar',
+        'length' => '40',
+        'not null' => TRUE,
+      ),
+      'cc_expires' => array(
+        'type' => 'varchar',
+        'description' => 'Allows us to tell customers their CCs are going to expire',
+        'length' => '4',
+        'not null' => FALSE,
+      ),
     ),
-    'uid' => array(
-      'description' => t('uid of profile in the vault. This may be a text_id to handle testing mode'),
-      'type' => 'varchar',
-      'length' => '40',
-      'not null' => TRUE,
+    'primary key' => array('pay_id'),
+    'indexes' => array(
+      'uid' => array('uid', 'payment_type'),
     ),
-    'payment_type' => array(
-      'description' => t('payment type ach/credit'),
-      'type' => 'varchar',
-      'length' => '40',
-      'not null' => TRUE,
-    ),
-    'cc_expires' => array(
-      'type' => 'varchar',
-      'description' => t('Allows us to tell customers their CCs are going to expire'),
-      'length' => '4',
-      'not null' => FALSE,
-    ),
-  ),
-  'primary key' => array('pay_id'),
-  'indexes' => array(
-    'uid' => array('uid', 'payment_type'),
-  ),
-);
-  
+  );
+
 
   return $schema;
 }
@@ -108,18 +108,24 @@ function uc_paymentxp_schema() {
 
 
 /**
- * Implementation of hook_install().
+ * Implements hook_install().
  */
 function uc_paymentxp_install() {
-  drupal_install_schema('uc_paymentxp');
+  // TODO The drupal_(un)install_schema functions are called automatically in D7.
+  // drupal_install_schema('uc_paymentxp')
 }
 
 /**
- * Implementation of hook_uninstall().
+ * Implements hook_uninstall().
  */
 function uc_paymentxp_uninstall() {
-  drupal_uninstall_schema('uc_paymentxp');
+  // TODO The drupal_(un)install_schema functions are called automatically in D7.
+  // drupal_uninstall_schema('uc_paymentxp')
 
-  db_query("DELETE FROM {variable} WHERE name LIKE 'uc_paymentxp_%%'");
+  // TODO Please review the conversion of this statement to the D7 database API syntax.
+  /* db_query("DELETE FROM {variable} WHERE name LIKE 'uc_paymentxp_%%'") */
+  db_delete('variable')
+  ->condition('name', 'uc_paymentxp_%%', 'LIKE')
+  ->execute();
 }
 

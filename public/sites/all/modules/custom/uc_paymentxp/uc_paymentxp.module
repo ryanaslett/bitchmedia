@@ -11,7 +11,7 @@ define('UC_PAYMENTXP_GATEWAY_URL', 'https://webservice.paymentxp.com/wh/WebHost.
 
 
 /**
- * Implementation of hook_menu().
+ * Implements hook_menu().
  */
 function uc_paymentxp_menu() {
   $items = array();
@@ -30,27 +30,37 @@ function uc_paymentxp_menu() {
 }
 
 // Set the title for the paymentXP terminal.
+/**
+ * @todo Please document this function.
+ * @see http://drupal.org/node/1354
+ */
 function uc_paymentxp_ach_terminal_title($order) {
   return t('paymentXP ACH terminal: Order @order_id', array('@order_id' => $order->order_id));
 }
 
 /**
- * Implementation of hook_perm().
+ * Implements hook_permission().
  */
-function uc_paymentxp_perm() {
-  return array('process paymentxp_ach payments');
+function uc_paymentxp_permission() {
+  return array(
+    'process paymentxp_ach payments' => array(
+      'title' => t('process paymentxp_ach payments'),
+      'description' => t('TODO Add a description for \'process paymentxp_ach payments\''),
+    ),
+  );
 }
 
 /**
- * Implementation of hook_cron().
+ * Implements hook_cron().
  */
 function uc_paymentxp_cron() {
   // Delete any ACH data that's been stagnant for 15 minutes or more.
-  db_query("DELETE FROM {uc_payment_paymentxp_ach} WHERE order_id IN(SELECT order_id FROM {uc_orders} WHERE order_status IN". uc_order_status_list('specific', TRUE) ." AND modified <= %d)", time() - variable_get('uc_paymentxp_ach_wipe_interval', 900));
+  // TODO Please convert this statement to the D7 database API syntax.
+  db_query("DELETE FROM {uc_payment_paymentxp_ach} WHERE order_id IN(SELECT order_id FROM {uc_orders} WHERE order_status IN" . uc_order_status_list('specific', TRUE) . " AND modified <= %d)", REQUEST_TIME - variable_get('uc_paymentxp_ach_wipe_interval', 900));
 }
 
 /**
- * Implementation of hook_form_alter().
+ * Implements hook_form_alter().
  */
 function uc_paymentxp_form_alter(&$form, &$form_state, $form_id) {
   switch ($form_id) {
@@ -66,9 +76,9 @@ function uc_paymentxp_form_alter(&$form, &$form_state, $form_id) {
 }
 
 /**
- * Implementation of hook_payment_gateway().
+ * Implements hook_uc_payment_gateway().
  */
-function uc_paymentxp_payment_gateway() {
+function uc_paymentxp_uc_payment_gateway() {
   $gateways[] = array(
     'id' => 'paymentxp_credit',
     'title' => t('paymentXP.com'),
@@ -106,12 +116,12 @@ function uc_paymentxp_settings_form() {
     '#title' => t('Mode/Settings'),
     '#description' => t('This allows you to set settings for the securepay account you are accessing.'),
   );
- 
+
   $account_types = array(
-      'live' => t('Live transactions in a live account'),
-      'test' => t('Developer test account transactions'),
+    'live' => t('Live transactions in a live account'),
+    'test' => t('Developer test account transactions'),
   );
- $form['settings']['uc_paymentxp_txn_mode'] = array(
+  $form['settings']['uc_paymentxp_txn_mode'] = array(
     '#type' => 'select',
     '#title' => t('Live/Test account'),
     '#description' => t('Set to use the live or test account settings at PaymentXP'),
@@ -167,9 +177,13 @@ function uc_paymentxp_settings_form() {
 
 
 // Makes sure the encryption key directory in the paymentXP ACH settings is valid.
+/**
+ * @todo Please document this function.
+ * @see http://drupal.org/node/1354
+ */
 function uc_paymentxp_settings_form_validate($form, &$form_state) {
   $dir = variable_get('uc_paymentxp_ach_encryption_path', t('Not configured, see below.'));
-  $filename = rtrim($dir, '/\\') .'/uc_paymentxp_ach.key';
+  $filename = rtrim($dir, '/\\') . '/uc_paymentxp_ach.key';
 
   if ($form_state['values']['uc_paymentxp_ach_encryption_path'] !== variable_get('uc_paymentxp_ach_encryption_path', t('Not configured, see below.'))) {
     $dir = rtrim($form_state['values']['uc_paymentxp_ach_encryption_path'], '/\\');
@@ -181,7 +195,7 @@ function uc_paymentxp_settings_form_validate($form, &$form_state) {
         unset($_SESSION['update_paymentxp_ach_encrypt_dir']);
       }
       else {
-        $file = fopen($dir .'/encrypt.test', 'w');
+        $file = fopen($dir . '/encrypt.test', 'w');
         if ($file === FALSE) {
           form_set_error('uc_paymentxp_ach_encryption_path', t('Cannot write to directory, please verify the directory permissions.'));
           unset($_SESSION['update_paymentxp_ach_encrypt_dir']);
@@ -194,14 +208,14 @@ function uc_paymentxp_settings_form_validate($form, &$form_state) {
           }
           else {
             fclose($file);
-            $file = fopen($dir .'/encrypt.test', 'r');
+            $file = fopen($dir . '/encrypt.test', 'r');
             if ($file === FALSE) {
               form_set_error('uc_paymentxp_ach_encryption_path', t('Cannot read from directory, please verify the directory permissions.'));
               unset($_SESSION['update_paymentxp_ach_encrypt_dir']);
             }
             fclose($file);
           }
-          unlink($dir .'/encrypt.test');
+          unlink($dir . '/encrypt.test');
         }
       }
     }
@@ -209,20 +223,24 @@ function uc_paymentxp_settings_form_validate($form, &$form_state) {
 }
 
 // Creates the encryption key file if it doesn't already exist.
+/**
+ * @todo Please document this function.
+ * @see http://drupal.org/node/1354
+ */
 function uc_paymentxp_settings_form_submit($form, &$form_state) {
   if ($_SESSION['update_paymentxp_ach_encrypt_dir'] === TRUE) {
     $dir = rtrim($form_state['values']['uc_paymentxp_ach_encryption_path'], '/\\');
 
     if (!empty($dir) && $dir !== t('Not configured, see below.')) {
-      if (!file_exists($dir .'/uc_paymentxp_ach.key')) {
-        if (!$file = fopen($dir .'/uc_paymentxp_ach.key', 'wb')) {
+      if (!file_exists($dir . '/uc_paymentxp_ach.key')) {
+        if (!$file = fopen($dir . '/uc_paymentxp_ach.key', 'wb')) {
           $message = t('paymentXP ACH encryption key file creation failed. Check your filepath settings and directory permissions.');
           drupal_set_message($message, 'error');
           watchdog('payment_xp', $message, WATCHDOG_ERROR);
         }
         else {
           // Replacement key generation suggested by Barry Jaspan for increased security.
-          fwrite($file, md5(drupal_get_token(serialize($_REQUEST) . serialize($_SERVER) . time())));
+          fwrite($file, md5(drupal_get_token(serialize($_REQUEST) . serialize($_SERVER) . REQUEST_TIME)));
           fclose($file);
 
           drupal_set_message(t('paymentXP ACH encryption key file generated. ACH data will now be encrypted.'));
@@ -233,14 +251,10 @@ function uc_paymentxp_settings_form_submit($form, &$form_state) {
   }
 }
 
-
-
-
-
 /**
- * Implementation of hook_store_status().
+ * Implements hook_uc_store_status().
  */
-function uc_paymentxp_store_status() {
+function uc_paymentxp_uc_store_status() {
   // Throw up an error row if encryption has not been set up yet.
   if ($key = uc_paymentxp_ach_encryption_key()) {
     $statuses[] = array(
@@ -261,23 +275,23 @@ function uc_paymentxp_store_status() {
 }
 
 /**
- * Implementation of hook_order().
+ * Implements hook_uc_order().
  */
-function uc_paymentxp_order($op, &$arg1, $arg2) {
+function uc_paymentxp_uc_order($op, &$arg1, $arg2) {
   // If the order payment method is paymentXP ACH...
   if ($arg1->payment_method == 'paymentxp_ach') {
     switch ($op) {
       // Attempt payment upon order submission during checkout.
       case 'submit':
         // Process the ACH payment.
-       
+
         $result = uc_paymentxp_ach_charge($arg1, $arg1->order_total);
-      
+
         // If the payment failed, halt the checkout process.
         if ($result !== TRUE) {
           return array(array('pass' => FALSE, 'message' => $result));
         }
-        
+
         break;
 
       case 'save':
@@ -294,9 +308,9 @@ function uc_paymentxp_order($op, &$arg1, $arg2) {
 }
 
 /**
- * Implementation of hook_payment_method().
+ * Implements hook_uc_payment_method().
  */
-function uc_paymentxp_payment_method() {
+function uc_paymentxp_uc_payment_method() {
   $methods = array();
 
   // Do not show the ACH payment method if encryption is not configured.
@@ -322,13 +336,12 @@ function uc_paymentxp_payment_method() {
 function uc_payment_method_paymentxp_ach($op, &$arg1, $silent = FALSE) {
   switch ($op) {
     case 'cart-details':
-      return uc_strip_form(drupal_get_form('uc_paymentxp_ach_payment_form', $arg1));
-
+      return uc_paymentxp_ach_payment_form(array(), $form_state, $order);
     case 'cart-process':
       // Fetch the paymentXP ACH details from the $_POST directly.
       $data = array(
         'paymentxp_bank_name' => check_plain($_POST['paymentxp_bank_name']),
-        'paymentxp_bank_aba_code' => check_plain(str_replace(' ', '',  $_POST['paymentxp_bank_aba_code'])),
+        'paymentxp_bank_aba_code' => check_plain(str_replace(' ', '',   $_POST['paymentxp_bank_aba_code'])),
         'paymentxp_bank_acct_num' => check_plain(str_replace(' ', '', $_POST['paymentxp_bank_acct_num'])),
         'paymentxp_bank_acct_name' => check_plain($_POST['paymentxp_bank_acct_name']),
         'paymentxp_bank_acct_type' => check_plain($_POST['paymentxp_bank_acct_type']),
@@ -377,23 +390,38 @@ function uc_payment_method_paymentxp_ach($op, &$arg1, $silent = FALSE) {
     case 'cart-review':
       $review = array();
 
-      $review[] = array('title' => t('Bank'), 'data' => check_plain($arg1->payment_details['paymentxp_bank_name']));
-      $review[] = array('title' => t('Routing number'), 'data' => check_plain($arg1->payment_details['paymentxp_bank_aba_code']));
-      $review[] = array('title' => t('Account number'), 'data' => check_plain(variable_get('uc_paymentxp_acct_num_mask', 'xxxxxx') . $arg1->payment_details['paymentxp_bank_acct_num_last4']));
-      $review[] = array('title' => t('Account name'), 'data' => check_plain($arg1->payment_details['paymentxp_bank_acct_name']));
-      $review[] = array('title' => t('Account type'), 'data' => uc_paymentxp_ach_acct_type($arg1->payment_details['paymentxp_bank_acct_type']));
+      $review[] = array(
+        'title' => t('Bank'),
+        'data' => check_plain($arg1->payment_details['paymentxp_bank_name']),
+      );
+      $review[] = array(
+        'title' => t('Routing number'),
+        'data' => check_plain($arg1->payment_details['paymentxp_bank_aba_code']),
+      );
+      $review[] = array(
+        'title' => t('Account number'),
+        'data' => check_plain(variable_get('uc_paymentxp_acct_num_mask', 'xxxxxx') . $arg1->payment_details['paymentxp_bank_acct_num_last4']),
+      );
+      $review[] = array(
+        'title' => t('Account name'),
+        'data' => check_plain($arg1->payment_details['paymentxp_bank_acct_name']),
+      );
+      $review[] = array(
+        'title' => t('Account type'),
+        'data' => uc_paymentxp_ach_acct_type($arg1->payment_details['paymentxp_bank_acct_type']),
+      );
 
       return $review;
 
     case 'order-view':
     case 'customer-view':
       $lines = array(
-        t('Bank name') .': '. check_plain($arg1->payment_details['paymentxp_bank_name']),
-        t('Account #') .': '. check_plain(variable_get('uc_paymentxp_acct_num_mask', 'xxxxxx') . $arg1->payment_details['paymentxp_bank_acct_num_last4']),
+        t('Bank name') . ': ' . check_plain($arg1->payment_details['paymentxp_bank_name']),
+        t('Account #') . ': ' . check_plain(variable_get('uc_paymentxp_acct_num_mask', 'xxxxxx') . $arg1->payment_details['paymentxp_bank_acct_num_last4']),
       );
 
       if ($op == 'order-view' && user_access('process paymentxp_ach payments')) {
-        $lines[] = l(t('Process eCheck payment.'), 'admin/store/orders/'. $arg1->order_id .'/paymentxp_ach');
+        $lines[] = l(t('Process eCheck payment.'), 'admin/store/orders/' . $arg1->order_id . '/paymentxp_ach');
       }
 
       return implode('<br />', $lines);
@@ -406,12 +434,16 @@ function uc_payment_method_paymentxp_ach($op, &$arg1, $silent = FALSE) {
         return t('Processing paymentXP ACH payments requires<br />appropriate admin permission.');
       }
 
-    
+
   }
 }
 
 // Form to gather the required fields to process an ACH payment.
-function uc_paymentxp_ach_payment_form($form_state, $order) {
+/**
+ * @todo Please document this function.
+ * @see http://drupal.org/node/1354
+ */
+function uc_paymentxp_ach_payment_form($form, $form_state, $order) {
   $form = array();
   ///XXX  Debugging to make my life easier
   // The following 5 lines were commented out by MDP on 3/3/11
@@ -420,7 +452,7 @@ function uc_paymentxp_ach_payment_form($form_state, $order) {
   //$order->payment_details['paymentxp_bank_acct_num'] = '0635560071';
   //$order->payment_details['paymentxp_bank_acct_name'] = 'Ryan Aslett';
   //$order->payment_details['paymentxp_bank_acct_type'] = 'Checking';
-      
+
   $form['paymentxp_bank_name'] = array(
     '#type' => 'textfield',
     '#title' => t('Bank name'),
@@ -486,7 +518,7 @@ function uc_paymentxp_ach_encryption_key() {
   $dir = variable_get('uc_paymentxp_ach_encryption_path', t('Not configured, see below.'));
 
   if (!empty($dir) && $dir !== t('Not configured, see below.')) {
-    $filename = rtrim($dir, '/\\') .'/uc_paymentxp_ach.key';
+    $filename = rtrim($dir, '/\\') . '/uc_paymentxp_ach.key';
 
     if (file_exists($filename)) {
       if (!$file = fopen($filename, 'r')) {
@@ -518,7 +550,7 @@ function uc_paymentxp_credit_charge($order_id, $amount, $data) {
   // Perform the appropriate action based on the transaction type.
   switch ($data['txn_type']) {
     // Accommodate all other transaction types.
-      
+
     case UC_CREDIT_REFERENCE_SET:
       break;
     case UC_CREDIT_REFERENCE_TXN:
@@ -529,13 +561,13 @@ function uc_paymentxp_credit_charge($order_id, $amount, $data) {
   }
 }
 
-function _uc_paymentxp_credit_charge($order, $amount, $data){
+function _uc_paymentxp_credit_charge($order, $amount, $data) {
   global $user;
 
   // Build a description of the order for logging in Auth.Net.
   $description = array();
   foreach ((array) $order->products as $product) {
-    $description[] = $product->qty .'x '. $product->model;
+    $description[] = $product->qty . 'x ' . $product->model;
   }
 
   $billing_country = uc_get_country_data(array('country_id' => $order->billing_country));
@@ -551,33 +583,30 @@ function _uc_paymentxp_credit_charge($order, $amount, $data){
     'dec' => '.',
   );
   if ($order->payment_details['cc_exp_month'] < 10) {
-      $expiration_date = '0'. $order->payment_details['cc_exp_month'];
-    } else {
-      $expiration_date = $order->payment_details['cc_exp_month'];
-    }
-    
-    $expiration_date .= substr($order->payment_details['cc_exp_year'], 2, 2);
+    $expiration_date = '0' . $order->payment_details['cc_exp_month'];
+  }
+  else {
+    $expiration_date = $order->payment_details['cc_exp_month'];
+  }
+
+  $expiration_date .= substr($order->payment_details['cc_exp_year'], 2, 2);
   // Build the POST data for the transaction.
   $submit_data = array(
-  
     'TransactionType' => 'CreditCardCharge',
     // Card Details
     'CardNumber' => $order->payment_details['cc_number'],
     'ExpirationDateMMYY' => $expiration_date,
-    'CVV2' => $order->payment_details['cc_cvv'],   
- 
+    'CVV2' => $order->payment_details['cc_cvv'],
     // Order Information
     'ReferenceNumber' => $order->order_id,
     'TransactionAmount' => uc_price($amount, $context, $options),
     'ClerkID' => 'Website',
     'CustomInfo2' => substr(implode(', ', $description), 0, 50),
     'CustomInfo3' => substr(implode(', ', $description), 50, 50),
-  
     // Customer Information
     'CustomInfo1' => 'UserID: ' . substr($order->uid, 0, 50),
     'EmailAddress' => substr($order->primary_email, 0, 50),
     'ClientIPAddress' => substr(ip_address(), 0, 25),
-    
     // Customer Address
     'BillingNameFirst' => substr($order->billing_first_name, 0, 50),
     'BillingNameLast' => substr($order->billing_last_name, 0, 50),
@@ -586,7 +615,6 @@ function _uc_paymentxp_credit_charge($order, $amount, $data){
     'BillingCity' => substr($order->billing_city, 0, 50),
     'BillingState' => substr(uc_get_zone_code($order->billing_zone), 0, 25),
     'BillingZipCode' => substr($order->billing_postal_code, 0, 10),
-    
     'BillingCountry' => !$billing_country ? '' : $billing_country[0]['country_name'],
     'PhoneNumber' => substr($order->billing_phone, 0, 10),
     // Shipping Information - might be useless, dont see how to get them from the interface
@@ -596,17 +624,16 @@ function _uc_paymentxp_credit_charge($order, $amount, $data){
     'ShippingState' => substr(uc_get_zone_code($order->delivery_zone), 0, 25),
     'ShippingZipCode' => substr($order->delivery_postal_code, 0, 10),
     'ShippingCountry' => !$delivery_country ? '' : $delivery_country[0]['country_name'],
-
-   );
-   //TODO: Add later for AUTH transactions
+  );
+  //TODO: Add later for AUTH transactions
 //  if ($data['txn_type'] == UC_CREDIT_PRIOR_AUTH_CAPTURE) {
 //    $submit_data['x_trans_id'] = $data['auth_id'];
 //  }
-  
+
   $response = _uc_paymentxp_post_gateway_transaction($submit_data);
 
   if (variable_get('uc_paymentxp_response_debug', FALSE)) {
-    watchdog('uc_paymentxp', 'Debug response: !data', array('!data' => '<pre>'. check_plain(print_r($response, TRUE)) .'</pre>'));
+    watchdog('uc_paymentxp', 'Debug response: !data', array('!data' => '<pre>' . check_plain(print_r($response, TRUE)) . '</pre>'));
   }
 
   // If we didn't get an approval response code...
@@ -620,12 +647,15 @@ function _uc_paymentxp_credit_charge($order, $amount, $data){
   }
   else {
     // Build a message for display and comments in the payments table.
-    $message = t('PaymentXP TransactionID: @id<br />Messages: @response', array('@id' => $response['TransactionID'],'@response' => $response['ResponseMessage']));
+    $message = t('PaymentXP TransactionID: @id<br />Messages: @response', array('@id' => $response['TransactionID'], '@response' => $response['ResponseMessage']));
     $result = array(
       'success' => TRUE,
       'comment' => $message,
       'message' => $message,
-      'data' => array('module' => 'uc_paymentxp', 'txn_id' => $response['TransactionID']),
+      'data' => array(
+        'module' => 'uc_paymentxp',
+        'txn_id' => $response['TransactionID'],
+      ),
       'uid' => $user->uid,
     );
 
@@ -647,11 +677,11 @@ function _uc_paymentxp_credit_charge($order, $amount, $data){
 //      // Ignore the returned message for now; that will appear in the comments.
 //      _uc_authorizenet_cim_profile_create($order);
 //    }
-    if ($order->uid){
+    if ($order->uid) {
       //Save the user as a customer
       $save_response = _uc_paymentxp_customer_vault($order, 'credit');
 
-      if (!$save_response['success']){
+      if (!$save_response['success']) {
         //Saving the profile failed for some reason. Bubble up the exception.
         return $save_response;
       }
@@ -661,7 +691,7 @@ function _uc_paymentxp_credit_charge($order, $amount, $data){
       //encrypt the payment details in the session so we can access it after the user has been saved
       //This will allow us to create a customer record at paymentXP after we have a valid userid for
       //Anonymous users.
-      $thing = db_query("SELECT uid FROM {users} WHERE mail = '%s'", $order->primary_email);
+      $thing = db_query("SELECT uid FROM {users} WHERE mail = :mail", array(':mail' => $order->primary_email));
 
       // If it was found, update the order.
       if ($account = db_fetch_object($thing)) {
@@ -669,9 +699,9 @@ function _uc_paymentxp_credit_charge($order, $amount, $data){
         //Save the user as a customer
         $vault_response = _uc_paymentxp_customer_vault($order, 'credit');
 
-      }    
+      }
       uc_paymentxp_cache($order->payment_details);
-        
+
     }
   }
 
@@ -690,14 +720,14 @@ function _uc_paymentxp_credit_charge($order, $amount, $data){
 
   // Add the CVV response if enabled.
   if (variable_get('uc_credit_cvv_enabled', TRUE)) {
-    $comment .= '<br />'. t('CVV match: @cvv', array('@cvv' => $response['CVV2ResponseMessage']));
+    $comment .= '<br />' . t('CVV match: @cvv', array('@cvv' => $response['CVV2ResponseMessage']));
   }
 
   // Save the comment to the order.
   uc_order_comment_save($order->order_id, $order->uid, $comment, 'admin');
   $order->data = uc_credit_log_reference($order->order_id, $order->uid, $order->payment_details['cc_number']);
-  
-  return $result; 
+
+  return $result;
 }
 
 /**
@@ -712,10 +742,14 @@ function _uc_paymentxp_credit_charge($order, $amount, $data){
  *   TRUE if payment was successful or an error message if not.
  */
 
+/**
+ * @todo Please document this function.
+ * @see http://drupal.org/node/1354
+ */
 function uc_paymentxp_credit_customer_charge($order, $amount, $op = NULL) {
   // Build a description of the order for PaymentXP description field.
   $customer_id = _uc_paymentxp_get_customer_id($order->uid);
-  
+
   $context = array(
     'revision' => 'formatted-original',
     'location' => 'paymentXP-credit-recurring-charge',
@@ -727,11 +761,11 @@ function uc_paymentxp_credit_customer_charge($order, $amount, $op = NULL) {
   );
 
   // Build the POST data for the transaction.
-  $submit_data = array(    
+  $submit_data = array(
     // Transaction Information
     'TransactionType' => 'AddCustomerCCCharge',
     'CustomerID' => substr($customer_id, 0, 50),
-    'TransactionAmount' => substr(uc_price($amount, $context, $options),0,9),
+    'TransactionAmount' => substr(uc_price($amount, $context, $options), 0, 9),
     'ClientIPAddress' => substr(ip_address(), 0, 25),
     'ClerkID' => 'Website',
     'ReferenceNumber' => $order->order_id,
@@ -740,10 +774,10 @@ function uc_paymentxp_credit_customer_charge($order, $amount, $op = NULL) {
     'CustomInfo3' => substr(implode(', ', $description), 100, 50),
   );
 
- $response = _uc_paymentxp_post_gateway_transaction($submit_data);  
- 
- if (variable_get('uc_paymentxp_response_debug', FALSE)) {
-    watchdog('uc_paymentxp', 'Debug response: !data', array('!data' => '<pre>'. check_plain(print_r($response, TRUE)) .'</pre>'));
+  $response = _uc_paymentxp_post_gateway_transaction($submit_data);
+
+  if (variable_get('uc_paymentxp_response_debug', FALSE)) {
+    watchdog('uc_paymentxp', 'Debug response: !data', array('!data' => '<pre>' . check_plain(print_r($response, TRUE)) . '</pre>'));
   }
 
   // If we didn't get an approval response code...
@@ -758,12 +792,15 @@ function uc_paymentxp_credit_customer_charge($order, $amount, $op = NULL) {
   }
   else {
     // Build a message for display and comments in the payments table.
-    $message = t('PaymentXP TransactionID: @id<br />Messages: @response', array('@id' => $response['TransactionID'],'@response' => $response['ResponseMessage']));
+    $message = t('PaymentXP TransactionID: @id<br />Messages: @response', array('@id' => $response['TransactionID'], '@response' => $response['ResponseMessage']));
     $result = array(
       'success' => TRUE,
       'comment' => $message,
       'message' => $message,
-      'data' => array('module' => 'uc_paymentxp', 'txn_id' => $response['TransactionID']),
+      'data' => array(
+        'module' => 'uc_paymentxp',
+        'txn_id' => $response['TransactionID'],
+      ),
       'uid' => $order->uid,
     );
   }
@@ -777,7 +814,7 @@ function uc_paymentxp_credit_customer_charge($order, $amount, $op = NULL) {
 
   // Add the CVV response if enabled.
   if (variable_get('uc_credit_cvv_enabled', TRUE)) {
-    $comment .= '<br />'. t('CVV match: @cvv', array('@cvv' => $response['CVV2ResponseMessage']));
+    $comment .= '<br />' . t('CVV match: @cvv', array('@cvv' => $response['CVV2ResponseMessage']));
   }
 
   // Save the comment to the order.
@@ -788,7 +825,7 @@ function uc_paymentxp_credit_customer_charge($order, $amount, $op = NULL) {
 
 
 /**
- * Process an ACH payment for an order for the amount specified. 
+ * Process an ACH payment for an order for the amount specified.
  * Uses ACHDebit()
  *
  * @param $order
@@ -799,8 +836,12 @@ function uc_paymentxp_credit_customer_charge($order, $amount, $op = NULL) {
  *   TRUE if payment was successful or an error message if not.
  */
 
+/**
+ * @todo Please document this function.
+ * @see http://drupal.org/node/1354
+ */
 function uc_paymentxp_ach_charge($order, $amount) {
-  
+
   $context = array(
     'revision' => 'formatted-original',
     'location' => 'paymentXP-ACH-charge',
@@ -811,45 +852,42 @@ function uc_paymentxp_ach_charge($order, $amount) {
     'dec' => '.',
   );
   // Build the POST data for the transaction.
-  $submit_data = array(    
+  $submit_data = array(
     // Transaction Information
     'TransactionType' => 'ACHDebit',
     'RoutingNumber' => substr($order->payment_details['paymentxp_bank_aba_code'], 0, 9),
     'AccountNumber' => substr($order->payment_details['paymentxp_bank_acct_num'], 0, 17),
     'BankAccountType' => $order->payment_details['paymentxp_bank_acct_type'],
-    'AccountName' => substr($order->payment_details['paymentxp_bank_acct_name'],0,23),
-    'Amount' => substr(uc_price($amount, $context, $options), 0,8),
- 
+    'AccountName' => substr($order->payment_details['paymentxp_bank_acct_name'], 0, 23),
+    'Amount' => substr(uc_price($amount, $context, $options), 0, 8),
     // Order Information
     'ReferenceNumber' => $order->order_id,
     'Description' => 'Bitchmedia',
     'ProcessDate' => date("mdY"),
     'ACHCheckType' => '1',
-  
     // Customer Information
     'CheckNumber' => '',
-   
     //We dont have a customer ID at this point for anonymous users..
     //'CustomerID' => substr($order->uid, 0, 20),
   );
 
-  $response = _uc_paymentxp_post_gateway_transaction($submit_data);  
+  $response = _uc_paymentxp_post_gateway_transaction($submit_data);
   switch ($response['StatusID']) {
-     // Payment is declined.
+    // Payment is declined.
     case '0':
       $result = array(
         'success' => FALSE,
         'message' => t('Payment declined: @message', array('@message' => $response['Message'])),
       );
       break;
-    // Payment is accepted.
+      // Payment is accepted.
     case '1':
       $result = array(
         'success' => TRUE,
         'message' => t('Payment accepted. Transaction ID: @txn_id', array('@txn_id' => $response['Message'])),
       );
       break;
-    // Error processing the transaction.
+      // Error processing the transaction.
     case '2':
       $result = array(
         'success' => FALSE,
@@ -857,7 +895,7 @@ function uc_paymentxp_ach_charge($order, $amount) {
       );
       break;
 
-    // Payment is under review.
+      // Payment is under review.
     case '3':
       $result = array(
         'success' => FALSE,
@@ -866,7 +904,7 @@ function uc_paymentxp_ach_charge($order, $amount) {
       break;
   }
   if (variable_get('uc_paymentxp_response_debug', FALSE)) {
-    watchdog('uc_paymentxp', 'Debug response: !data', array('!data' => '<pre>'. check_plain(print_r($response, TRUE)) .'</pre>'));
+    watchdog('uc_paymentxp', 'Debug response: !data', array('!data' => '<pre>' . check_plain(print_r($response, TRUE)) . '</pre>'));
   }
 
   // Build an admin order comment.
@@ -884,31 +922,31 @@ function uc_paymentxp_ach_charge($order, $amount) {
     // Enter the payment.
     uc_payment_enter($order->order_id, 'paymentxp_ach', $response['TransactionAmount'], $order->uid, '', t('Transaction ID: @txn_id', array('@txn_id' => $response['TransactionID'])));
     // Save the user
-    if ($order->uid){
-        //Save the user as a customer
-        $response = _uc_paymentxp_customer_vault($order, 'paymentxp_ach');
-        
-       if (!$response['success']){
-          //Saving the profile failed for some reason. Bubble up the exception.
-          return $response['message'];
-        }
-        
-      }
-      else {
-        $thing = db_query("SELECT uid FROM {users} WHERE mail = '%s'", $order->primary_email);
+    if ($order->uid) {
+      //Save the user as a customer
+      $response = _uc_paymentxp_customer_vault($order, 'paymentxp_ach');
 
-        // If it was found, update the order.
-        if ($account = db_fetch_object($thing)) {
-          $order->uid = $account->uid;
-          //Save the user as a customer
-          $vault_response = _uc_paymentxp_customer_vault($order, 'paymentxp_ach');
-          
-        }
-        //encrypt the payment details in the session so we can access it after the user has been saved
-        //This will allow us to create a customer record at paymentXP after we have a valid userid for
-        //Anonymous users.
-        uc_paymentxp_cache($order->payment_details);
+      if (!$response['success']) {
+        //Saving the profile failed for some reason. Bubble up the exception.
+        return $response['message'];
       }
+
+    }
+    else {
+      $thing = db_query("SELECT uid FROM {users} WHERE mail = :mail", array(':mail' => $order->primary_email));
+
+      // If it was found, update the order.
+      if ($account = db_fetch_object($thing)) {
+        $order->uid = $account->uid;
+        //Save the user as a customer
+        $vault_response = _uc_paymentxp_customer_vault($order, 'paymentxp_ach');
+
+      }
+      //encrypt the payment details in the session so we can access it after the user has been saved
+      //This will allow us to create a customer record at paymentXP after we have a valid userid for
+      //Anonymous users.
+      uc_paymentxp_cache($order->payment_details);
+    }
     return TRUE;
   }
   else {
@@ -928,10 +966,14 @@ function uc_paymentxp_ach_charge($order, $amount) {
  *   TRUE if payment was successful or an error message if not.
  */
 
+/**
+ * @todo Please document this function.
+ * @see http://drupal.org/node/1354
+ */
 function uc_paymentxp_ach_customer_charge($order, $amount, $op) {
   // Build a description of the order for PaymentXP description field.
   $customer_id = _uc_paymentxp_get_customer_id($order->uid);
-  
+
   $context = array(
     'revision' => 'formatted-original',
     'location' => 'paymentXP-ACH-recurring-charge',
@@ -943,7 +985,7 @@ function uc_paymentxp_ach_customer_charge($order, $amount, $op) {
   );
 
   // Build the POST data for the transaction.
-  $submit_data = array(    
+  $submit_data = array(
     // Transaction Information
     'TransactionType' => 'AddCustomerACHDebit',
     'Amount' => uc_price($amount, $context, $options),
@@ -954,23 +996,23 @@ function uc_paymentxp_ach_customer_charge($order, $amount, $op) {
     'CustomerID' => substr($customer_id, 0, 50),
   );
 
- $response = _uc_paymentxp_post_gateway_transaction($submit_data);  
+  $response = _uc_paymentxp_post_gateway_transaction($submit_data);
   switch ($response['StatusID']) {
-     // Payment is declined.
+    // Payment is declined.
     case '0':
       $result = array(
         'success' => FALSE,
         'message' => t('Payment declined: @message', array('@message' => $response['Message'])),
       );
       break;
-    // Payment is accepted.
+      // Payment is accepted.
     case '1':
       $result = array(
         'success' => TRUE,
         'message' => t('Payment accepted. Transaction ID: @txn_id', array('@txn_id' => $response['Message'])),
       );
       break;
-    // Payment timed out.
+      // Payment timed out.
     case '2':
       $result = array(
         'success' => FALSE,
@@ -978,7 +1020,7 @@ function uc_paymentxp_ach_customer_charge($order, $amount, $op) {
       );
       break;
 
-    // Payment is canceled.
+      // Payment is canceled.
     case '3':
       $result = array(
         'success' => FALSE,
@@ -1012,93 +1054,130 @@ function uc_paymentxp_ach_customer_charge($order, $amount, $op) {
  * Gets a customer id depending upon the txn mode of test vs live.
  */
 
-function _uc_paymentxp_get_customer_id($uid){
-  
-if (variable_get('uc_paymentxp_txn_mode','') == 'test'){
+function _uc_paymentxp_get_customer_id($uid) {
+
+  if (variable_get('uc_paymentxp_txn_mode', '') == 'test') {
     $customer_id = md5($uid . "stuff");
-  } else {
+  }
+  else {
     $customer_id = $uid;
   }
   return $customer_id;
 }
 
-function _uc_paymentxp_customer_vault($order, $payment_type){
+function _uc_paymentxp_customer_vault($order, $payment_type) {
   global $user;
   //TODO- Only save the user to the vault if it is a new sustainer.
   $recurring_fees = uc_recurring_product_get_recurring_products_in_order($order);
   //
-  if(sizeof($recurring_fees) == 0){
+  if (sizeof($recurring_fees) == 0) {
     $recurring_fees = uc_recurring_get_fees($order);
-    if(sizeof($recurring_fees) == 0){
+    if (sizeof($recurring_fees) == 0) {
 
       $result = array(
-      'success' => TRUE,
-      'comment' => 'non-recurring fee',
-      'message' => 'Order has no recurring fees, vault not updated',
-      'uid' => $order->uid,
-    );
-    
-    
-    return $result;
+        'success' => TRUE,
+        'comment' => 'non-recurring fee',
+        'message' => 'Order has no recurring fees, vault not updated',
+        'uid' => $order->uid,
+      );
+
+
+      return $result;
     }
   }
   $customer_id = _uc_paymentxp_get_customer_id($order->uid);
   $bank_name = '';
   $account_name = '';
-  if ($payment_type == 'credit'){
+  if ($payment_type == 'credit') {
     if ($order->payment_details['cc_exp_month'] < 10) {
-      $expiration_date = '0'. $order->payment_details['cc_exp_month'];
-    } else {
+      $expiration_date = '0' . $order->payment_details['cc_exp_month'];
+    }
+    else {
       $expiration_date = $order->payment_details['cc_exp_month'];
     }
     //Uh oh. Y2100 bug. hahaha.
     $expiration_date .= substr($order->payment_details['cc_exp_year'], 2, 2);
-    $card_number = substr($order->payment_details['cc_number'],0,60);
-  } else {
-    $bank_name = substr($order->payment_details['paymentxp_bank_name'],0,50);
-    $account_name = substr($order->payment_details['paymentxp_bank_acct_name'],0,50);
+    $card_number = substr($order->payment_details['cc_number'], 0, 60);
+  }
+  else {
+    $bank_name = substr($order->payment_details['paymentxp_bank_name'], 0, 50);
+    $account_name = substr($order->payment_details['paymentxp_bank_acct_name'], 0, 50);
   }
   //Check if the user is in the vault already:
-  $paymentxp_profiles = db_query("SELECT payment_type FROM {uc_payment_paymentxp_profiles} WHERE uid = '%s'",$customer_id);
+  $paymentxp_profiles = db_query("SELECT payment_type FROM {uc_payment_paymentxp_profiles} WHERE uid = :uid", array(':uid' => $customer_id));
 
-  while ($record = db_fetch_array($paymentxp_profiles)){
+  while ($record = db_fetch_array($paymentxp_profiles)) {
     $payment_types[] = $record['payment_type'];
   }
   //This user has paid before
-  if (!empty($payment_types)){
+  if (!empty($payment_types)) {
     //They exist, but are using a different payment type. Add it.
-    if (!in_array($payment_type, $payment_types)){
+    if (!in_array($payment_type, $payment_types)) {
       //do nothing for an address update
-      if ($payment_type != 'update'){
-        db_query("INSERT INTO {uc_payment_paymentxp_profiles} (pay_id, uid, payment_type, cc_expires) VALUES ('', '%s', '%s', '%s','%s','%s')", $customer_id, $payment_type,$expiration_date,$bank_name,$account_name);
+      if ($payment_type != 'update') {
+        // TODO Please review the conversion of this statement to the D7 database API syntax.
+        /* db_query("INSERT INTO {uc_payment_paymentxp_profiles} (pay_id, uid, payment_type, cc_expires) VALUES ('', '%s', '%s', '%s','%s','%s')", $customer_id, $payment_type, $expiration_date, $bank_name, $account_name) */
+        $id = db_insert('uc_payment_paymentxp_profiles')
+  ->fields(array(
+        ))
+  ->execute();
       }
-    } else {
+    }
+    else {
       //So credit was in the array, we should update the expiration date just in case they've given us another card.
-      if ($payment_type == 'credit'){
+      if ($payment_type == 'credit') {
         //update the Expiration date..
-        db_query("UPDATE {uc_payment_paymentxp_profiles} SET cc_expires = '%s' WHERE uid = '%s' AND payment_type = '%s'", $expiration_date, $customer_id,$payment_type);       
-      } else {
+        // TODO Please review the conversion of this statement to the D7 database API syntax.
+        /* db_query("UPDATE {uc_payment_paymentxp_profiles} SET cc_expires = '%s' WHERE uid = '%s' AND payment_type = '%s'", $expiration_date, $customer_id, $payment_type) */
+        db_update('uc_payment_paymentxp_profiles')
+  ->fields(array(
+          'cc_expires' => $expiration_date,
+        ))
+  ->condition('uid', $customer_id)
+  ->condition('payment_type', $payment_type)
+  ->execute();
+      }
+      else {
         // or update the bank details just in case they gave us new bank info.
-        db_query("UPDATE {uc_payment_paymentxp_profiles} SET bank_name = '%s', account_name = '%s' WHERE uid = '%s' AND payment_type = '%s'", $bank_name, $account_name, $customer_id,$payment_type);         
+        // TODO Please review the conversion of this statement to the D7 database API syntax.
+        /* db_query("UPDATE {uc_payment_paymentxp_profiles} SET bank_name = '%s', account_name = '%s' WHERE uid = '%s' AND payment_type = '%s'", $bank_name, $account_name, $customer_id, $payment_type) */
+        db_update('uc_payment_paymentxp_profiles')
+  ->fields(array(
+          'bank_name' => $bank_name,
+          'account_name' => $account_name,
+        ))
+  ->condition('uid', $customer_id)
+  ->condition('payment_type', $payment_type)
+  ->execute();
       }
     }
     //Ugly Hack to work around PaymentXP's notion that bank name and account number should be canned if we update the credit card details, so we gotta set em again.
     //This is if we have previously stored ach details for a customer, and now we are storing cc details.
-    if (($payment_type != 'paymentxp_ach') && in_array('paymentxp_ach', $payment_types)){
-        $bank_details = db_fetch_array(db_query("SELECT bank_name, account_name FROM {uc_payment_paymentxp_profiles} WHERE payment_type = 'paymentxp_ach' and uid = '%s'",$customer_id));
-        $bank_name = $bank_details['bank_name'];
-        $account_name = $bank_details['account_name'];
+    if (($payment_type != 'paymentxp_ach') && in_array('paymentxp_ach', $payment_types)) {
+      $bank_details = db_fetch_array(db_query("SELECT bank_name, account_name FROM {uc_payment_paymentxp_profiles} WHERE payment_type = :payment_type and uid = :uid", array(':payment_type' => 'paymentxp_ach', ':uid' => $customer_id)));
+      $bank_name = $bank_details['bank_name'];
+      $account_name = $bank_details['account_name'];
     }
-    
+
     $transaction_type = 'UpdateCustomer';
     $operation = 'Updated';
-  } else {
-    db_query("INSERT INTO {uc_payment_paymentxp_profiles} (pay_id, uid, payment_type, cc_expires) VALUES ('', '%s', '%s','%s')", $customer_id, $payment_type,$expiration_date);
-  
+  }
+  else {
+    // TODO Please review the conversion of this statement to the D7 database API syntax.
+    /* db_query("INSERT INTO {uc_payment_paymentxp_profiles} (pay_id, uid, payment_type, cc_expires) VALUES ('', '%s', '%s','%s')", $customer_id, $payment_type, $expiration_date) */
+    $id = db_insert('uc_payment_paymentxp_profiles')
+  ->fields(array(
+      'pay_id' => '',
+      'uid' => $customer_id,
+      'payment_type' => $payment_type,
+      'cc_expires' => $expiration_date,
+    ))
+  ->execute();
+
     //They exist, but are using a different payment type. Add it.
     $transaction_type = 'AddCustomer';
     $operation = 'Added';
-  }  
+  }
 
   $billing_country = uc_get_country_data(array('country_id' => $order->billing_country));
   $delivery_country = uc_get_country_data(array('country_id' => $order->delivery_country));
@@ -1112,12 +1191,10 @@ function _uc_paymentxp_customer_vault($order, $payment_type){
     'thou' => FALSE,
     'dec' => '.',
   );
-    
+
   // Build the POST data for the transaction.
   $submit_data = array(
-  
     'TransactionType' => $transaction_type,
-
     // Customer Information
     'CustomerID' => substr($customer_id, 0, 50),
     'CustomerName' => substr($order->billing_first_name . ' ' . $order->billing_last_name, 0, 50),
@@ -1130,26 +1207,25 @@ function _uc_paymentxp_customer_vault($order, $payment_type){
     'Country' => !$billing_country ? '' : $billing_country[0]['country_name'],
     'Phone' => substr(preg_replace('/\D/', '', $order->billing_phone), 0, 10),
     'Email' => substr($order->primary_email, 0, 50),
-    
     // ACH Details - always have to set these since they'll get deleted if not set
     'BankName' => $bank_name,
     'AccountName' => $account_name,
     // Card Details
-    
-   );
-   if ($payment_type == 'paymentxp_ach'){
-    $submit_data['AccountNumber'] = substr($order->payment_details['paymentxp_bank_acct_num'],0,17);
-    $submit_data['RoutingNumber'] = substr($order->payment_details['paymentxp_bank_aba_code'],0,9);
-    
-   } else if ($payment_type == 'credit'){
-     $submit_data['CardNumber'] = $card_number;
-     $submit_data['CardExpirationDate'] = $expiration_date;
-   }
-  
+  );
+  if ($payment_type == 'paymentxp_ach') {
+    $submit_data['AccountNumber'] = substr($order->payment_details['paymentxp_bank_acct_num'], 0, 17);
+    $submit_data['RoutingNumber'] = substr($order->payment_details['paymentxp_bank_aba_code'], 0, 9);
+
+  }
+  else if ($payment_type == 'credit') {
+    $submit_data['CardNumber'] = $card_number;
+    $submit_data['CardExpirationDate'] = $expiration_date;
+  }
+
   $response = _uc_paymentxp_post_gateway_transaction($submit_data);
 
   if (variable_get('uc_paymentxp_response_debug', FALSE)) {
-    watchdog('uc_paymentxp', 'Debug response: !data', array('!data' => '<pre>'. check_plain(print_r($response, TRUE)) .'</pre>'));
+    watchdog('uc_paymentxp', 'Debug response: !data', array('!data' => '<pre>' . check_plain(print_r($response, TRUE)) . '</pre>'));
   }
 
   // If we didn't get an approval response code...
@@ -1178,20 +1254,21 @@ function _uc_paymentxp_customer_vault($order, $payment_type){
     'type' => 'amount',
   );
   $comment = t('<b>PaymentXP Customer Vault</b><br /><b>Customer @operation @status:</b> @message<br />@statusmsg',
-    array('@status' => $result['success'] ? t('Succeeded') : t('Failed'), '@operation' => $operation, '@message' => $response['Message'],  '@statusmsg' => $response['StatusID']));
+    array('@status' => $result['success'] ? t('Succeeded') : t('Failed'), '@operation' => $operation, '@message' => $response['Message'], '@statusmsg' => $response['StatusID']));
 
   // Save the comment to the order.
   uc_order_comment_save($order->order_id, $order->uid, $comment, 'admin');
 
-  return $result; 
+  return $result;
 }
 
-function _uc_paymentxp_post_gateway_transaction($datafields){
+function _uc_paymentxp_post_gateway_transaction($datafields) {
 
-  if (variable_get('uc_paymentxp_txn_mode','') == 'test'){
+  if (variable_get('uc_paymentxp_txn_mode', '') == 'test') {
     $merchant_id = UC_PAYMENTXP_TEST_MERCHANTID;
     $merchant_key = UC_PAYMENTXP_TEST_MERCHANTKEY;
-  } else {
+  }
+  else {
     $merchant_id = variable_get('uc_paymentxp_merchant_id', '');
     $merchant_key =  variable_get('uc_paymentxp_merchant_key', '');
   }
@@ -1201,7 +1278,7 @@ function _uc_paymentxp_post_gateway_transaction($datafields){
   // Translate the data array into a string we can POST.
   $post_fields = array();
   foreach ($datafields as $key => $value) {
-    $post_fields[] = $key .'='. urlencode($value);
+    $post_fields[] = $key . '=' . urlencode($value);
   }
 
   // Setup the cURL request.
@@ -1229,7 +1306,7 @@ function _uc_paymentxp_post_gateway_transaction($datafields){
   $response = explode('&', $result);
   //trim arbitrary blank line on end.
   array_pop($response);
-  foreach ($response as $item){
+  foreach ($response as $item) {
     $parts = explode('=', $item);
     $structured_response[$parts[0]] = $parts[1];
   }
@@ -1238,6 +1315,10 @@ function _uc_paymentxp_post_gateway_transaction($datafields){
 }
 
 // Save the ACH data for an order.
+/**
+ * @todo Please document this function.
+ * @see http://drupal.org/node/1354
+ */
 function uc_paymentxp_save_paymentxp_ach($order) {
   // Build the data array for the record in the database.
   $data = $order->payment_details;
@@ -1249,16 +1330,16 @@ function uc_paymentxp_save_paymentxp_ach($order) {
 
   // Encrypt the routing and account numbers.
   $key = uc_paymentxp_ach_encryption_key();
-  $crypt = new uc_encryption_class;
+  $crypt = new UbercartEncryption();
 
-  $data['paymentxp_bank_aba_code'] = $crypt->encrypt($key, base64_encode($data['paymentxp_bank_aba_code'] . md5(time())));
-  $data['paymentxp_bank_acct_num'] = $crypt->encrypt($key, base64_encode($data['paymentxp_bank_acct_num'] . md5(time())));
+  $data['paymentxp_bank_aba_code'] = $crypt->encrypt($key, base64_encode($data['paymentxp_bank_aba_code'] . md5(REQUEST_TIME)));
+  $data['paymentxp_bank_acct_num'] = $crypt->encrypt($key, base64_encode($data['paymentxp_bank_acct_num'] . md5(REQUEST_TIME)));
 
   // Log any errors to the watchdog.
   uc_store_encryption_errors($crypt, 'uc_paymentxp_ach');
 
   // Check for an existing record.
-  $paymentxp_ach_id = db_result(db_query("SELECT paymentxp_ach_id FROM {uc_payment_paymentxp_ach} WHERE order_id = %d", $order->order_id));
+  $paymentxp_ach_id = db_query("SELECT paymentxp_ach_id FROM {uc_payment_paymentxp_ach} WHERE order_id = :order_id", array(':order_id' => $order->order_id))->fetchField();
 
   if ($paymentxp_ach_id) {
     $data['paymentxp_ach_id'] = $paymentxp_ach_id;
@@ -1272,13 +1353,17 @@ function uc_paymentxp_save_paymentxp_ach($order) {
 }
 
 // Load the ACH data for an order.
+/**
+ * @todo Please document this function.
+ * @see http://drupal.org/node/1354
+ */
 function uc_paymentxp_load_paymentxp_ach($order) {
-  $result = db_query("SELECT * FROM {uc_payment_paymentxp_ach} WHERE order_id = %d", $order->order_id);
+  $result = db_query("SELECT * FROM {uc_payment_paymentxp_ach} WHERE order_id = :order_id", array(':order_id' => $order->order_id));
 
   if ($data = db_fetch_array($result)) {
     // Decrypt the routing and account numbers.
     $key = uc_paymentxp_ach_encryption_key();
-    $crypt = new uc_encryption_class;
+    $crypt = new UbercartEncryption();
 
     $data['paymentxp_bank_aba_code'] = base64_decode($crypt->decrypt($key, $data['paymentxp_bank_aba_code']));
     $data['paymentxp_bank_aba_code'] = substr($data['paymentxp_bank_aba_code'], 0, strlen($data['paymentxp_bank_aba_code']) - 32);
@@ -1296,11 +1381,27 @@ function uc_paymentxp_load_paymentxp_ach($order) {
 }
 
 // Wipe the routing and account numbers from the database for a given order.
+/**
+ * @todo Please document this function.
+ * @see http://drupal.org/node/1354
+ */
 function uc_paymentxp_ach_wipe_numbers($order_id) {
-  db_query("UPDATE {uc_payment_paymentxp_ach} SET paymentxp_bank_aba_code = '', paymentxp_bank_acct_num = '' WHERE order_id = %d", $order_id);
+  // TODO Please review the conversion of this statement to the D7 database API syntax.
+  /* db_query("UPDATE {uc_payment_paymentxp_ach} SET paymentxp_bank_aba_code = '', paymentxp_bank_acct_num = '' WHERE order_id = %d", $order_id) */
+  db_update('uc_payment_paymentxp_ach')
+  ->fields(array(
+    'paymentxp_bank_aba_code' => '',
+    'paymentxp_bank_acct_num' => '',
+  ))
+  ->condition('order_id', $order_id)
+  ->execute();
 }
 
 // Return the name of an account type or the entire array of options.
+/**
+ * @todo Please document this function.
+ * @see http://drupal.org/node/1354
+ */
 function uc_paymentxp_ach_acct_type($option = NULL) {
   $types = array(
     '1' => t('Checking'),
@@ -1316,7 +1417,11 @@ function uc_paymentxp_ach_acct_type($option = NULL) {
 }
 
 // Allow administrators to process manual ACH payments.
-function uc_paymentxp_ach_terminal_form($form_state, $order) {
+/**
+ * @todo Please document this function.
+ * @see http://drupal.org/node/1354
+ */
+function uc_paymentxp_ach_terminal_form($form, $form_state, $order) {
   $form = array();
 
   $form['order'] = array(
@@ -1356,18 +1461,26 @@ function uc_paymentxp_ach_terminal_form($form_state, $order) {
   $form['submit'] = array(
     '#type' => 'submit',
     '#value' => t('Process payment'),
-    '#suffix' => l(t('Cancel'), 'admin/store/orders/'. $order->order_id),
+    '#suffix' => l(t('Cancel'), 'admin/store/orders/' . $order->order_id),
   );
 
   return $form;
 }
 
+/**
+ * @todo Please document this function.
+ * @see http://drupal.org/node/1354
+ */
 function uc_paymentxp_ach_terminal_form_validate($form, &$form_state) {
   if (!is_numeric($form_state['values']['amount']) || $form_state['values']['amount'] <= 0) {
     form_set_error('amount', t('You must enter a positive number for the payment amount.'));
   }
 }
 
+/**
+ * @todo Please document this function.
+ * @see http://drupal.org/node/1354
+ */
 function uc_paymentxp_ach_terminal_form_submit($form, &$form_state) {
   $order = $form_state['values']['order'];
   $order->payment_details = $form_state['values']['payment'];
@@ -1388,51 +1501,69 @@ function uc_paymentxp_ach_terminal_form_submit($form, &$form_state) {
     uc_paymentxp_ach_wipe_numbers($order->order_id);
 
     // Update the last 4 digits of the account stored in the database.
-    db_query("UPDATE {uc_payment_paymentxp_ach} SET paymentxp_bank_acct_num_last4 = '%s' WHERE order_id = %d", substr($order->payment_details['paymentxp_bank_acct_num'], -4), $order->order_id);
+    // TODO Please review the conversion of this statement to the D7 database API syntax.
+    /* db_query("UPDATE {uc_payment_paymentxp_ach} SET paymentxp_bank_acct_num_last4 = '%s' WHERE order_id = %d", substr($order->payment_details['paymentxp_bank_acct_num'], - 4), $order->order_id) */
+    db_update('uc_payment_paymentxp_ach')
+  ->fields(array(
+      'paymentxp_bank_acct_num_last4' => substr($order->payment_details['paymentxp_bank_acct_num'], - 4),
+    ))
+  ->condition('order_id', $order->order_id)
+  ->execute();
 
     drupal_set_message(t('ACH Debit payment processed successfully!'));
 
-    $form_state['redirect'] = 'admin/store/orders/'. $order->order_id;
+    $form_state['redirect'] = 'admin/store/orders/' . $order->order_id;
   }
 }
 
-function uc_paymentxp_user($op, &$edit){
+/**
+ * Implements hook_user_insert().
+ */
+function uc_paymentxp_user_insert(&$edit, $account, $category) {
+  $foo = 'stop the press';
+  //If we are adding a user that has a cart_order, then we save em to the vault
+  if ($_SESSION['do_complete']) {
+    $key = uc_credit_encryption_key();
+    $crypt = new UbercartEncryption();
+
+    $order = uc_order_load($_SESSION['cart_order']);
+    $order->uid = $edit['uid'];
+    $order->payment_details = unserialize($crypt->decrypt($key, $_SESSION['xpde']));
+
+
+
+    $response = _uc_paymentxp_customer_vault($order, $order->payment_method);
+
+    if (!$response['success']) {
+      //Saving the profile failed for some reason. Bubble up the exception.
+
+      //TODO: what to do here?
+      return $response;
+    }
+  }
+}
+
+/**
+ * @todo Please document this function.
+ * @see http://drupal.org/node/1354
+ */
+function uc_paymentxp_user_OLD($op, &$edit) {
+  // TODO Remaining code in this function needs to be moved to the appropriate new hook function.
   global $user;
-  switch($op){
-    case 'insert':
-      $foo='stop the press';
-      //If we are adding a user that has a cart_order, then we save em to the vault
-      if ($_SESSION['do_complete']){
-        $key = uc_credit_encryption_key();
-        $crypt = new uc_encryption_class;
-        
-        $order = uc_order_load($_SESSION['cart_order']);
-        $order->uid = $edit['uid'];
-        $order->payment_details = unserialize($crypt->decrypt($key, $_SESSION['xpde']));
-       
-      
-        
-        $response = _uc_paymentxp_customer_vault($order, $order->payment_method);
-
-        if (!$response['success']){
-          //Saving the profile failed for some reason. Bubble up the exception.
-
-          //TODO: what to do here?
-          return $response;
-        }
-      }
-  }
-  
 }
 
-function uc_paymentxp_cache($payment_details){
-      $key = uc_credit_encryption_key();
-      $crypt = new uc_encryption_class;
-      // Store the encrypted details in the session for the next pageload.
-      $_SESSION['xpde'] = $crypt->encrypt($key, serialize($payment_details));
-      // Log any errors to the watchdog.
-      uc_store_encryption_errors($crypt, 'uc_credit');
-  
+/**
+ * @todo Please document this function.
+ * @see http://drupal.org/node/1354
+ */
+function uc_paymentxp_cache($payment_details) {
+  $key = uc_credit_encryption_key();
+  $crypt = new UbercartEncryption();
+  // Store the encrypted details in the session for the next pageload.
+  $_SESSION['xpde'] = $crypt->encrypt($key, serialize($payment_details));
+  // Log any errors to the watchdog.
+  uc_store_encryption_errors($crypt, 'uc_credit');
+
 }
 
 /***********************************************************************/
@@ -1443,6 +1574,10 @@ function uc_paymentxp_cache($payment_details){
 ///**
 //* Implementation of hook_recurring_info().
 //*/
+/**
+ * @todo Please document this function.
+ * @see http://drupal.org/node/1354
+ */
 function uc_paymentxp_recurring_info() {
   $items['paymentxp_ach'] = array(
     'name' => t('PaymentXP ACH'),
@@ -1451,20 +1586,18 @@ function uc_paymentxp_recurring_info() {
     'fee handler' => 'paymentxp_ach',
     'renew callback' => 'uc_paymentxp_ach_recurring_renew',
     'process callback' => 'uc_paymentxp_recurring_process',
-  
     'saved profile' => TRUE,
-  
     'menu' => array(
       //'charge' => UC_RECURRING_MENU_DEFAULT,
-      'edit'   => UC_RECURRING_MENU_DEFAULT,
+      'edit' => UC_RECURRING_MENU_DEFAULT,
       'update' => array(
-        'title' => 'Update Account Details', 
+        'title' => 'Update Account Details',
         'page arguments' => array('uc_paymentxp_customer_update_form'),
       ),
       'cancel' => UC_RECURRING_MENU_DEFAULT,
     ), // Use the default user operation defined in uc_recurring.
   );
-  
+
   $items['paymentxp_credit'] = array(
     'name' => t('PaymentXP Credit'),
     'payment method' => 'credit',
@@ -1472,162 +1605,186 @@ function uc_paymentxp_recurring_info() {
     'fee handler' => 'paymentxp_credit',
     'renew callback' => 'uc_paymentxp_credit_recurring_renew',
     'process callback' => 'uc_paymentxp_recurring_process',
-  
     'saved profile' => TRUE,
     'menu' => array(
       //'charge' => UC_RECURRING_MENU_DEFAULT,
-      'edit'   => UC_RECURRING_MENU_DEFAULT,
+      'edit' => UC_RECURRING_MENU_DEFAULT,
       'update' => array(
         'title' => 'Update Account Details',
         'page arguments' => array('uc_paymentxp_customer_update_form'),
       ),
       'cancel' => UC_RECURRING_MENU_DEFAULT,
     ), // Use the default user operation defined in uc_recurring.
-  );  
+  );
   return $items;
 }
 
-function uc_paymentxp_recurring_process($order, &$fee){
-  
+/**
+ * @todo Please document this function.
+ * @see http://drupal.org/node/1354
+ */
+function uc_paymentxp_recurring_process($order, &$fee) {
+
   //We've already saved all the data in the customer gateway, so we'll just let uc_recurring think its all good.
   return TRUE;
 }
 
 
-function uc_paymentxp_ach_recurring_renew($order, &$fee) { 
-   
+/**
+ * @todo Please document this function.
+ * @see http://drupal.org/node/1354
+ */
+function uc_paymentxp_ach_recurring_renew($order, &$fee) {
+
   $result = uc_paymentxp_ach_customer_charge($order, $fee->fee_amount, $op = NULL);
- 
+
   if ($result['success'] == TRUE) {
-      uc_payment_enter($order->order_id, 'paymentxp_ach', $order->order_total, $fee->uid, '', $result['data'], $result['comment']);
-      return TRUE;
-    } else {
-        uc_order_update_status($order->order_id, 'canceled');
-    }
-    return $result['success'];
-    
+    uc_payment_enter($order->order_id, 'paymentxp_ach', $order->order_total, $fee->uid, '', $result['data'], $result['comment']);
+    return TRUE;
+  }
+  else {
+    uc_order_update_status($order->order_id, 'canceled');
+  }
+  return $result['success'];
+
 }
 
 
-function uc_paymentxp_credit_recurring_renew($order, &$fee) { 
+/**
+ * @todo Please document this function.
+ * @see http://drupal.org/node/1354
+ */
+function uc_paymentxp_credit_recurring_renew($order, &$fee) {
 
-    $result = uc_paymentxp_credit_customer_charge($order, $fee->fee_amount, $op = NULL);
-   
-    if ($result['success'] == TRUE) {
-      uc_payment_enter($order->order_id, 'credit', $order->order_total, $fee->uid, '', $result['data'], $result['comment']);
-      return TRUE;
-    } else {
-        //On renewal failure we need to stash the response message.
-        // if we set the $fee attempts equal to 3 in the following instances:
-        // EXPIRED CARD
-        // AVS CVV NO MATCH
-        $fee->responseMessage = $result['responseMessage'];
-        if (($result['responseMessage'] == 'EXPIRED CARD') || ($result['responseMessage'] == 'AVS/CVV2 NO MATCH (1)')||($result['responseMessage'] == 'INVALID CARD NUMBER')||($result['responseMessage'] == 'PICK UP CARD')){
-          // This *should* flatline any more recurrances and expire them right away for address changes and Expired Card Changes.
-          $fee->attempts = 2;
-        }
-        uc_order_update_status($order->order_id, 'canceled');
+  $result = uc_paymentxp_credit_customer_charge($order, $fee->fee_amount, $op = NULL);
+
+  if ($result['success'] == TRUE) {
+    uc_payment_enter($order->order_id, 'credit', $order->order_total, $fee->uid, '', $result['data'], $result['comment']);
+    return TRUE;
+  }
+  else {
+    //On renewal failure we need to stash the response message.
+    // if we set the $fee attempts equal to 3 in the following instances:
+    // EXPIRED CARD
+    // AVS CVV NO MATCH
+    $fee->responseMessage = $result['responseMessage'];
+    if (($result['responseMessage'] == 'EXPIRED CARD') || ($result['responseMessage'] == 'AVS/CVV2 NO MATCH (1)') || ($result['responseMessage'] == 'INVALID CARD NUMBER') || ($result['responseMessage'] == 'PICK UP CARD')) {
+      // This *should* flatline any more recurrances and expire them right away for address changes and Expired Card Changes.
+      $fee->attempts = 2;
     }
-    
-    return $result['success'];
+    uc_order_update_status($order->order_id, 'canceled');
+  }
+
+  return $result['success'];
 }
 
+/**
+ * @todo Please document this function.
+ * @see http://drupal.org/node/1354
+ */
 function uc_paymentxp_customer_update_form($form_state, $rfid) {
   // Load fee.
   $fee = uc_recurring_fee_user_load($rfid);
   // Load corresponding order.
   $order = uc_order_load($fee->order_id);
-  
+
   drupal_add_js('misc/progress.js');
-  
+
   drupal_add_js(drupal_get_path('module', 'uc_payment') . '/uc_payment.js');
   drupal_add_js(array(
-        'defPaymentMsg' => addslashes(variable_get('uc_default_payment_msg', t('Continue with checkout to complete payment.'))),
-        'ucURL' => array(
-          'checkoutPaymentDetails' => url('cart/checkout/payment_details/'),
-        ),
-      ), 'setting');
-      
-      
+    'defPaymentMsg' => addslashes(variable_get('uc_default_payment_msg', t('Continue with checkout to complete payment.'))),
+    'ucURL' => array(
+      'checkoutPaymentDetails' => url('cart/checkout/payment_details/'),
+    ),
+  ), array('type' => 'setting', 'scope' => JS_DEFAULT));
+
+
   $form['rfid'] = array(
     '#type' => 'value',
     '#value' => $rfid,
   );
   $options['paymentxp_ach'] = 'E-Check';
   $options['credit'] = 'Credit Card';
-  
-  if ($fee->fee_handler == 'paymentxp_credit'){
+
+  if ($fee->fee_handler == 'paymentxp_credit') {
     $default = 'credit';
-  } else {
-    $default = 'paymentxp_ach';
-    
   }
-  
+  else {
+    $default = 'paymentxp_ach';
+
+  }
+
   $details = uc_payment_method_credit_form(array(), $order);
-  $details = array_merge($details,uc_paymentxp_ach_payment_form(array(), $order));
-      
+  $details = array_merge($details, uc_paymentxp_ach_payment_form(array(), $order));
+
   $form['payment_method'] = array(
-        '#type' => 'radios',
-        '#title' => t('Payment method'),
-        '#options' => $options,
-        '#default_value' => $default,
-        '#disabled' => count($options) == 1 ? TRUE : FALSE,
-        '#required' => TRUE,
-        '#attributes' => array('onclick' => "get_payment_details(Drupal.settings.ucURL.checkoutPaymentDetails + this.value);"),
-        '#theme' => 'uc_payment_method_select',
-      );
+    '#type' => 'radios',
+    '#title' => t('Payment method'),
+    '#options' => $options,
+    '#default_value' => $default,
+    '#disabled' => count($options) == 1 ? TRUE : FALSE,
+    '#required' => TRUE,
+    '#attributes' => array('onclick' => "get_payment_details(Drupal.settings.ucURL.checkoutPaymentDetails + this.value);"),
+    '#theme' => 'uc_payment_method_select',
+  );
   $form['payment_details']['#value'] = '<div id="payment_details" class="solid-border display-none"></div>';
-  
+
   $form['submit'] = array(
     '#type' => 'submit',
     '#value' => t('Update'),
-    '#suffix' => l(t('Cancel'), 'user/'. $user->uid),
+    '#suffix' => l(t('Cancel'), 'user/' . $user->uid),
   );
 
   return $form;
 }
+/**
+ * @todo Please document this function.
+ * @see http://drupal.org/node/1354
+ */
 function uc_paymentxp_customer_update_form_submit($form, &$form_state) {
   $fee = uc_recurring_fee_user_load($form_state['values']['rfid']);
   $order = uc_order_load($fee->order_id);
   //Gotta snatch the details from the post..
   $payment_type = $form_state['values']['payment_method'];
-   if ($payment_type == 'credit'){
-     $fee_handler = 'paymentxp_credit';
-     $data = array(
-        'cc_type' => check_plain($_POST['cc_type']),
-        'cc_owner' => check_plain($_POST['cc_owner']),
-        'cc_number' => check_plain(str_replace(' ', '',  $_POST['cc_number'])),
-        'cc_start_month' => check_plain($_POST['cc_start_month']),
-        'cc_start_year' => check_plain($_POST['cc_start_year']),
-        'cc_exp_month' => check_plain($_POST['cc_exp_month']),
-        'cc_exp_year' => check_plain($_POST['cc_exp_year']),
-        'cc_issue' => check_plain($_POST['cc_issue']),
-        'cc_cvv' => check_plain($_POST['cc_cvv']),
-        'cc_bank' => check_plain($_POST['cc_bank']),
-      );
-       
-   } else if ($payment_type == 'paymentxp_ach'){
-     $fee_handler = 'paymentxp_ach';
-     $order->payment_method = $payment_type;
-     $data = array(
-        'paymentxp_bank_name' => check_plain($_POST['paymentxp_bank_name']),
-        'paymentxp_bank_aba_code' => check_plain(str_replace(' ', '',  $_POST['paymentxp_bank_aba_code'])),
-        'paymentxp_bank_acct_num' => check_plain(str_replace(' ', '', $_POST['paymentxp_bank_acct_num'])),
-        'paymentxp_bank_acct_name' => check_plain($_POST['paymentxp_bank_acct_name']),
-        'paymentxp_bank_acct_type' => check_plain($_POST['paymentxp_bank_acct_type']),
-      );
-     
-   }else {
-     drupal_set_message(t('An error has occurred while updating your payment details. Please try again and contact us if you are unable to perform the update.'), 'error');
-   }
-   $order->payment_details = $data;
-   //Next update the users details at PaymentXP.
-   $response = _uc_paymentxp_customer_vault($order, $payment_type);
+  if ($payment_type == 'credit') {
+    $fee_handler = 'paymentxp_credit';
+    $data = array(
+      'cc_type' => check_plain($_POST['cc_type']),
+      'cc_owner' => check_plain($_POST['cc_owner']),
+      'cc_number' => check_plain(str_replace(' ', '',   $_POST['cc_number'])),
+      'cc_start_month' => check_plain($_POST['cc_start_month']),
+      'cc_start_year' => check_plain($_POST['cc_start_year']),
+      'cc_exp_month' => check_plain($_POST['cc_exp_month']),
+      'cc_exp_year' => check_plain($_POST['cc_exp_year']),
+      'cc_issue' => check_plain($_POST['cc_issue']),
+      'cc_cvv' => check_plain($_POST['cc_cvv']),
+      'cc_bank' => check_plain($_POST['cc_bank']),
+    );
+
+  }
+  else if ($payment_type == 'paymentxp_ach') {
+    $fee_handler = 'paymentxp_ach';
+    $order->payment_method = $payment_type;
+    $data = array(
+      'paymentxp_bank_name' => check_plain($_POST['paymentxp_bank_name']),
+      'paymentxp_bank_aba_code' => check_plain(str_replace(' ', '',   $_POST['paymentxp_bank_aba_code'])),
+      'paymentxp_bank_acct_num' => check_plain(str_replace(' ', '', $_POST['paymentxp_bank_acct_num'])),
+      'paymentxp_bank_acct_name' => check_plain($_POST['paymentxp_bank_acct_name']),
+      'paymentxp_bank_acct_type' => check_plain($_POST['paymentxp_bank_acct_type']),
+    );
+
+  }
+  else {
+    drupal_set_message(t('An error has occurred while updating your payment details. Please try again and contact us if you are unable to perform the update.'), 'error');
+  }
+  $order->payment_details = $data;
+  //Next update the users details at PaymentXP.
+  $response = _uc_paymentxp_customer_vault($order, $payment_type);
 
   // If the update was successful...
   if ($response['success']) {
     // Save the new fee handler
-    if ($fee->fee_handler != $fee_handler){
+    if ($fee->fee_handler != $fee_handler) {
       $fee->fee_handler = $fee_handler;
       drupal_write_record('uc_recurring_users', $fee, array('rfid'));
     }
@@ -1637,7 +1794,7 @@ function uc_paymentxp_customer_update_form_submit($form, &$form_state) {
     drupal_set_message(t('An error has occurred while updating your payment details. Please try again and contact us if you are unable to perform the update.'), 'error');
   }
 
-  $form_state['redirect'] = 'user/'. $form_state['values']['uid'];
+  $form_state['redirect'] = 'user/' . $form_state['values']['uid'];
 }
 
 
