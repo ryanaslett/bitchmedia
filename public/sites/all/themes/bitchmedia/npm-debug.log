@@ -1,0 +1,359 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'grunt',
+1 verbose cli   'grunt-cli' ]
+2 info using npm@1.4.9
+3 info using node@v0.10.31
+4 verbose node symlink /usr/local/bin/node
+5 verbose cache add [ 'grunt', null ]
+6 verbose cache add name=undefined spec="grunt" args=["grunt",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: 'grunt',
+7 verbose parsed url   path: 'grunt',
+7 verbose parsed url   href: 'grunt' }
+8 verbose cache add [ 'grunt-cli', null ]
+9 verbose cache add name=undefined spec="grunt-cli" args=["grunt-cli",null]
+10 verbose parsed url { protocol: null,
+10 verbose parsed url   slashes: null,
+10 verbose parsed url   auth: null,
+10 verbose parsed url   host: null,
+10 verbose parsed url   port: null,
+10 verbose parsed url   hostname: null,
+10 verbose parsed url   hash: null,
+10 verbose parsed url   search: null,
+10 verbose parsed url   query: null,
+10 verbose parsed url   pathname: 'grunt-cli',
+10 verbose parsed url   path: 'grunt-cli',
+10 verbose parsed url   href: 'grunt-cli' }
+11 silly lockFile 20ff3fd8-grunt grunt
+12 verbose lock grunt /Users/Ryan/.npm/20ff3fd8-grunt.lock
+13 silly lockFile 671ef8ac-grunt-cli grunt-cli
+14 verbose lock grunt-cli /Users/Ryan/.npm/671ef8ac-grunt-cli.lock
+15 silly lockFile 20ff3fd8-grunt grunt
+16 silly lockFile 20ff3fd8-grunt grunt
+17 silly lockFile 671ef8ac-grunt-cli grunt-cli
+18 silly lockFile 671ef8ac-grunt-cli grunt-cli
+19 verbose addNamed [ 'grunt', '' ]
+20 verbose addNamed [ null, '*' ]
+21 silly lockFile 55f1ff24-grunt grunt@
+22 verbose lock grunt@ /Users/Ryan/.npm/55f1ff24-grunt.lock
+23 verbose addNamed [ 'grunt-cli', '' ]
+24 verbose addNamed [ null, '*' ]
+25 silly lockFile d63f3d0b-grunt-cli grunt-cli@
+26 verbose lock grunt-cli@ /Users/Ryan/.npm/d63f3d0b-grunt-cli.lock
+27 silly addNameRange { name: 'grunt', range: '*', hasData: false }
+28 silly addNameRange { name: 'grunt-cli', range: '*', hasData: false }
+29 verbose url raw grunt
+30 verbose url resolving [ 'https://registry.npmjs.org/', './grunt' ]
+31 verbose url resolved https://registry.npmjs.org/grunt
+32 info trying registry request attempt 1 at 10:46:11
+33 http GET https://registry.npmjs.org/grunt
+34 verbose url raw grunt-cli
+35 verbose url resolving [ 'https://registry.npmjs.org/', './grunt-cli' ]
+36 verbose url resolved https://registry.npmjs.org/grunt-cli
+37 info trying registry request attempt 1 at 10:46:11
+38 verbose etag "6PZDUI8VIBFID9COF5TX45XL8"
+39 http GET https://registry.npmjs.org/grunt-cli
+40 http 200 https://registry.npmjs.org/grunt
+41 silly registry.get cb [ 200,
+41 silly registry.get   { date: 'Sun, 31 Aug 2014 17:46:12 GMT',
+41 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+41 silly registry.get     etag: '"9X9SH5I7KZODXQW3QEW4U0HSN"',
+41 silly registry.get     'content-type': 'application/json',
+41 silly registry.get     'cache-control': 'max-age=60',
+41 silly registry.get     'content-length': '86621',
+41 silly registry.get     'accept-ranges': 'bytes',
+41 silly registry.get     via: '1.1 varnish',
+41 silly registry.get     age: '1333',
+41 silly registry.get     'x-served-by': 'cache-sjc3124-SJC',
+41 silly registry.get     'x-cache': 'HIT',
+41 silly registry.get     'x-cache-hits': '1',
+41 silly registry.get     'x-timer': 'S1409507172.952883,VS0,VE0',
+41 silly registry.get     vary: 'Accept',
+41 silly registry.get     'keep-alive': 'timeout=10, max=50',
+41 silly registry.get     connection: 'Keep-Alive' } ]
+42 silly addNameRange number 2 { name: 'grunt', range: '*', hasData: true }
+43 silly addNameRange versions [ 'grunt',
+43 silly addNameRange   [ '0.1.0',
+43 silly addNameRange     '0.1.1',
+43 silly addNameRange     '0.1.2',
+43 silly addNameRange     '0.2.0',
+43 silly addNameRange     '0.2.1',
+43 silly addNameRange     '0.2.2',
+43 silly addNameRange     '0.2.3',
+43 silly addNameRange     '0.2.4',
+43 silly addNameRange     '0.2.5',
+43 silly addNameRange     '0.2.6',
+43 silly addNameRange     '0.2.7',
+43 silly addNameRange     '0.2.8',
+43 silly addNameRange     '0.2.9',
+43 silly addNameRange     '0.2.10',
+43 silly addNameRange     '0.2.11',
+43 silly addNameRange     '0.2.12',
+43 silly addNameRange     '0.2.13',
+43 silly addNameRange     '0.2.14',
+43 silly addNameRange     '0.2.15',
+43 silly addNameRange     '0.3.0',
+43 silly addNameRange     '0.3.1',
+43 silly addNameRange     '0.3.2',
+43 silly addNameRange     '0.3.3',
+43 silly addNameRange     '0.3.4',
+43 silly addNameRange     '0.3.5',
+43 silly addNameRange     '0.3.6',
+43 silly addNameRange     '0.3.7',
+43 silly addNameRange     '0.3.8',
+43 silly addNameRange     '0.3.9',
+43 silly addNameRange     '0.3.10',
+43 silly addNameRange     '0.3.11',
+43 silly addNameRange     '0.3.12',
+43 silly addNameRange     '0.3.13',
+43 silly addNameRange     '0.3.14',
+43 silly addNameRange     '0.3.15',
+43 silly addNameRange     '0.3.16',
+43 silly addNameRange     '0.3.17',
+43 silly addNameRange     '0.4.0',
+43 silly addNameRange     '0.4.1',
+43 silly addNameRange     '0.4.2',
+43 silly addNameRange     '0.4.3',
+43 silly addNameRange     '0.4.4',
+43 silly addNameRange     '0.4.5',
+43 silly addNameRange     '0.3.13-a',
+43 silly addNameRange     '0.4.0-a',
+43 silly addNameRange     '0.4.0-rc1',
+43 silly addNameRange     '0.4.0-rc2',
+43 silly addNameRange     '0.4.0-rc3',
+43 silly addNameRange     '0.4.0-rc4',
+43 silly addNameRange     '0.4.0-rc5',
+43 silly addNameRange     '0.4.0-rc6',
+43 silly addNameRange     '0.4.0-rc7',
+43 silly addNameRange     '0.4.0-rc8' ] ]
+44 verbose addNamed [ 'grunt', '0.4.5' ]
+45 verbose addNamed [ '0.4.5', '0.4.5' ]
+46 silly lockFile 81abf7ad-grunt-0-4-5 grunt@0.4.5
+47 verbose lock grunt@0.4.5 /Users/Ryan/.npm/81abf7ad-grunt-0-4-5.lock
+48 silly lockFile ea6cf2d1--npmjs-org-grunt-grunt-0-4-5-tgz https://registry.npmjs.org/grunt/-/grunt-0.4.5.tgz
+49 verbose lock https://registry.npmjs.org/grunt/-/grunt-0.4.5.tgz /Users/Ryan/.npm/ea6cf2d1--npmjs-org-grunt-grunt-0-4-5-tgz.lock
+50 verbose addRemoteTarball [ 'https://registry.npmjs.org/grunt/-/grunt-0.4.5.tgz',
+50 verbose addRemoteTarball   '56937cd5194324adff6d207631832a9d6ba4e7f0' ]
+51 info retry fetch attempt 1 at 10:46:12
+52 verbose fetch to= /var/folders/wr/c178kyg122xdphf2z9v57b640000gn/T/npm-85497-f5OMYnA8/1409507172192-0.8108204565942287/tmp.tgz
+53 http GET https://registry.npmjs.org/grunt/-/grunt-0.4.5.tgz
+54 http 200 https://registry.npmjs.org/grunt-cli
+55 silly registry.get cb [ 200,
+55 silly registry.get   { date: 'Sun, 31 Aug 2014 17:46:13 GMT',
+55 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R14B04)',
+55 silly registry.get     etag: '"54QNW6NQ2WNHWUGFJR6BHGBXZ"',
+55 silly registry.get     'content-type': 'application/json',
+55 silly registry.get     'cache-control': 'max-age=60',
+55 silly registry.get     'content-length': '19876',
+55 silly registry.get     'accept-ranges': 'bytes',
+55 silly registry.get     via: '1.1 varnish',
+55 silly registry.get     age: '705',
+55 silly registry.get     'x-served-by': 'cache-sjc3123-SJC',
+55 silly registry.get     'x-cache': 'HIT',
+55 silly registry.get     'x-cache-hits': '1',
+55 silly registry.get     'x-timer': 'S1409507172.952809,VS0,VE157',
+55 silly registry.get     vary: 'Accept',
+55 silly registry.get     'keep-alive': 'timeout=10, max=50',
+55 silly registry.get     connection: 'Keep-Alive' } ]
+56 silly addNameRange number 2 { name: 'grunt-cli', range: '*', hasData: true }
+57 silly addNameRange versions [ 'grunt-cli',
+57 silly addNameRange   [ '0.1.0',
+57 silly addNameRange     '0.1.1',
+57 silly addNameRange     '0.1.2',
+57 silly addNameRange     '0.1.3',
+57 silly addNameRange     '0.1.4',
+57 silly addNameRange     '0.1.5',
+57 silly addNameRange     '0.1.6',
+57 silly addNameRange     '0.1.7',
+57 silly addNameRange     '0.1.8',
+57 silly addNameRange     '0.1.9',
+57 silly addNameRange     '0.1.10',
+57 silly addNameRange     '0.1.11',
+57 silly addNameRange     '0.1.12',
+57 silly addNameRange     '0.1.13' ] ]
+58 verbose addNamed [ 'grunt-cli', '0.1.13' ]
+59 verbose addNamed [ '0.1.13', '0.1.13' ]
+60 silly lockFile 28997503-grunt-cli-0-1-13 grunt-cli@0.1.13
+61 verbose lock grunt-cli@0.1.13 /Users/Ryan/.npm/28997503-grunt-cli-0-1-13.lock
+62 silly lockFile 28997503-grunt-cli-0-1-13 grunt-cli@0.1.13
+63 silly lockFile 28997503-grunt-cli-0-1-13 grunt-cli@0.1.13
+64 silly lockFile d63f3d0b-grunt-cli grunt-cli@
+65 silly lockFile d63f3d0b-grunt-cli grunt-cli@
+66 http 200 https://registry.npmjs.org/grunt/-/grunt-0.4.5.tgz
+67 verbose tar unpack /var/folders/wr/c178kyg122xdphf2z9v57b640000gn/T/npm-85497-f5OMYnA8/1409507172192-0.8108204565942287/tmp.tgz
+68 silly lockFile 631be555-ers-Ryan-npm-grunt-0-4-5-package tar:///Users/Ryan/.npm/grunt/0.4.5/package
+69 verbose lock tar:///Users/Ryan/.npm/grunt/0.4.5/package /Users/Ryan/.npm/631be555-ers-Ryan-npm-grunt-0-4-5-package.lock
+70 silly lockFile f2033c96-72192-0-8108204565942287-tmp-tgz tar:///var/folders/wr/c178kyg122xdphf2z9v57b640000gn/T/npm-85497-f5OMYnA8/1409507172192-0.8108204565942287/tmp.tgz
+71 verbose lock tar:///var/folders/wr/c178kyg122xdphf2z9v57b640000gn/T/npm-85497-f5OMYnA8/1409507172192-0.8108204565942287/tmp.tgz /Users/Ryan/.npm/f2033c96-72192-0-8108204565942287-tmp-tgz.lock
+72 silly gunzTarPerm modes [ '755', '644' ]
+73 silly gunzTarPerm extractEntry package.json
+74 silly gunzTarPerm extractEntry .npmignore
+75 silly gunzTarPerm extractEntry README.md
+76 silly gunzTarPerm extractEntry CONTRIBUTING.md
+77 silly gunzTarPerm extractEntry LICENSE-MIT
+78 silly gunzTarPerm extractEntry appveyor.yml
+79 silly gunzTarPerm extractEntry internal-tasks/bump.js
+80 silly gunzTarPerm extractEntry internal-tasks/subgrunt.js
+81 silly gunzTarPerm extractEntry lib/grunt.js
+82 silly gunzTarPerm extractEntry lib/grunt/cli.js
+83 silly gunzTarPerm extractEntry lib/grunt/config.js
+84 silly gunzTarPerm extractEntry lib/grunt/event.js
+85 silly gunzTarPerm extractEntry lib/grunt/fail.js
+86 silly gunzTarPerm extractEntry lib/grunt/file.js
+87 silly gunzTarPerm extractEntry lib/grunt/help.js
+88 silly gunzTarPerm extractEntry lib/grunt/option.js
+89 silly gunzTarPerm extractEntry lib/grunt/task.js
+90 silly gunzTarPerm extractEntry lib/grunt/template.js
+91 silly gunzTarPerm extractEntry lib/util/task.js
+92 silly lockFile 631be555-ers-Ryan-npm-grunt-0-4-5-package tar:///Users/Ryan/.npm/grunt/0.4.5/package
+93 silly lockFile 631be555-ers-Ryan-npm-grunt-0-4-5-package tar:///Users/Ryan/.npm/grunt/0.4.5/package
+94 silly lockFile f2033c96-72192-0-8108204565942287-tmp-tgz tar:///var/folders/wr/c178kyg122xdphf2z9v57b640000gn/T/npm-85497-f5OMYnA8/1409507172192-0.8108204565942287/tmp.tgz
+95 silly lockFile f2033c96-72192-0-8108204565942287-tmp-tgz tar:///var/folders/wr/c178kyg122xdphf2z9v57b640000gn/T/npm-85497-f5OMYnA8/1409507172192-0.8108204565942287/tmp.tgz
+96 silly lockFile ea6cf2d1--npmjs-org-grunt-grunt-0-4-5-tgz https://registry.npmjs.org/grunt/-/grunt-0.4.5.tgz
+97 silly lockFile ea6cf2d1--npmjs-org-grunt-grunt-0-4-5-tgz https://registry.npmjs.org/grunt/-/grunt-0.4.5.tgz
+98 silly lockFile 81abf7ad-grunt-0-4-5 grunt@0.4.5
+99 silly lockFile 81abf7ad-grunt-0-4-5 grunt@0.4.5
+100 silly lockFile 55f1ff24-grunt grunt@
+101 silly lockFile 55f1ff24-grunt grunt@
+102 silly resolved [ { name: 'grunt-cli',
+102 silly resolved     description: 'The grunt command line interface.',
+102 silly resolved     version: '0.1.13',
+102 silly resolved     author: { name: 'Grunt Team' },
+102 silly resolved     homepage: 'http://gruntjs.com/',
+102 silly resolved     repository: { type: 'git', url: 'git://github.com/gruntjs/grunt-cli.git' },
+102 silly resolved     bugs: { url: 'http://github.com/gruntjs/grunt-cli/issues' },
+102 silly resolved     licenses: [ [Object] ],
+102 silly resolved     bin: { grunt: 'bin/grunt' },
+102 silly resolved     engines: { node: '>= 0.8.0' },
+102 silly resolved     scripts: { test: 'node bin/grunt test' },
+102 silly resolved     preferGlobal: true,
+102 silly resolved     dependencies: { nopt: '~1.0.10', 'findup-sync': '~0.1.0', resolve: '~0.3.1' },
+102 silly resolved     devDependencies: { grunt: '~0.4.0', 'grunt-contrib-jshint': '~0.2.0' },
+102 silly resolved     contributors: [ [Object], [Object], [Object], [Object] ],
+102 silly resolved     readme: '# grunt-cli [![Build Status](https://secure.travis-ci.org/gruntjs/grunt-cli.png?branch=master)](http://travis-ci.org/gruntjs/grunt-cli)\n> The Grunt command line interface.\n\nInstall this globally and you\'ll have access to the `grunt` command anywhere on your system.\n\n```shell\nnpm install -g grunt-cli\n```\n\n**Note:** The job of the `grunt` command is to load and run the version of Grunt you have installed locally to your project, irrespective of its version.  Starting with Grunt v0.4, you should never install Grunt itself globally.  For more information about why, [please read this](http://blog.nodejs.org/2011/03/23/npm-1-0-global-vs-local-installation).\n\nSee the [Getting Started](http://gruntjs.com/getting-started) guide for more information.\n\n## Shell tab auto-completion\nTo enable tab auto-completion for Grunt, add one of the following lines to your `~/.bashrc` or `~/.zshrc` file.\n\n```bash\n# Bash, ~/.bashrc\neval "$(grunt --completion=bash)"\n```\n\n```bash\n# Zsh, ~/.zshrc\neval "$(grunt --completion=zsh)"\n```\n\n## Installing grunt-cli locally\nIf you prefer the idiomatic Node.js method to get started with a project (`npm install && npm test`) then install grunt-cli locally with `npm install grunt-cli --save-dev`. Then add a script to your `package.json` to run the associated grunt command: `"scripts": { "test": "grunt test" } `. Now `npm test` will use the locally installed `./node_modules/.bin/grunt` executable to run your Grunt commands.\n\nTo read more about npm scripts, please visit the npm docs: [https://npmjs.org/doc/misc/npm-scripts.html](https://npmjs.org/doc/misc/npm-scripts.html).\n',
+102 silly resolved     readmeFilename: 'README.md',
+102 silly resolved     _id: 'grunt-cli@0.1.13',
+102 silly resolved     _shasum: 'e9ebc4047631f5012d922770c39378133cad10f4',
+102 silly resolved     _from: 'grunt-cli@',
+102 silly resolved     _resolved: 'https://registry.npmjs.org/grunt-cli/-/grunt-cli-0.1.13.tgz' },
+102 silly resolved   { name: 'grunt',
+102 silly resolved     description: 'The JavaScript Task Runner',
+102 silly resolved     version: '0.4.5',
+102 silly resolved     author: { name: '"Cowboy" Ben Alman', url: 'http://benalman.com/' },
+102 silly resolved     homepage: 'http://gruntjs.com/',
+102 silly resolved     repository: { type: 'git', url: 'git://github.com/gruntjs/grunt.git' },
+102 silly resolved     bugs: { url: 'http://github.com/gruntjs/grunt/issues' },
+102 silly resolved     licenses: [ [Object] ],
+102 silly resolved     main: 'lib/grunt',
+102 silly resolved     scripts: { test: 'grunt test' },
+102 silly resolved     engines: { node: '>= 0.8.0' },
+102 silly resolved     keywords:
+102 silly resolved      [ 'task',
+102 silly resolved        'async',
+102 silly resolved        'cli',
+102 silly resolved        'minify',
+102 silly resolved        'uglify',
+102 silly resolved        'build',
+102 silly resolved        'lodash',
+102 silly resolved        'unit',
+102 silly resolved        'test',
+102 silly resolved        'qunit',
+102 silly resolved        'nodeunit',
+102 silly resolved        'server',
+102 silly resolved        'init',
+102 silly resolved        'scaffold',
+102 silly resolved        'make',
+102 silly resolved        'jake',
+102 silly resolved        'tool' ],
+102 silly resolved     dependencies:
+102 silly resolved      { async: '~0.1.22',
+102 silly resolved        'coffee-script': '~1.3.3',
+102 silly resolved        colors: '~0.6.2',
+102 silly resolved        dateformat: '1.0.2-1.2.3',
+102 silly resolved        eventemitter2: '~0.4.13',
+102 silly resolved        'findup-sync': '~0.1.2',
+102 silly resolved        glob: '~3.1.21',
+102 silly resolved        hooker: '~0.2.3',
+102 silly resolved        'iconv-lite': '~0.2.11',
+102 silly resolved        minimatch: '~0.2.12',
+102 silly resolved        nopt: '~1.0.10',
+102 silly resolved        rimraf: '~2.2.8',
+102 silly resolved        lodash: '~0.9.2',
+102 silly resolved        'underscore.string': '~2.2.1',
+102 silly resolved        which: '~1.0.5',
+102 silly resolved        'js-yaml': '~2.0.5',
+102 silly resolved        exit: '~0.1.1',
+102 silly resolved        getobject: '~0.1.0',
+102 silly resolved        'grunt-legacy-util': '~0.2.0',
+102 silly resolved        'grunt-legacy-log': '~0.1.0' },
+102 silly resolved     devDependencies:
+102 silly resolved      { temporary: '~0.0.4',
+102 silly resolved        'grunt-contrib-jshint': '~0.6.4',
+102 silly resolved        'grunt-contrib-nodeunit': '~0.2.0',
+102 silly resolved        'grunt-contrib-watch': '~0.5.3',
+102 silly resolved        difflet: '~0.2.3',
+102 silly resolved        semver: '2.1.0',
+102 silly resolved        shelljs: '~0.2.5' },
+102 silly resolved     readme: '# Grunt: The JavaScript Task Runner\n\n[![Build Status: Linux](https://secure.travis-ci.org/gruntjs/grunt.png?branch=master)](http://travis-ci.org/gruntjs/grunt)\n<a href="https://ci.appveyor.com/project/gruntjs/grunt"><img src="https://ci.appveyor.com/api/projects/status/32r7s2skrgm9ubva/branch/master" alt="Build Status: Windows" height="18" /></a>\n[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)\n\n<img align="right" height="260" src="http://gruntjs.com/img/grunt-logo-no-wordmark.svg">\n\n\n### Documentation\n\nVisit the [gruntjs.com](http://gruntjs.com/) website for all the things.\n\n### Support / Contributing\nBefore you make an issue, please read our [Contributing](http://gruntjs.com/contributing) guide.\n\nYou can find the grunt team in [#grunt on irc.freenode.net](http://webchat.freenode.net/?channels=grunt).\n\n### Release History\nSee the [CHANGELOG](CHANGELOG).\n',
+102 silly resolved     readmeFilename: 'README.md',
+102 silly resolved     _id: 'grunt@0.4.5',
+102 silly resolved     _shasum: '56937cd5194324adff6d207631832a9d6ba4e7f0',
+102 silly resolved     _from: 'grunt@',
+102 silly resolved     _resolved: 'https://registry.npmjs.org/grunt/-/grunt-0.4.5.tgz' } ]
+103 info install grunt-cli@0.1.13 into /usr/local/lib
+104 info install grunt@0.4.5 into /usr/local/lib
+105 info installOne grunt-cli@0.1.13
+106 info installOne grunt@0.4.5
+107 info /usr/local/lib/node_modules/grunt unbuild
+108 info /usr/local/lib/node_modules/grunt-cli unbuild
+109 verbose tar unpack /Users/Ryan/.npm/grunt/0.4.5/package.tgz
+110 silly lockFile d04b7634-usr-local-lib-node-modules-grunt tar:///usr/local/lib/node_modules/grunt
+111 verbose lock tar:///usr/local/lib/node_modules/grunt /Users/Ryan/.npm/d04b7634-usr-local-lib-node-modules-grunt.lock
+112 silly lockFile 6a477cb7-Ryan-npm-grunt-0-4-5-package-tgz tar:///Users/Ryan/.npm/grunt/0.4.5/package.tgz
+113 verbose lock tar:///Users/Ryan/.npm/grunt/0.4.5/package.tgz /Users/Ryan/.npm/6a477cb7-Ryan-npm-grunt-0-4-5-package-tgz.lock
+114 info preuninstall grunt-cli@0.1.13
+115 silly gunzTarPerm modes [ '755', '644' ]
+116 info uninstall grunt-cli@0.1.13
+117 verbose true,/usr/local/lib/node_modules,/usr/local/lib/node_modules unbuild grunt-cli@0.1.13
+118 verbose /usr/local/bin,[object Object] binRoot
+119 error Error: EACCES, mkdir '/usr/local/lib/node_modules/grunt'
+119 error  { [Error: EACCES, mkdir '/usr/local/lib/node_modules/grunt']
+119 error   errno: 3,
+119 error   code: 'EACCES',
+119 error   path: '/usr/local/lib/node_modules/grunt',
+119 error   fstream_type: 'Directory',
+119 error   fstream_path: '/usr/local/lib/node_modules/grunt',
+119 error   fstream_class: 'DirWriter',
+119 error   fstream_stack:
+119 error    [ '/usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23',
+119 error      '/usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:37:53',
+119 error      'Object.oncomplete (fs.js:107:15)' ] }
+120 error Please try running this command again as root/Administrator.
+121 error System Darwin 13.1.0
+122 error command "node" "/usr/local/bin/npm" "install" "-g" "grunt" "grunt-cli"
+123 error cwd /Users/Ryan/Documents/Work/Current/Bitch/bitchmedia.org/public/sites/all/themes/bitchmedia
+124 error node -v v0.10.31
+125 error npm -v 1.4.9
+126 error path /usr/local/lib/node_modules/grunt
+127 error fstream_path /usr/local/lib/node_modules/grunt
+128 error fstream_type Directory
+129 error fstream_class DirWriter
+130 error code EACCES
+131 error errno 3
+132 error stack Error: EACCES, mkdir '/usr/local/lib/node_modules/grunt'
+133 error fstream_stack /usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23
+133 error fstream_stack /usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:37:53
+133 error fstream_stack Object.oncomplete (fs.js:107:15)
+134 verbose exit [ 3, true ]
