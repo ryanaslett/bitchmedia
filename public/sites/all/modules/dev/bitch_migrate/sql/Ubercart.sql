@@ -506,3 +506,7 @@ WHERE type IN ('digital_download', 'donation', 'issue', 'membership', 'merchandi
 DELETE ucp FROM bitch_d7.uc_product_features ucp
   LEFT JOIN node n on n.nid = ucp.nid
 WHERE n.type = 'issue';
+
+/* Clean up random countries */
+DELETE c FROM bitch_d7.uc_countries c
+WHERE c.country_id IN (891,0);

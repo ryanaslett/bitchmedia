@@ -1,0 +1,714 @@
+<?php
+/**
+ * @file
+ * uc_express module allows ubercart to have a product on
+ * the checkout page for a one page buy and check out.
+ * It is a terrible, terrible hack.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function uc_express_menu() {
+  $items = array();
+  $items['uc_express/%uc_express'] = array(
+    'title callback' => 'uc_express_combined_title',
+    'title arguments' => array(1),
+    'type' => MENU_CALLBACK,
+    'page callback' => 'uc_express_combined_checkout',
+    'access callback' => 'uc_express_permission',
+    'page arguments' => array(1),
+  );
+  $items['uc_express/add'] = array(
+    'type' => MENU_CALLBACK,
+    'page callback' => 'uc_express_cart_add_item',
+    'access callback' => 'uc_express_permission',
+  );
+
+  return $items;
+}
+
+/**
+ * Menu loader function.
+ *
+ * This puts the loaded express product into
+ * a global so all the other places can access its data
+ * because of non-existant API's.
+ */
+function uc_express_load($product_ids) {
+  foreach ($product_ids as $nid => &$product_id) {
+    global $_uc_express_product;
+    $_uc_express_product = node_load($product_id);
+    foreach ($_uc_express_product as $property => &$value) {
+      $product_id->$property = $value;
+    }
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function uc_express_form_alter(&$form, $form_state, $form_id) {
+  $_uc_express_product = _uc_express_get_product();
+
+  // Add the submit handler.
+  if (isset($form_state['values']['uc_express_product']) &&
+     ($form_state['values']['uc_express_product'] == 'uc_express_product')) {
+    $form['#submit'][] = 'uc_express_add_to_cart_form_submit';
+  }
+
+  if (!empty($_uc_express_product) && $form_id == 'uc_product_add_to_cart_form_' . $_uc_express_product->nid) {
+    // Remove the submit button from the add to cart
+    // form when displayed at the top of the page.
+    unset($form['submit']);
+    static $uc_express_js = FALSE;
+    $form['uc_express_product'] = array(
+      '#type' => 'hidden',
+      '#value' => 'uc_express_product',
+    );
+
+    // Add a class to the cart form.
+    // This will allow us to easily identify it for binding ajax stuff.
+    $form['#attributes']['class'][] = 'uc-express-product';
+
+    if (!$uc_express_js) {
+      $uc_express_js = TRUE;
+
+      drupal_add_js('misc/jquery.form.js');
+      drupal_add_js(drupal_get_path('module', 'uc_express') . '/js/uc_express.js');
+
+    }
+
+    if (!isset($form_state['post']['uc_express_checkout'])) {
+      drupal_add_js('$(function() {
+        $(".uc-express-product :checked").click();
+
+        })', array('type' => 'inline', 'scope' => JS_DEFAULT));
+    }
+    else {
+      drupal_add_js('$(function() {
+        $(".uc-express-product :checked").attr("checked",false);
+
+        })', array('type' => 'inline', 'scope' => JS_DEFAULT));
+    }
+  }
+
+  // It is an add to cart form, but its *not* an initial build of the
+  // uc_express page, and it's *not* an ajax form submit to a
+  // uc_express page, then it must be a regular add to cart form.
+  if ((strpos($form_id, 'uc_product_add_to_cart_form_') === 0) && (!isset($form_state['post']['uc_express_product'])) && !($form_id == 'uc_product_add_to_cart_form_' . $_uc_express_product->nid)) {
+    uc_express_remove_mock_items();
+  }
+
+  if ((strpos($form_id, 'uc_product_add_to_cart_form_') === 0) && isset($form_state['post']['uc_express_product']) && $form_state['post']['uc_express_product'] == 'uc_express_product') {
+    // Get rid of #*$&^ blank text fields.
+    foreach (element_children($form['attributes']) as $aid => $attribute) {
+      if ($attribute['#type'] == 'textfield') {
+        if (!isset($form_state['values']['post'][$aid])) {
+          unset($form['attributes'][$aid]);
+        }
+      }
+    }
+  }
+
+  // Alter the node form to add the express-checkout alias.
+  if (!empty($form['#node_edit_form']) && $form['base']['#title'] == 'Product information') {
+    $path = isset($form['#node']->uc_express_path) ? $form['#node']->uc_express_path : NULL;
+    $form['uc_express_path'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Express Checkout path settings'),
+      '#collapsible' => TRUE,
+      '#collapsed' => empty($path),
+      '#access' => user_access('create url aliases'),
+      '#weight' => 30,
+    );
+    $form['uc_express_path']['uc_express_path'] = array(
+      '#type' => 'textfield',
+      '#default_value' => $path,
+      '#maxlength' => 128,
+      '#collapsible' => TRUE,
+      '#collapsed' => TRUE,
+      '#description' => t("Optionally specify a URL to access this product's express checkout page.. Use a relative path and don't add a trailing slash or the URL alias won't work."),
+    );
+    if ($path) {
+      $form['uc_express_path']['pid'] = array(
+        '#type' => 'value',
+        '#value' => db_query("SELECT pid FROM {url_alias} WHERE dst = :dst AND language = :language", array(':dst' => $path, ':language' => $form['#node']->language))->fetchField(),
+      );
+    }
+  }
+
+}
+
+/**
+ * Implements hook_node_load().
+ *
+ * This is to support url aliasing of uc_express pages.
+ */
+function uc_express_node_load($node, $types) {
+  // TODO: this is getting a path alias on every node load. whut?
+  if (user_access('create url aliases') || user_access('administer url aliases') || TRUE) {
+    $path = 'uc_express/' . $node->nid;
+    $alias = drupal_get_path_alias($path, $language);
+    if ($path != $alias) {
+      $node->uc_express_path = $alias;
+    }
+  }
+}
+
+/**
+ * Implements hook_node_validate().
+ *
+ * This is to support url aliasing of uc_express pages.
+ */
+function uc_express_node_validate($node, $form, &$form_state) {
+
+  if (isset($node->uc_express_path)) {
+    $node->uc_express_path = trim($node->uc_express_path);
+    if (db_query("SELECT COUNT(dst) FROM {url_alias} WHERE dst = :dst AND src != :src AND language = :language", array(
+      ':dst' => $node->uc_express_path,
+      ':src' => " $node->nid",
+      ':language' => $language,
+    ))->fetchField()
+    ) {
+      form_set_error('path', t('The path is already in use.'));
+    }
+  }
+}
+
+/**
+ * Implements hook_node_insert().
+ *
+ * This is to support url aliasing of uc_express pages.
+ */
+function uc_express_node_insert($node) {
+
+  // Don't try to insert if path is NULL. We may have already set
+  // the alias ahead of time.
+  if (isset($node->uc_express_path)) {
+    $path = array(
+      'source' => 'uc_express/' . $node->nid,
+      'alias' => $node->uc_express_path,
+    );
+    path_save($path);
+  }
+}
+
+/**
+ * Implements hook_node_update().
+ *
+ * This is to support url aliasing of uc_express pages.
+ */
+function uc_express_node_update($node) {
+
+  $path = array(
+    'source' => 'uc_express/' . $node->nid,
+    'alias' => isset($node->uc_express_path) ? $node->uc_express_path : NULL,
+    'pid' => isset($node->uc_express_pid) ? $node->uc_express_pid : NULL,
+  );
+  path_save($path);
+}
+
+/**
+ * Implements hook_node_delete().
+ *
+ * This is to support url aliasing of uc_express pages.
+ */
+function uc_express_node_delete($node) {
+
+  $path = array(
+    'source' => 'uc_express/' . $node->nid,
+    'alias' => isset($node->uc_express_path) ? $node->uc_express_path : NULL,
+    'pid' => isset($node->uc_express_pid) ? $node->uc_express_pid : NULL,
+  );
+  path_delete($path);
+}
+
+/**
+ * Implements hook_init().
+ */
+function uc_express_init() {
+  global $base_root;
+  // Remove mock items from the cart if we're
+  // not in checkout. There should never be
+  // mock items in the cart unless going through
+  // express checkout.
+  $remove_mock_item = TRUE;
+  $pages = array('cart/checkout', 'express-checkout', 'uc_express');
+  $this_page = request_uri();
+  foreach ($pages as $page) {
+    if ($page && strstr($this_page, $page) !== FALSE) {
+      $remove_mock_item = FALSE;
+    }
+  }
+  if ($remove_mock_item) {
+    uc_express_remove_mock_items();
+  }
+}
+
+/**
+ * Implements hook_exit().
+ */
+function uc_express_exit() {
+  global $base_root;
+  // TODO: unfuck this mess.
+  // Why is there a cache_clear_all for the express-checkout page
+  // caches? is it because anons were getting cached data?
+  $pages = array('express-checkout');
+  $this_page = request_uri();
+  foreach ($pages as $page) {
+    if ($page && strstr($this_page, $page) !== FALSE) {
+      cache_clear_all($base_root . $this_page, 'cache_page');
+      return;
+    }
+  }
+}
+
+/**
+ * Title callback for menu hooks.
+ *
+ * Sets the title to the title of the express checkout product.
+ */
+function uc_express_combined_title($product) {
+  return ($product->title);
+}
+
+/**
+ * Access callback for menu hooks.
+ *
+ * Is a placeholder for now.
+ */
+function uc_express_permission() {
+  return TRUE;
+}
+
+/**
+ * Menu callback for uc_express.
+ */
+function uc_express_combined_checkout($product) {
+  global $base_url;
+  // Check if this is the submission.
+  // No POST, not cart_order, this is a new form.
+  $node_id = arg(1);
+  if (!isset($_POST['form_id'])) {
+
+    if (isset($_SESSION['cart_order'])) {
+      // This is a likely redirect from a previous error.
+      // Theres some error on the form. Gotta trick ubercart into thinking
+      // its all cool.
+      unset($_SERVER['HTTP_REFERER']);
+    }
+    else {
+
+      /* First time to this page. Empty the cart so that folks aren't surpised
+      when their credit card is charged for a bunch of other stuff with no
+      confirmation page then add a dummy item so shipping panes show up.
+
+      uc_cart_empty(uc_cart_get_id());
+      XXX ^^ not so sure this should be done.
+
+      Perhaps we want to keep their cart going? We have to add a mock product
+      to the cart of the type that we wish to have on the form. This way if
+      their cart is empty, they will still get the delivery pane on their
+      cart if The express item happens to be shippable.
+      Additionally if the cart item can have a recurring fee, it will not
+      display payment types not capable of recurring fees.  Though this will
+      probably break as we dont know whether or not they are going to be
+      selecting a model that specifically has a recurring fee.
+
+      Clear out any occurances of existing products from the cart for this
+      express item. */
+      $contents = uc_cart_get_contents();
+
+      foreach ($contents as $cart_product) {
+        if ($cart_product->nid == $node_id) {
+          uc_cart_remove_item($cart_product->nid, $cart_product->cart_id, $cart_product->data);
+        }
+      }
+      // Just in case there are other mock items in there.. get rid of them.
+      uc_express_remove_mock_items();
+      $data = uc_product_add_to_cart_data($form = array('nid' => $product->nid));
+      $data['uc_express'] = 'mock_product';
+      $data['module'] = 'uc_express';
+      uc_cart_add_item($product->nid, $qty = 1, $data, NULL, FALSE);
+
+    }
+
+  }
+  else {
+    // This is the order submission.
+    // empty out the pseudo item, add the submitted item to the cart,
+    // and replace the posted cart_contents with our own cart item
+    // uc_cart_empty(uc_cart_get_id());
+    // Remove the mock item.
+
+    /* unset($_SESSION['cart_order']);
+    $form_state['values'] = $_POST;
+    $form_state['values']['nid'] = $product->nid;
+    $product->qty = intval($_POST['qty']);
+    $product->price = $product->sell_price;
+    $product->data = module_invoke_all('add_to_cart_data',
+    $form_state['values']);
+    //Installation specific hack to make this work with varprice.
+    if (!empty($product->data['varprice'])) {
+    // Update the cart item's price to the entered price value.
+    $product->price = $product->data['varprice'];
+    }
+    uc_cart_add_item($product->nid, $product->qty, $product->data, NULL, FALSE);
+    */
+
+    // XXX not sure If this is needed.
+    // $contents = uc_cart_get_contents();
+    // $_POST['cart_contents'] = serialize($contents);
+  }
+
+  include_once DRUPAL_ROOT . '/' .  drupal_get_path('module', 'uc_cart') . '/uc_cart.pages.inc';
+  drupal_add_js(drupal_get_path('module', 'uc_cart') . '/uc_cart.js');
+  // drupal_add_js(drupal_get_path('module', 'uc_express').'/js/uc_express.js');
+
+  // TODO: Unset the Recurring billing message, and re-set it. fugly.
+  // $output = uc_product_view($product);
+  // $node = uc_product_view($product);
+  $node = node_load($node_id);
+
+  // Get rid of the add to cart link.
+  // unset($node->content['add_to_cart']);
+  if (($node->type == 'buzzfactory_product') || ($node->type == 'digital_download')) {
+    $node->content['image']['#weight'] = -10;
+    $node->content['header']['#value'] = '<div class="product-title"><h1 class="title">' . $node->title . '</h1></div>';
+    $node->content['header']['#weight'] = -8;
+    $node->content['header']['#access'] = 1;
+    $node->content['add_to_cart']['#weight'] = -3;
+    $node->content['field_sizing_chart']['#weight'] = 11;
+  }
+  unset($node->content['display_price']);
+  unset($node->content['sell_price']);
+  // $output = drupal_render($node->content);
+  $output = node_view($node, FALSE, FALSE, FALSE);
+
+  // $output .= drupal_get_form('uc_cart_checkout_form');
+  $output .= uc_cart_checkout();
+
+  return $output;
+}
+
+/**
+ * Removes mock item from the cart.
+ */
+function uc_express_remove_mock_items() {
+  $contents = uc_cart_get_contents();
+  foreach ($contents as $product) {
+    if (isset($product->data['uc_express'])) {
+      uc_cart_remove_item($product->nid, $product->cart_id, $product->data);
+    }
+  }
+}
+/**
+ * Implements hook_uc_cart_alter().
+ */
+function uc_express_uc_cart_alter($cartitems) {
+  // If we're on a uc_express, then we'll
+  // alter to the cart to have a fake shippable item in it.
+  $current_page = menu_get_item();
+//  if()
+  $foo = '';
+}
+
+/**
+ * Validation Handler for cart checkout form.
+ */
+function uc_express_cart_checkout_form_validate($form, &$form_state) {
+
+  $contents = uc_cart_get_contents();
+  $valid_submission = FALSE;
+  foreach ($contents as $product) {
+
+    // There is a product in our cart that matches the nid of the uc_express
+    // product, and it's not a mock object.  We're good.
+    if (!isset($product->data['uc_express']) && $product->nid == $form['#post']['uc_express_checkout']) {
+      $valid_submission = TRUE;
+    }
+  }
+  if (!$valid_submission) {
+    form_set_error('uc_express', t("We're sorry, you need to select a valid combination of product options"));
+  }
+}
+
+/**
+ * Submit handler for adding things to the cart.
+ */
+function uc_express_add_to_cart_form_submit($form, &$form_state) {
+  // The asssumption is that we have a mock item in the cart until a
+  // sucessful submit.
+  // The sucessfull submit shoud remove the mock item from the cart.
+  uc_express_remove_mock_items();
+}
+
+/**
+ * Ajax Menu Callback for adding the item to cart.
+ */
+function uc_express_cart_add_item($data) {
+  global $conf;
+  $conf['cache'] = FALSE;
+  $data = $_POST;
+  if (!isset($data['qty'])) {
+    $data['qty'] = 1;
+  }
+
+  $form_id = explode('_', $data['form_id']);
+  $node_id = array_pop($form_id);
+  $form_id = implode('_', $form_id);
+
+  $product = node_load($node_id);
+  uc_product_load($product);
+  $form_values = array(
+    'values' => $data,
+    'post' => $data,
+  );
+
+  // Clear out any occurances of existing products from the cart
+  // for this express item.
+  $contents = uc_cart_get_contents();
+  foreach ($contents as $cart_product) {
+    if ($cart_product->nid == $node_id) {
+      if (!isset($cart_product->data['uc_express'])) {
+        uc_cart_remove_item($cart_product->nid, $cart_product->cart_id, $cart_product->data);
+      }
+    }
+  }
+  drupal_form_submit($data['form_id'], $form_values, $product);
+  drupal_json_output(uc_express_json_cart());
+}
+
+/**
+ * Creates a json representation of the cart contents.
+ */
+function uc_express_json_cart() {
+  // Get the new subtotal so we can update the line item.
+  $contents = uc_cart_get_contents(NULL, 'rebuild');
+
+  $subtotal = 0;
+  foreach ($contents as $item) {
+    $total = uc_currency_format($item->price);
+    $subtotal += $total;
+  }
+  $line_item = array(
+    'type' => 'subtotal',
+    'name' => t('Subtotal'),
+    'amount' => $subtotal,
+    'weight' => -10,
+  );
+
+  $order = new stdClass();
+  $order->products = $arg1;
+
+  $subtotal = uc_currency_format($line_item['amount']);
+
+  $errors = form_get_errors();
+  if ($errors) {
+    $error_msg = '<div class="uc_express_form_error">';
+
+    foreach ($errors as $aid => $message) {
+      $error_msg .= '<div class="uc-express-error-msg">' . $message . '</div>';
+    }
+    $error_msg .= '</div>';
+
+  }
+  else {
+    $error_msg = '';
+  }
+  // Get rid of all the cart add/update messages,
+  // additionally clear the form errors.
+  drupal_get_messages();
+  // TODO Please change this theme call to use an a
+  // associative array for the $variables parameter.
+  $cart_review = theme('cart_review_table');
+  if (isset($contents[0])) {
+    $cart_contents = serialize($contents);
+  }
+  else {
+    $cart_contents = '';
+  }
+
+  return array(
+    'cart_contents' => $cart_contents,
+    'errors' => $error_msg,
+    'cart_review' => $cart_review,
+    'subtotal' => $subtotal,
+  );
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function uc_express_form_uc_cart_checkout_form_alter(&$form, $form_state) {
+  global $user;
+  global $_uc_express_product;
+
+  // XXX thiskludgy. I guess it'll conflict with other checkout page modules.
+  if (strpos($form['#action'], '/cart/checkout') === FALSE) {
+    // unset($form['panes']['cart']);
+    // TODO: maybe make this configurable? -
+    // unset($form['panes']['quotes']);
+    $form['panes']['comments']['#collapsed'] = 'true';
+    $form['#validate'][] = 'uc_express_cart_checkout_form_validate';
+    $form['uc_express_checkout'] = array(
+      '#type' => 'hidden',
+      '#value' => $_uc_express_product->nid,
+    );
+    if ($user->uid == 0) {
+      $form['panes']['customer']['#description'] = 'Enter a valid email address for this order or <a href="/user/login?destination=' . $form['#action'] . '">click here</a> to login with an existing account and return to checkout.';
+    }
+  }
+  else {
+    // No mock items in regular checkout.
+    uc_express_remove_mock_items();
+  }
+}
+
+/**
+ * Gets the product. Right now it comes from a global.
+ */
+function _uc_express_get_product() {
+  global $_uc_express_product;
+  return $_uc_express_product;
+}
+
+/**
+ * @todo Please document this function.
+ * @see http://drupal.org/node/1354
+ */
+//function uc_express_product_description_alter($description, $product) {
+//
+//  //Check if this is one of our combined models
+//  // XXX this is for the now defunct "Combined Sustain/Donate" product
+//  if (is_numeric(strpos($product->model, 'SUSTAINER')) && is_numeric(strpos($product->model, 'DONATE'))) {
+//    //Get the rest of the info from the db
+//    $result = db_fetch_object(db_query("SELECT p.pfid, p.model, p.fee_amount, p.initial_charge, p.regular_interval, p.number_intervals, f.nid
+//                          FROM {uc_recurring_product} p
+//                            LEFT JOIN {uc_product_features} f ON p.pfid=f.pfid
+//                          WHERE f.nid = :f.nid and p.model = :p.model", array(':f.nid' => $product->nid, ':p.model' => $product->model)));
+//    if ($result) {
+//
+//      //They entered a donation amount, but we also have a sustainership.. add an attribute to describe it to them on the form.
+//      if ($product->data['varprice'] != '0.00') {
+//        $description['attributes'][0]['#attribute_name'] = 'Recurring Amount';
+//        switch ($result->regular_interval) {
+//          case '1 months':
+//            $description['attributes'][0]['#options'][0] = uc_currency_format($result->fee_amount) . ' monthly';
+//            break;
+//          case '1 year':
+//            $description['attributes'][0]['#options'][0] = uc_currency_format($result->fee_amount) . ' annually';
+//            break;
+//        }
+//        //Re-set the title of the item.  This might only reset it for the display purposes.
+//
+//        if ($product->data['varprice'] == '0.00') {
+//          $description['attributes']['#product']['#value']->title = t('Bee Hive Sustainership: ') . $description['attributes'][0]['#options'][0];
+//          $product->title = t('Bee Hive Sustainership: ') . $description['attributes'][0]['#options'][0];
+//          unset($description['attributes'][0]);
+//
+//        }
+//      }
+//    }
+//  }
+//  // XXX end of extraneous
+//}
+
+// XXX again, more of the "Combined sustainer stuff"
+/**
+ * @todo Please document this function.
+ * @see http://drupal.org/node/1354
+ */
+//function uc_express_cart_item($op, &$item) {
+//  switch ($op) {
+//    case 'load':
+//      //our combined sustainer/donator products *must* use SUSTAINER and DONATION in their SKU's
+//      if (is_numeric(strpos($item->model, 'SUSTAINER')) && is_numeric(strpos($item->model, 'DONATION'))) {
+//        //Get the recurring fee from the db.
+//        $result = db_fetch_object(db_query("SELECT p.pfid, p.model, p.fee_amount, p.initial_charge, p.regular_interval, p.number_intervals, f.nid
+//                          FROM {uc_recurring_product} p
+//                            LEFT JOIN {uc_product_features} f ON p.pfid=f.pfid
+//                          WHERE f.nid = :f.nid and p.model = :p.model", array(':f.nid' => $item->nid, ':p.model' => $item->model)));
+//        if ($result) {
+//          $sustainer_title = t('Sustainership');
+//          //If the varprice isnt set, they selected a sustainership and did *not* add an additional donation
+//          switch ($result->regular_interval) {
+//            case '1 months':
+//              $recurring_amount = uc_currency_format($result->fee_amount) . ' monthly';
+//              break;
+//            case '1 year':
+//              $recurring_amount = uc_currency_format($result->fee_amount) . ' annually';
+//              break;
+//          }
+//          if ($item->data['varprice'] == '0.00') {
+//
+//            $item->title = $recurring_amount . ' ' . $sustainer_title;
+//          }
+//          else {
+//            //varprice is set add the titles together into one line item:
+//            $item->title = $recurring_amount . ' ' . $sustainer_title .  ' with a one time ' . uc_currency_format($item->data['varprice']) . ' donation';
+//          }
+//        }
+//      }
+//      break;
+//  }
+//}
+/**
+ * Implementation of hook_checkout_pane().
+ */
+//function uc_express_checkout_pane() {
+//  $panes[] = array(
+//    'id' => 'uc_express',
+//    'callback' => 'uc_express_product_display',
+//    'title' => t(''),
+//    'desc' => t("Display a product on the customers checkout page for all in one shopping"),
+//    'weight' => 1,
+//    'process' => FALSE,
+//    'collapsible' => FALSE,
+//  );
+//  return $panes;
+//}
+
+/**
+ * Callback for non-existant checkout pane
+ */
+function uc_express_product_display($op, &$arg1, $arg2) {
+
+  switch ($op) {
+    case 'view':
+      // $description = 'Select a product that you really want:';
+      $description = '';
+      // TODO: The description should be set by the settings page
+      // TODO: the contents should be a theme function with a template file.
+      // TODO: allow for menu items to be added to the system.
+
+      // $contents['stuff'] = array( '#value' => '<div class="express"><h2>What cool stuff</h2>');
+
+      $node = uc_product_view(_uc_express_get_product());
+      // get rid of the add to cart link.
+      // unset($node->content['add_to_cart']);
+      unset($node->content['display_price']);
+      unset($node->content['sell_price']);
+      $contents['sustainer_node'] = array('#value' => drupal_render($node->content));
+
+      // TODO: add a submit handler to add the item to the cart.
+      // drupal_add_js(array('ucShowProgressBar' => FALSE), 'setting');
+      // note that you can also return a theme function in this array,
+      // which will get called by the FAPI.
+      // looks like 'next-button' doenst do anything..
+
+      return array(
+        'description' => $description,
+        'contents' => $contents,
+        'next-button' => TRUE,
+      );
+
+    case 'process':
+    case 'review':
+    case 'settings':
+    case 'theme':
+  }
+}
+
+

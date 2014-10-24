@@ -35,7 +35,17 @@ function bitch_migrate_migrate_api() {
       'ModBitchMediaNodeblog' => array(
         'class_name' => 'BitchMigrateBlogMigration',
         'group_name' => 'Modified Bitch Media',
-        'description' => 'Modified Bitch Media Node Migration'
+        'description' => 'Modified Bitch Media Blog Migration'
+      ),
+      'ModBitchMediaNodearticle' => array(
+        'class_name' => 'BitchMigrateArticleMigration',
+        'group_name' => 'Modified Bitch Media',
+        'description' => 'Modified Bitch Media Article Migration'
+      ),
+      'ModBitchMediaNodeissue' => array(
+        'class_name' => 'BitchMigrateIssueMigration',
+        'group_name' => 'Modified Bitch Media',
+        'description' => 'Modified Bitch Media Issue Migration'
       ),
       'ModBitchMediaFile' => array(
         'class_name' => 'BitchMigrateFileMigration',

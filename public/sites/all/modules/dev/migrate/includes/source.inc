@@ -391,9 +391,7 @@ abstract class MigrateSource implements Iterator {
    *  FALSE if the row is to be skipped.
    */
   protected function prepareRow($row) {
-    migrate_instrument_start(get_class($this->activeMigration) . ' prepareRow');
     $return = $this->activeMigration->prepareRow($row);
-    migrate_instrument_stop(get_class($this->activeMigration) . ' prepareRow');
     // We're explicitly skipping this row - keep track in the map table
     if ($return === FALSE) {
       // Make sure we replace any previous messages for this item with any

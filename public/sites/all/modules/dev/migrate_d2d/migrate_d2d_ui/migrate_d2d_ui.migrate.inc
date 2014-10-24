@@ -3,6 +3,7 @@
  * @file
  * Wizard implementation for Drupal-to-Drupal migrations.
  */
+//include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'migrate_ui') . '/migrate_ui.wizard.inc';
 
 /*
  * Implementation of hook_migrate_api().

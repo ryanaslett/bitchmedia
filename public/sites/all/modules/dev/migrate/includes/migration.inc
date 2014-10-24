@@ -666,6 +666,7 @@ abstract class Migration extends MigrationBase {
     return $return;
   }
 
+
   /**
    * Perform an import operation - migrate items from source to destination.
    */
@@ -1169,7 +1170,8 @@ abstract class Migration extends MigrationBase {
    */
   protected function applyMappings() {
     $this->destinationValues = new stdClass;
-    foreach ($this->getFieldMappings() as $mapping) {
+    $fieldMappings = $this->getFieldMappings();
+    foreach ($fieldMappings as $mapping) {
       $destination = $mapping->getDestinationField();
       // Skip mappings with no destination (source fields marked DNM)
       if ($destination) {
@@ -1355,6 +1357,7 @@ abstract class Migration extends MigrationBase {
       }
       // If no destination ID was found, give each source migration a chance to
       // create a stub.
+
       if (!$destids) {
         foreach ($source_migrations as $source_migration) {
           // Is this a self reference?

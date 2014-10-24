@@ -1,0 +1,134 @@
+<?php
+
+/**
+ * @file
+ * Install hooks for uc_upsell.module.
+ */
+
+/**
+ * Ubercart uc_upsell.module schema.
+ */
+function uc_upsell_schema() {
+  $schema['uc_upsell_products'] = array(
+    'fields' => array(
+      'nid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'related_products' => array(
+        'type' => 'text',
+        'not null' => TRUE,
+      ),
+    ),
+    'primary key' => array('nid'),
+  );
+  return $schema;
+}
+
+/**
+ * Implements hook_install().
+ */
+function uc_upsell_install() {
+  $uc_upsell_config_defaults = array(
+    'global' => array(
+      'loose_msg_req' => FALSE,
+      'exclude_purchased' => FALSE,
+      'shuffle' => TRUE,
+      'buy_now' => FALSE,
+      'reciprocal_behavior' => 'many',
+      'types' => array('product'),
+    ),
+    'block' => array(
+      'max' => 5,
+      'enable' => 0,
+      'product' => array(
+        'use_cart' => TRUE,
+        'use_random' => TRUE,
+        'msg_related' => 'Related products:',
+        'msg_mixed' => 'Also available:',
+      ),
+      'node' => array(
+        'req_cart' => FALSE,
+        'source' => 1,
+        'msg_related' => 'Compliment your order with...',
+        'msg_mixed' => 'Must see products:',
+      ),
+    ),
+  );
+  variable_set('uc_upsell_config', $uc_upsell_config_defaults);
+  drupal_set_message(t('Upsell was installed successfully. Remember to edit the !upsell_settings and configure the !upsell_block.',
+    array(
+      '!upsell_settings' => l('Related products settings', 'admin/store/settings/upsell'),
+      '!upsell_block' => l('Upsell block', 'admin/build/block/configure/uc_upsell'),
+      'status'
+    )));
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function uc_upsell_uninstall() {
+  variable_del('uc_upsell_config');
+  db_query("DELETE FROM {cache} WHERE cid = 'uc_upsell_terms'");
+  drupal_set_message(t('Upsell was uninstalled.'));
+}
+
+/**
+ * We don't really need the upid, so let's drop it.
+ */
+function uc_upsell_update_6001() {
+  db_drop_field('uc_upsell_products', 'upid');
+}
+
+/**
+ * Add the nid as primary key.
+ */
+function uc_upsell_update_6002() {
+  db_add_primary_key('uc_upsell_products', array('nid'));
+  return t('Changed UC Upsell primary key.');
+}
+
+/**
+ * Adding a new variable to the default config for reciprocal associations.
+ */
+function uc_upsell_update_6003() {
+  $config = uc_upsell_get_config();
+  $config['global']['reciprocal_behavior'] = 'many';
+  uc_upsell_set_config($config);
+
+  return t('A new configuration for UC Upsell was added.');
+}
+
+/**
+ * Adding a new variable to the default config for buy now default.
+ */
+function uc_upsell_update_6004() {
+  $config = uc_upsell_get_config();
+  $config['global']['buy_now'] = FALSE;
+  uc_upsell_set_config($config);
+
+  return t('A new configuration for UC Upsell was added.');
+}
+
+/**
+ * Adding a new variable to the default config for using the default product image.
+ */
+function uc_upsell_update_6005() {
+  $config = uc_upsell_get_config();
+  $config['block']['use_default'] = FALSE;
+  uc_upsell_set_config($config);
+
+  return t('A new configuration for UC Upsell was added.');
+}
+
+/**
+ * Add the nid as primary key (this was broken in update 6002).
+ */
+function uc_upsell_update_6006() {
+  db_drop_primary_key('uc_upsell_products');
+  db_add_primary_key('uc_upsell_products', array('nid'));
+
+  return t('Changed UC Upsell primary key.');
+}

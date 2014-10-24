@@ -225,3 +225,132 @@ class BitchMigrateBlogMigration extends DrupalNode6Migration {
 //    }
   }
 }
+
+
+/**
+ * Migrate the Articles
+ */
+class BitchMigrateArticleMigration extends DrupalNode6Migration {
+  public function __construct(array $arguments) {
+    // Set the machine name to the thing we put in the database.
+    $this->machineName = 'BitchMediaNodearticle';
+    $arguments['group_name'] = 'BitchMedia';
+    $arguments['source_type'] = 'article';
+    $arguments['destination_type'] = 'article';
+
+    parent::__construct($arguments);
+
+    $this->machineName = 'BitchMediaNodearticle';
+    $this->description = 'Node article Import overrides';
+
+    $this->loadFieldMappings();
+    $this->storedFieldMappingsRetrieved = TRUE;
+
+
+    $this->storedFieldMappings['field_body:format']->callbacks(array($this, 'mapFormat'));
+    $this->storedFieldMappings['field_teaser:format']->callbacks(array($this, 'mapFormat'));
+    $this->storedFieldMappings['field_content_credit:format']->callbacks(array($this, 'mapFormat'));
+
+    $this->machineName = 'ModBitchMediaNodearticle';
+
+    $this->rollbackBatchSize = 500;
+    $this->highwaterField = array(
+      'name' => 'nid',
+      'alias' => 'n',
+      'type' => 'int',
+    );
+
+  }
+
+  /**
+   * Implementation of Migration::prepareRow().
+   *
+   * Here we pull in additional data from a non-core, non-CCK table.
+   *
+   * @param $row
+   */
+  public function prepareRow($row) {
+    if (parent::prepareRow($row) === FALSE) {
+      return FALSE;
+    }
+   //$row->full_name = $row->field_first_name . ' ' . $row->field_last_name;
+
+  }
+  /**
+   * Actions to take after a user account has been saved.
+   *
+   * @param $account
+   * @param $row
+   */
+  public function complete($account, $row) {
+    // If we've migrated a picture, update its ownership
+//    if (!empty($this->destinationValues->field_profile_photo)) {
+//      db_update('file_managed')
+//        ->fields(array('uid' => (int)$account->uid))
+//        ->condition('fid', (int)$account->field_profile_photo['und'][0]['fid'])
+//        ->execute();
+//    }
+  }
+}
+
+/**
+ * Migrate the Articles
+ */
+class BitchMigrateIssueMigration extends DrupalNode6Migration {
+  public function __construct(array $arguments) {
+    // Set the machine name to the thing we put in the database.
+    $this->machineName = 'BitchMediaNodeissue';
+    $arguments['group_name'] = 'BitchMedia';
+    $arguments['source_type'] = 'issue';
+    $arguments['destination_type'] = 'issue';
+
+    parent::__construct($arguments);
+
+    $this->machineName = 'BitchMediaNodeissue';
+    $this->description = 'Node issue Import overrides';
+
+    $this->loadFieldMappings();
+    $this->storedFieldMappingsRetrieved = TRUE;
+
+    $this->machineName = 'ModBitchMediaNodeissue';
+
+    $this->rollbackBatchSize = 500;
+    $this->highwaterField = array(
+      'name' => 'nid',
+      'alias' => 'n',
+      'type' => 'int',
+    );
+
+  }
+
+  /**
+   * Implementation of Migration::prepareRow().
+   *
+   * Here we pull in additional data from a non-core, non-CCK table.
+   *
+   * @param $row
+   */
+  public function prepareRow($row) {
+    if (parent::prepareRow($row) === FALSE) {
+      return FALSE;
+    }
+    $row->field_display_date_year = strstr($row->field_display_date_year, '-',TRUE);
+    //$row->full_name = $row->field_first_name . ' ' . $row->field_last_name;
+
+  }
+  /**
+   * Actions to take after a user account has been saved.
+   *
+   * @param $account
+   * @param $row
+   */
+  public function complete($account, $row) {
+    // If we've migrated a picture, update its ownership
+//    if (!empty($this->destinationValues->field_profile_photo)) {
+//      db_update('file_managed')
+//        ->fields(array('uid' => (int)$account->uid))
+//        ->condition('fid', (int)$account->field_profile_photo['und'][0]['fid'])
+//        ->execute();
+//    }
+  }
+}

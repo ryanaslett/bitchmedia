@@ -1041,9 +1041,9 @@ function migrate_ui_edit_mappings($form, $form_state, $group_name,
 
       // So, if this field is not marked DNM, include it in possible source
       // options in the field mappings.
-      if (!$dnm_value) {
+      //if (!$dnm_value) {
         $field_options[$name] = $short_label;
-      }
+      //}
 
       $form['source_fields'][$name] = array(
         '#type' => 'checkbox',
@@ -1056,9 +1056,14 @@ function migrate_ui_edit_mappings($form, $form_state, $group_name,
       );
     }
 
+    if (isset($field_mappings['is_new'])) {
+      $default_is_new = $field_mappings['is_new']->getDefaultValue();
+    } else {
+      $default_is_new = 0;
+    }
     foreach ($dest_fields as $name => $description) {
-      // Don't map the destination key
-      if (isset($dest_key[$name])) {
+      // Don't map the destination key unless is_new = TRUE
+      if (isset($dest_key[$name]) && $default_is_new == 0) {
         continue;
       }
 
@@ -1126,24 +1131,24 @@ function migrate_ui_edit_mappings($form, $form_state, $group_name,
                       array('!description' => $description, '!field_name' => $name)),
         '#options' => $options,
         '#default_value' => $default_mapping,
-        '#states' => array(
-          'disabled' => array(
-            ':input[name="field_mappings[' . $name . '][issue_group]"]' =>
-              array('checked' => TRUE),
-          ),
-        ),
+//        '#states' => array(
+//          'disabled' => array(
+//            ':input[name="field_mappings[' . $name . '][issue_group]"]' =>
+//              array('checked' => TRUE),
+//          ),
+//        ),
       );
 
       $form['field_mappings'][$name]['default_value'] = array(
         '#type' => 'textfield',
         '#default_value' => $default_value,
         '#size' => 20,
-        '#states' => array(
-          'disabled' => array(
-            ':input[name="field_mappings[' . $name . '][issue_group]"]' =>
-              array('checked' => TRUE),
-          ),
-        ),
+//        '#states' => array(
+//          'disabled' => array(
+//            ':input[name="field_mappings[' . $name . '][issue_group]"]' =>
+//              array('checked' => TRUE),
+//          ),
+//        ),
       );
 
       $source_migration = NULL;
@@ -1157,12 +1162,12 @@ function migrate_ui_edit_mappings($form, $form_state, $group_name,
         '#type' => 'select',
         '#options' => $source_migration_options,
         '#default_value' => $source_migration,
-        '#states' => array(
-          'disabled' => array(
-            ':input[name="field_mappings[' . $name . '][issue_group]"]' =>
-              array('checked' => TRUE),
-          ),
-        ),
+//        '#states' => array(
+//          'disabled' => array(
+//            ':input[name="field_mappings[' . $name . '][issue_group]"]' =>
+//              array('checked' => TRUE),
+//          ),
+//        ),
       );
     }
   }

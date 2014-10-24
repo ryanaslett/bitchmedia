@@ -1140,6 +1140,9 @@ function drush_migrate_import($args = NULL) {
     if ($file_function = drush_get_option('file_function', '')) {
       $options['file_function'] = $file_function;
     }
+    else {
+      $options['file_function'] = "MigrateFileFid";
+    }
     if (drush_get_option('force', FALSE) == 1) {
       $options['force'] = TRUE;
     }
