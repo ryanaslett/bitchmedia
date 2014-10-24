@@ -547,3 +547,13 @@ function multifield_preprocess_field(&$variables, $hook) {
     ));
   }
 }
+
+/*
+ * Implements hook_migrate_api().
+ */
+function multifield_migrate_api() {
+  return array(
+    'api' => 2,
+    'field handlers' => array('MultifieldMigrateFieldHandler'),
+  );
+}

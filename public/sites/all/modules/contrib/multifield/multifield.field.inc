@@ -173,7 +173,7 @@ function _multifield_field_attach_form_validate($entity_type, $entity) {
  */
 function multifield_field_presave($entity_type, $entity, $field, $instance, $langcode, &$items) {
   foreach ($items as $delta => $item) {
-    // If an ID is not yes assigned, add one, unless this hook is invoked
+    // If an ID is not yet assigned, add one, unless this hook is invoked
     // from the default value widget on the field instance (empty $entity).
     if (empty($item['id']) && !empty($entity)) {
       $item['id'] = multifield_get_next_id();
@@ -184,6 +184,12 @@ function multifield_field_presave($entity_type, $entity, $field, $instance, $lan
     // field_attach_presave() is safe to call directly, yay!
     field_attach_presave('multifield', $pseudo_entity);
     $items[$delta] = _multifield_field_entity_to_item($pseudo_entity);
+
+    // Allow other modules to manipulate the items before saving.
+    foreach (module_implements('multifield_field_presave') as $module) {
+      $function = $module . '_multifield_field_presave';
+      $function($entity_type, $entity, $field, $instance, $items);
+    }
   }
 
   // Serialize the multifield values into separate columns for saving into the
@@ -228,7 +234,13 @@ function multifield_field_is_empty($item, $field) {
     if (!empty($item[$field_name])) {
       $subfield = field_info_field($field_name);
       foreach ($item[$field_name] as $langcode => $subfield_items) {
-        $item[$field_name][$langcode] = _field_filter_items($subfield, $subfield_items);
+        $field_filter_items = _field_filter_items($subfield, $subfield_items);
+        if (!empty($field_filter_items)) {
+          $item[$field_name][$langcode] = $field_filter_items;
+        }
+        else {
+          unset($item[$field_name][$langcode]);
+        }
       }
       $item[$field_name] = array_filter($item[$field_name]);
     }
