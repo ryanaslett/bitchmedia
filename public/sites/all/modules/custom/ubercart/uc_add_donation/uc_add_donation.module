@@ -1,0 +1,271 @@
+<?php
+/**
+ * @file
+ * uc_add_donation_module
+ */
+
+define('UC_ADD_DONATION_AMOUNTS_STRING',
+implode("\n", array(0, 5, 10, 25, 50, 100, 500, 1000)));
+
+define('UC_ADD_DONATION_AMOUNTS_HELP', 'Enter the amount of money you would like to donate along with this order.');
+define('UC_ADD_DONATION_AMOUNTS_TITLE', 'Add a Donation');
+define('UC_ADD_DONATIONS_CUSTOM_DONATION', 1);
+
+/**
+ * Implements hook_uc_line_item().
+ */
+function uc_add_donation_uc_line_item() {
+  $items[] = array(
+    'id' => 'uc_add_donation',
+    'title' => t('Donation'),
+    'weight' => 1,
+    'default' => FALSE,
+    'add_list' => FALSE,
+    'stored' => FALSE,
+    'calculated' => TRUE,
+    'display_only' => FALSE,
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_uc_line_item_alter().
+ */
+function uc_add_donation_uc_line_item_alter(&$item, $order) {
+  // Sets the line item donation on the order as a field.
+  if ($item['type'] == 'uc_add_donation') {
+    $order->add_donation_amount = $item['amount'];
+  }
+}
+
+/**
+ * Implements hook_uc_checkout_pane().
+ */
+function uc_add_donation_uc_checkout_pane() {
+  $panes['uc_add_donation'] = array(
+    'callback' => 'uc_add_donation_get_checkout_pane',
+    'title' => variable_get('uc_add_donation_field', UC_ADD_DONATION_AMOUNTS_TITLE),
+    'desc' => t('Allows the user to add a donation on top of their order within the checkout process.'),
+    'weight' => 1,
+  );
+
+  return $panes;
+}
+
+/**
+ * Implements hook_uc_order_pane().
+ */
+function uc_add_donation_uc_order_pane() {
+  $panes['uc_add_donation'] = array(
+    'callback' => 'uc_add_donation_get_order_pane',
+    'title' => t('Donation'),
+    'desc' => t('Allows the user to enter a donation along with their checkout payment.'),
+    'class' => 'pos-left',
+    'weight' => 7,
+    'show' => array('view', 'invoice', 'customer'),
+  );
+
+  return $panes;
+}
+
+/**
+ * Callback for the checkout pane.
+ */
+function uc_add_donation_get_checkout_pane($op, &$order, $form = NULL, &$form_state = NULL) {
+  switch ($op) {
+    case 'view':
+      // Do not show the pane if they have a donation item in their card.
+      $donation = _uc_add_donation_check_for_donations();
+      // If there are no donations, then we can show our donation panel.
+      if (!$donation) {
+        $default = 0;
+        $custom_amount = '';
+        $description = variable_get('uc_add_donation_help', UC_ADD_DONATION_AMOUNTS_HELP);
+
+        // Get the donation amount options to be presented in a radio form.
+        $values = preg_split("/[\n\r]/", variable_get('uc_add_donation_amounts', UC_ADD_DONATION_AMOUNTS_STRING), -1, PREG_SPLIT_NO_EMPTY);
+        if (variable_get('uc_add_donation_custom', UC_ADD_DONATIONS_CUSTOM_DONATION)) {
+          $values['other'] = t('Other');
+        }
+
+        $options = array();
+        // Iterate through each option...
+        foreach ($values as $index => $option) {
+          // If the default has not been set, and if the donation
+          // amount is equal to this option then set the default.
+          if (isset($order->add_donation_amount) && ($order->add_donation_amount == $option)) {
+            $default = $index;
+          }
+
+          $options[$index] = ($index === 'other') ? $option : uc_currency_format($option);
+        }
+
+        $radio_values = array();
+        foreach ($values as $value) {
+          if (is_numeric($value)) {
+            $radio_values[] = $value;
+          }
+        }
+        // Add the form for the donation amount.
+        $contents['uc_add_donation_amount'] = array(
+          '#type' => 'radios',
+          '#title' => variable_get('uc_add_donation_title', UC_ADD_DONATION_AMOUNTS_TITLE),
+          '#options' => $options,
+          '#default_value' => $default,
+          '#disabled' => count($options) == 1 ? TRUE : FALSE,
+          '#required' => TRUE,
+          '#theme' => 'uc_add_donation_select',
+        );
+
+        if (variable_get('uc_add_donation_custom', UC_ADD_DONATIONS_CUSTOM_DONATION)) {
+          // Check to see if we have a custom donation on the order.
+          if ($default == 0 && isset($order->add_donation_amount)) {
+            $default = 'other';
+            $custom_amount = $order->add_donation_amount;
+          }
+          $contents['uc_add_donation_custom'] = array(
+            '#type' => 'textfield',
+            '#size' => 5,
+            '#field_prefix' => variable_get('uc_currency_sign', '$'),
+            '#default_value' => $custom_amount,
+          );
+        }
+
+        // Return the checkout pane view.
+        return array('description' => $description, 'contents' => $contents);
+      }
+      break;
+
+    case 'process':
+      // Add the donation amount to the order object.
+      // Check for the line item in the line item db..
+      // If it already exists on this order object, update it.
+      // This particular piece of code was ripped right from uc_quote.module
+      // The 4 in the uc_order_line_item add is the weight.
+      if (isset($form['panes']['uc_add_donation']['uc_add_donation_amount']['#value'])) {
+        $donation_amount = _uc_add_donation_get_donation_amount($form['panes']['uc_add_donation']['uc_add_donation_amount']['#value'], $form['panes']['uc_add_donation']['uc_add_donation_custom']['#value']);
+      }
+      if ($donation_amount > 0) {
+        $result = db_query("SELECT line_item_id FROM {uc_order_line_items} WHERE order_id = :order_id AND type = :type", array(':order_id' => $order->order_id, ':type' => 'uc_add_donation'));
+        if ($lid = $result->fetchField()) {
+          uc_order_update_line_item($lid, t("Donation"), $donation_amount);
+        }
+        else {
+          uc_order_line_item_add($order->order_id, 'uc_add_donation', t("Donation"), $donation_amount, 4);
+        }
+      }
+      return TRUE;
+
+    case 'settings':
+
+      $form['uc_add_donation_field'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Enter the field name for the donation field.'),
+        '#default_value' => variable_get('uc_add_donation_field', ''),
+      );
+
+      $form['uc_add_donation_title'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Enter the title for the donation field.'),
+        '#default_value' => variable_get('uc_add_donation_title', ''),
+      );
+
+      $form['uc_add_donation_help'] = array(
+        '#type' => 'textarea',
+        '#title' => t('Enter the help text that they will see when they add a donation.'),
+        '#default_value' => variable_get('uc_add_donation_help', ''),
+      );
+
+      // Allow them to change what donations they would like to accept.
+      $form['uc_add_donation_amounts'] = array(
+        '#type' => 'textarea',
+        '#title' => t('Enter the available donation amounts.'),
+        '#default_value' => variable_get('uc_add_donation_amounts', ''),
+      );
+
+      // Allow then to enter in a custom donation.
+      $form['uc_add_donation_custom'] = array(
+        '#title' => t('Allow custom donation amount'),
+        '#description' => t('Allow the user to enter in their custom donation amount.'),
+        '#type' => 'checkbox',
+        '#default_value' => variable_get('uc_add_donation_custom', UC_ADD_DONATIONS_CUSTOM_DONATION),
+      );
+      return $form;
+  }
+}
+
+/**
+ * Callback for the order pane.
+ */
+function uc_add_donation_get_order_pane($op, $order, &$form = NULL, &$form_state = NULL) {
+  switch ($op) {
+    case 'view':
+    case 'customer':
+    case 'invoice':
+      // Add the output of this donation to the order view.
+      // This should check the line_items on the order, not the.
+      if ($order->add_donation_amount > 0) {
+        $output = t('Your Donation: @donation - THANK YOU!', array('@donation' => uc_currency_format($order->add_donation_amount != 'other' ? $order->add_donation_amount : $order->add_donation_custom)));
+        return $output;
+      }
+      break;
+  }
+}
+
+/**
+ * Adding the theme for the donation selection.
+ */
+function theme_uc_add_donation_select($form) {
+  // TODO: Should this theme uc_add_donation_select be declared in hook_theme()?
+
+  // Don't do anything to the form... yet.
+  return drupal_render($form);
+}
+
+/**
+ * This function is here to add the line items into google analytics.
+ *
+ * TODO: hack this into uc_analytics.
+ */
+function uc_add_donation_ucga_add_items($order) {
+  if ($order->add_donation_amount) {
+    $item = array(
+      'order_id' => $order->order_id,
+      'sku' => 'DONATION',
+      'name' => 'Line item Donation',
+      'category' => 'Donations',
+      'price' => uc_currency_format($order->add_donation_amount),
+      'qty' => 1,
+    );
+    return array($item);
+  }
+  else {
+    return array();
+  }
+
+}
+
+/**
+ * Looks at a users cart to determine if they have a donation product.
+ */
+function _uc_add_donation_check_for_donations() {
+  $items = uc_cart_get_contents();
+  // TODO: this really should just check the node type,
+  // and not futz with numeric string pos. wtf.
+  foreach ($items as $item) {
+    if (is_numeric(strpos($item->model, "DONATION"))) {
+      return TRUE;
+    }
+  }
+  return FALSE;
+}
+/**
+ * Returns the donation amount given the Radio control index.
+ */
+function _uc_add_donation_get_donation_amount($index, $custom_amount = NULL) {
+  if ($index == 'other' && $custom_amount) {
+    return $custom_amount;
+  }
+  $options = preg_split("/[\n\r]/", variable_get('uc_add_donation_amounts', UC_ADD_DONATION_AMOUNTS_STRING), -1, PREG_SPLIT_NO_EMPTY);
+  return $options[$index];
+}
