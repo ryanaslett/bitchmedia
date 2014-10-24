@@ -1,0 +1,53 @@
+diff --git a/modules/system/system.module b/modules/system/system.module
+index 2bbcd7f..5793f23 100644
+--- a/modules/system/system.module
++++ b/modules/system/system.module
+@@ -2687,21 +2687,37 @@ function system_find_base_themes($themes, $key, $used_keys = array()) {
+  *   An array of regions in the form $region['name'] = 'description'.
+  */
+ function system_region_list($theme_key, $show = REGIONS_ALL) {
+-  $themes = list_themes();
+-  if (!isset($themes[$theme_key])) {
+-    return array();
+-  }
++  $list = &drupal_static(__FUNCTION__, array());
++  if (!isset($list[$theme_key])) {
++    $list[$theme_key] = array(REGIONS_ALL => array(), REGIONS_VISIBLE => array());
++    $themes = list_themes();
++    if (isset($themes[$theme_key])) {
++      $info = $themes[$theme_key]->info;
++      foreach ($info['regions'] as $name => $label) {
++        $list[$theme_key][REGIONS_ALL][$name] = t($label);
++      }
+ 
+-  $list = array();
+-  $info = $themes[$theme_key]->info;
+-  // If requested, suppress hidden regions. See block_admin_display_form().
+-  foreach ($info['regions'] as $name => $label) {
+-    if ($show == REGIONS_ALL || !isset($info['regions_hidden']) || !in_array($name, $info['regions_hidden'])) {
+-      $list[$name] = t($label);
++      // Also cache a list with hidden regions suppressed.
++      // See block_admin_display_form().
++      $hidden = isset($info['regions_hidden']) ? array_flip($info['regions_hidden']) : array();
++      $list[$theme_key][REGIONS_VISIBLE] = array_diff_key($list[$theme_key][REGIONS_ALL], $hidden);
+     }
+   }
++  return $list[$theme_key][$show];
++}
+ 
+-  return $list;
++/**
++ * Implements hook_modules_enabled().
++ */
++function system_modules_enabled() {
++  drupal_static_reset('system_region_list');
++}
++
++/**
++ * Implements hook_modules_disabled().
++ */
++function system_modules_disabled() {
++  drupal_static_reset('system_region_list');
+ }
+ 
+ /**
