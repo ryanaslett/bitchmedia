@@ -1,0 +1,42 @@
+diff --git a/payment/uc_credit/uc_credit.module b/payment/uc_credit/uc_credit.module
+index a58215d..993ee5e 100644
+--- a/payment/uc_credit/uc_credit.module
++++ b/payment/uc_credit/uc_credit.module
+@@ -255,7 +255,7 @@ function uc_credit_uc_order($op, $order, $arg2) {
+       break;
+ 
+     case 'save':
+-      if (isset($order->payment_method) && $order->payment_method == 'credit' && !empty($order->payment_details)) {
++      if (isset($order->payment_method) && $order->payment_method == 'credit' && !empty($order->payment_details['cc_number'])) {
+         _uc_credit_save_cc_data_to_order($order->payment_details, $order->order_id);
+       }
+       break;
+diff --git a/shipping/uc_quote/uc_quote.module b/shipping/uc_quote/uc_quote.module
+index c8c4325..f9330d0 100644
+--- a/shipping/uc_quote/uc_quote.module
++++ b/shipping/uc_quote/uc_quote.module
+@@ -567,7 +567,7 @@ function uc_checkout_pane_quotes($op, &$order, $form = NULL, &$form_state = NULL
+ 
+       $form_state['uc_ajax']['uc_quote']['panes][quotes][quote_button'] = array(
+         'payment-pane' => 'uc_ajax_replace_checkout_pane',
+-        'quotes-pane' => 'uc_ajax_replace_checkout_pane'
++        'quotes-pane' => 'uc_ajax_replace_checkout_pane',
+       );
+       $form_state['uc_ajax']['uc_quote']['panes][quotes][quotes][quote_option'] = array(
+         'payment-pane' => 'uc_ajax_replace_checkout_pane',
+diff --git a/uc_product/views/uc_product_handler_field_display_price.inc b/uc_product/views/uc_product_handler_field_display_price.inc
+index badebfc..589caaf 100644
+--- a/uc_product/views/uc_product_handler_field_display_price.inc
++++ b/uc_product/views/uc_product_handler_field_display_price.inc
+@@ -27,7 +27,9 @@ class uc_product_handler_field_display_price extends uc_product_handler_field_pr
+   function get_value($values, $field = NULL) {
+     $nid = parent::get_value($values, $field);
+     // !TODO Refactor so that all variants are loaded at once in the pre_render hook.
+-    $node = node_view(node_load($nid), 'teaser');
+-    return $node['display_price']['#value'];
++    if (isset($nid)) {
++      $node = node_view(node_load($nid), 'teaser');
++      return $node['display_price']['#value'];
++    }
+   }
+ }

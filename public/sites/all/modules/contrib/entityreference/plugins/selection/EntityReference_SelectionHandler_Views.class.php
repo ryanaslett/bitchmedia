@@ -17,6 +17,10 @@ class EntityReference_SelectionHandler_Views implements EntityReference_Selectio
     $this->instance = $instance;
   }
 
+  public function createEntity($field, $label) {
+    return FALSE;
+  }
+
   /**
    * Implements EntityReferenceHandler::settingsForm().
    */
@@ -70,6 +74,8 @@ class EntityReference_SelectionHandler_Views implements EntityReference_Selectio
     }
     return $form;
   }
+
+  public static function settingsFormValidate($form, &$form_state) {}
 
   protected function initializeView($match = NULL, $match_operator = 'CONTAINS', $limit = 0, $ids = NULL) {
     $view_name = $this->field['settings']['handler_settings']['view']['view_name'];

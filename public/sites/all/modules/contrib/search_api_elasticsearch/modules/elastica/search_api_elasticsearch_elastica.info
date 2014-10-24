@@ -1,0 +1,16 @@
+name = Search API Elasticsearch (Elastica Client)
+description = "Provides Elastica client for Search API Elasticsearch"
+dependencies[] = search_api_elasticsearch
+core = 7.x
+php = 5.3.3
+package = Search
+files[] = includes/SearchApiElasticsearchElastica.inc
+files[] = tests/functional/search_api_elasticsearch_elastica.test
+
+
+; Information added by drush on 2014-09-07
+version = "7.x-1.0-alpha5"
+core = "7.x"
+project = "search_api_elasticsearch"
+datestamp = "1410113622"
+

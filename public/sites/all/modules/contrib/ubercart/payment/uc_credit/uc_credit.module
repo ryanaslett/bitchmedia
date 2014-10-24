@@ -255,7 +255,7 @@ function uc_credit_uc_order($op, $order, $arg2) {
       break;
 
     case 'save':
-      if (isset($order->payment_method) && $order->payment_method == 'credit' && !empty($order->payment_details)) {
+      if (isset($order->payment_method) && $order->payment_method == 'credit' && !empty($order->payment_details['cc_number'])) {
         _uc_credit_save_cc_data_to_order($order->payment_details, $order->order_id);
       }
       break;

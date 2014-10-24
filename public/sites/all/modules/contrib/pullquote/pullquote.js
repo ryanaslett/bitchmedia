@@ -4,6 +4,7 @@ Drupal.behaviors.pullquote = {
   attach: function(context) {
     $('.pullquote:not(.pullquote-processed)', context).each(function () {
       var $span = $(this).addClass('pullquote-processed');
+      $attribution = $span.data('pullquote-attribution');
       // Decide if we should add a left indicator to the generated quote.
       var $leftClass = '';
       if ($span.hasClass('pullquote-left')) {
@@ -28,6 +29,10 @@ Drupal.behaviors.pullquote = {
         // Apply conditional pullquote container styling.
         $parent.addClass('pullquote-container');
         $text = $span.text();
+        $text = '<span class=pullquote-content>' + $text + '</span>';
+        if ($attribution) {
+          $text += '<br /><span class="attribution">' + $attribution + '</span>';
+        }
         if (pos == 0 && $parent.get(0).tagName == 'BLOCKQUOTE') {
           // Blockquote is a special case. To have valid HTML you can't have
           // inline level elements in the blockquote. They must be block level

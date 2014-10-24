@@ -1,0 +1,9 @@
+name = Email shield
+description = Reroutes emails send from the site to a predefined email. Useful for dev/test sites.
+package = Development
+core = "7.x"
+
+files[] = email_shield.module
+files[] = email_shield.test
+
+

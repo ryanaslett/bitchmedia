@@ -6,6 +6,7 @@ dependencies[] = ctools
 dependencies[] = field
 configure = admin/structure/multifield
 files[] = MultifieldEntityController.php
+files[] = multifield.migrate.inc
 files[] = tests/MultifieldAdministrationTestCase.test
 files[] = tests/MultifieldDevelGenerateTestCase.test
 files[] = tests/MultifieldEntityTranslationTestCase.test

@@ -1,0 +1,162 @@
+<?php
+
+/**
+ * @file
+ * Email Shield module
+ */
+
+define('EMAIL_SHIELD_CATCHALL_ADDRESS', 'email_shield_catchall_address');
+define('EMAIL_SHIELD_WHITELIST', 'email_shield_whitelist');
+define('EMAIL_SHIELD_ENABLE_MESSAGE', 'email_shield_enable_message');
+
+// Regular expression used to split email addresses provided in form.
+// This allows the use of any number of spaces, commas, or semicolons
+// between email addresses.
+define('EMAIL_SPLIT_RE', '/[\s,;]+/');
+
+
+/**
+ * Implements of hook_permission().
+ */
+function email_shield_permission() {
+  return array(
+    'administer Email Shield' => array(
+      'title' => t('Administer Email Shield'),
+      'description' => t('Administer the Email Shield module.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function email_shield_menu() {
+  $items = array();
+
+  $items['admin/config/development/email_shield'] = array(
+    'title'              => 'Email Shield',
+    'description'        => 'Email Shields to a test address.',
+    'page callback'      => 'drupal_get_form',
+    'page arguments'     => array('email_shield_settings'),
+    'access arguments'   => array('administer Email Shield'),
+  );
+
+  return $items;
+}
+
+/**
+ * Settings form.
+ */
+function email_shield_settings() {
+  $form[EMAIL_SHIELD_CATCHALL_ADDRESS] = array(
+    '#type'          => 'textfield',
+    '#title'         => t('Email addresses'),
+    '#default_value' => variable_get(EMAIL_SHIELD_CATCHALL_ADDRESS, ini_get('sendmail_from')),
+    '#description'   => t('All emails not on the whitelist will be routed to this email.'),
+  );
+  $form[EMAIL_SHIELD_WHITELIST] = array(
+    '#type'          => 'textfield',
+    '#title'         => t('Email address whitelist'),
+    '#default_value' => variable_get(EMAIL_SHIELD_WHITELIST, ''),
+    '#description'   => t('Provide a space, comma, or semicolon-delimited list of email addresses to pass through. Every destination email address which is not on this list will be rerouted to the Email Shield'),
+  );
+  $form[EMAIL_SHIELD_ENABLE_MESSAGE] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Show rerouting description in mail body'),
+    '#default_value' => variable_get(EMAIL_SHIELD_ENABLE_MESSAGE, 0),
+    '#description' => t('Check this box if you want a message to be inserted into the email body when the mail is being rerouted. Otherwise, SMTP headers will be used to describe the rerouting. If sending rich-text email, leave this unchecked so that the body of the email will not be disturbed.'),
+  );
+
+  return system_settings_form($form);
+}
+
+/**
+ * Validation callback for email_shield_settings() form.
+ */
+function email_shield_settings_validate($form, $form_state) {
+  // Allow splitting emails by space, comma, semicolon.
+  $addresslist = preg_split(EMAIL_SPLIT_RE, $form_state['values']['email_shield_catchall_address'], -1, PREG_SPLIT_NO_EMPTY);
+  foreach ($addresslist as $address) {
+    if (!valid_email_address($address)) {
+      form_set_error('email_shield_address', t('@address is not a valid email address', array('@address' => $address)));
+    }
+  }
+}
+
+/**
+ * Implements hook_mail_alter().
+ *
+ * Changes the destination of outgoing emails.
+ */
+function email_shield_mail_alter(&$message) {
+  // If the email shield is enabled,
+  if (variable_get('environment', 'development') !== 'production') {
+    global $base_url;
+
+    if (!variable_get(EMAIL_SHIELD_CATCHALL_ADDRESS, '')) {
+      // If email address not in settings, then issue some warnings.
+      drupal_set_message('Email Shield is enabled, but no catchall has been configured.', 'error', FALSE);
+    }
+
+    if (empty($message)) {
+      return;
+    }
+
+    if (!is_array($message)) {
+      return;
+    }
+
+    $mailkey = isset($message['id']) ? $message['id'] : t('<mail id> is missing');
+    $to = isset($message['to']) ? $message['to'] : t('<to> is missing');
+
+    $message['headers']['X-Rerouted-Mail-Key'] = $mailkey;
+    $message['headers']['X-Rerouted-Website'] = $base_url;
+
+    // Suppress Bcc and Cc fields.
+    if (isset($message['headers']) && is_array($message['headers'])) {
+      if (isset($message['headers']['Bcc'])) {
+        $message['headers']['X-Rerouted-Original-Bcc'] = $message['headers']['Bcc'];
+        unset($message['headers']['Bcc']);
+      }
+      if (isset($message['headers']['Cc'])) {
+        $message['headers']['X-Rerouted-Original-Cc'] = $message['headers']['Cc'];
+        unset($message['headers']['Cc']);
+      }
+    }
+
+    // Split the address string on whitespace, ignoring any empty results.
+    $whitelist = preg_split(EMAIL_SPLIT_RE, variable_get(EMAIL_SHIELD_WHITELIST, ''), -1, PREG_SPLIT_NO_EMPTY);
+
+    if (!in_array($to, $whitelist)) {
+      // Not on the list, so reroute to the first address in the list.
+      $message['headers']['X-Rerouted-Original-To'] = $to;
+      $message['to'] = variable_get(EMAIL_SHIELD_CATCHALL_ADDRESS, ini_get('sendmail_from'));
+
+      if (variable_get(EMAIL_SHIELD_ENABLE_MESSAGE, 0)) {
+        // Format a message to show at the bottom.
+        $msg = "-----------------------\n";
+        $msg .= t("This email was rerouted.") . "\n";
+        $msg .= t("Web site: @site", array('@site' => $base_url)) . "\n";
+        $msg .= t("Mail key: @key", array('@key' => $mailkey)) . "\n";
+        $msg .= t("Originally to: @to", array('@to' => $to)) . "\n";
+        if (!empty($message['headers']['X-Rerouted-Original-Cc'])) {
+          $msg .= t("Suppressed CC: @cc", array('@cc' => $message['headers']['X-Rerouted-Original-Cc'])) . "\n";
+        }
+        if (!empty($message['headers']['X-Rerouted-Original-Bcc'])) {
+          $msg .= t("Suppressed BCC: @bcc", array('@bcc' => $message['headers']['X-Rerouted-Original-Bcc'])) . "\n";
+        }
+
+        // Append explanation message to the body of the email. This must be
+        // handled differently depending on whether the body came in as a
+        // string or an array. If it came in as a string (despite the fact it
+        // should be an array) we'll respect that and leave it as a string.
+        if (is_string($message['body'])) {
+          $message['body'] = $message['body'] . $msg;
+        }
+        else {
+          array_push($message['body'], $msg);
+        }
+      }
+    }
+  }
+}

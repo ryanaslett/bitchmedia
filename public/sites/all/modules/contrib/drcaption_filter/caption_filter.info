@@ -1,0 +1,4 @@
+name        = Caption Filter
+description = "Enables CKEditor to use caption filters."
+core        = 7.x
+package     = User interface

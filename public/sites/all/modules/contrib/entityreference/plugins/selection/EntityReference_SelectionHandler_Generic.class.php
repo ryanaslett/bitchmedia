@@ -73,6 +73,13 @@ class EntityReference_SelectionHandler_Generic implements EntityReference_Select
       );
     }
 
+    $form['create'] = array(
+      '#type' => 'checkbox',
+      '#title' => "Create entities if they don't exist.",
+      '#default_value' => !empty($field['settings']['handler_settings']['create']),
+      '#description' => t('You must have only one bundle selected above.'),
+    );
+
     $form['sort']['type'] = array(
       '#type' => 'select',
       '#title' => t('Sort by'),
@@ -152,6 +159,15 @@ class EntityReference_SelectionHandler_Generic implements EntityReference_Select
     return $form;
   }
 
+  public static function settingsFormValidate($form, &$form_state) {
+    if (!empty($form_state['values']['field']['settings']['handler_settings']['create'])) {
+      if (count($form_state['values']['field']['settings']['handler_settings']['target_bundles']) > 1) {
+        $msg = t('Can not create entities if multiple target bundles are selected.');
+        form_set_error('field][settings][handler_settings][create', $msg);
+      }
+    }
+  }
+
   /**
    * Implements EntityReferenceHandler::getReferencableEntities().
    */
@@ -208,35 +224,47 @@ class EntityReference_SelectionHandler_Generic implements EntityReference_Select
    * Implements EntityReferenceHandler::validateAutocompleteInput().
    */
   public function validateAutocompleteInput($input, &$element, &$form_state, $form) {
-      $entities = $this->getReferencableEntities($input, '=', 6);
-      if (empty($entities)) {
-        // Error if there are no entities available for a required field.
-        form_error($element, t('There are no entities matching "%value"', array('%value' => $input)));
-      }
-      elseif (count($entities) > 5) {
-        // Error if there are more than 5 matching entities.
-        form_error($element, t('Many entities are called %value. Specify the one you want by appending the id in parentheses, like "@value (@id)"', array(
-          '%value' => $input,
-          '@value' => $input,
-          '@id' => key($entities),
-        )));
-      }
-      elseif (count($entities) > 1) {
-        // More helpful error if there are only a few matching entities.
-        $multiples = array();
-        foreach ($entities as $id => $name) {
-          $multiples[] = $name . ' (' . $id . ')';
-        }
-        form_error($element, t('Multiple entities match this reference; "%multiple"', array('%multiple' => implode('", "', $multiples))));
+    $entities = array();
+    foreach ($this->getReferencableEntities($input, '=', 6) as $bundle => $bundle_entities) {
+      $entities += $bundle_entities;
+    }
+    $field = field_info_field($element['#field_name']);
+    $handler = entityreference_get_selection_handler($field);
+
+    if (empty($entities)) {
+      if (!empty($handler->field['settings']['handler_settings']['create'])) {
+        // We create the term so no error.
+        return $entities;
       }
       else {
-        // Take the one and only matching entity.
-        return key($entities);
+        // Error if there are no entities available and no entity creation for a required field.
+        form_error($element, t('There are no entities matching "%value"', array('%value' => $input)));
       }
+    }
+    elseif (count($entities) > 5) {
+      // Error if there are more than 5 matching entities.
+      form_error($element, t('Many entities are called %value. Specify the one you want by appending the id in parentheses, like "@value (@id)"', array(
+        '%value' => $input,
+        '@value' => $input,
+        '@id' => key($entities),
+      )));
+    }
+    elseif (count($entities) > 1) {
+      // More helpful error if there are only a few matching entities.
+      $multiples = array();
+      foreach ($entities as $id => $name) {
+        $multiples[] = $name . ' (' . $id . ')';
+      }
+      form_error($element, t('Multiple entities match this reference; "%multiple"', array('%multiple' => implode('", "', $multiples))));
+    }
+    else {
+      // Take the one and only matching entity.
+      return key($entities);
+    }
   }
 
   /**
-   * Build an EntityFieldQuery to get referencable entities.
+   * Build an EntityFieldQuery to get referenceable entities.
    */
   protected function buildEntityFieldQuery($match = NULL, $match_operator = 'CONTAINS') {
     $query = new EntityFieldQuery();
@@ -272,6 +300,23 @@ class EntityReference_SelectionHandler_Generic implements EntityReference_Select
     return $query;
   }
 
+  public function createEntity($field, $label) {
+    $entity_type = $this->field['settings']['target_type'];
+    $entity_info = entity_get_info($entity_type);
+
+    $entity = array();
+    if (isset($info['entity keys']['bundle']) && $key = $info['entity keys']['bundle']) {
+      $entity += array($key => reset($this->field['settings']['handler_settings']['target_bundles']));
+    }
+    if (isset($info['entity keys']['label']) && $key = $info['entity keys']['label']) {
+      $entity += array($key => NULL);
+    }
+    $fn = (!empty($info['creation callback']) ? $info['creation callback'] : 'entity_metadata_create_object');
+    $entity = $fn($entity); // create
+    $fn = (!empty($info['save callback']) ? $info['save callback'] : 'entity_save');
+    return $fn($entity_type, $entity);
+  }
+
   /**
    * Implements EntityReferenceHandler::entityFieldQueryAlter().
    */
@@ -304,7 +349,8 @@ class EntityReference_SelectionHandler_Generic implements EntityReference_Select
    * Implements EntityReferenceHandler::getLabel().
    */
   public function getLabel($entity) {
-    return entity_label($this->field['settings']['target_type'], $entity);
+    $target_type = $this->field['settings']['target_type'];
+    return entity_access('view', $target_type, $entity) ? entity_label($target_type, $entity) : t('- Restricted access -');
   }
 
   /**
@@ -338,9 +384,11 @@ class EntityReference_SelectionHandler_Generic implements EntityReference_Select
     // Join the known base-table.
     $target_type = $this->field['settings']['target_type'];
     $entity_info = entity_get_info($target_type);
+    $target_type_base_table = $entity_info['base table'];
     $id = $entity_info['entity keys']['id'];
+
     // Return the alias of the table.
-    return $query->innerJoin($target_type, NULL, "$target_type.$id = $alias.entity_id");
+    return $query->innerJoin($target_type_base_table, NULL, "%alias.$id = $alias.entity_id");
   }
 }
 
@@ -501,6 +549,23 @@ class EntityReference_SelectionHandler_Generic_file extends EntityReference_Sele
  * This only exists to workaround core bugs.
  */
 class EntityReference_SelectionHandler_Generic_taxonomy_term extends EntityReference_SelectionHandler_Generic {
+  public function createEntity($field, $label) {
+    $bundle = reset($this->field['settings']['handler_settings']['target_bundles']);
+
+    $term = new stdClass();
+    $v = taxonomy_vocabulary_machine_name_load($bundle);
+    if ($v !== FALSE){
+      $term->vid = $v->vid;
+      $term->name = $label;
+      $res = taxonomy_term_save($term);
+
+      if($res == SAVED_NEW || $res == SAVED_UPDATED){
+        return $term->tid;
+      }
+    }
+    return FALSE;
+  }
+
   public function entityFieldQueryAlter(SelectQueryInterface $query) {
     // The Taxonomy module doesn't implement any proper taxonomy term access,
     // and as a consequence doesn't make sure that taxonomy terms cannot be viewed
@@ -540,7 +605,7 @@ class EntityReference_SelectionHandler_Generic_taxonomy_term extends EntityRefer
 
     foreach ($bundles as $bundle) {
       if ($vocabulary = taxonomy_vocabulary_machine_name_load($bundle)) {
-        if ($terms = taxonomy_get_tree($vocabulary->vid, 0)) {
+        if ($terms = taxonomy_get_tree($vocabulary->vid, 0, NULL, TRUE)) {
           foreach ($terms as $term) {
             $options[$vocabulary->machine_name][$term->tid] = str_repeat('-', $term->depth) . check_plain($term->name);
           }

@@ -12,8 +12,8 @@
   background: black;
   color: white;
   float: right;
-  font: italic 120% Helvitic, Arial, sans-serif, Georgia, "Times New Roman", Times, serif;
-  font: italic 120% Georgia, "Times New Roman", Times, serif;
+  font: Georgia, "Times New Roman", Times, serif;
+  font-style: italic;
   font-size:1.4em;
   line-height: 150%;
   margin: 1em 0 0.4em 1em;
@@ -49,4 +49,14 @@
   float: left;
   margin-left: 0;
   margin-right: 1em;
+}
+
+.pullquote-quote .attribution {
+  float: right;
+  padding-right: 15px;
+  padding-top: 15px;
+}
+
+.pullquote-quote .attribution:before {
+  content: "\2014";
 }

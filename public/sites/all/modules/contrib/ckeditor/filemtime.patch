@@ -1,0 +1,14 @@
+diff --git a/includes/ckeditor.lib.inc b/includes/ckeditor.lib.inc
+index a6f3ad5..1ac0c0d 100644
+--- a/includes/ckeditor.lib.inc
++++ b/includes/ckeditor.lib.inc
+@@ -773,7 +773,8 @@ function ckeditor_profile_settings_compile($global_profile, $profile) {
+     $ckeditor_config_path = $host . $themepath . 'ckeditor.config.js?' . @filemtime($themepath . 'ckeditor.config.js');
+   }
+   else {
+-    $ckeditor_config_path = $module_drupal_path . "/ckeditor.config.js?" . @filemtime($module_drupal_path . "/ckeditor.config.js");
++    //$ckeditor_config_path = $module_drupal_path . "/ckeditor.config.js?" . @filemtime($module_drupal_path . "/ckeditor.config.js");
++    $ckeditor_config_path = $module_drupal_path . "/ckeditor.config.js";
+   }
+ 
+   $settings['customConfig'] = $ckeditor_config_path;

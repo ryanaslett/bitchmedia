@@ -61,6 +61,14 @@ parenthetical. To solve this Pullquote provides as alternate syntax:
 which avoids this problem.
 
 
+-- Left floating pullquotes --
+
+Pullquote now supports left floating quotes. To make a left aligned quote add
+an additional "pullquote-left" class
+
+Example: <span class="pullquote pullquote-left">This will appear on the left.</span>
+
+
 -- CONTACT --
 
 Current maintainers:

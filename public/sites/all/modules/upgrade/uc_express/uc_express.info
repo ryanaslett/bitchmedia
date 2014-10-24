@@ -1,0 +1,4 @@
+; $Id$
+name = Uc express checkout
+description = Allows combining one product with the checkout form for express checkout
+core = 7.x

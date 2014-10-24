@@ -1,0 +1,15 @@
+<?php
+/**
+ * @file
+ * Install, update and uninstall functions for the uc_add_donation module.
+ */
+
+/**
+ * Deletes uc_add_donation settings.
+ */
+function uc_add_donation_uninstall() {
+
+  db_delete('variable')
+  ->condition('name', 'uc_add_donation%%', 'LIKE')
+  ->execute();
+}

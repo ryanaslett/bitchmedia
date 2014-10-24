@@ -1,0 +1,58 @@
+<?php
+/**
+ * Implements hook_migrate_api().
+ */
+function bitch_migrate_migrate_api() {
+  $api = array(
+    'api' => 2,
+    'groups' => array(
+      'Modified Bitch Media' => array(
+        'title' => t('Modified Bitch d2d'),
+        'source_version' => 6,
+        'description' => 'Hack around',
+        'source_connection' => 'legacy_d6',
+        'format_mappings' => array(
+          1 => 'brief_wysiwyg',
+          2 => 'raw_html',
+          3 => 'wysywyg_format',
+          4 => 'wysywyg_format',
+          5 => 'raw_html',
+        ),
+      ),
+    ),
+    'migrations' => array(
+      'ModBitchMediaUserPictures' => array(
+        'class_name' => 'BitchProfilePictureMigration',
+        'group_name' => 'Modified Bitch Media',
+        'description' => 'Bitch Media User Picture Migration',
+        'source_dir' => '/Users/Ryan/Documents/Work/Current/Bitch/bitchdrupal/uc_bitch/sites/default/files',
+      ),
+      'ModBitchMediaUser' => array(
+        'class_name' => 'BitchMigrateUserMigration',
+        'group_name' => 'Modified Bitch Media',
+        'description' => 'Modified Bitch Media User Migration'
+      ),
+      'ModBitchMediaNodeblog' => array(
+        'class_name' => 'BitchMigrateBlogMigration',
+        'group_name' => 'Modified Bitch Media',
+        'description' => 'Modified Bitch Media Blog Migration'
+      ),
+      'ModBitchMediaNodearticle' => array(
+        'class_name' => 'BitchMigrateArticleMigration',
+        'group_name' => 'Modified Bitch Media',
+        'description' => 'Modified Bitch Media Article Migration'
+      ),
+      'ModBitchMediaNodeissue' => array(
+        'class_name' => 'BitchMigrateIssueMigration',
+        'group_name' => 'Modified Bitch Media',
+        'description' => 'Modified Bitch Media Issue Migration'
+      ),
+      'ModBitchMediaFile' => array(
+        'class_name' => 'BitchMigrateFileMigration',
+        'group_name' => 'Modified Bitch Media',
+        'description' => 'Modified Bitch Media File Migration'
+      ),
+    ),
+  );
+  return $api;
+}

@@ -1,0 +1,92 @@
+diff --git a/field_default_token.module b/field_default_token.module
+index 90574af..5c326b6 100644
+--- a/field_default_token.module
++++ b/field_default_token.module
+@@ -9,26 +9,13 @@
+  * Implements hook_field_update_instance().
+  */
+ function field_default_token_field_update_instance($instance, $prior_instance) {
++
++  // Checks to see whether or not the instance *should* have the default value
++  // function set to use the one from field_default_token.
+   $has_tokens = FALSE;
+-  if (!empty($instance['default_value'])) {
+-    foreach ($instance['default_value'] as $values) {
+-      foreach ($values as $value) {
+-        if (!is_array($value)) {
+-          if (strpos($value, '[') !== FALSE) {
+-            $has_tokens = TRUE;
+-          }
+-        }
+-        else {
+-          foreach ($value as $column_value) {
+-            if (strpos($column_value, '[') !== FALSE) {
+-              $has_tokens = TRUE;
+-            }
+-          }
+-        }
+-      }
+-    }
++  if(isset($instance['default_value'])){
++    $has_tokens = field_default_token_has_tokens($instance['default_value']);
+   }
+-
+   $update = FALSE;
+ 
+   if (empty($instance['default_value_function'])) {
+@@ -53,6 +40,23 @@ function field_default_token_field_update_instance($instance, $prior_instance) {
+ }
+ 
+ /**
++ * Function to determine if the instance default values are set to a token.
++ */
++function field_default_token_has_tokens($stack) {
++  foreach ($stack as $key => $value) {
++    if (!is_array($value)){
++      $tokens = token_scan($value);
++    }
++    if ((($key === 'value') && (!empty($tokens))) || (is_array($value) && field_default_token_has_tokens($value))) {
++      return true;
++    }
++  }
++  return false;
++}
++
++
++
++/**
+  * Function for token replacement of default values.
+  */
+ function field_default_token_default_value_function($entity_type, $entity, $field, $instance, $langcode) {
+@@ -76,19 +80,23 @@ function field_default_token_default_value_function($entity_type, $entity, $fiel
+         $item = array_search($item, $field['settings']['allowed_values']);
+       }
+     }
+-    else {
+-      foreach ($item as $column_name => $column_value) {
+-        $item[$column_name] = token_replace($column_value, $data, array('clear' => TRUE));
+-        if ($token_is_label) {
+-          $item[$column_name] = array_search($item[$column_name], $field['settings']['allowed_values']);
+-        }
+-      }
+-    }
+   }
++  array_walk_recursive($instance['default_value'], 'field_default_token_replace_defaults', $data);
+   return $items;
+ }
+ 
+ /**
++ * Function callback for array_walk_recursive.
++ * Performs a token replace on defined defaults.
++ */
++function field_default_token_replace_defaults(&$value, $key, $data) {
++  $tokens = token_scan($value);
++  if (($key == 'value') && (!empty($tokens))) {
++    $value = token_replace($value, $data, array('clear' => TRUE));
++  }
++}
++
++/**
+  * Implements hook_form_FORM_ID_alter().
+  */
+ function field_default_token_form_field_ui_field_edit_form_alter(&$form, &$form_state, $form_id) {

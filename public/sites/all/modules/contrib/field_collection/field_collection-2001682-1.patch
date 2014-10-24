@@ -1,0 +1,24 @@
+diff --git a/field_collection.module b/field_collection.module
+index 645093a..7ddb5a0 100644
+--- a/field_collection.module
++++ b/field_collection.module
+@@ -1395,8 +1395,8 @@ function field_collection_field_widget_form(&$form, &$form_state, $field, $insta
+       }
+ 
+       field_form_set_state($field_parents, $field_name, $language, $form_state, $field_state);
+-      field_attach_form('field_collection_item', $field_collection_item, $element, $form_state, $language);
+-
++      $field_collection_element =  $element;
++      field_attach_form('field_collection_item', $field_collection_item, $field_collection_element, $form_state, $language);
+       if (empty($element['#required'])) {
+         $element['#after_build'][] = 'field_collection_field_widget_embed_delay_required_validation';
+       }
+@@ -1419,7 +1419,7 @@ function field_collection_field_widget_form(&$form, &$form_state, $field, $insta
+       }
+ 
+       $recursion--;
+-      return $element;
++      return $element + $field_collection_element;
+   }
+ }
+ 

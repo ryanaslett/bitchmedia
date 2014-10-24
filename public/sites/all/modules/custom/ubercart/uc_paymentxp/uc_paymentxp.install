@@ -1,0 +1,131 @@
+<?php
+//$Id$
+
+/**
+ * @file
+ * Installs the table used to store account data until payments are processed.
+ */
+
+
+/**
+ * Implements hook_schema().
+ */
+function uc_paymentxp_schema() {
+  $schema = array();
+
+  $schema['uc_payment_paymentxp_ach'] = array(
+    'fields' => array(
+      'paymentxp_ach_id' => array(
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'order_id' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'paymentxp_bank_name' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'paymentxp_bank_aba_code' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'paymentxp_bank_acct_num' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'paymentxp_bank_acct_num_last4' => array(
+        'type' => 'varchar',
+        'length' => 4,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'paymentxp_bank_acct_name' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'paymentxp_bank_acct_type' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+    ),
+    'indexes' => array(
+      'order_id' => array('order_id'),
+    ),
+    'primary key' => array('paymentxp_ach_id'),
+  );
+  $schema['uc_payment_paymentxp_profiles'] = array(
+    'description' => 'Stores payment profiles in paymentxp Vault',
+    'fields' => array(
+      'pay_id' => array(
+        'description' => 'Autoincrement ID for uid/payment type combo',
+        'type' => 'serial',
+        'not null' => TRUE,
+      ),
+      'uid' => array(
+        'description' => 'uid of profile in the vault. This may be a text_id to handle testing mode',
+        'type' => 'varchar',
+        'length' => '40',
+        'not null' => TRUE,
+      ),
+      'payment_type' => array(
+        'description' => 'payment type ach/credit',
+        'type' => 'varchar',
+        'length' => '40',
+        'not null' => TRUE,
+      ),
+      'cc_expires' => array(
+        'type' => 'varchar',
+        'description' => 'Allows us to tell customers their CCs are going to expire',
+        'length' => '4',
+        'not null' => FALSE,
+      ),
+    ),
+    'primary key' => array('pay_id'),
+    'indexes' => array(
+      'uid' => array('uid', 'payment_type'),
+    ),
+  );
+
+
+  return $schema;
+}
+
+
+
+/**
+ * Implements hook_install().
+ */
+function uc_paymentxp_install() {
+  // TODO The drupal_(un)install_schema functions are called automatically in D7.
+  // drupal_install_schema('uc_paymentxp')
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function uc_paymentxp_uninstall() {
+  // TODO The drupal_(un)install_schema functions are called automatically in D7.
+  // drupal_uninstall_schema('uc_paymentxp')
+
+  // TODO Please review the conversion of this statement to the D7 database API syntax.
+  /* db_query("DELETE FROM {variable} WHERE name LIKE 'uc_paymentxp_%%'") */
+  db_delete('variable')
+  ->condition('name', 'uc_paymentxp_%%', 'LIKE')
+  ->execute();
+}
+

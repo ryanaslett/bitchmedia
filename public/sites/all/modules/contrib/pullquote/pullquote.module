@@ -95,10 +95,8 @@ function pullquote_node_view($node, $view_mode, $langcode) {
     if (!$css_file) {
       $css_file = $path . '/css/pullquote_style_1.css';
     }
-    $node->content['#attached'] = array(
-      'css' => array($css_file),
-      'js' => array($path . '/pullquote.js'),
-    );
+    $node->content['#attached']['css'][] = $css_file;
+    $node->content['#attached']['js'][] = $path . '/pullquote.js';
   }
 }
 
@@ -142,7 +140,7 @@ function pullquote_node_enabled($node, $view_mode) {
     else {
       $types = variable_get('pullquote_content_types', array());
       // Fail if we care about checking by types and this node doesn't match.
-      if (!$types[$node->type]) {
+      if (empty($types[$node->type]) || !$types[$node->type]) {
         return FALSE;
       }
       if (!$load_by_view_mode) {

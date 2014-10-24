@@ -773,7 +773,8 @@ function ckeditor_profile_settings_compile($global_profile, $profile) {
     $ckeditor_config_path = $host . $themepath . 'ckeditor.config.js?' . @filemtime($themepath . 'ckeditor.config.js');
   }
   else {
-    $ckeditor_config_path = $module_drupal_path . "/ckeditor.config.js?" . @filemtime($module_drupal_path . "/ckeditor.config.js");
+    //$ckeditor_config_path = $module_drupal_path . "/ckeditor.config.js?" . @filemtime($module_drupal_path . "/ckeditor.config.js");
+    $ckeditor_config_path = $module_drupal_path . "/ckeditor.config.js";
   }
 
   $settings['customConfig'] = $ckeditor_config_path;

@@ -21,11 +21,4 @@ files[] = views/entityreference_plugin_row_fields.inc
 files[] = tests/entityreference.handlers.test
 files[] = tests/entityreference.taxonomy.test
 files[] = tests/entityreference.admin.test
-
-
-; Information added by drush on 2013-09-10
-version = "7.x-1.0"
-core = "7.x"
-project = "entityreference"
-datestamp = "1378850381"
-
+files[] = tests/entityreference.feeds.test

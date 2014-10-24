@@ -14,6 +14,16 @@ function zurb_foundation_form_system_theme_settings_alter(&$form, &$form_state) 
       '#weight' => -10,
     );
 
+    $jquery_version = variable_get('jquery_update_jquery_version', '1.5');
+
+    if (!module_exists('jquery_update') || !version_compare($jquery_version, '1.7', '>=')) {
+      drupal_set_message(t('!module was not found, or your version of jQuery does not meet the minimum version requirement. Zurb Foundation requires jQuery 1.7 or higher. Please install !module, or Zurb Foundation plugins may not work correctly.',
+        array(
+          '!module' => l('jQuery Update', 'https://drupal.org/project/jquery_update', array('external' => TRUE, 'attributes' => array('target' => '_blank'))),
+        )
+      ), 'warning', FALSE);
+    }
+
     /*
      * General Settings.
      */

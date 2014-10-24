@@ -132,8 +132,8 @@ function pullquote_admin_styles_form() {
   $form['pullquote_example'] = array(
     '#type' => 'markup',
     '#prefix' => '<span class="pullquote-processed pullquote-quote">',
-    '#suffix' => '</span>',
-    '#markup' => 'If we can but prevent the government from wasting the labours of the people, under the pretence of taking care of them, they must become happy.<br />-Thomas Jefferson',
+    '#suffix' => '<br /><span class="attribution">Thomas Jefferson</span></span>',
+    '#markup' => '<span class="pullquote-content">If we can but prevent the government from wasting the labours of the people, under the pretence of taking care of them, they must become happy.</span>',
   );
 
   // We only allow file upload as an option if Ctools is available because it

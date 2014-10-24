@@ -22,11 +22,11 @@
 }
 
 /* inserts quotation marks around pullquoted text */
-.pullquote-quote:before {
+.pullquote-quote .pullquote-content:before {
   content: open-quote;
 }
 
-.pullquote-quote:after {
+.pullquote-quote .pullquote-content:after {
   content: close-quote;
 }
 
@@ -34,4 +34,11 @@
   float: left;
   margin 0;
   margin: 1em 1em 0.4em 0em;
+}
+
+.pullquote-quote .attribution {
+  font-style: normal;
+  font-weight: bold;
+  float: right;
+  padding-top: 15px;
 }
