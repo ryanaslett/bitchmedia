@@ -213,7 +213,6 @@ function bitch_base_field_update_instance($instance, $prior_instance) {
 //  }
 }
 function bitch_base_social_media_link_defaults($entity_type, $entity, $field, $instance, $langcode){
-
 }
 
 function bitch_base_multifield_field_presave($entity_type, $entity, $field, $instance, &$items){
@@ -236,7 +235,7 @@ function bitch_base_multifield_field_presave($entity_type, $entity, $field, $ins
       }
     }
     // If the label is still not set, set it to the URL.
-    if (empty($items[0]['field_link_label'][LANGUAGE_NONE][0]['value'])) {
+    if (empty($items[0]['field_link_label'][LANGUAGE_NONE][0]['value']) && !empty($items[0]['field_link_url'][LANGUAGE_NONE][0]['value'])) {
       $items[0]['field_link_label'][LANGUAGE_NONE][0]['value'] = $items[0]['field_link_url'][LANGUAGE_NONE][0]['value'];
     }
   }
@@ -269,4 +268,36 @@ function bitch_base_entity_presave($entity, $type) {
  }
 
 
+}
+
+/**
+ * Implements hook_field_extra_fields().
+ */
+function bitch_base_field_extra_fields() {
+  $return = array();
+
+  $entity_type = 'node';
+  $entity_info = entity_get_info($entity_type);
+  foreach (array_keys($entity_info['bundles']) as $bundle) {
+    $return[$entity_type][$bundle]['display']['node_formatted_create_date'] = array(
+      'label' => t('Node Create Date'),
+      'description' => t('Date Published'),
+      'weight' => 5,
+    );
+  }
+
+  return $return;
+}
+
+/**
+ * Implements hook_node_view().
+ */
+function bitch_base_node_view($node, $view_mode, $langcode) {
+  $node->content['node_formatted_create_date'] = array(
+    '#type' => 'item',
+    '#field_name' => 'node_formatted_create_date',
+    '#label' => t('Date:'),
+    '#markup' => format_date($node->created, 'custom', 'l, F j, Y'),
+    '#label_display' => 'inline',
+  );
 }
