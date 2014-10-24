@@ -5,3 +5,4 @@ robots.txt
 node_modules
 .bin
 bower_components
+npm-debug.log

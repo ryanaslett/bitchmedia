@@ -7,16 +7,20 @@ module.exports = function(grunt) {
     theme_name: theme_name,
     theme_css: 'css',
     theme_scss: 'scss'
-  }
+  };
 
   grunt.initConfig({
     global_vars: global_vars,
     pkg: grunt.file.readJSON('package.json'),
 
     sass: {
+      options: {
+        sourceMap: true
+      },
       dist: {
         options: {
-          outputStyle: 'compressed',
+          outputStyle: 'nested',
+
           includePaths: ['<%= global_vars.theme_scss %>', require('node-bourbon').includePaths]
         },
         files: {
@@ -46,7 +50,7 @@ module.exports = function(grunt) {
         files: '<%= global_vars.theme_scss %>/**/*.scss',
         tasks: ['sass'],
         options: {
-          livereload: true
+          sourceMap: true,
         }
       }
     }
@@ -58,4 +62,4 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', ['sass', 'copy']);
   grunt.registerTask('default', ['build', 'watch']);
-}
+};

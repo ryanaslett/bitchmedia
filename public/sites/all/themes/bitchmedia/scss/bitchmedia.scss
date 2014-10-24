@@ -44,19 +44,19 @@
 
 // Import our mixins early so they can be used by other partials.
 // Optional.
-//@import "base/mixins";
+@import "base/mixins";
 
 // Common file is where you place common utility classes to extend or
 // parametrics.
 // Optional.
-// @import "base/common";
+@import "base/common";
 
 // Fix for some Drupal CSS quirks (Drupalisms).
 @import "base/drupal";
 
 // Styling for elements.
 // Optional.
-// @import "base/elements";
+@import "base/elements";
 
 // Layout
 // Each section of the document has it's own partial seperated out to improve
@@ -67,14 +67,14 @@
 @import "layout/footer";
 
 // Modules
-// @import "modules/block";
-// @import "modules/button";
+@import "modules/block";
+@import "modules/button";
 
 // States
-// @import "states/collapse";
+@import "states/collapse";
 
 // Themes
-// @import "theme/button-light";
+//@import "theme/button-light";
 
 // Older IE support
 // @import "vendor/ie";

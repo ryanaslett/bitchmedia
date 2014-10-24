@@ -9,7 +9,7 @@
       <?php if ($top_bar_classes): ?>
         <div class="<?php print $top_bar_classes; ?>">
       <?php endif; ?>
-      <nav class="top-bar"<?php print $top_bar_options; ?>>
+      <nav class="top-bar" data-topbar <?php print $top_bar_options; ?>>
         <ul class="title-area">
           <li class="name"><h1><?php print $linked_site_name; ?></h1></li>
           <li class="toggle-topbar menu-icon"><a href="#"><span><?php print $top_bar_menu_text; ?></span></a></li>
@@ -33,11 +33,7 @@
     <?php if ($alt_header): ?>
       <section class="row <?php print $alt_header_classes; ?>">
 
-        <?php if ($logo): ?>
-          <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
-            <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
-          </a>
-        <?php endif; ?>
+        <?php if ($linked_logo): print $linked_logo; endif; ?>
 
         <?php if ($site_name): ?>
           <?php if ($title): ?>

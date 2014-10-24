@@ -1,8 +1,12 @@
 // Drupal comes with CSS quirks (Drupalisms). Unravel or override them here.
 
 // Make the "sticky" Top Bar play nice with the "fixed" Admin Menu.
-.admin-menu .fixed {
-  top: emCalc(29px);
+#admin-menu .fixed {
+  top: emCalc(60px);
+}
+
+body.admin_menu  {
+  margin-top: 50px !important;
 }
 
 // Remove the bottom padding on status messages when displayed inside a Zurb
