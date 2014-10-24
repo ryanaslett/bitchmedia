@@ -381,19 +381,19 @@ function masquerade_user_view($account, $view_mode, $langcode) {
     'masquerade as user';
 
   global $user;
-
-  if (user_access($perm) && empty($account->masquerading) && $user->uid != $account->uid) {
-    $account->content['masquerade'] = array(
-      '#markup' => l(t('Masquerade as !user', array('!user' => $account->name)),
-        'masquerade/switch/' . $account->uid,
-        array('query' => array(
-          'token' => drupal_get_token('masquerade/switch/' . $account->uid)),
-          'destination' => $_GET['q'],
-          'attributes' => array('class' => 'masquerade-switch'),
-        )),
-      '#weight' => 10,
-    );
-  }
+    // Every rendered entity? hell no.
+//  if (user_access($perm) && empty($account->masquerading) && $user->uid != $account->uid) {
+//    $account->content['masquerade'] = array(
+//      '#markup' => l(t('Masquerade as !user', array('!user' => $account->name)),
+//        'masquerade/switch/' . $account->uid,
+//        array('query' => array(
+//          'token' => drupal_get_token('masquerade/switch/' . $account->uid)),
+//          'destination' => $_GET['q'],
+//          'attributes' => array('class' => 'masquerade-switch'),
+//        )),
+//      '#weight' => 10,
+//    );
+//  }
 }
 
 /**

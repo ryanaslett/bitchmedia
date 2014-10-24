@@ -80,6 +80,7 @@ function better_formats_element_info_alter(&$type) {
  * @see filter_process_format()
  */
 function better_formats_filter_process_format($element) {
+  global $user;
   // Before we make any modifications to the element, record whether or not
   // filter_process_format() has determined that (for security reasons) the
   // user is not allowed to make any changes to this field. (This will happen
@@ -95,13 +96,13 @@ function better_formats_filter_process_format($element) {
   }
   $show_tips       = user_access('show format tips');
   $show_tips_link  = user_access('show more format tips link');
-  if (!$show_selection) {
+  if (!$show_selection || $user->uid == 1) {
     $element['format']['format']['#access'] = FALSE;
   }
-  if (!$show_tips) {
+  if (!$show_tips || $user->uid == 1) {
     $element['format']['guidelines']['#access'] = FALSE;
   }
-  if (!$show_tips_link) {
+  if (!$show_tips_link || $user->uid == 1) {
     $element['format']['help']['#access'] = FALSE;
   }
 

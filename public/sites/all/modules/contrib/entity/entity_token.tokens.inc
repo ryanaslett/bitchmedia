@@ -55,6 +55,9 @@ function entity_token_types_chained($type = NULL) {
 
 /**
  * Gets the right token type for a given property info array.
+ * The "right token type" exists solely because for some fucked up
+ * reason there is a mismatch between the machine names and token names
+ * This whole function exists to unfuck that stupidity. (convert taxonomy_term -> term)
  */
 function _entity_token_map_to_token_type($property_info) {
   $lookup = &drupal_static(__FUNCTION__);
@@ -88,9 +91,11 @@ function entity_token_token_info_alter(&$info) {
   foreach ($token_types as $token_type => $type) {
     // Just add all properties regardless whether it's in a bundle, but only if
     // there is no token of the property yet.
-    foreach (entity_get_all_property_info($type) as $name => $property) {
+    $entity_get_all_property_info = entity_get_all_property_info($type);
+    foreach ($entity_get_all_property_info as $name => $property) {
       $name = str_replace('_', '-', $name);
       $property += array('type' => 'text', 'description' => $property['label']);
+      // Should this token type be 'text, struct or $property
       $property_token_type = _entity_token_map_to_token_type($property);
 
       if (!isset($info['tokens'][$token_type][$name]) && $property_token_type) {

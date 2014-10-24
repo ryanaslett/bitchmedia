@@ -513,6 +513,9 @@ function _entityreference_element_validate_filter(&$element, &$form_state) {
 function _entityreference_field_settings_validate($form, &$form_state) {
   // Store the new values in the form state.
   $field = $form['#field'];
+
+  $handler = entityreference_get_selection_handler($field);
+  $handler->settingsFormValidate($form, $form_state);
   if (isset($form_state['values']['field'])) {
     $field['settings'] = $form_state['values']['field']['settings'];
   }
@@ -762,6 +765,7 @@ function entityreference_field_widget_settings_form($field, $instance) {
  * Implements hook_options_list().
  */
 function entityreference_options_list($field, $instance = NULL, $entity_type = NULL, $entity = NULL) {
+  //return array();
   if (!$options = entityreference_get_selection_handler($field, $instance, $entity_type, $entity)->getReferencableEntities()) {
     return array();
   }
@@ -890,8 +894,6 @@ function _entityreference_autocomplete_validate($element, &$form_state, $form) {
     else {
       // Try to get a match from the input string when the user didn't use the
       // autocomplete but filled in a value manually.
-      $field = field_info_field($element['#field_name']);
-      $handler = entityreference_get_selection_handler($field);
       $field_name = $element['#field_name'];
       $field = field_info_field($field_name);
       $instance = field_info_instance($element['#entity_type'], $field_name, $element['#bundle']);
@@ -912,22 +914,29 @@ function _entityreference_autocomplete_tags_validate($element, &$form_state, $fo
     foreach ($entities as $entity) {
       // Take "label (entity id)', match the id from parenthesis.
       if (preg_match("/.+\((\d+)\)/", $entity, $matches)) {
-        $value[] = array(
-          'target_id' => $matches[1],
-        );
+        $value[] = array('target_id' => $matches[1]);
       }
       else {
         // Try to get a match from the input string when the user didn't use the
         // autocomplete but filled in a value manually.
         $field = field_info_field($element['#field_name']);
         $handler = entityreference_get_selection_handler($field);
-        $value[] = array(
-          'target_id' => $handler->validateAutocompleteInput($entity, $element, $form_state, $form),
-        );
+        $target_id = $handler->validateAutocompleteInput($entity, $element, $form_state, $form);
+
+        // Do we create?
+        if (empty($target_id) && !empty($handler->field['settings']['handler_settings']['create'])) {
+          if (!($target_id = $handler->createEntity($field, $entity))) {
+            form_error($element, t('Unable to create referenced entity.'));
+          }
+        }
+
+        if ($target_id) {
+          $value[] = array('target_id' => $target_id);
+        }
       }
     }
   }
-  // Update the value of this element so the field can validate the product IDs.
+  // Update the value of this element so the field can validate the entity IDs.
   form_set_value($element, $value, $form_state);
 }
 
@@ -1051,7 +1060,7 @@ function entityreference_autocomplete_callback_get_matches($type, $field, $insta
     // Get an array of matching entities.
     $entity_labels = $handler->getReferencableEntities($tag_last, $instance['widget']['settings']['match_operator'], 10);
 
-    // Loop through the products and convert them into autocomplete output.
+    // Loop through the entities and convert them into autocomplete output.
     foreach ($entity_labels as $values) {
       foreach ($values as $entity_id => $label) {
         $key = "$label ($entity_id)";

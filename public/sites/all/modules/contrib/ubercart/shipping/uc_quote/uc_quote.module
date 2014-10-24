@@ -567,7 +567,7 @@ function uc_checkout_pane_quotes($op, &$order, $form = NULL, &$form_state = NULL
 
       $form_state['uc_ajax']['uc_quote']['panes][quotes][quote_button'] = array(
         'payment-pane' => 'uc_ajax_replace_checkout_pane',
-        'quotes-pane' => 'uc_ajax_replace_checkout_pane'
+        'quotes-pane' => 'uc_ajax_replace_checkout_pane',
       );
       $form_state['uc_ajax']['uc_quote']['panes][quotes][quotes][quote_option'] = array(
         'payment-pane' => 'uc_ajax_replace_checkout_pane',

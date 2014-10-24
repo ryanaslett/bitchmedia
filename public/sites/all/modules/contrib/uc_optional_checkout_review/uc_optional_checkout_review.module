@@ -48,6 +48,12 @@ function uc_optional_checkout_review_uc_cart_checkout_form_submit($form, &$form_
     else {
       $form_state['values']['op'] = t('Submit order');
       $form_state['uc_order'] = $order;
+
+      // c.f. http://drupal.org/node/1519042
+      if (module_exists('uc_credit') && isset($_SESSION['sescrd'])) {
+        $_POST['sescrd'] = base64_encode($_SESSION['sescrd']);
+      }
+
       drupal_form_submit('uc_cart_checkout_review_form', $form_state);
       $form_state['programmed'] = FALSE;
     }

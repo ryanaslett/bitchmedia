@@ -164,13 +164,14 @@ function token_theme() {
     ),
     'file' => 'token.pages.inc',
   );
+  // TODO: change the recursion limit somewhere else.
   $info['token_tree'] = array(
     'variables' => array(
       'token_types' => array(),
       'global_types' => TRUE,
       'click_insert' => TRUE,
       'show_restricted' => FALSE,
-      'recursion_limit' => 3,
+      'recursion_limit' => 5,
       'dialog' => FALSE,
     ),
     'file' => 'token.pages.inc',
@@ -412,12 +413,18 @@ function token_get_entity_mapping($value_type = 'token', $value = NULL, $fallbac
  */
 function token_entity_info_alter(&$info) {
   foreach (array_keys($info) as $entity_type) {
-    // Add a token view mode if it does not already exist.
-    if (!empty($info[$entity_type]['view modes']) && !isset($info[$entity_type]['view modes']['token'])) {
-      $info[$entity_type]['view modes']['token'] = array(
-        'label' => t('Tokens'),
-        'custom settings' => FALSE,
-      );
+    // Add a token view mode if it does not already exist. Only work with
+    // fieldable entities.
+    if (!empty($info[$entity_type]['fieldable'])) {
+      if (!isset($info[$entity_type])) {
+        $info[$entity_type]['view modes'] = array();
+      }
+      if (!isset($info[$entity_type]['view modes']['token'])) {
+        $info[$entity_type]['view modes']['token'] = array(
+          'label' => t('Tokens'),
+          'custom settings' => FALSE,
+        );
+      }
     }
 
     if (!empty($info[$entity_type]['token type'])) {
@@ -954,26 +961,28 @@ function token_flatten_tree($tree) {
 /**
  * Generate a token tree.
  */
-function _token_build_tree($token_type, array $options) {
-  $options += array(
+function _token_build_tree($CURRENT_token_type, array $CURRENT_token_options) {
+  $CURRENT_token_options += array(
     'parents' => array(),
   );
 
-  $info = token_get_info();
-  if ($options['depth'] <= 0 || !isset($info['types'][$token_type]) || !isset($info['tokens'][$token_type])) {
+  $GLOBAL_TOKEN_info = token_get_info();
+  if ($CURRENT_token_options['depth'] <= 0 || !isset($GLOBAL_TOKEN_info['types'][$CURRENT_token_type]) || !isset($GLOBAL_TOKEN_info['tokens'][$CURRENT_token_type])) {
     return array();
   }
 
   $tree = array();
-  foreach ($info['tokens'][$token_type] as $token => $token_info) {
+  // Loop through every possible child token for this parent type. Doesnt matter what the content type is.
+  $CURRENT_child_tokens = $GLOBAL_TOKEN_info['tokens'][$CURRENT_token_type];
+  foreach ($CURRENT_child_tokens as $CHILD_token => $CHILD_token_metadata) {
     // Build the raw token string.
-    $token_parents = $options['parents'];
-    if (empty($token_parents)) {
+    $CURRENT_token_parents = $CURRENT_token_options['parents'];
+    if (empty($CURRENT_token_parents)) {
       // If the parents array is currently empty, assume the token type is its
       // parent.
-      $token_parents[] = $token_type;
+      $CURRENT_token_parents[] = $CURRENT_token_type;
     }
-    elseif (in_array($token, array_slice($token_parents, 1))) {
+    elseif (in_array($CHILD_token, array_slice($CURRENT_token_parents, 1))) {
       // Prevent duplicate recursive tokens. For example, this will prevent
       // the tree from generating the following tokens or deeper:
       // [comment:parent:parent]
@@ -981,28 +990,28 @@ function _token_build_tree($token_type, array $options) {
       continue;
     }
 
-    $token_parents[] = $token;
-    if (!empty($token_info['dynamic'])) {
-      $token_parents[] = '?';
+    $CURRENT_token_parents[] = $CHILD_token;
+    if (!empty($CHILD_token_metadata['dynamic'])) {
+      $CURRENT_token_parents[] = '?';
     }
-    $raw_token = '[' . implode(':', $token_parents) . ']';
-    $tree[$raw_token] = $token_info;
-    $tree[$raw_token]['raw token'] = $raw_token;
+    $STRING_VERSION_token = '[' . implode(':', $CURRENT_token_parents) . ']';
+    $tree[$STRING_VERSION_token] = $CHILD_token_metadata;
+    $tree[$STRING_VERSION_token]['raw token'] = $STRING_VERSION_token;
 
     // Add the token's real name (leave out the base token type).
-    $tree[$raw_token]['token'] = implode(':', array_slice($token_parents, 1));
+    $tree[$STRING_VERSION_token]['token'] = implode(':', array_slice($CURRENT_token_parents, 1));
 
     // Add the token's parent as its raw token value.
-    if (!empty($options['parents'])) {
-      $tree[$raw_token]['parent'] = '[' . implode(':', $options['parents']) . ']';
+    if (!empty($CURRENT_token_options['parents'])) {
+      $tree[$STRING_VERSION_token]['parent'] = '[' . implode(':', $CURRENT_token_options['parents']) . ']';
     }
 
     // Fetch the child tokens.
-    if (!empty($token_info['type'])) {
-      $child_options = $options;
-      $child_options['depth']--;
-      $child_options['parents'] = $token_parents;
-      $tree[$raw_token]['children'] = _token_build_tree($token_info['type'], $child_options);
+    if (!empty($CHILD_token_metadata['type'])) {
+      $CHILD_token_options = $CURRENT_token_options;
+      $CHILD_token_options['depth']--;
+      $CHILD_token_options['parents'] = $CURRENT_token_parents;
+      $tree[$STRING_VERSION_token]['children'] = _token_build_tree($CHILD_token_metadata['type'], $CHILD_token_options);
     }
   }
 

@@ -1,0 +1,19 @@
+
+name = Search API test
+description = "Some dummy implementations for testing the Search API."
+core = 7.x
+package = Search
+
+dependencies[] = search_api
+
+files[] = search_api_test.module
+
+hidden = TRUE
+
+
+; Information added by drush on 2014-09-07
+version = "7.x-1.13"
+core = "7.x"
+project = "search_api"
+datestamp = "1410124765"
+

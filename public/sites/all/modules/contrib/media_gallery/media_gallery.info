@@ -1,0 +1,18 @@
+name = Media Gallery
+description = A flexible gallery of media.
+core = 7.x
+package = Media
+
+dependencies[] = list
+dependencies[] = number
+dependencies[] = media (>=2.x)
+dependencies[] = taxonomy
+dependencies[] = multiform
+dependencies[] = media_bulk_upload
+
+files[] = media_gallery.module
+files[] = media_gallery.admin.inc
+files[] = media_gallery.fields.inc
+files[] = media_gallery.theme.inc
+
+configure = admin/config/media/galleries
