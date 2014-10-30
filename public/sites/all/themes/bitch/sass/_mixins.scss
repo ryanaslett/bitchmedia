@@ -35,3 +35,10 @@
     @include element-invisible-off;
   }
 }
+
+// Use for grid items with custom width and position
+@mixin grid-empty {
+  display: inline;
+  float: left;
+  position: relative;
+}

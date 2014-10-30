@@ -6,8 +6,9 @@
   text-transform: uppercase;
 
   .region-navigation {
-    @include column(23);
-    @include push(0.5); // Must use half column
+    @include grid-empty;
+    left: 2.0833333%; // 0.5 / 24 total columns
+    width: 95.8333333%; // 23 / 24 total columns
   }
 
   .links,

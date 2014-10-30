@@ -3,7 +3,7 @@
 // Grid Setup
 $column-width: 60px; 
 $gutter-width: 0;
-$columns: 24;
+$columns: 22;
 
 $total-width: 100%;
 $max-width: 1600px; // @TODO Look at max-width
@@ -21,20 +21,25 @@ $desktop: 1440px;
 
 #header,
 #main {
-  @include column(22);
-  @include push(1);
+  @include grid-empty;
+  left: 4.1666667%; // 1 / 24 total columns
+  width: 91.6666667%; // 22 / 24 total columns
 }
 
 #navigation {
-  @include column(24);
+  @include column(22);
 }
 
 #content {
-  @include column(13);
-  @include push(1);
+  @include column(15);
+}
+
+.content-inner {
+  @include grid-empty;
+  left: 6.6666667%; // 1 / 15 columns in #content
+  width: 86.6666667%; // 13 / 15 columns in #content
 }
 
 .region-sidebar-second {
   @include column(7);
-  @include push(2);
 }
