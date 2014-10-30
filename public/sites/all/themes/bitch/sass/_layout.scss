@@ -31,6 +31,7 @@ $desktop: 1440px;
     width: 95.8333333%; // 23 / 24 total columns
   }
   @media screen and (max-width: $laptop - 1) {
+    left: 0;
     width: 100%; // 24 / 24 total columns
   }
 }

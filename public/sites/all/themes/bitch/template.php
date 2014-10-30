@@ -52,9 +52,14 @@ function bitch_preprocess_html(&$variables, $hook) {
  * @param $hook
  *   The name of the template being rendered ("page" in this case.)
  */
-/* -- Delete this line if you want to use this function
 function bitch_preprocess_page(&$variables, $hook) {
-  $variables['sample_variable'] = t('Lorem ipsum.');
+  $section_title = $variables['section_title'];
+
+  //if ($section_title == 'bmart') {
+  if (isset($section_title) && $section_title == 'bmart') { 
+    $variables['logo'] = path_to_theme() . '/images/bmart_logo.png';
+  }
+
 }
 // */
 
