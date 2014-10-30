@@ -14,10 +14,11 @@
 }
 
 .header__region {
-  @include column(9);
-  @include push(1);
+  @include grid-empty;
   clear: none;
+  left: 4.5454545%; // 1 / 22 columns in #header
   margin-top: 87px; // @TODO Adjust when search box is themed to match logo
+  width: 40.9090909%; // 9 / 22 columns in #header
 }
 
 
