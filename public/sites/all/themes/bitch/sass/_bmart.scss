@@ -1,0 +1,15 @@
+/**
+ * Bitchmart Styles
+ */
+
+// Background gradients
+.bmart #page {
+  @include background-image(
+    linear-gradient(to top, #AAD27B, #00ADEE)
+  );
+  overflow: hidden;
+}
+
+.view-bitchmart {
+  
+}
