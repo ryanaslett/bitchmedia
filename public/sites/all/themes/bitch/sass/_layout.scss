@@ -1,2 +1,40 @@
 // Site Layout
 
+// Grid Setup
+$column-width: 60px; 
+$gutter-width: 0;
+$columns: 24;
+
+$total-width: 100%;
+$max-width: 1600px; // @TODO Look at max-width
+
+// Responsive Breakpoints
+$mobile: 320px;
+$tablet: 640px;
+$laptop: 1024px;
+$desktop: 1440px;
+
+#page {
+  float: left;
+	@include container;
+}
+
+#header,
+#main {
+  @include column(22);
+  @include push(1);
+}
+
+#navigation {
+  @include column(24);
+}
+
+#content {
+  @include column(13);
+  @include push(1);
+}
+
+.region-sidebar-second {
+  @include column(7);
+  @include push(2);
+}

@@ -49,8 +49,8 @@ $legacy-support-for-ie8: true;
 // use in the normalize.scss file.
 // @see http://compass-style.org/reference/compass/typography/vertical_rhythm/
 
-$base-font-size:   16px; // The font size set on the root html element.
-$base-line-height: 24px; // This line-height determines the basic unit of vertical rhythm.
+$base-font-size:   15px; // The font size set on the root html element.
+$base-line-height: 30px; // This line-height determines the basic unit of vertical rhythm.
 
 $h1-font-size: 2    * $base-font-size;
 $h2-font-size: 1.5  * $base-font-size;
@@ -80,24 +80,30 @@ $tahoma:                Tahoma, Verdana, "DejaVu Sans", sans-serif;
 $helvetica:             Helvetica, Arial, "Nimbus Sans L", sans-serif;
 $arial:                 Arial, Helvetica, "Nimbus Sans L", sans-serif;
 
-$brandon-grotesque:	   	"brandon-grotesque", Arial, Helvetica, sans-serif;
-$franklin-gothic:       "franklin-gothic-urw", "Timers New Roman", Times, Georgia, serif;
+$brandon:	   	"brandon-grotesque", Arial, Helvetica, sans-serif;
+$franklin-gothic:       "franklin-gothic-urw", "Times New Roman", Times, Georgia, serif;
 $source-sans:           "source-sans-pro", Arial, Helvetica, sans-serif;
+$skolar:                "skolar", "Times New Roman", Times, Georgia, serif;
 
 // For an explanation of why "sans-serif" is at the end of this list, see
 // http://meyerweb.com/eric/thoughts/2010/02/12/fixed-monospace-sizing/
 $courier:         "Courier New", "DejaVu Sans Mono", monospace, sans-serif;
 
 // Now create some variables for the font stacks we want to use on this site.
-$base-font-family: $franklin-gothic; // The font family set on the html element.
-$font-body:        $franklin-gothic;
-$font-header:      $brandon-grotesque; 
+$base-font-family: $skolar; // The font family set on the html element.
+$font-header:      $brandon; 
 $font-monospace:   $courier;
 
 
 //
 // Colors, etc.
 //
+
+$white: #FFFFFF;
+$red: #EC1C24;
+$plum: #9E1F63;
+$yellow: #FFF100;
+$dark: #2E2B31;
 
 // The amount lists, blockquotes and comments are indented.
 $indent-amount: 30px;

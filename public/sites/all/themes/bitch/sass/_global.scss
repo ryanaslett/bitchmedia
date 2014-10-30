@@ -1,0 +1,19 @@
+// Global Styles
+
+h1,h2,h3,h4,h5,h6 {
+  color: $dark;
+  font-family: $font-header;
+}
+
+// Background gradients
+#page {
+  $svg-gradient-shim-threshold: 1 !global;
+  @include background-image(
+    linear-gradient(to top, #EC1C24, #9E1F63)
+  );
+}
+
+#header,
+#main {
+  background: $white;
+}

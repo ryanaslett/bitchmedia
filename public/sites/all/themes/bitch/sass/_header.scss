@@ -1,0 +1,40 @@
+/**
+ * Header Styling
+ */
+
+.header__site-name {
+  @include element-invisible;
+}
+
+#logo {
+  @include push(1);
+  @include column(5);
+  margin-top: 108px;
+  margin-bottom: 24px;
+}
+
+.header__region {
+  @include column(9);
+  @include push(1);
+  clear: none;
+  margin-top: 87px; // @TODO Adjust when search box is themed to match logo
+}
+
+
+/**
+ * Header Blocks
+ */ 
+
+// Tout Menu
+.tout-menu {
+  @include element-invisible; // Hide tout menu for laptop and desktop
+
+}
+
+// Logintoboggan Block
+.block-logintoboggan {
+  float: right;
+}
+
+// Search Block
+// @TODO Theme search block once implemented

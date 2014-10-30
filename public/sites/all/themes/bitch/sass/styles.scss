@@ -14,9 +14,13 @@
 
 /* Layout rules */
 @import "grid";
+@import "layout";
 
 /* Component (SMACSS module) rules */
 @import "components/misc";
+@import "global";
+@import "header";
+@import "navigation";
 // Optionally, add your own components here.
 @import "print";
 

@@ -130,3 +130,9 @@ function bitch_preprocess_block(&$variables, $hook) {
   //}
 }
 // */
+
+/* 
+ * Override search block
+ */
+
+// Wait for search block to be implemeneted.
