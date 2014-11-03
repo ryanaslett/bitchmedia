@@ -3,6 +3,7 @@
 h1,h2,h3,h4,h5,h6 {
   color: $dark;
   font-family: $font-header;
+  font-weight: normal;
 }
 
 // Background gradients
@@ -12,9 +13,17 @@ h1,h2,h3,h4,h5,h6 {
     linear-gradient(to top, #EC1C24, #9E1F63)
   );
   overflow: hidden;
+  width: 100%;
 }
 
 #header,
 #main {
   background: $white;
+}
+
+.breadcrumb {
+  font-family: $tahoma;
+  font-size: 0.733333333em;
+  margin-top: $margin-large;
+  text-transform: uppsercase;
 }

@@ -17,7 +17,25 @@
 Drupal.behaviors.my_custom_behavior = {
   attach: function(context, settings) {
 
-    // Place your code here.
+  $('h2.tout-header').click(function (e) {
+    $('body').toggleClass('tout-active');
+    e.preventDefault();
+  });
+
+  $('h2.search-header').click(function (e) {
+    $('body').toggleClass('search-active');
+    e.preventDefault();
+  });
+
+  $('h2.menu-header').click(function (e) {
+    $('body').toggleClass('menu-active');
+    e.preventDefault();
+  });
+
+  $('h2.login-header').click(function (e) {
+    $('body').toggleClass('login-active');
+    e.preventDefault();
+  });
 
   }
 };

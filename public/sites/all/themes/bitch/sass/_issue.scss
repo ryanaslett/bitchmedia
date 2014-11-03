@@ -1,0 +1,106 @@
+/*
+ ** Issue Page Styling
+ */
+
+.node-type-issue {
+  .node-issue > .field-name-title-field,
+  .field-name-field-issue-season-and-year,
+  .field-name-field-issue-year {
+    display: inline-block;
+    font-family: $brandon;
+    font-size: 1.6em;
+    font-weight: 900;
+    margin-right: 6px;
+    text-transform: uppercase;
+
+    div {
+      display: inline-block;
+    }
+  }
+
+  .field-name-field-issue-year {
+    margin-bottom: $margin-large;
+  }
+
+  .node-issue > .field-name-title-field:after {
+    content: ",";
+  }
+
+  .field-name-field-issue-number {
+    @include element-invisible;
+  }
+
+  .field-name-field-cover-lines {
+    color: $dark;
+    font-family: $brandon;
+    font-size: 1.066666667em;
+    text-transform: uppercase;
+  }
+}
+
+.field-name-field-issue-cover {
+  float: right;
+  max-width: 40%;
+}
+
+.field-group-div {
+  > h3 {
+    clear: left;
+    font-family: $brandon;
+    font-size: 1.333333333em;
+    font-weight: normal;
+    text-transform: uppercase;
+  }
+  .field {
+    color: $text-gray;
+    font-family: $franklin-gothic;
+  }
+
+  .field-name-field-headline,
+  .field-name-field-subhead,
+  .field-name-field-author-text,
+  .field-name-field-article .field-name-title-field {
+    float: left;
+
+    div {
+      float: left;
+    }
+  }
+
+  .field-name-field-headline,
+  .field-name-field-article .field-name-title-field {
+    clear: left;
+    font-family: $brandon;
+    margin-right: 6px;
+    text-transform: uppercase;
+    
+    &:after {
+      content: ":";
+    }
+
+    h3 {
+      clear: left;
+      float: left;
+      font-size: 1.066666667em;
+      margin: 0;
+    }
+  }
+
+  .field-name-field-subhead {
+    margin-right: 8px;
+
+    &:after {
+      content: "|";
+    }
+
+    .field-item {
+      margin-right: 8px;
+    }
+  }
+
+  .field-name-field-author-text {
+    font-size: 0.8em;
+  }
+
+}
+

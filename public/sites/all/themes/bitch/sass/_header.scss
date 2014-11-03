@@ -35,21 +35,23 @@
  * Header Blocks
  */ 
 
-// Tout Menu
-.tout-menu {
-  @include element-invisible; // Hide tout menu for laptop and desktop
+.header__region {
+  // Tout Menu
+  .tout-menu {
+    @include element-invisible; // Hide tout menu for laptop and desktop
 
-}
+  }
 
-// Logintoboggan Block
-.block-logintoboggan {
-  float: right;
-  margin-bottom: 0;
-}
+  // Logintoboggan Block
+  .block-logintoboggan {
+    float: right;
+    margin-bottom: 0;
+  }
 
-// Search Block
-// @TODO Theme search block once implemented
-// Temp
-.views-exposed-form .views-exposed-widget .form-submit {
-  margin: 0.25em;
+  // Search Block
+  // @TODO Theme search block once implemented
+  // Temp
+  .views-exposed-form .views-exposed-widget .form-submit {
+    margin: 0.25em;
+  }
 }

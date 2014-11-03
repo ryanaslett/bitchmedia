@@ -70,6 +70,21 @@ $h6-font-size: 0.67 * $base-font-size;
 // monospace) hints at what type of font to use if the web browser doesn't
 // find any of the fonts in the list.
 
+/* FONT AWESOME
+ * -------------------------- */
+
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('../fonts/fontawesome-webfont.eot');
+  src: url('../fonts/fontawesome-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/fontawesome-webfont.woff') format('woff'),
+    url('../fonts/fontawesome-webfont.ttf') format('truetype'),
+    url('../fonts/fontawesome-webfont.svg') format('svg');
+//  src: url('#{$FontAwesomePath}/FontAwesome.otf') format('opentype'); // used when developing fonts
+  font-weight: normal;
+  font-style: normal;
+}
+
 // First, let's create some font stacks.
 $times-new-roman:       "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
 $times:                 Times, "Times New Roman", Georgia, "DejaVu Serif", serif;
@@ -82,8 +97,8 @@ $arial:                 Arial, Helvetica, "Nimbus Sans L", sans-serif;
 
 $brandon:	   	"brandon-grotesque", Arial, Helvetica, sans-serif;
 $franklin-gothic:       "franklin-gothic-urw", "Times New Roman", Times, Georgia, serif;
-$source-sans:           "source-sans-pro", Arial, Helvetica, sans-serif;
 $skolar:                "skolar", "Times New Roman", Times, Georgia, serif;
+$font-awesome:          "FontAwesome";
 
 // For an explanation of why "sans-serif" is at the end of this list, see
 // http://meyerweb.com/eric/thoughts/2010/02/12/fixed-monospace-sizing/
@@ -105,9 +120,13 @@ $plum: #9E1F63;
 $yellow: #FFF100;
 $dark: #2E2B31;
 $category-black: #2E2B31;
+$text-gray: #4D4F46;
 
 // The amount lists, blockquotes and comments are indented.
 $indent-amount: 30px;
+
+$margin-large: 24px;
+$margin-small: 16px;
 
 // The height of the navigation container.
 $nav-height: 3em;
