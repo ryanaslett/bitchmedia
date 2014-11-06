@@ -3,6 +3,7 @@
  */
 
 $tout-button-height: 54px;
+$tablet-button-height: 106px;
 $transition: .5s all ease;
 
 @mixin tout-position {
@@ -30,16 +31,51 @@ body {
   @include element-invisible;
 }
 
+// Set up positioning and transition effect for off-screen canvases
+.region-tout {
+
+  .block-menu-block.first,
+  .block-views {
+    @include tout-position-left;
+  }
+
+  .tout-menu,
+  .block-logintoboggan {
+    @include tout-position-right;
+  }
+
+}
+
+// Set up positioning and transition effect for close buttons
+.tout-close-left {
+  @include tout-position-left;
+  width: auto;
+}
+ .tout-close-right {
+  @include tout-position-right;
+  width: auto;
+}
+
 @media screen and (max-width: $laptop) {
 
-  // Hide large screen menus and blocks
-  .header__region,
-  #navigation {
+  // Hide search and user menu for tablet
+  .header__region {
     @include element-invisible;
-    .tout-menu,
     #views-exposed-form-test-search-box-search-page,
     .block-logintoboggan {
       @include element-invisible;
+    }
+  }
+
+  // Hide navigation and tout menu for phone
+  @media screen and (max-width: $tablet) {
+    #navigation {
+      @include element-invisible;
+    }
+    .header__region {
+      .tout-menu {
+        @include element-invisible;
+      }
     }
   }
 
@@ -55,30 +91,24 @@ body {
     width: 100%;
     @include element-invisible-off;
 
+    // Add buttons for tablet
     h2 {
       color: $yellow;
       display: block;
       position: absolute;
-      height: $tout-button-height;
+      width: 16.6666667% !important; // 4 / 24 total columns
       margin: 0;
+      text-indent: -9999px;
 
-      &.menu-header {
+      &.search-header {
         left: 0;
         top: 0;
 
         &:after {
-          content: "\f0c9";
-          font-family: $font-awesome;
-        }
-      }
-
-      &.search-header {
-        left: 0;
-        top: $tout-button-height;
-
-        &:after {
           content: "\f002";
+          float: left;
           font-family: $font-awesome;
+          text-indent: 0;
         }
       }
 
@@ -88,17 +118,55 @@ body {
 
         &:after {
           content: "\f007";
+          float: right;
           font-family: $font-awesome;
+          text-indent: 0;
         }
       }
 
+      &.menu-header,
       &.tout-header {
-        right: 0;
-        top: $tout-button-height;
+        @include element-invisible;
+      }
 
-        &:after {
-          content: "\f07a";
-          font-family: $font-awesome;
+      // Add buttons for phone, reposition search button
+      @media screen and (max-width: $tablet) {
+        height: $tout-button-height;
+
+        &.search-header {
+          top: $tout-button-height;
+        }
+
+        &.menu-header {
+          @include element-invisible-off;
+          overflow: visible;
+          position: absolute !important;
+          left: 0;
+          top: 0;
+          width: 16.6666667% !important; // 4 / 24 total columns
+
+
+          &:after {
+            content: "\f0c9";
+            float: left;
+            font-family: $font-awesome;
+            text-indent: 0;
+          }
+        }
+
+        &.tout-header {
+          @include element-invisible-off;
+          overflow: visible;
+          position: absolute !important;
+          right: 0;
+          top: $tout-button-height;
+
+          &:after {
+            content: "\f07a";
+            float: right;
+            font-family: $font-awesome;
+            text-indent: 0;
+          }
         }
       }
     }
@@ -110,31 +178,6 @@ body {
     margin: 0;
     float: left;
     position: relative;
-  }
-
-  // Set up positioning and transition effect for off-screen canvases
-  .region-tout {
-
-    .block-menu-block.first,
-    .block-views {
-      @include tout-position-left;
-    }
-
-    .tout-menu,
-    .block-logintoboggan {
-      @include tout-position-right;
-    }
-
-  }
-
-  // Set up positioning and transition effect for close buttons
-  .tout-close-left {
-    @include tout-position-left;
-    width: auto;
-  }
-   .tout-close-right {
-    @include tout-position-right;
-    width: auto;
   }
 
   .tout-close-left {

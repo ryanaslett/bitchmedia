@@ -44,7 +44,7 @@ Drupal.behaviors.my_custom_behavior = {
 
   // On close button click, remove all active classes
   $('.tout-close').click(function (e) {
-    $('body').removeClass('tout-active search-active menu-active login-active');
+    $('body').removeClass('tout-active search-active login-active menu-active');
     e.preventDefault();
   });
 

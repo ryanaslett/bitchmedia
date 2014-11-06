@@ -8,8 +8,10 @@
  */
 ?>
 
-<span class="tout-close tout-close-left">Close</span>
-<span class="tout-close tout-close-right">Close</span>
+<div class="page-top close-links">
+  <span class="tout-close tout-close-left">Close</span>
+  <span class="tout-close tout-close-right">Close</span>
+</div>
 
 <div id="page">
 
