@@ -8,6 +8,9 @@
  */
 ?>
 
+<span class="tout-close tout-close-left">Close</span>
+<span class="tout-close tout-close-right">Close</span>
+
 <div id="page">
 
   <div id="header-mobile">

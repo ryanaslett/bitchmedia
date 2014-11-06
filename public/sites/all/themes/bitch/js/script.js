@@ -17,23 +17,34 @@
 Drupal.behaviors.my_custom_behavior = {
   attach: function(context, settings) {
 
+  // On click, add active class and remove all other tout classes
   $('h2.tout-header').click(function (e) {
     $('body').toggleClass('tout-active');
+    $('body').removeClass('search-active menu-active login-active');
     e.preventDefault();
   });
 
   $('h2.search-header').click(function (e) {
     $('body').toggleClass('search-active');
+    $('body').removeClass('tout-active menu-active login-active');
     e.preventDefault();
   });
 
   $('h2.menu-header').click(function (e) {
     $('body').toggleClass('menu-active');
+    $('body').removeClass('tout-active search-active login-active');
     e.preventDefault();
   });
 
   $('h2.login-header').click(function (e) {
     $('body').toggleClass('login-active');
+    $('body').removeClass('tout-active search-active menu-active');
+    e.preventDefault();
+  });
+
+  // On close button click, remove all active classes
+  $('.tout-close').click(function (e) {
+    $('body').removeClass('tout-active search-active menu-active login-active');
     e.preventDefault();
   });
 
