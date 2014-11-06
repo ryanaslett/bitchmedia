@@ -17,8 +17,8 @@
 
   <div id="header-mobile">
     <h2 class="menu-header">Menu</h2>
-    <h2 class="search-header">Search</h2>
     <h2 class="login-header">Login</h2>
+    <h2 class="search-header">Search</h2>
     <h2 class="tout-header">Tout Menu</h2>
 
   </div>

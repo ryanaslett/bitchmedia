@@ -28,7 +28,7 @@ body {
 }
 
 #header-mobile {
-  @include element-invisible;
+  display: none;
 }
 
 // Set up positioning and transition effect for off-screen canvases
@@ -87,62 +87,56 @@ body {
 
   // Header Buttons
   #header-mobile {
-    position: relative;
+    position: absolute;
     width: 100%;
-    @include element-invisible-off;
+    display: block;
 
     // Add buttons for tablet
     h2 {
       color: $yellow;
       display: block;
-      position: absolute;
+      height: 0;
+      padding-bottom: 16.66666667%;
       width: 16.6666667% !important; // 4 / 24 total columns
       margin: 0;
       text-indent: -9999px;
 
       &.search-header {
-        left: 0;
-        top: 0;
+        clear: left;
+        float: left;
 
         &:after {
           content: "\f002";
           float: left;
           font-family: $font-awesome;
+          padding: 35%;
           text-indent: 0;
         }
       }
 
       &.login-header {
-        right: 0;
-        top: 0;
+        float: right;
 
         &:after {
           content: "\f007";
           float: right;
           font-family: $font-awesome;
+          padding: 35%;
           text-indent: 0;
         }
       }
 
       &.menu-header,
       &.tout-header {
-        @include element-invisible;
+        display: none;
       }
 
       // Add buttons for phone, reposition search button
       @media screen and (max-width: $tablet) {
-        height: $tout-button-height;
-
-        &.search-header {
-          top: $tout-button-height;
-        }
 
         &.menu-header {
-          @include element-invisible-off;
-          overflow: visible;
-          position: absolute !important;
-          left: 0;
-          top: 0;
+          display: block;
+          float: left;
           width: 16.6666667% !important; // 4 / 24 total columns
 
 
@@ -150,21 +144,22 @@ body {
             content: "\f0c9";
             float: left;
             font-family: $font-awesome;
+            padding: 35%;
             text-indent: 0;
           }
         }
 
         &.tout-header {
-          @include element-invisible-off;
-          overflow: visible;
-          position: absolute !important;
-          right: 0;
+          display: block;
+          clear: right;
+          float: right;
           top: $tout-button-height;
 
           &:after {
             content: "\f07a";
             float: right;
             font-family: $font-awesome;
+            padding: 35%;
             text-indent: 0;
           }
         }
