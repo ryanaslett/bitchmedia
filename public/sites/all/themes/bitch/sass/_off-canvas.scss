@@ -207,12 +207,62 @@ body {
       color: $yellow;
       font-family: $brandon;
       font-size: 1.6em;
-      font-weight: 800;
+      font-weight: 900;
       min-height: 100%;
       text-transform: uppercase;
 
       a {
         color: $yellow;
+      }
+    }
+  }
+
+  // Individual tout block styling
+  .region-tout {
+
+    // Main Menu
+    .block-menu-block.first {
+
+      h2.block__title {
+        @include element-invisible;
+      }
+
+      ul {
+        list-style-type: none;
+
+        li.menu__item.is-leaf {
+          list-style: none;
+          margin-bottom: 0.5em;
+        }
+      }
+    }
+
+    // Search block
+    .block-views {
+
+    }
+
+    // Login block
+    .block-logintoboggan {
+
+    }
+
+    // Tout menu
+    .tout-menu {
+
+      h2.block__title {
+        @include element-invisible;
+      }
+
+      ul {
+        list-style-type: none;
+
+        li.menu__item.is-leaf {
+          list-style: none;
+          margin-bottom: 0.5em;
+          font-size: 18px;
+          font-weight: 500;
+        }
       }
     }
   }
@@ -242,15 +292,6 @@ body {
     .block-menu-block.first {
       left: 0;
       width: 91.6666667%; // 22 / 24 total columns
-
-      ul {
-        list-style-type: none;
-
-        li.menu__item.is-leaf {
-          list-style: none;
-          margin-bottom: 1em;
-        }
-      }
     }
 
     #page {
