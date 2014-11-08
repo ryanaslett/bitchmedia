@@ -10,6 +10,10 @@
   overflow: hidden;
 }
 
+.bmart .breadcrumb {
+  @include element-invisible;
+}
+
 .view-bitchmart {
   
 }

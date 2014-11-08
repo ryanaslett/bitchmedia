@@ -16,6 +16,19 @@
     @include column(4.5);
     @include push(0.5);
   }
+
+  @media screen and (max-width: $laptop - 1) {
+    @include column(20);
+    @include push(1);
+    margin: 30px auto;
+    text-align: center;
+  }
+
+  @media screen and (max-width: $tablet - 1) {
+    @include column(18);
+    @include push(2);
+    margin: 65px auto;
+  }
 }
 
 .header__region {
