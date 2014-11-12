@@ -59,7 +59,7 @@ $transition: .5s all ease;
   z-index: 10;
 
   &:after {
-    content: "\f00d";
+    content: "\f00d"; // .fa-remove
     color: yellow;
     text-indent: 0;
     float: left;
@@ -149,7 +149,7 @@ body {
         float: left;
 
         &:after {
-          content: "\f002";
+          content: "\f002"; // .fa-search
           float: left;
           font-family: $font-awesome;
           padding: 35%;
@@ -161,7 +161,7 @@ body {
         float: right;
 
         &:after {
-          content: "\f007";
+          content: "\f007"; // .fa-user
           float: right;
           font-family: $font-awesome;
           padding: 35%;
@@ -184,7 +184,7 @@ body {
 
 
           &:after {
-            content: "\f0c9";
+            content: "\f0c9"; // .fa-bars
             float: left;
             font-family: $font-awesome;
             padding: 35%;
@@ -199,7 +199,7 @@ body {
           top: $tout-button-height;
 
           &:after {
-            content: "\f07a";
+            content: "\f07a"; // .fa-shopping-cart
             float: right;
             font-family: $font-awesome;
             padding: 35%;
