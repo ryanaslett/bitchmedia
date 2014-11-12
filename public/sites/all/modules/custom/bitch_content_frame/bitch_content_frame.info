@@ -1,0 +1,13 @@
+name = Bitch Content Frame
+description = All of the parts that show up on every page in the content section
+core = 7.x
+package = Structure
+version = 7.x-1.0
+project = bitch_content_frame
+dependencies[] = features
+dependencies[] = menu
+features[features_api][] = api:2
+features[menu_custom][] = menu-topics-menu
+features[menu_links][] = menu-topics-menu:taxonomy/term/54
+features[menu_links][] = menu-topics-menu:taxonomy/term/822
+features[menu_links][] = menu-topics-menu:taxonomy/term/87
