@@ -142,4 +142,10 @@ function bitch_preprocess_block(&$variables, $hook) {
  * Override search block
  */
 
-// Wait for search block to be implemeneted.
+/*function bitch_form_alter(&$form, $form_state, $form_id) {
+  if($form['#id'] == 'views-exposed-form-test-search-box-search-page') {
+    if (empty($_GET['exposed_filter_name']))  {
+      $form_state['input']['exposed_filter_name'] = 'default_value';
+    }
+  }
+}*/

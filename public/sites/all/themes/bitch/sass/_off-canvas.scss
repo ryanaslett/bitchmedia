@@ -10,7 +10,11 @@ $transition: .5s all ease;
   transition: $transition;
   float: left;
   position: absolute;
-  width: 90%;
+  width: 75%; // 18 / 24 total columns
+
+  @media screen and (max-width: $tablet - 1) {
+    width: 91.6666667%; // 22 / 24 total columns
+  }
 }
 
 @mixin tout-position-left {
@@ -23,12 +27,28 @@ $transition: .5s all ease;
   right: -100%;
 }
 
-@mixin tout-block-inactive {
+@mixin tout-active {
+  width: 75%; // 18 / 24 total columns
 
+  @media screen and (max-width: $tablet - 1) {
+    width: 91.6666667%; // 22 / 24 total columns
+  }
 }
 
-@mixin tout-block-active {
+@mixin page-position-left {
+  margin-left: 75%; // 18 / 24 total columns
 
+  @media screen and (max-width: $tablet - 1) {
+    margin-left: 91.6666667%; // 22 / 24 total columns
+  }
+}
+
+@mixin page-position-right {
+  margin-left: -75%; // 18 / 24 total columns
+
+  @media screen and (max-width: $tablet - 1) {
+    margin-left: -91.6666667%; // 22 / 24 total columns
+  }
 }
 
 @mixin close-button {
@@ -58,7 +78,7 @@ body {
 .region-tout {
 
   .block-menu-block.first,
-  .block-views {
+  .search-box {
     @include tout-position-left;
   }
 
@@ -84,7 +104,7 @@ body {
   // Hide search and user menu for tablet
   .header__region {
     @include element-invisible;
-    #views-exposed-form-test-search-box-search-page,
+    .search-box,
     .block-logintoboggan {
       @include element-invisible;
     }
@@ -200,7 +220,7 @@ body {
 
   .region-tout {
     .block-menu-block.first,
-    .block-views,
+    .search-box,
     .block-logintoboggan,
     .tout-menu {
       background: $dark;
@@ -238,7 +258,7 @@ body {
     }
 
     // Search block
-    .block-views {
+    .search-box {
 
     }
 
@@ -290,45 +310,45 @@ body {
   // Active tout blocks positioning
   .menu-active {
     .block-menu-block.first {
+      @include tout-active;
       left: 0;
-      width: 91.6666667%; // 22 / 24 total columns
     }
 
     #page {
-    //  margin-left: 90%;
+      @include page-position-left;
     }
   }
 
   .search-active {
-    .region-tout .block-views {
+    .region-tout .search-box {
+      @include tout-active;
       left: 0;
-      width: 91.6666667%; // 22 / 24 total columsn
     }
 
     #page {
-    //  margin-left: 90%;
+      @include page-position-left;
     }
   }
 
   .login-active {
     .block-logintoboggan {
+      @include tout-active;
       right: 0;
-      width: 91.6666667%; // 22 / 24 total columsn
     }
 
     #page {
-    //  margin-left: -90%;
+      @include page-position-right;
     }
   }
 
   .tout-active {
     .tout-menu {
+      @include tout-active;
       right: 0;
-      width: 91.6666667%; // 22 / 24 total columsn
     }
 
     #page {
-    //  margin-left: -90%;
+      @include page-position-right;
     }
   }
 }

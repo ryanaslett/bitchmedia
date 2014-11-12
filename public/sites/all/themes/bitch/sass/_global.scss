@@ -7,6 +7,10 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 // Background gradients
+body {
+  background: $dark;
+}
+
 #page {
   $svg-gradient-shim-threshold: 1 !global;
   @include background-image(

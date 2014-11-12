@@ -27,7 +27,8 @@
   @media screen and (max-width: $tablet - 1) {
     @include column(18);
     @include push(2);
-    margin: 65px auto;
+    margin: 65px auto 0;
+    padding-bottom: 20%;
   }
 }
 
