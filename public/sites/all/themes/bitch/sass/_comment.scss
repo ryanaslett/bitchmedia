@@ -1,0 +1,83 @@
+/*
+ ** Comments
+ */
+
+// Comments Section
+#comments {
+  border-top: 1px solid $button-gray;
+  margin-top: 32px;
+  padding-top: 28px;
+}
+
+// Comments header
+h2.comments__title,
+h2.comments__form-title {
+  color: $category-black;
+  font-family: $brandon;
+  font-size: 1.2em; // 1.2 * 15px = 18px
+  font-weight: 900;
+  line-height: 1;
+  margin: 0 0 16px;
+  text-transform: uppercase;
+}
+
+// Individual comment title
+h3.comment__title {
+  color: $category-black;
+  font-family: $brandon;
+  font-size: 1.066666667em; // 1.066666667 * 15 = 16px
+  font-weight: 500;
+  line-height: 1.125; // 1.125 * 16px = 18px
+  margin: 0 0 8px;
+  text-transform: uppercase;
+
+  a.permalink {
+    color: $category-black;
+    font-size: inherit;
+  }
+}
+
+// Individual comment submitted info
+#comments p.submitted {
+  color: $text-gray;
+  font-family: $franklin-gothic;
+  font-size: 0.666666667em; // .666666667 * 15 = 10px
+  line-height: 1.2; // 1.2 * 10 = 12px
+  margin: 0 0 15px;
+}
+
+// Individual comment
+article.comment {
+  margin-bottom: 24px;
+}
+
+// Set of comments and replies
+.ajax-comment-wrapper { // @TODO Can we use this class? Where is the ajax from?
+  //border-bottom: 1px solid $button-gray;
+  margin-bottom: 48px;
+  position: relative;
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    width: 220px;
+    height: 1px;
+    background: $button-gray;
+  }
+
+  &.indented {
+    margin-bottom: 0;
+
+    &:after {
+      background: none;
+    }
+  }
+}
+
+// Comment form
+#comment-form {
+  .form-item {
+    margin: 0;
+  }
+}
