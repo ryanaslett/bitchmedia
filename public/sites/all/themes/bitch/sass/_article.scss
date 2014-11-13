@@ -1,0 +1,79 @@
+/*
+ ** Article Pages
+ */
+
+// Genre links
+.field-name-field-genre {
+  background: $light-yellow;
+  color: $dark;
+  display: inline-block;
+  font-family: $tahoma;
+  font-size: 0.666666667em;
+  line-height: 2em;
+  margin-bottom: 16px;
+  padding: 0 12px;
+  text-transform: uppercase;
+
+  a {
+    color: $dark;
+  }
+}
+
+// Title and subhead
+.node-type-article h1,
+.field-name-field-sub-head {
+  font-family: $brandon;
+  font-size: 1.6em;
+  text-transform: uppercase;
+  font-weight: 900;
+  line-height: 1.166666667;
+  margin: 0;
+}
+
+// Subhead
+.field-name-field-sub-head {
+  font-weight: 400;
+}
+
+// Author
+.field-name-field-text-author-interviewer,
+.field-name-field-content-credit {
+  color: $text-gray;
+  display: block;
+  font-family: $franklin-gothic;
+  font-size: 0.933333333em;
+  line-height: 1.142857144;
+
+  p {
+    margin: 0;
+  }
+}
+
+// Date and 
+.node-type-article article > .form-item.form-type-item,
+.field-name-field-general-topic,
+.field-name-field-specific-topic {
+  color: $text-gray;
+  display: inline-block;
+  font-family: $franklin-gothic;
+  font-size: 10px;
+  line-height: 1;
+  margin: -3px 0 8px;
+
+  h2 {
+    font-size: 10px;
+    line-height: 1;
+    margin: 0;
+  }
+
+  .field-item {
+    display: inline-block;
+    margin-right: 6px;
+  }
+}
+
+.node-type-article article > .form-item.form-type-item {
+  &:after {
+    content: ",";
+  }
+}
