@@ -84,7 +84,6 @@ function menu_block_menu_tree_content_type_render($subtype, $conf, $args, $conte
   $conf['delta'] = 'ctools-' . $conf['menu_name'] . '-' . $delta;
 
   $tree = menu_tree_build($conf);
-
   $block              = new stdClass();
   $block->subtype     = $conf['menu_name'];
   $block->title       = $tree['subject'];
@@ -101,10 +100,10 @@ function menu_block_menu_tree_content_type_edit_form($form, &$form_state) {
   $conf = $form_state['conf'];
 
   // Load the standard config form.
-  module_load_include('inc', 'menu_block', 'menu_block.admin');
+  module_load_include('inc', 'menu_block', 'plugins/export_ui/menu_block');
   // Create a pseudo form state.
-  $sub_form_state = array('values' => $conf);
-  $form += menu_block_configure_form($form, $sub_form_state);
+  $sub_form_state = array('item' => (object)$conf);
+  menu_block_export_ui_form($form, $sub_form_state);
 
   // Hide the menu selector.
   $form['menu_name']['#type'] = 'hidden';
@@ -127,9 +126,10 @@ function menu_block_menu_tree_content_type_edit_form($form, &$form_state) {
  */
 function menu_block_menu_tree_content_type_edit_form_submit(&$form, &$form_state) {
   foreach (array_keys($form_state['subtype']['defaults']) as $key) {
-    if (!empty($form_state['values'][$key])) {
-      $form_state['conf'][$key] = $form_state['values'][$key];
-    }
+    $form_state['conf'][$key] = $form_state['values'][$key];
+  }
+  if (!empty($form_state['values']['parent'])) {
+    list($form_state['conf']['menu_name'], $form_state['conf']['parent_mlid']) = explode(':', $form_state['values']['parent']);
   }
 }
 
@@ -142,8 +142,8 @@ function menu_block_menu_tree_content_type_admin_title($subtype, $conf, $context
   }
   else {
     // Build the menu tree.
-    module_load_include('inc', 'menu_block', 'menu_block.admin');
-    $output = _menu_block_format_title($conf);
+    $menus = menu_block_get_all_menus();
+    $output = t('Menu tree') . ': ' . $menus[$conf['menu_name']];
   }
   return $output;
 }

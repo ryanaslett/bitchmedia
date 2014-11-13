@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Bitch Users feature.
+ */
+
+include_once 'bitch_users.features.inc';

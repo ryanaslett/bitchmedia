@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Bitch Content Frame feature.
+ */
+
+include_once 'bitch_content_frame.features.inc';
