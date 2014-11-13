@@ -25,9 +25,21 @@ body {
   background: $white;
 }
 
+p {
+  line-height: 1.533333333;
+  margin: 0.8em 0;
+}
+
 .breadcrumb {
   font-family: $tahoma;
   font-size: 0.733333333em;
   margin-top: $margin-large;
-  text-transform: uppsercase;
+  text-transform: uppercase;
+}
+
+// Form Elements
+label {
+  font-weight: 500;
+  font-family: $brandon;
+  text-transform: uppercase;
 }
