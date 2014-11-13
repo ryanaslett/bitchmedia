@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * editor_settings.features.filter.inc
+ * bitch_editor_settings.features.filter.inc
  */
 
 /**
  * Implements hook_filter_default_formats().
  */
-function editor_settings_filter_default_formats() {
+function bitch_editor_settings_filter_default_formats() {
   $formats = array();
 
   // Exported format: Brief Wysiwyg.

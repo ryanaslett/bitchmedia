@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Bitch Issues feature.
+ */
+
+include_once 'bitch_issues.features.inc';

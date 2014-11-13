@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * editor_settings.features.ckeditor_profile.inc
+ * bitch_editor_settings.features.ckeditor_profile.inc
  */
 
 /**
  * Implements hook_ckeditor_profile_defaults().
  */
-function editor_settings_ckeditor_profile_defaults() {
+function bitch_editor_settings_ckeditor_profile_defaults() {
   $data = array(
     'Advanced' => array(
       'name' => 'Advanced',
