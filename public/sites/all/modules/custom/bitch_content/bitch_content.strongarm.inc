@@ -657,5 +657,75 @@ function bitch_content_strongarm() {
   $strongarm->value = 0;
   $export['node_submitted_webform'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_article_pattern';
+  $strongarm->value = 'article/[node:title]';
+  $export['pathauto_node_article_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_podcast_pattern';
+  $strongarm->value = 'podcast/[node:title]';
+  $export['pathauto_node_podcast_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_site_page_pattern';
+  $strongarm->value = '[node:title]';
+  $export['pathauto_node_site_page_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_webform_pattern';
+  $strongarm->value = '[node:title]';
+  $export['pathauto_node_webform_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_article_type_pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_article_type_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_column_name_pattern';
+  $strongarm->value = 'column/[term:name]';
+  $export['pathauto_taxonomy_term_column_name_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_content_genre_pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_content_genre_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_general_topic_pattern';
+  $strongarm->value = 'topic/[term:name]';
+  $export['pathauto_taxonomy_term_general_topic_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_podcast_series_pattern';
+  $strongarm->value = 'podcast/[term:name]';
+  $export['pathauto_taxonomy_term_podcast_series_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_specific_topic_pattern';
+  $strongarm->value = 'topic/[term:name]';
+  $export['pathauto_taxonomy_term_specific_topic_pattern'] = $strongarm;
+
   return $export;
 }
