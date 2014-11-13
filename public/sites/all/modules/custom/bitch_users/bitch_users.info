@@ -1,7 +1,7 @@
 name = Bitch Users
 description = Users and their Roles
 core = 7.x
-package = Features
+package = Bitch Features
 version = 7.x-1.0
 project = bitch_users
 dependencies[] = context
