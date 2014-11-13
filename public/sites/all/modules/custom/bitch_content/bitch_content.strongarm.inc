@@ -456,7 +456,7 @@ function bitch_content_strongarm() {
       'display' => array(
         'node_formatted_create_date' => array(
           'default' => array(
-            'weight' => '8',
+            'weight' => '7',
             'visible' => TRUE,
           ),
           'short_listing_display' => array(

@@ -913,7 +913,7 @@ function bitch_content_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 11,
+        'weight' => 10,
       ),
       'featured' => array(
         'label' => 'hidden',
@@ -1080,7 +1080,7 @@ function bitch_content_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
-          'link' => FALSE,
+          'link' => 0,
         ),
         'type' => 'entityreference_label',
         'weight' => 5,
@@ -1167,7 +1167,7 @@ function bitch_content_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 7,
+        'weight' => 16,
       ),
       'featured' => array(
         'label' => 'hidden',
@@ -1262,7 +1262,7 @@ function bitch_content_field_default_field_instances() {
           'view_mode' => 'default',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 9,
+        'weight' => 8,
       ),
       'featured' => array(
         'label' => 'above',
@@ -1418,7 +1418,7 @@ function bitch_content_field_default_field_instances() {
           'view_mode' => 'default',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 13,
+        'weight' => 12,
       ),
       'featured' => array(
         'label' => 'above',
@@ -1497,7 +1497,7 @@ function bitch_content_field_default_field_instances() {
           'view_mode' => 'default',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 12,
+        'weight' => 11,
       ),
       'featured' => array(
         'label' => 'hidden',
@@ -1578,7 +1578,7 @@ function bitch_content_field_default_field_instances() {
           'view_mode' => 'default',
         ),
         'type' => 'multifield_default',
-        'weight' => 15,
+        'weight' => 14,
       ),
       'featured' => array(
         'label' => 'above',
@@ -1729,7 +1729,7 @@ function bitch_content_field_default_field_instances() {
           'view_mode' => 'default',
         ),
         'type' => 'multifield_default',
-        'weight' => 16,
+        'weight' => 15,
       ),
       'featured' => array(
         'label' => 'above',
@@ -1803,7 +1803,7 @@ function bitch_content_field_default_field_instances() {
           'view_mode' => 'default',
         ),
         'type' => 'multifield_default',
-        'weight' => 14,
+        'weight' => 13,
       ),
       'featured' => array(
         'label' => 'above',
@@ -1878,7 +1878,7 @@ function bitch_content_field_default_field_instances() {
           'view_mode' => 'default',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 10,
+        'weight' => 9,
       ),
       'featured' => array(
         'label' => 'above',
