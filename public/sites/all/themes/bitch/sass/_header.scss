@@ -11,6 +11,17 @@
   @include column(5);
   margin-top: 108px;
   margin-bottom: 24px;
+  position: relative;
+
+  // Position logo image at bottom of container to match header bottom line on laptop/desktop
+  @media screen and (min-width: $laptop) {
+    height: 50px;
+
+    .header__logo-image {
+      position: absolute;
+      bottom: 0;
+    }
+  }
 
   @media screen and (min-width: $desktop) {
     @include column(4.5);
@@ -36,7 +47,7 @@
   @include column(9);
   @include push(2);
   clear: none;
-  margin-top: 102px; // @TODO Adjust when search box is themed to match logo
+  margin-top: 101px; // @TODO Adjust when search box is themed to match logo
 
   @media screen and (min-width: $desktop) {
     @include column(6);
@@ -87,14 +98,17 @@
 
     .form-text {
       border: 1px solid $button-gray;
+      font-family: $franklin-gothic;
+      font-size: 0.8em;
       height: 20px;
+      padding-left: 10px;
       width: 99%;
     }
 
     .form-submit {
-      background: $button-gray;
+      background: $button-gray url('../images/submit-button.png') no-repeat 50% 50%;
       border: none;
-      margin: 5px 0 0;
+      margin: 6px 0 0;
       padding: 0;
       text-indent: -9999px;
       width: 100%;
@@ -108,16 +122,6 @@
       width: 40px;
       height: 20px;
 
-      &:after {
-        color: $button-yellow;
-        content: "\f054"; // .fa-chevron-right
-        float: left;
-        font-family: $font-awesome;
-        left: 41%;
-        position: absolute;
-        text-indent: 0;
-        top: 1px;
-      }
     }
   }
 }
