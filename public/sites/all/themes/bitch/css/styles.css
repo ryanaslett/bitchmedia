@@ -1742,6 +1742,12 @@ p {
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_global\.scss}line{font-family:\0000333}}
+blockquote {
+  line-height: 1.533333333;
+  margin: 1em 34px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_global\.scss}line{font-family:\0000338}}
 .breadcrumb {
   font-family: Tahoma, Verdana, "DejaVu Sans", sans-serif;
   font-size: 0.733333333em;
@@ -1749,7 +1755,7 @@ p {
   text-transform: uppercase;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_global\.scss}line{font-family:\0000341}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_global\.scss}line{font-family:\0000346}}
 label {
   font-weight: 500;
   font-family: "brandon-grotesque", Arial, Helvetica, sans-serif;
@@ -2761,7 +2767,7 @@ h3.comment__title {
   font-size: 1.066666667em;
   font-weight: 500;
   line-height: 1.125;
-  margin: 0 0 8px;
+  margin: 0 0 7px;
   text-transform: uppercase;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_comment\.scss}line{font-family:\0000334}}
@@ -2776,7 +2782,7 @@ h3.comment__title a.permalink {
   font-family: "franklin-gothic-urw", "Times New Roman", Times, Georgia, serif;
   font-size: 0.666666667em;
   line-height: 1.2;
-  margin: 0 0 15px;
+  margin: 0 0 7px;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_comment\.scss}line{font-family:\0000350}}

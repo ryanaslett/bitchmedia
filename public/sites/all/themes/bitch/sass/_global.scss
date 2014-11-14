@@ -30,6 +30,11 @@ p {
   margin: 0.8em 0;
 }
 
+blockquote {
+  line-height: 1.533333333;
+  margin: 1em $indent-amount;
+}
+
 .breadcrumb {
   font-family: $tahoma;
   font-size: 0.733333333em;
