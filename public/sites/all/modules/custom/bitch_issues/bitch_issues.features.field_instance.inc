@@ -1117,7 +1117,7 @@ function bitch_issues_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 17,
+        'weight' => 14,
       ),
       'grid_view' => array(
         'label' => 'above',
@@ -1709,7 +1709,7 @@ function bitch_issues_field_default_field_instances() {
           'title_style' => '',
         ),
         'type' => 'title_linked',
-        'weight' => 4,
+        'weight' => 1,
       ),
       'grid_view' => array(
         'label' => 'above',
@@ -2050,7 +2050,7 @@ function bitch_issues_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 22,
       ),
       'grid_view' => array(
         'label' => 'above',
@@ -2229,7 +2229,7 @@ function bitch_issues_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 20,
       ),
       'grid_view' => array(
         'label' => 'above',
@@ -2285,7 +2285,7 @@ function bitch_issues_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 21,
       ),
       'grid_view' => array(
         'label' => 'above',

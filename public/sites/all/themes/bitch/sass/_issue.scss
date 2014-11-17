@@ -21,14 +21,14 @@
         display: inline-block;
       }
     }
-  }
 
-  .field-name-field-issue-year {
-    margin-bottom: $margin-large;
-  }
+    .field-name-field-issue-year {
+      margin-bottom: $margin-large;
+    }
 
-  .node-issue > .field-name-title-field:after {
-    content: ",";
+    .field-name-title-field:after {
+      content: ",";
+    }
   }
 
   .field-name-field-issue-number,
@@ -82,6 +82,7 @@
 .group_purchase_info {
   float: right;
   max-width: 40%;
+  margin-bottom: $margin-large;
 }
 
 .field-group-div {

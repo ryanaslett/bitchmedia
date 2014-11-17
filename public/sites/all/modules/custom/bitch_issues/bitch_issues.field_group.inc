@@ -47,7 +47,7 @@ function bitch_issues_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'The Bitch List',
-    'weight' => '12',
+    'weight' => '9',
     'children' => array(
       0 => 'field_bitch_list',
     ),
@@ -78,7 +78,7 @@ function bitch_issues_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Books',
-    'weight' => '13',
+    'weight' => '10',
     'children' => array(
       0 => 'field_book_reviews',
     ),
@@ -109,7 +109,7 @@ function bitch_issues_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Columns',
-    'weight' => '10',
+    'weight' => '7',
     'children' => array(
       0 => 'field_columns',
     ),
@@ -171,7 +171,7 @@ function bitch_issues_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'In Every Issue',
-    'weight' => '16',
+    'weight' => '13',
     'children' => array(
       0 => 'field_in_every_issue',
     ),
@@ -202,7 +202,7 @@ function bitch_issues_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Features',
-    'weight' => '11',
+    'weight' => '8',
     'children' => array(
       0 => 'field_features',
     ),
@@ -225,6 +225,39 @@ function bitch_issues_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_issue_title|node|issue|default';
+  $field_group->group_name = 'group_issue_title';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'issue';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Issue Title',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_issue_season_and_year',
+      1 => 'field_issue_year',
+      2 => 'title_field',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Issue Title',
+      'instance_settings' => array(
+        'classes' => '',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_issue_title|node|issue|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_loveit_shoveit|node|issue|default';
   $field_group->group_name = 'group_loveit_shoveit';
   $field_group->entity_type = 'node';
@@ -233,7 +266,7 @@ function bitch_issues_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Love it/Shove it',
-    'weight' => '9',
+    'weight' => '6',
     'children' => array(
       0 => 'field_love_it_shove_it',
     ),
@@ -600,7 +633,7 @@ function bitch_issues_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Music',
-    'weight' => '14',
+    'weight' => '11',
     'children' => array(
       0 => 'field_music_reviews',
     ),
@@ -762,6 +795,41 @@ function bitch_issues_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_purchase_info|node|issue|default';
+  $field_group->group_name = 'group_purchase_info';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'issue';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Purchase Info',
+    'weight' => '4',
+    'children' => array(
+      0 => 'field_issue_cover',
+      1 => 'field_issue_number',
+      2 => 'display_price',
+      3 => 'sell_price',
+      4 => 'add_to_cart',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Purchase Info',
+      'instance_settings' => array(
+        'classes' => '',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_purchase_info|node|issue|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_screen|node|issue|default';
   $field_group->group_name = 'group_screen';
   $field_group->entity_type = 'node';
@@ -770,7 +838,7 @@ function bitch_issues_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Screen',
-    'weight' => '15',
+    'weight' => '12',
     'children' => array(
       0 => 'field_screen_reviews',
     ),
