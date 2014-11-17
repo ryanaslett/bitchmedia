@@ -2544,16 +2544,17 @@ body {
   color: #2E2B31;
   font-family: "brandon-grotesque", Arial, Helvetica, sans-serif;
   font-size: 1.066666667em;
+  font-weight: 500;
   text-transform: uppercase;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000341}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000342}}
 .field-name-field-issue-cover {
   float: right;
   max-width: 40%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000347}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000348}}
 .field-group-div > h3 {
   clear: left;
   font-family: "brandon-grotesque", Arial, Helvetica, sans-serif;
@@ -2561,26 +2562,26 @@ body {
   font-weight: normal;
   text-transform: uppercase;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000354}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000355}}
 .field-group-div .field {
   color: #4D4F46;
   font-family: "franklin-gothic-urw", "Times New Roman", Times, Georgia, serif;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000359}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000360}}
 .field-group-div .field-name-field-headline,
 .field-group-div .field-name-field-subhead,
 .field-group-div .field-name-field-author-text,
 .field-group-div .field-name-field-article .field-name-title-field {
   float: left;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000365}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000366}}
 .field-group-div .field-name-field-headline div,
 .field-group-div .field-name-field-subhead div,
 .field-group-div .field-name-field-author-text div,
 .field-group-div .field-name-field-article .field-name-title-field div {
   float: left;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000370}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000371}}
 .field-group-div .field-name-field-headline,
 .field-group-div .field-name-field-article .field-name-title-field {
   clear: left;
@@ -2588,12 +2589,12 @@ body {
   margin-right: 6px;
   text-transform: uppercase;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000377}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000378}}
 .field-group-div .field-name-field-headline:after,
 .field-group-div .field-name-field-article .field-name-title-field:after {
   content: ":";
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000381}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000382}}
 .field-group-div .field-name-field-headline h3,
 .field-group-div .field-name-field-article .field-name-title-field h3 {
   clear: left;
@@ -2601,19 +2602,19 @@ body {
   font-size: 1.066666667em;
   margin: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000389}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000390}}
 .field-group-div .field-name-field-subhead {
   margin-right: 8px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000392}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000393}}
 .field-group-div .field-name-field-subhead:after {
   content: "|";
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000396}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000397}}
 .field-group-div .field-name-field-subhead .field-item {
   margin-right: 8px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\00003101}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\00003102}}
 .field-group-div .field-name-field-author-text {
   font-size: 0.8em;
 }
