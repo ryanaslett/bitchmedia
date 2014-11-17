@@ -79,13 +79,12 @@
   }
 }
 
-.group_purchase_info {
-  float: right;
-  max-width: 40%;
-  margin-bottom: $margin-large;
-}
-
 .field-group-div {
+
+  @include clearfix;
+  display: block;
+  clear: left;
+
   > h3 {
     clear: left;
     font-family: $brandon;
@@ -100,12 +99,29 @@
 
   .field-name-field-headline,
   .field-name-field-subhead,
+  .field-name-field-sub-head,
   .field-name-field-author-text,
+  .field-name-field-author
   .field-name-field-article .field-name-title-field {
     float: left;
+    font-size: 1em; // 1 * 15 = 15px
+    line-height: 1.8; // 1.8 * 15 = 27px
+
 
     div {
       float: left;
+    }
+  }
+
+  .field-type-entityreference {
+    float: left;
+    clear: left;
+    h1,
+    h3,
+    h5 {
+      float: left;
+      font-size: 1em !important; // 1 * 15 = 15px
+      line-height: 1.8 !important; // 1.8 * 15 = 27px
     }
   }
 
@@ -128,21 +144,30 @@
     }
   }
 
-  .field-name-field-subhead {
-    margin-right: 8px;
-
-    &:after {
-      content: "|";
-    }
-
-    .field-item {
-      margin-right: 8px;
-    }
-  }
-
-  .field-name-field-author-text {
+  .field-name-field-author-text,
+  .field-name-field-author {
     font-size: 0.8em;
-  }
+    margin-left: 6px;
+    position: relative;
+    top: 3px;
+    margin-bottom: 12px;
 
+    &:before {
+      content: "|";
+      float: left;
+      padding-right: 6px;
+      position: relative;
+      top: -1px;
+    }
+  }
 }
 
+.group_purchase_info {
+  float: right;
+  max-width: 40%;
+  margin-bottom: $margin-large;
+}
+
+.group_issue_title {
+  float: none;
+}

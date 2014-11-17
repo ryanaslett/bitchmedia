@@ -25,7 +25,7 @@
 
 // Title and subhead
 .node-type-article h1,
-.field-name-field-sub-head {
+.node-type-article .field-name-field-sub-head {
   font-family: $brandon;
   font-size: 1.6em; // 1.6 * 15px = 24px
   text-transform: uppercase;
@@ -35,7 +35,7 @@
 }
 
 // Subhead
-.field-name-field-sub-head {
+.node-type-article .field-name-field-sub-head {
   font-weight: 400;
   margin-bottom: 22px;
 }
