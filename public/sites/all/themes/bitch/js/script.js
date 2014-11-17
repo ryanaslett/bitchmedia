@@ -48,6 +48,10 @@ Drupal.behaviors.my_custom_behavior = {
     e.preventDefault();
   });
 
+  // Test to add break after author field on issues
+  $('<br />').insertAfter('.field-name-field-author-text');
+  $('<br />').insertAfter('.field-name-field-content-author');
+
   }
 };
 

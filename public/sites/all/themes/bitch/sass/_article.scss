@@ -4,40 +4,42 @@
 
 // Genre links
 .field-name-field-genre {
-  background: $light-yellow;
-  color: $dark;
-  display: inline-block;
-  font-family: $tahoma;
-  font-size: 0.666666667em; // 0.666666667 * 15px = 10px
-  line-height: 2em; // 2 * 10px = 20px
-  margin-bottom: 16px;
-  padding: 0 12px;
-  text-transform: uppercase;
-
-  a {
-    color: $dark;
-  }
-
   .field-item {
+    background: $light-yellow;
+    color: $dark;
+    display: inline-block;
+    font-family: $tahoma;
+    font-size: 0.666666667em; // 0.666666667 * 15px = 10px
+    line-height: 2em; // 2 * 10px = 20px
+    margin-bottom: 16px;
     margin-right: 2px;
+    padding: 0 12px;
+    text-transform: uppercase;
+
+    a {
+      color: $dark;
+    }
   }
 }
 
 // Title and subhead
-.node-type-article h1,
-.node-type-article .field-name-field-sub-head {
-  font-family: $brandon;
-  font-size: 1.6em; // 1.6 * 15px = 24px
-  text-transform: uppercase;
-  font-weight: 900;
-  line-height: 1.166666667; // 1.166666667 * 24 = 28px
-  margin: 0;
-}
+.node-type-article,
+.node-type-podcast {
+    h1,
+    .field-name-field-sub-head {
+    font-family: $brandon;
+    font-size: 1.6em; // 1.6 * 15px = 24px
+    text-transform: uppercase;
+    font-weight: 900;
+    line-height: 1.166666667; // 1.166666667 * 24 = 28px
+    margin: 0;
+  }
 
-// Subhead
-.node-type-article .field-name-field-sub-head {
-  font-weight: 400;
-  margin-bottom: 22px;
+  // Subhead
+  .field-name-field-sub-head {
+    font-weight: 400;
+    margin-bottom: 22px;
+  }
 }
 
 // Author
@@ -55,6 +57,7 @@
 
 // Date and categories
 .node-type-article article > .form-item.form-type-item,
+.node-type-podcast article > .form-item.form-type-item,
 .field-name-field-general-topic,
 .field-name-field-specific-topic {
   color: $text-gray;
@@ -77,7 +80,8 @@
 }
 
 // Date
-.node-type-article article > .form-item.form-type-item {
+.node-type-article article > .form-item.form-type-item,
+.node-type-podcast article > .form-item.form-type-item {
   &:after {
     content: ",";
   }
@@ -113,6 +117,7 @@
 }
 
 // Add comment link
-.node-type-article article > ul.links.inline {
+.node-type-article article > ul.links.inline,
+.node-type-podcast article > ul.links.inline {
   @include element-invisible;
 }

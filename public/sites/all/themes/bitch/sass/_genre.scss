@@ -1,0 +1,9 @@
+/*
+ ** Genre Pages
+ */
+
+.view-genres {
+  .field-name-field-genre {
+    @include element-invisible;
+  }
+}
