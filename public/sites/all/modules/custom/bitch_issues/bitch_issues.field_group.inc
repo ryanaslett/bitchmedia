@@ -51,12 +51,16 @@ function bitch_issues_field_group_info() {
     'children' => array(
       0 => 'field_bitch_list',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'div',
     'format_settings' => array(
       'label' => 'The Bitch List',
       'instance_settings' => array(
         'classes' => '',
         'description' => '',
+        'show_label' => '1',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
       ),
       'formatter' => 'open',
     ),
@@ -78,12 +82,16 @@ function bitch_issues_field_group_info() {
     'children' => array(
       0 => 'field_book_reviews',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'div',
     'format_settings' => array(
       'label' => 'Books',
       'instance_settings' => array(
         'classes' => '',
         'description' => '',
+        'show_label' => '1',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
       ),
       'formatter' => 'open',
     ),
@@ -105,12 +113,16 @@ function bitch_issues_field_group_info() {
     'children' => array(
       0 => 'field_columns',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'div',
     'format_settings' => array(
       'label' => 'Columns',
       'instance_settings' => array(
         'classes' => '',
         'description' => '',
+        'show_label' => '1',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
       ),
       'formatter' => 'open',
     ),
@@ -163,12 +175,16 @@ function bitch_issues_field_group_info() {
     'children' => array(
       0 => 'field_in_every_issue',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'div',
     'format_settings' => array(
       'label' => 'In Every Issue',
       'instance_settings' => array(
         'classes' => '',
         'description' => '',
+        'show_label' => '1',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
       ),
       'formatter' => 'open',
     ),
@@ -190,12 +206,16 @@ function bitch_issues_field_group_info() {
     'children' => array(
       0 => 'field_features',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'div',
     'format_settings' => array(
       'label' => 'Features',
       'instance_settings' => array(
         'classes' => '',
         'description' => '',
+        'show_label' => '1',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
       ),
       'formatter' => 'open',
     ),
@@ -217,12 +237,16 @@ function bitch_issues_field_group_info() {
     'children' => array(
       0 => 'field_love_it_shove_it',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'div',
     'format_settings' => array(
       'label' => 'Love it/Shove it',
       'instance_settings' => array(
         'classes' => '',
         'description' => '',
+        'show_label' => '1',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
       ),
       'formatter' => 'open',
     ),
@@ -580,12 +604,16 @@ function bitch_issues_field_group_info() {
     'children' => array(
       0 => 'field_music_reviews',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'div',
     'format_settings' => array(
       'label' => 'Music',
       'instance_settings' => array(
         'classes' => '',
         'description' => '',
+        'show_label' => '1',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
       ),
       'formatter' => 'open',
     ),
@@ -746,12 +774,16 @@ function bitch_issues_field_group_info() {
     'children' => array(
       0 => 'field_screen_reviews',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'div',
     'format_settings' => array(
       'label' => 'Screen',
       'instance_settings' => array(
         'classes' => '',
         'description' => '',
+        'show_label' => '1',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
       ),
       'formatter' => 'open',
     ),
