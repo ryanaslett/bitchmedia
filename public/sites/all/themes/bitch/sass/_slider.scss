@@ -27,8 +27,10 @@
     padding: 0;
 
     &:after {
-      color: $dark;
+      color: $text-gray;
       float: right;
     }
   }
+
+  // @TODO theme block content when block is available
 }
