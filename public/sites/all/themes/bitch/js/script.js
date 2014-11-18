@@ -69,6 +69,24 @@ Drupal.behaviors.my_custom_behavior = {
       }, 310); // ensure the collapse animation is done
     });
 
+   // Slider function
+   $(window).scroll(function(){
+        var distanceTop = $('#comments').offset().top - $(window).height();
+
+        if( $(window).width() > 1000) {
+   
+          if  ($(window).scrollTop() > distanceTop)
+              $('#slider').animate({'right':'0px'},300);
+          else
+              $('#slider').stop(true).animate({'right':'-430px'},100);
+
+        }
+    });
+ 
+    $('#slider .close').bind('click',function(){
+        $(this).parent().remove();
+    });
+
   }
 };
 

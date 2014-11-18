@@ -2097,17 +2097,17 @@ label {
 /*
  ** Off Canvas Styling
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000369}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000370}}
 body {
   overflow-x: hidden;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000373}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000374}}
 #header-mobile {
   display: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000380}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000381}}
 .region-tout .block-menu-block.first,
 .region-tout .search-box {
   transition: 0.5s all ease;
@@ -2117,13 +2117,13 @@ body {
   left: -100%;
 }
 @media screen and (max-width: 639px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000380}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000381}}
   .region-tout .block-menu-block.first,
   .region-tout .search-box {
     width: 91.6666667%;
   }
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000385}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000386}}
 .region-tout .tout-menu,
 .region-tout .block-logintoboggan {
   transition: 0.5s all ease;
@@ -2133,14 +2133,14 @@ body {
   right: -100%;
 }
 @media screen and (max-width: 639px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000385}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000386}}
   .region-tout .tout-menu,
   .region-tout .block-logintoboggan {
     width: 91.6666667%;
   }
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000393}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000394}}
 .tout-close-left {
   transition: 0.5s all ease;
   float: left;
@@ -2150,13 +2150,13 @@ body {
   width: auto;
 }
 @media screen and (max-width: 639px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000393}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000394}}
   .tout-close-left {
     width: 91.6666667%;
   }
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000397}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000398}}
 .tout-close-right {
   transition: 0.5s all ease;
   float: left;
@@ -2166,14 +2166,14 @@ body {
   width: auto;
 }
 @media screen and (max-width: 639px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000397}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000398}}
   .tout-close-right {
     width: 91.6666667%;
   }
 }
 
 @media screen and (max-width: 1023px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003105}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003106}}
   .header__region {
     position: absolute !important;
     height: 1px;
@@ -2181,7 +2181,7 @@ body {
     overflow: hidden;
     clip: rect(1px, 1px, 1px, 1px);
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003107}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003108}}
   .header__region .search-box,
   .header__region .block-logintoboggan {
     position: absolute !important;
@@ -2192,7 +2192,7 @@ body {
   }
 }
 @media screen and (max-width: 1023px) and (max-width: 639px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003115}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003116}}
   #navigation {
     position: absolute !important;
     height: 1px;
@@ -2201,7 +2201,7 @@ body {
     clip: rect(1px, 1px, 1px, 1px);
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003119}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003120}}
   .header__region .tout-menu {
     position: absolute !important;
     height: 1px;
@@ -2211,19 +2211,19 @@ body {
   }
 }
 @media screen and (max-width: 1023px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003126}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003127}}
   #header {
     left: 16.6666667%;
     width: 66.6666667%;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003132}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003133}}
   #header-mobile {
     position: absolute;
     width: 100%;
     display: block;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003138}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003139}}
   #header-mobile h2 {
     color: #FFF100;
     display: block;
@@ -2233,12 +2233,12 @@ body {
     margin: 0;
     text-indent: -9999px;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003147}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003148}}
   #header-mobile h2.search-header {
     clear: left;
     float: left;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003151}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003152}}
   #header-mobile h2.search-header:after {
     content: "\f002";
     float: left;
@@ -2246,11 +2246,11 @@ body {
     padding: 35%;
     text-indent: 0;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003160}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003161}}
   #header-mobile h2.login-header {
     float: right;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003163}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003164}}
   #header-mobile h2.login-header:after {
     content: "\f007";
     float: right;
@@ -2258,19 +2258,19 @@ body {
     padding: 35%;
     text-indent: 0;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003172}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003173}}
   #header-mobile h2.menu-header, #header-mobile h2.tout-header {
     display: none;
   }
 }
 @media screen and (max-width: 1023px) and (max-width: 639px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003180}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003181}}
   #header-mobile h2.menu-header {
     display: block;
     float: left;
     width: 16.6666667% !important;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003186}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003187}}
   #header-mobile h2.menu-header:after {
     content: "\f0c9";
     float: left;
@@ -2278,14 +2278,14 @@ body {
     padding: 35%;
     text-indent: 0;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003195}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003196}}
   #header-mobile h2.tout-header {
     display: block;
     clear: right;
     float: right;
     top: 54px;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003201}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003202}}
   #header-mobile h2.tout-header:after {
     content: "\f07a";
     float: right;
@@ -2296,7 +2296,7 @@ body {
 }
 
 @media screen and (max-width: 1023px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003214}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003215}}
   #page {
     transition: 0.5s all ease;
     margin: 0;
@@ -2304,7 +2304,7 @@ body {
     position: relative;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003222}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003223}}
   .region-tout .block-menu-block.first,
   .region-tout .search-box,
   .region-tout .block-logintoboggan,
@@ -2317,7 +2317,7 @@ body {
     min-height: 100%;
     text-transform: uppercase;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003234}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003235}}
   .region-tout .block-menu-block.first a,
   .region-tout .search-box a,
   .region-tout .block-logintoboggan a,
@@ -2325,7 +2325,7 @@ body {
     color: #FFF100;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003246}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003247}}
   .region-tout .block-menu-block.first h2.block__title {
     position: absolute !important;
     height: 1px;
@@ -2333,16 +2333,16 @@ body {
     overflow: hidden;
     clip: rect(1px, 1px, 1px, 1px);
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003250}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003251}}
   .region-tout .block-menu-block.first ul {
     list-style-type: none;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003253}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003254}}
   .region-tout .block-menu-block.first ul li.menu__item.is-leaf {
     list-style: none;
     margin-bottom: 0.5em;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003273}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003274}}
   .region-tout .tout-menu h2.block__title {
     position: absolute !important;
     height: 1px;
@@ -2350,11 +2350,11 @@ body {
     overflow: hidden;
     clip: rect(1px, 1px, 1px, 1px);
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003277}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003278}}
   .region-tout .tout-menu ul {
     list-style-type: none;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003280}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003281}}
   .region-tout .tout-menu ul li.menu__item.is-leaf {
     list-style: none;
     margin-bottom: 0.5em;
@@ -2362,16 +2362,17 @@ body {
     font-weight: 500;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003292}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003293}}
   .menu-active .tout-close-left, .search-active .tout-close-left {
     font-family: "FontAwesome";
     font-size: 1.6em;
     padding: 12px 24px;
+    cursor: pointer;
     text-indent: -9999px;
     z-index: 10;
     left: 0;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000361}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000362}}
   .menu-active .tout-close-left:after, .search-active .tout-close-left:after {
     content: "\f00d";
     color: yellow;
@@ -2379,128 +2380,194 @@ body {
     float: left;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003299}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003300}}
   .login-active .tout-close-right, .tout-active .tout-close-right {
     font-family: "FontAwesome";
     font-size: 1.6em;
     padding: 12px 24px;
+    cursor: pointer;
     text-indent: -9999px;
     z-index: 10;
     right: 0;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000361}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000362}}
   .login-active .tout-close-right:after, .tout-active .tout-close-right:after {
     content: "\f00d";
     color: yellow;
     text-indent: 0;
     float: left;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003304}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003305}}
   .login-active .tout-close-right:after, .tout-active .tout-close-right:after {
     float: right;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003312}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003313}}
   .menu-active .block-menu-block.first {
     width: 75%;
     left: 0;
   }
 }
 @media screen and (max-width: 1023px) and (max-width: 639px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003312}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003313}}
   .menu-active .block-menu-block.first {
     width: 91.6666667%;
   }
 }
 @media screen and (max-width: 1023px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003317}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003318}}
   .menu-active #page {
     margin-left: 75%;
   }
 }
 @media screen and (max-width: 1023px) and (max-width: 639px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003317}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003318}}
   .menu-active #page {
     margin-left: 91.6666667%;
   }
 }
 
 @media screen and (max-width: 1023px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003323}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003324}}
   .search-active .region-tout .search-box {
     width: 75%;
     left: 0;
   }
 }
 @media screen and (max-width: 1023px) and (max-width: 639px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003323}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003324}}
   .search-active .region-tout .search-box {
     width: 91.6666667%;
   }
 }
 @media screen and (max-width: 1023px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003328}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003329}}
   .search-active #page {
     margin-left: 75%;
   }
 }
 @media screen and (max-width: 1023px) and (max-width: 639px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003328}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003329}}
   .search-active #page {
     margin-left: 91.6666667%;
   }
 }
 
 @media screen and (max-width: 1023px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003334}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003335}}
   .login-active .block-logintoboggan {
     width: 75%;
     right: 0;
   }
 }
 @media screen and (max-width: 1023px) and (max-width: 639px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003334}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003335}}
   .login-active .block-logintoboggan {
     width: 91.6666667%;
   }
 }
 @media screen and (max-width: 1023px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003339}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003340}}
   .login-active #page {
     margin-left: -75%;
   }
 }
 @media screen and (max-width: 1023px) and (max-width: 639px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003339}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003340}}
   .login-active #page {
     margin-left: -91.6666667%;
   }
 }
 
 @media screen and (max-width: 1023px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003345}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003346}}
   .tout-active .tout-menu {
     width: 75%;
     right: 0;
   }
 }
 @media screen and (max-width: 1023px) and (max-width: 639px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003345}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003346}}
   .tout-active .tout-menu {
     width: 91.6666667%;
   }
 }
 @media screen and (max-width: 1023px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003350}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003351}}
   .tout-active #page {
     margin-left: -75%;
   }
 }
 @media screen and (max-width: 1023px) and (max-width: 639px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003350}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003351}}
   .tout-active #page {
     margin-left: -91.6666667%;
   }
+}
+
+/*
+ ** Slider
+ */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_slider\.scss}line{font-family:\000035}}
+#slider {
+  background: #FFFFFF;
+  bottom: 20px;
+  padding: 10px;
+  position: fixed;
+  right: -430px;
+  width: 400px;
+  -moz-box-shadow: #777 0 0 10px;
+  -webkit-box-shadow: #777 0 0 10px;
+  box-shadow: #777 0 0 10px;
+}
+@media screen and (max-width: 1023px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_slider\.scss}line{font-family:\000035}}
+  #slider {
+    position: relative;
+    bottom: auto;
+    width: 100%;
+    right: auto;
+    display: inline;
+    float: left;
+    width: 100%;
+    padding: 0 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+}
+@media screen and (max-width: 1023px) and (max-width: 320px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_slider\.scss}line{font-family:\000035}}
+  #slider {
+    width: 100%;
+    left: 0;
+  }
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_slider\.scss}line{font-family:\0000325}}
+#slider a.close {
+  font-family: "FontAwesome";
+  font-size: 1.6em;
+  padding: 12px 24px;
+  cursor: pointer;
+  text-indent: -9999px;
+  z-index: 10;
+  padding: 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000362}}
+#slider a.close:after {
+  content: "\f00d";
+  color: yellow;
+  text-indent: 0;
+  float: left;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_slider\.scss}line{font-family:\0000329}}
+#slider a.close:after {
+  color: #2E2B31;
+  float: right;
 }
 
 /*

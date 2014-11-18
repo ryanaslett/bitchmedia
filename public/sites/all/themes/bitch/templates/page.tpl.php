@@ -87,6 +87,18 @@
     </div>
 
     <?php
+      // Render the content top to see if there's anything in it
+      $slider  = render($page['slider']);
+    ?>
+
+    <?php if ($slider): ?>
+      <div id="slider">
+        <a class="close"></a>
+        <?php print $slider; ?>
+      </div>
+    <?php endif; ?>
+
+    <?php
       // Render the sidebars to see if there's anything in them.
       $sidebar_first  = render($page['sidebar_first']);
       $sidebar_second = render($page['sidebar_second']);
