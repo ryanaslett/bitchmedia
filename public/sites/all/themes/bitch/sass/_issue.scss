@@ -84,12 +84,16 @@
   @include clearfix;
   display: block;
   clear: left;
+  line-height: 1.8;
+  overflow: hidden;
 
   > h3 {
     clear: left;
     font-family: $brandon;
     font-size: 1.333333333em;
     font-weight: normal;
+    margin-top: 23px;
+    margin-bottom: 0;
     text-transform: uppercase;
   }
   .field {
@@ -104,19 +108,19 @@
   .field-name-field-author-text,
   .field-name-field-content-author,
   .field-name-field-article .field-name-title-field {
-    display: inline-block;
+    display: inline;
     font-size: 1em; // 1 * 15 = 15px
     line-height: 1.2; // 1.8 * 15 = 27px
 
 
     div {
-      display: inline-block;
+      display: inline;
     }
   }
 
   .field-name-field-headline,
   .field-name-field-article .field-name-title-field {
-    display: inline-block;
+    display: inline;
     font-family: $brandon;
     margin-right: 6px;
     text-transform: uppercase;
@@ -158,6 +162,10 @@
       a:after {
         content: ":";
       }
+    }
+    // Reset clearfix on articles in entityref
+    .clearfix:after {
+      clear: none;
     }
   }
 
