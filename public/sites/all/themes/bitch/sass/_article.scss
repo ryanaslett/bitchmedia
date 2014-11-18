@@ -55,6 +55,15 @@
   }
 }
 
+.node-type-article .field-name-field-text-author-interviewer,
+.node-type-podcast .field-name-field-text-author-interviewer {
+  &:before {
+    content: "By:";
+    float: left;
+    padding-right: 3px;
+  }
+}
+
 // Date and categories
 .node-type-article article > .form-item.form-type-item,
 .node-type-podcast article > .form-item.form-type-item,

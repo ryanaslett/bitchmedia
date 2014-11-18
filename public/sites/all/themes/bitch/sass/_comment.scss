@@ -17,7 +17,7 @@ h2.comments__form-title {
   font-size: 1.2em; // 1.2 * 15px = 18px
   font-weight: 900;
   line-height: 1;
-  margin: 0 0 16px;
+  margin: 0 0 24px;
   text-transform: uppercase;
 }
 
@@ -28,7 +28,7 @@ h3.comment__title {
   font-size: 1.066666667em; // 1.066666667 * 15 = 16px
   font-weight: 500;
   line-height: 1.125; // 1.125 * 16px = 18px
-  margin: 0 0 7px;
+  margin: 0 0 5px;
   text-transform: uppercase;
 
   a.permalink {
@@ -43,12 +43,19 @@ h3.comment__title {
   font-family: $franklin-gothic;
   font-size: 0.666666667em; // .666666667 * 15 = 10px
   line-height: 1.2; // 1.2 * 10 = 12px
-  margin: 0 0 7px;
+  margin: 0 0 10px;
 }
 
 // Individual comment
 article.comment {
   margin-bottom: 24px;
+}
+
+// Comment body
+.comment .field-name-comment-body {
+  font-family: $franklin-gothic;
+  font-size: 13px;
+  line-height: 20px;
 }
 
 // Set of comments and replies
@@ -79,5 +86,45 @@ article.comment {
 #comment-form {
   .form-item {
     margin: 0;
+  }
+  a.username {
+    font-family: $brandon;
+  }
+  label {
+    margin: 10px 0 3px;
+  }
+}
+
+// jQuery Accordion Resets
+.ui-accordion {
+  .ui-accordion-icons,
+  .ui-accordion-header {
+    padding: 0;
+    margin: 0;
+  }
+  .ui-accordion-header {
+    margin: 0 0 16px;
+  }
+  .ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br {
+    border-radius: 0;
+  }
+  .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    background: none;
+    border: none;
+  }
+  .ui-accordion-header .ui-accordion-header-icon {
+    background-image: none;
+  }
+  .ui-accordion-content {
+    padding: 0
+  }
+  .ui-widget-content {
+    background: none;
+    border: none;
+    color: $dark;
+    height: auto !important;
+    overflow: visible;
+  }
+  .ui-widget {
   }
 }

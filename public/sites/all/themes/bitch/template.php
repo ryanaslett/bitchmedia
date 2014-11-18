@@ -62,6 +62,9 @@ function bitch_preprocess_page(&$variables, $hook) {
     }
   }
 
+  // Add Accordion JQuery Library
+  drupal_add_library('system', 'ui.accordion');
+
 }
 // */
 
@@ -77,12 +80,6 @@ function bitch_preprocess_page(&$variables, $hook) {
 function bitch_preprocess_node(&$variables, $hook) {
   $variables['sample_variable'] = t('Lorem ipsum.');
 
-  // Optionally, run node-type-specific preprocess functions, like
-  // bitch_preprocess_node_page() or bitch_preprocess_node_story().
-  $function = __FUNCTION__ . '_' . $variables['node']->type;
-  if (function_exists($function)) {
-    $function($variables, $hook);
-  }
 }
 // */
 

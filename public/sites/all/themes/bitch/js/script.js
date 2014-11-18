@@ -52,6 +52,23 @@ Drupal.behaviors.my_custom_behavior = {
   $('<br />').insertAfter('.node-type-issue .field-name-field-author-text');
   $('<br />').insertAfter('.node-type-issue .field-name-field-content-author');
 
+  // Collapse comments
+  $( "#comments" ).accordion({
+    active: false,
+    collapsible: true,
+    header: "h2.comments__title",
+    animate: 300
+  });
+
+  // Scroll to comments tab when clicked
+   $('#comments h2.comments__title').bind('click',function(){
+      var self = this;
+      setTimeout(function() {
+        theOffset = $(self).offset();
+          $('body,html').animate({ scrollTop: theOffset.top - 100 });
+      }, 310); // ensure the collapse animation is done
+    });
+
   }
 };
 
