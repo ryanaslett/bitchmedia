@@ -73,7 +73,8 @@ Drupal.behaviors.my_custom_behavior = {
    $(window).scroll(function(){
         var distanceTop = $('#comments').offset().top - $(window).height();
 
-        if( $(window).width() > 1000) {
+        // Only perform slider if laptop width or above
+        if( $(window).width() > 1023) {
    
           if  ($(window).scrollTop() > distanceTop)
               $('#slider').animate({'right':'0px'},300);
@@ -83,6 +84,7 @@ Drupal.behaviors.my_custom_behavior = {
         }
     });
  
+    // Close button
     $('#slider .close').bind('click',function(){
         $(this).parent().remove();
     });
