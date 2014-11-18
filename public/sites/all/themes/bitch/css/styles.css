@@ -2585,15 +2585,15 @@ body {
   font-family: "brandon-grotesque", Arial, Helvetica, sans-serif;
   font-size: 1.066666667em;
   font-weight: 500;
+  line-height: 1.3125;
   text-transform: uppercase;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000382}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000383}}
 .field-group-div {
   *zoom: 1;
   display: block;
   clear: left;
-  line-height: 1.8;
   overflow: hidden;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_grid\.scss}line{font-family:\0000353}}
@@ -2787,7 +2787,7 @@ body {
   color: #4D4F46;
   display: inline-block;
   font-family: "franklin-gothic-urw", "Times New Roman", Times, Georgia, serif;
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1;
   margin: -3px 0 8px;
 }
@@ -2796,7 +2796,7 @@ body {
 .node-type-podcast article > .form-item.form-type-item h2,
 .field-name-field-general-topic h2,
 .field-name-field-specific-topic h2 {
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1;
   margin: 0;
 }

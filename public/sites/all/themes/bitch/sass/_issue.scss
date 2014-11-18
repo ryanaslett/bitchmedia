@@ -73,8 +73,9 @@
   .field-name-field-cover-lines {
     color: $dark;
     font-family: $brandon;
-    font-size: 1.066666667em;
+    font-size: 1.066666667em; // 1.06667 * 15 = 16px
     font-weight: 500;
+    line-height: 1.3125;
     text-transform: uppercase;
   }
 }
@@ -84,7 +85,6 @@
   @include clearfix;
   display: block;
   clear: left;
-  line-height: 1.8;
   overflow: hidden;
 
   > h3 {
