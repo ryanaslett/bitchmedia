@@ -85,7 +85,11 @@
   @include clearfix;
   display: block;
   clear: left;
-  overflow: hidden;
+
+  &:before,
+  &:after {
+    display: inline;
+  }
 
   > h3 {
     clear: left;
