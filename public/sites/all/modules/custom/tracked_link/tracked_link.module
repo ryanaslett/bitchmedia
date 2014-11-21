@@ -1,0 +1,83 @@
+<?php
+
+/**
+ * @file
+ * Defines simple link field types.
+ */
+
+
+function tracked_link_field_presave($entity_type, $entity, $field, $instance, $langcode, &$items) {
+  if ($field['type'] == 'link') {
+    // Let PHP round the value to ensure consistent behavior across storage
+    // backends.
+    foreach ($items as $delta => $item) {
+      if (isset($item['value'])) {
+        $items[$delta]['value'] = round($item['value'], $field['settings']['scale']);
+      }
+    }
+  }
+}
+
+
+/**
+ * Implements hook_field_instance_settings_form().
+ */
+function tracked_link_form_field_ui_field_edit_form_alter(&$form, &$form_state) {
+
+  $form['instance']['settings']['attributes']['ga_category'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Google Analytics Event Category'),
+    '#default_value' => isset($instance['settings']['ga_category']) ? $instance['settings']['ga_category'] : '',
+    '#description' => t('This is the category for link tracking.'),
+    '#maxlength' => 150,
+    '#size' => 60,
+  );
+  $form['instance']['settings']['attributes']['ga_action'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Google Analytics Event Action'),
+    '#default_value' => isset($instance['settings']['ga_action']) ? $instance['settings']['ga_action'] : '',
+    '#description' => t('This is the action for link tracking.'),
+    '#maxlength' => 500,
+    '#size' => 60,
+  );
+  $form['instance']['settings']['attributes']['ga_label'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Google Analytics Event Label'),
+    '#default_value' => isset($instance['settings']['ga_label']) ? $instance['settings']['ga_label'] : '',
+    '#description' => t('This is the specific event label for link tracking.'),
+    '#maxlength' => 500,
+    '#size' => 60,
+  );
+  $form['instance']['settings']['#element_validate'][] = 'tracked_link_field_settings_form_validate';
+
+  return $form;
+}
+
+/**
+ * #element_validate handler for link_field_instance_settings_form().
+ */
+function tracked_link_field_settings_form_validate($element, &$form_state, $complete_form) {
+  if ($form_state['values']['instance']['settings']['title'] === 'value' && empty($form_state['values']['instance']['settings']['title_value'])) {
+    form_set_error('title_value', t('A default title must be provided if the title is a static value.'));
+  }
+  if (!empty($form_state['values']['instance']['settings']['display']['url_cutoff']) && !is_numeric($form_state['values']['instance']['settings']['display']['url_cutoff'])) {
+    form_set_error('display', t('URL Display Cutoff value must be numeric.'));
+  }
+  if (empty($form_state['values']['instance']['settings']['title_maxlength'])) {
+    form_set_value($element['title_maxlength'], '128', $form_state);
+  }
+  elseif (!is_numeric($form_state['values']['instance']['settings']['title_maxlength'])) {
+    form_set_error('title_maxlength', t('The max length of the link title must be numeric.'));
+  }
+  elseif ($form_state['values']['instance']['settings']['title_maxlength'] > 255) {
+    form_set_error('title_maxlength', t('The max length of the link title cannot be greater than 255 characters.'));
+  }
+}
+
+function tracked_link_field_widget_link_field_form_alter(&$element, &$form_state, $context){
+
+  $foo = 'bar';
+}
+
+
+

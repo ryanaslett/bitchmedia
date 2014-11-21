@@ -1,0 +1,6 @@
+name = Tracked Link
+description = Extends the Link field with Google Analytics Event Tracking
+core = 7.x
+package = Fields
+
+files[] = tracked_link.module
