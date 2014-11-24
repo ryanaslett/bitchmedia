@@ -826,12 +826,6 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 11,
-      ),
       'default' => array(
         'label' => 'hidden',
         'settings' => array(),
@@ -908,12 +902,6 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'blurb' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 17,
-      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -1003,12 +991,6 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 12,
-      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'entityreference',
@@ -1088,12 +1070,6 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => 'Type in the Authors username as it appears on the site.',
     'display' => array(
-      'blurb' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 16,
-      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'entityreference',
@@ -1188,12 +1164,6 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => 'For images and illustrations credits. The label is *not* automatic, so you must enter things like "Illustration credit: Jill Jillyson" or "Images courtesy of Getty" etc. You may use html and link from here.',
     'display' => array(
-      'blurb' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 14,
-      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -1288,12 +1258,6 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => 'Select the general topic this falls under. Note the subtle hierarchy.',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 13,
-      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'entityreference',
@@ -1373,12 +1337,6 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 10,
-      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'entityreference',
@@ -1459,12 +1417,6 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => 'This is the user account of the person who illustrated this article',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 1,
-      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'entityreference',
@@ -1544,12 +1496,6 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => 'Which issue does this article appear in?',
     'display' => array(
-      'blurb' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 15,
-      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'entityreference',
@@ -1639,12 +1585,6 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 6,
-      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'multifield',
@@ -1719,12 +1659,6 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 4,
-      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'multifield',
@@ -1808,12 +1742,6 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 7,
-      ),
       'default' => array(
         'label' => 'above',
         'module' => 'multifield',
@@ -1888,12 +1816,6 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => 'Each Question and Answer should be added individually.',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 5,
-      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'multifield',
@@ -1968,12 +1890,6 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => 'Use this field to tag this content with any additional specific tags not already covered by the genre or general topics. Typically this will be proper nouns etc. Please don\'t use it to make a tag salad.',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 9,
-      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'entityreference',
@@ -2058,13 +1974,6 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'blurb' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 0,
-      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -2152,12 +2061,6 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => 'A longer summary used for highlighting articles.',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 18,
-      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2251,12 +2154,6 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => 'This is a legacy field to support the *old* Author name that is text only. Seriously. Dont use this field. If the author does not have an account, *make one up*. ',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 3,
-      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -2369,12 +2266,6 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 8,
-      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'title',
@@ -2523,13 +2414,13 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
+      'default' => array(
+        'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 5,
       ),
-      'default' => array(
+      'featured' => array(
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
@@ -2618,13 +2509,13 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
+      'default' => array(
+        'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 2,
       ),
-      'default' => array(
+      'featured' => array(
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
@@ -2687,13 +2578,13 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => 'For images and illustrations credits. The label is *not* automatic, so you must enter things like "Illustration credit: Jill Jillyson" or "Images courtesy of Getty" etc. You may use html and link from here.',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
+      'default' => array(
+        'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 10,
       ),
-      'default' => array(
+      'featured' => array(
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
@@ -2776,13 +2667,16 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 15,
+      ),
+      'featured' => array(
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
@@ -2848,13 +2742,16 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 14,
+      ),
+      'featured' => array(
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
@@ -2916,13 +2813,16 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'default' => array(
+        'label' => 'above',
+        'module' => 'multifield',
+        'settings' => array(
+          'view_mode' => 'default',
+        ),
+        'type' => 'multifield_default',
+        'weight' => 13,
+      ),
+      'featured' => array(
         'label' => 'above',
         'module' => 'multifield',
         'settings' => array(
@@ -2989,13 +2889,13 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => 'Paste in the embed code for the podcast.',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
+      'default' => array(
+        'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 6,
       ),
-      'default' => array(
+      'featured' => array(
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
@@ -3084,13 +2984,16 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 12,
+      ),
+      'featured' => array(
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
@@ -3160,13 +3063,13 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => 'Select the podcast series. In most cases this will be popaganda, but if we add additional podcast shows, with their own logos, subscription links etc, this will determine which series this particular podcast is a part of.',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
+      'default' => array(
+        'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
       ),
-      'default' => array(
+      'featured' => array(
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
@@ -3229,13 +3132,16 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 16,
+      ),
+      'featured' => array(
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
@@ -3309,13 +3215,13 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => 'If this podcast has sponsorship information, link it here',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
+      'default' => array(
+        'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 9,
       ),
-      'default' => array(
+      'featured' => array(
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
@@ -3399,13 +3305,13 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => 'A longer teaser used when featured or in larger lists.',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
+      'default' => array(
+        'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 11,
       ),
-      'default' => array(
+      'featured' => array(
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
@@ -3492,13 +3398,13 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => 'Text transcript goes here. If it is an external file, upload it and link it instead',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
+      'default' => array(
+        'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 7,
       ),
-      'default' => array(
+      'featured' => array(
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
@@ -3578,13 +3484,13 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'blurb' => array(
+      'default' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 17,
       ),
-      'default' => array(
+      'featured' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -3700,12 +3606,6 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -3789,12 +3689,6 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'default' => array(
         'label' => 'above',
         'module' => 'multifield',
@@ -3851,12 +3745,6 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3922,12 +3810,6 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -4011,12 +3893,6 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'default' => array(
         'label' => 'above',
         'module' => 'taxonomy',
@@ -4066,12 +3942,6 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4125,12 +3995,6 @@ function bitch_content_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'default' => array(
         'label' => 'above',
         'module' => 'title',

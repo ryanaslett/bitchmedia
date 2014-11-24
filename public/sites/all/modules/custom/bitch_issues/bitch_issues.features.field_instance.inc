@@ -644,12 +644,6 @@ function bitch_issues_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 14,
-      ),
       'default' => array(
         'label' => 'hidden',
         'settings' => array(),
@@ -717,12 +711,6 @@ function bitch_issues_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 10,
-      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'entityreference',
@@ -796,12 +784,6 @@ function bitch_issues_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 11,
-      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'multifield',
@@ -869,12 +851,6 @@ function bitch_issues_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 13,
-      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -959,12 +935,6 @@ function bitch_issues_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 12,
-      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1030,12 +1000,6 @@ function bitch_issues_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'blurb' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 4,
-      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'title',

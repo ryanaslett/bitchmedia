@@ -422,9 +422,6 @@ function bitch_content_strongarm() {
       'featured' => array(
         'custom_settings' => TRUE,
       ),
-      'blurb' => array(
-        'custom_settings' => TRUE,
-      ),
       'head_and_subhead' => array(
         'custom_settings' => TRUE,
       ),
@@ -500,9 +497,6 @@ function bitch_content_strongarm() {
   $strongarm->value = array(
     'view_modes' => array(
       'featured' => array(
-        'custom_settings' => FALSE,
-      ),
-      'blurb' => array(
         'custom_settings' => TRUE,
       ),
       'teaser' => array(
@@ -558,6 +552,7 @@ function bitch_content_strongarm() {
             'weight' => '1',
             'visible' => TRUE,
           ),
+          'featured' => NULL,
         ),
       ),
     ),
@@ -572,9 +567,6 @@ function bitch_content_strongarm() {
     'view_modes' => array(
       'featured' => array(
         'custom_settings' => FALSE,
-      ),
-      'blurb' => array(
-        'custom_settings' => TRUE,
       ),
       'head_and_subhead' => array(
         'custom_settings' => FALSE,
@@ -624,9 +616,6 @@ function bitch_content_strongarm() {
     'view_modes' => array(
       'featured' => array(
         'custom_settings' => FALSE,
-      ),
-      'blurb' => array(
-        'custom_settings' => TRUE,
       ),
       'head_and_subhead' => array(
         'custom_settings' => FALSE,
