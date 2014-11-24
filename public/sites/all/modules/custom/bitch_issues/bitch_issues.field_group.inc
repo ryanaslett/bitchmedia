@@ -47,20 +47,16 @@ function bitch_issues_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'The Bitch List',
-    'weight' => '9',
+    'weight' => '12',
     'children' => array(
       0 => 'field_bitch_list',
     ),
-    'format_type' => 'div',
+    'format_type' => 'fieldset',
     'format_settings' => array(
       'label' => 'The Bitch List',
       'instance_settings' => array(
         'classes' => '',
         'description' => '',
-        'show_label' => '1',
-        'label_element' => 'h3',
-        'effect' => 'none',
-        'speed' => 'fast',
       ),
       'formatter' => 'open',
     ),
@@ -78,20 +74,16 @@ function bitch_issues_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Books',
-    'weight' => '10',
+    'weight' => '13',
     'children' => array(
       0 => 'field_book_reviews',
     ),
-    'format_type' => 'div',
+    'format_type' => 'fieldset',
     'format_settings' => array(
       'label' => 'Books',
       'instance_settings' => array(
         'classes' => '',
         'description' => '',
-        'show_label' => '1',
-        'label_element' => 'h3',
-        'effect' => 'none',
-        'speed' => 'fast',
       ),
       'formatter' => 'open',
     ),
@@ -109,20 +101,16 @@ function bitch_issues_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Columns',
-    'weight' => '7',
+    'weight' => '10',
     'children' => array(
       0 => 'field_columns',
     ),
-    'format_type' => 'div',
+    'format_type' => 'fieldset',
     'format_settings' => array(
       'label' => 'Columns',
       'instance_settings' => array(
         'classes' => '',
         'description' => '',
-        'show_label' => '1',
-        'label_element' => 'h3',
-        'effect' => 'none',
-        'speed' => 'fast',
       ),
       'formatter' => 'open',
     ),
@@ -171,20 +159,16 @@ function bitch_issues_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'In Every Issue',
-    'weight' => '13',
+    'weight' => '16',
     'children' => array(
       0 => 'field_in_every_issue',
     ),
-    'format_type' => 'div',
+    'format_type' => 'fieldset',
     'format_settings' => array(
       'label' => 'In Every Issue',
       'instance_settings' => array(
         'classes' => '',
         'description' => '',
-        'show_label' => '1',
-        'label_element' => 'h3',
-        'effect' => 'none',
-        'speed' => 'fast',
       ),
       'formatter' => 'open',
     ),
@@ -202,20 +186,16 @@ function bitch_issues_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Features',
-    'weight' => '8',
+    'weight' => '11',
     'children' => array(
       0 => 'field_features',
     ),
-    'format_type' => 'div',
+    'format_type' => 'fieldset',
     'format_settings' => array(
       'label' => 'Features',
       'instance_settings' => array(
         'classes' => '',
         'description' => '',
-        'show_label' => '1',
-        'label_element' => 'h3',
-        'effect' => 'none',
-        'speed' => 'fast',
       ),
       'formatter' => 'open',
     ),
@@ -266,20 +246,16 @@ function bitch_issues_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Love it/Shove it',
-    'weight' => '6',
+    'weight' => '9',
     'children' => array(
       0 => 'field_love_it_shove_it',
     ),
-    'format_type' => 'div',
+    'format_type' => 'fieldset',
     'format_settings' => array(
       'label' => 'Love it/Shove it',
       'instance_settings' => array(
         'classes' => '',
         'description' => '',
-        'show_label' => '1',
-        'label_element' => 'h3',
-        'effect' => 'none',
-        'speed' => 'fast',
       ),
       'formatter' => 'open',
     ),
@@ -633,20 +609,16 @@ function bitch_issues_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Music',
-    'weight' => '11',
+    'weight' => '14',
     'children' => array(
       0 => 'field_music_reviews',
     ),
-    'format_type' => 'div',
+    'format_type' => 'fieldset',
     'format_settings' => array(
       'label' => 'Music',
       'instance_settings' => array(
         'classes' => '',
         'description' => '',
-        'show_label' => '1',
-        'label_element' => 'h3',
-        'effect' => 'none',
-        'speed' => 'fast',
       ),
       'formatter' => 'open',
     ),
@@ -838,20 +810,16 @@ function bitch_issues_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Screen',
-    'weight' => '12',
+    'weight' => '15',
     'children' => array(
       0 => 'field_screen_reviews',
     ),
-    'format_type' => 'div',
+    'format_type' => 'fieldset',
     'format_settings' => array(
       'label' => 'Screen',
       'instance_settings' => array(
         'classes' => '',
         'description' => '',
-        'show_label' => '1',
-        'label_element' => 'h3',
-        'effect' => 'none',
-        'speed' => 'fast',
       ),
       'formatter' => 'open',
     ),
