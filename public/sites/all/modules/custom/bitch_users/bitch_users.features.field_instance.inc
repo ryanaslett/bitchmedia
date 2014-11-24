@@ -1086,7 +1086,7 @@ Additionally, *please* follow these guidelines to set up your author profile wit
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'default' => array(
         'label' => 'hidden',
@@ -1240,9 +1240,10 @@ Additionally, *please* follow these guidelines to set up your author profile wit
     'display' => array(
       'author_link' => array(
         'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 6,
+        'type' => 'text_default',
+        'weight' => 1,
       ),
       'default' => array(
         'label' => 'hidden',
@@ -1325,7 +1326,7 @@ Additionally, *please* follow these guidelines to set up your author profile wit
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'default' => array(
         'label' => 'hidden',
@@ -1557,7 +1558,7 @@ Additionally, *please* follow these guidelines to set up your author profile wit
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'default' => array(
         'label' => 'hidden',
@@ -1677,7 +1678,7 @@ Additionally, *please* follow these guidelines to set up your author profile wit
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'default' => array(
         'label' => 'hidden',
