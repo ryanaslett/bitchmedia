@@ -20,11 +20,3 @@ features[taxonomy][] = taxonomy_features_test
 features[user_permission][] = create features_test content
 features[views_view][] = features_test
 hidden = 1
-
-
-; Information added by drush on 2013-08-06
-version = "7.x-2.0-rc2"
-core = "7.x"
-project = "features"
-datestamp = "1375812137"
-
