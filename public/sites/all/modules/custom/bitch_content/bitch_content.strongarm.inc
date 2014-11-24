@@ -408,7 +408,7 @@ function bitch_content_strongarm() {
         'custom_settings' => TRUE,
       ),
       'full' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'rss' => array(
         'custom_settings' => FALSE,
@@ -456,7 +456,7 @@ function bitch_content_strongarm() {
       'display' => array(
         'node_formatted_create_date' => array(
           'default' => array(
-            'weight' => '7',
+            'weight' => '8',
             'visible' => TRUE,
           ),
           'short_listing_display' => array(
@@ -472,8 +472,8 @@ function bitch_content_strongarm() {
             'visible' => FALSE,
           ),
           'featured' => array(
-            'weight' => '4',
-            'visible' => FALSE,
+            'weight' => '6',
+            'visible' => TRUE,
           ),
           'teaser' => array(
             'weight' => '0',
@@ -481,6 +481,10 @@ function bitch_content_strongarm() {
           ),
           'grid_view' => array(
             'weight' => '8',
+            'visible' => TRUE,
+          ),
+          'full' => array(
+            'weight' => '7',
             'visible' => TRUE,
           ),
         ),

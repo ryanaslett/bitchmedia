@@ -857,6 +857,7 @@ function bitch_content_field_default_field_bases() {
       'entity_translation_sync' => array(
         0 => 'id',
       ),
+      'hide_blank_items' => TRUE,
     ),
     'translatable' => 0,
     'type' => 'tracked_link',
@@ -903,6 +904,7 @@ function bitch_content_field_default_field_bases() {
       'entity_translation_sync' => array(
         0 => 'id',
       ),
+      'hide_blank_items' => TRUE,
     ),
     'translatable' => 0,
     'type' => 'list_item',
@@ -949,6 +951,7 @@ function bitch_content_field_default_field_bases() {
       'entity_translation_sync' => array(
         0 => 'id',
       ),
+      'hide_blank_items' => TRUE,
     ),
     'translatable' => 0,
     'type' => 'content_metadata',
@@ -995,6 +998,7 @@ function bitch_content_field_default_field_bases() {
       'entity_translation_sync' => array(
         0 => 'id',
       ),
+      'hide_blank_items' => TRUE,
     ),
     'translatable' => 0,
     'type' => 'gallery_image',
@@ -1198,6 +1202,7 @@ function bitch_content_field_default_field_bases() {
       'entity_translation_sync' => array(
         0 => 'id',
       ),
+      'hide_blank_items' => TRUE,
     ),
     'translatable' => 0,
     'type' => 'tracked_link',
@@ -1277,6 +1282,7 @@ function bitch_content_field_default_field_bases() {
       'entity_translation_sync' => array(
         0 => 'id',
       ),
+      'hide_blank_items' => TRUE,
     ),
     'translatable' => 0,
     'type' => 'question_and_answer',
