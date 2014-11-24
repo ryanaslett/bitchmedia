@@ -1241,8 +1241,10 @@ Additionally, *please* follow these guidelines to set up your author profile wit
       'author_link' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
+        'settings' => array(
+          'trim_length' => 200,
+        ),
+        'type' => 'text_trimmed',
         'weight' => 1,
       ),
       'default' => array(

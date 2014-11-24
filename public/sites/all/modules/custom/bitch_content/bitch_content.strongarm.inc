@@ -457,7 +457,7 @@ function bitch_content_strongarm() {
             'visible' => TRUE,
           ),
           'short_listing_display' => array(
-            'weight' => '2',
+            'weight' => '4',
             'visible' => TRUE,
           ),
           'blurb' => array(
@@ -473,11 +473,11 @@ function bitch_content_strongarm() {
             'visible' => TRUE,
           ),
           'teaser' => array(
-            'weight' => '0',
-            'visible' => FALSE,
+            'weight' => '4',
+            'visible' => TRUE,
           ),
           'grid_view' => array(
-            'weight' => '8',
+            'weight' => '5',
             'visible' => TRUE,
           ),
           'full' => array(
@@ -1235,12 +1235,12 @@ function bitch_content_strongarm() {
   $strongarm->name = 'pullquote_content_types';
   $strongarm->value = array(
     'article' => 'article',
+    'podcast' => 'podcast',
     'digital_download' => 0,
     'donation' => 0,
     'issue' => 0,
     'membership' => 0,
     'merchandise' => 0,
-    'podcast' => 0,
     'product' => 0,
     'site_page' => 0,
     'subscription' => 0,
@@ -1299,11 +1299,11 @@ function bitch_content_strongarm() {
     'teaser' => 0,
     'rss' => 0,
     'diff_standard' => 0,
-    'featured' => 0,
-    'head_and_subhead' => 0,
-    'blurb' => 0,
     'short_listing_display' => 0,
     'issue_name_date' => 0,
+    'head_and_subhead' => 0,
+    'grid_view' => 0,
+    'featured' => 0,
     'token' => 0,
   );
   $export['pullquote_view_modes'] = $strongarm;
