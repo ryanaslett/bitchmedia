@@ -890,6 +890,80 @@ function bitch_content_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-article-field_best_of_bitch'
+  $field_instances['node-article-field_best_of_bitch'] = array(
+    'bundle' => 'article',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'default_value_label_token' => 0,
+    'deleted' => 0,
+    'description' => 'Check this to indicate that this article is some of the \'best of bitch\'',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 19,
+      ),
+      'featured' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'grid_view' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'head_and_subhead' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'short_listing_display' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_best_of_bitch',
+    'label' => 'Best of Bitch',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 0,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 27,
+    ),
+  );
+
   // Exported field_instance: 'node-article-field_body'
   $field_instances['node-article-field_body'] = array(
     'bundle' => 'article',
@@ -2499,6 +2573,74 @@ function bitch_content_field_default_field_instances() {
       ),
       'type' => 'text_textarea_with_summary',
       'weight' => -4,
+    ),
+  );
+
+  // Exported field_instance: 'node-podcast-field_best_of_bitch'
+  $field_instances['node-podcast-field_best_of_bitch'] = array(
+    'bundle' => 'podcast',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'default_value_label_token' => 0,
+    'deleted' => 0,
+    'description' => 'Mark this podcast as "Best Of Bitch"',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 18,
+      ),
+      'featured' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'grid_view' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'short_listing_display' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_best_of_bitch',
+    'label' => 'Best of Bitch',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 0,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 32,
     ),
   );
 
@@ -4543,7 +4685,9 @@ Use this when no new content will be produced for this series. Note- It is still
   t('A longer teaser used when featured or in larger lists.');
   t('Archived');
   t('Article Format');
+  t('Best of Bitch');
   t('Body');
+  t('Check this to indicate that this article is some of the \'best of bitch\'');
   t('Column Banner');
   t('Column/Series');
   t('Comment');
@@ -4572,6 +4716,7 @@ Use this when no new content will be produced for this series. Note- It is still
   t('Item Text');
   t('Item Thumbnail');
   t('List Item');
+  t('Mark this podcast as "Best Of Bitch"');
   t('Marking a series as archived merely removes it from the list of possible series/column names that editors have to chose from when creating new articles.
 Use this when no new content will be produced for this series. Note- It is still published, and available on the site.');
   t('Metadata');

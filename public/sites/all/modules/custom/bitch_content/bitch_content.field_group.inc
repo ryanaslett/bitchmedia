@@ -404,9 +404,10 @@ function bitch_content_field_group_info() {
     'weight' => '1',
     'children' => array(
       0 => 'field_metadata',
-      1 => 'metatags',
-      2 => 'path',
-      3 => 'redirect',
+      1 => 'field_best_of_bitch',
+      2 => 'metatags',
+      3 => 'path',
+      4 => 'redirect',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -434,9 +435,10 @@ function bitch_content_field_group_info() {
     'weight' => '0',
     'children' => array(
       0 => 'field_metadata',
-      1 => 'metatags',
-      2 => 'path',
-      3 => 'redirect',
+      1 => 'field_best_of_bitch',
+      2 => 'metatags',
+      3 => 'path',
+      4 => 'redirect',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

@@ -214,6 +214,35 @@ function bitch_content_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
+  // Exported field_base: 'field_best_of_bitch'
+  $field_bases['field_best_of_bitch'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_best_of_bitch',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => 'No',
+        1 => 'Best of Bitch',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
+  );
+
   // Exported field_base: 'field_body'
   $field_bases['field_body'] = array(
     'active' => 1,
