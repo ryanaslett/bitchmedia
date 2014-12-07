@@ -10,11 +10,17 @@
 // Render the comments and form first to see if we need headings.
 $comments = render($content['comments']);
 $comment_form = render($content['comment_form']);
+$comment_count = render($node->comment_count);
 ?>
 <section id="comments" class="comments <?php print $classes; ?>"<?php print $attributes; ?>>
   <?php print render($title_prefix); ?>
+
   <?php if ($comments && $node->type != 'forum'): ?>
-    <h2 class="comments__title title"><?php print t('Comments'); ?></h2>
+    <?php if ($comment_count == '1'): ?>
+      <h2 class="comments__title title"><?php print t('1 Comment Has Been Posted'); ?></h2>
+    <?php else: ?>
+      <h2 class="comments__title title"><?php print $comment_count . t(' Comments Have Been Posted'); ?></h2>      
+    <?php endif; ?>
   <?php endif; ?>
   <?php print render($title_suffix); ?>
 

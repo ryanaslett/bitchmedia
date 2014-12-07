@@ -2314,7 +2314,7 @@ article.comment {
   padding: 0;
   margin: 0; }
 .ui-accordion .ui-accordion-header {
-  margin: 0 0 16px; }
+  margin: 0 0 24px; }
 .ui-accordion .ui-corner-all, .ui-accordion .ui-corner-bottom, .ui-accordion .ui-corner-right, .ui-accordion .ui-corner-br {
   border-radius: 0; }
 .ui-accordion .ui-state-default, .ui-accordion .ui-widget-content .ui-state-default, .ui-accordion .ui-widget-header .ui-state-default {
