@@ -54,7 +54,7 @@ label {
 }
 
 // All Inputs
-input, {
+input {
   border: 1px solid $button-gray;
   color: $text-gray;
   font-family: $franklin-gothic;
@@ -70,6 +70,11 @@ input, {
   color: $white;
   text-transform: uppercase;
   border: none;
+
+  &:after {
+    font-family: $font-awesome;
+    content: "\f105";
+  }
 }
 
 // Autocomplete adjustments

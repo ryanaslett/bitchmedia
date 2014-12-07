@@ -1384,6 +1384,9 @@ input {
   color: #FFFFFF;
   text-transform: uppercase;
   border: none; }
+  .form-submit:after {
+    font-family: "FontAwesome";
+    content: "\f105"; }
 
 #autocomplete {
   border-color: #949691; }
