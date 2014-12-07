@@ -13,8 +13,7 @@
   src: url("../fonts/fontawesome-webfont.eot");
   src: url("../fonts/fontawesome-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/fontawesome-webfont.woff") format("woff"), url("../fonts/fontawesome-webfont.ttf") format("truetype"), url("../fonts/fontawesome-webfont.svg") format("svg");
   font-weight: normal;
-  font-style: normal;
-}
+  font-style: normal; }
 /* HTML element (SMACSS base) rules */
 /**
  * @file
@@ -36,7 +35,6 @@
  * HTML5 display definitions
  */
 /* Correct `block` display not defined in IE 8/9. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\0000323}}
 article,
 aside,
 details,
@@ -48,32 +46,25 @@ main,
 nav,
 section,
 summary {
-  display: block;
-}
+  display: block; }
 
 /* Correct `inline-block` display not defined in IE 8/9. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\0000338}}
 audio,
 canvas,
 video {
-  display: inline-block;
-}
+  display: inline-block; }
 
 /**
  * Prevent modern browsers from displaying `audio` without controls.
  * Remove excess height in iOS 5 devices.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\0000352}}
 audio:not([controls]) {
   display: none;
-  height: 0;
-}
+  height: 0; }
 
 /* Address styling not present in IE 8/9. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\0000358}}
 [hidden] {
-  display: none;
-}
+  display: none; }
 
 /**
  * Base
@@ -118,7 +109,6 @@ audio:not([controls]) {
  * 3. Correct text resizing oddly in IE 6/7 when body `font-size` is set using
  *    `em` units.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003106}}
 html {
   font-family: "skolar", "Times New Roman", Times, Georgia, serif;
   /* 1 */
@@ -128,15 +118,12 @@ html {
   /* 2 */
   -webkit-text-size-adjust: 100%;
   /* 2 */
-  line-height: 2em;
-}
+  line-height: 2em; }
 
 /* Remove default margin. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003126}}
 body {
   margin: 0;
-  padding: 0;
-}
+  padding: 0; }
 
 /**
  * Links
@@ -144,35 +131,25 @@ body {
  * The order of link states are based on Eric Meyer's article:
  * http://meyerweb.com/eric/thoughts/2007/06/11/who-ordered-the-link-states
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003137}}
 a:link {
   color: #9E1F63;
-  text-decoration: none;
-}
+  text-decoration: none; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003141}}
 a:visited {
-  color: #9E1F63;
-}
+  color: #9E1F63; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003144}}
 a:hover,
 a:focus {
-  color: #EC1C24;
-}
+  color: #EC1C24; }
 
 /* Address `outline` inconsistency between Chrome and other browsers. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003152}}
 a:focus {
-  outline: thin dotted;
-}
+  outline: thin dotted; }
 
 /* Improve readability when focused and also mouse hovered in all browsers. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003157}}
 a:active,
 a:hover {
-  outline: 0;
-}
+  outline: 0; }
 
 /**
  * Typography
@@ -184,93 +161,70 @@ a:hover {
  * For more information, see http://24ways.org/2006/compose-to-a-vertical-rhythm
  */
 /* Set 1 unit of vertical rhythm on the top and bottom margin. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003173}}
 p,
 pre {
-  margin: 2em 0;
-}
+  margin: 2em 0; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003177}}
 blockquote {
   /* Also indent the quote on both sides. */
-  margin: 2em 34px;
-}
+  margin: 2em 34px; }
 
 /**
  * Address variable `h1` font-size and margin within `section` and `article`
  * contexts in Firefox 4+, Safari 5, and Chrome.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003186}}
 h1 {
   /* Set the font-size and line-height while keeping a proper vertical rhythm. */
   font-size: 2em;
   line-height: 2em;
   /* Set 1 unit of vertical rhythm on the top and bottom margins. */
   margin-top: 1em;
-  margin-bottom: 1em;
-}
+  margin-bottom: 1em; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003194}}
 h2 {
   font-size: 1.5em;
   line-height: 1.33333em;
   margin-top: 1.33333em;
-  margin-bottom: 1.33333em;
-}
+  margin-bottom: 1.33333em; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003199}}
 h3 {
   font-size: 1.17em;
   line-height: 1.7094em;
   margin-top: 1.7094em;
-  margin-bottom: 1.7094em;
-}
+  margin-bottom: 1.7094em; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003204}}
 h4 {
   font-size: 1em;
   line-height: 2em;
   margin-top: 2em;
-  margin-bottom: 2em;
-}
+  margin-bottom: 2em; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003209}}
 h5 {
   font-size: 0.83em;
   line-height: 2.40964em;
   margin-top: 2.40964em;
-  margin-bottom: 2.40964em;
-}
+  margin-bottom: 2.40964em; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003214}}
 h6 {
   font-size: 0.67em;
   line-height: 2.98507em;
   margin-top: 2.98507em;
-  margin-bottom: 2.98507em;
-}
+  margin-bottom: 2.98507em; }
 
 /* Address styling not present in IE 8/9, Safari 5, and Chrome. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003221}}
 abbr[title] {
-  border-bottom: 1px dotted;
-}
+  border-bottom: 1px dotted; }
 
 /* Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003226}}
 b,
 strong {
-  font-weight: bold;
-}
+  font-weight: bold; }
 
 /* Address styling not present in Safari 5 and Chrome. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003232}}
 dfn {
-  font-style: italic;
-}
+  font-style: italic; }
 
 /* Address differences between Firefox and other browsers. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003237}}
 hr {
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
@@ -278,18 +232,14 @@ hr {
   height: 0;
   border: 1px solid #666;
   padding-bottom: -1px;
-  margin: 2em 0;
-}
+  margin: 2em 0; }
 
 /* Address styling not present in IE 8/9. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003246}}
 mark {
   background: #ff0;
-  color: #000;
-}
+  color: #000; }
 
 /* Correct font family set oddly in Safari 5 and Chrome. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003252}}
 code,
 kbd,
 pre,
@@ -298,89 +248,67 @@ tt,
 var {
   font-family: "Courier New", "DejaVu Sans Mono", monospace, sans-serif;
   font-size: 1em;
-  line-height: 2em;
-}
+  line-height: 2em; }
 
 /* Improve readability of pre-formatted text in all browsers. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003266}}
 pre {
-  white-space: pre-wrap;
-}
+  white-space: pre-wrap; }
 
 /* Set consistent quote types. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003278}}
 q {
-  quotes: "\201C" "\201D" "\2018" "\2019";
-}
+  quotes: "\201C" "\201D" "\2018" "\2019"; }
 
 /* Address inconsistent and variable font size in all browsers. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003283}}
 small {
-  font-size: 80%;
-}
+  font-size: 80%; }
 
 /* Prevent `sub` and `sup` affecting `line-height` in all browsers. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003288}}
 sub,
 sup {
   font-size: 75%;
   line-height: 0;
   position: relative;
-  vertical-align: baseline;
-}
+  vertical-align: baseline; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003295}}
 sup {
-  top: -0.5em;
-}
+  top: -0.5em; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003298}}
 sub {
-  bottom: -0.25em;
-}
+  bottom: -0.25em; }
 
 /**
  * Lists
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003305}}
 dl,
 menu,
 ol,
 ul {
   /* Address margins set differently in IE 6/7. */
-  margin: 2em 0;
-}
+  margin: 2em 0; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003314}}
 ol ol,
 ol ul,
 ul ol,
 ul ul {
   /* Turn off margins on nested lists. */
-  margin: 0;
-}
+  margin: 0; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003320}}
 dd {
   margin: 0 0 0 34px;
-  /* LTR */
-}
+  /* LTR */ }
 
 /* Address paddings set differently in IE 6/7. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003325}}
 menu,
 ol,
 ul {
   padding: 0 0 0 34px;
-  /* LTR */
-}
+  /* LTR */ }
 
 /**
  * Embedded content and figures
  *
  * @todo Look into adding responsive embedded video.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003345}}
 img {
   /* Remove border when inside `a` element in IE 8/9. */
   border: 0;
@@ -390,26 +318,20 @@ img {
   max-width: 100%;
   height: auto;
   /* Correct IE 8 not scaling image height when resized. */
-  width: auto;
-}
+  width: auto; }
 
 /* Correct overflow displayed oddly in IE 9. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003366}}
 svg:not(:root) {
-  overflow: hidden;
-}
+  overflow: hidden; }
 
 /* Address margin not present in IE 8/9 and Safari 5. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003371}}
 figure {
-  margin: 0;
-}
+  margin: 0; }
 
 /**
  * Forms
  */
 /* Define consistent border, margin, and padding. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003387}}
 fieldset {
   margin: 0 2px;
   /* Apply borders and padding that keep the vertical rhythm. */
@@ -425,21 +347,18 @@ fieldset {
   padding-left: 1.23333em;
   border-right-width: 0.06667em;
   border-right-style: solid;
-  padding-right: 1.23333em;
-}
+  padding-right: 1.23333em; }
 
 /**
  * 1. Correct `color` not being inherited in IE 8/9.
  * 2. Remove padding so people aren't caught out if they zero out fieldsets.
  * 3. Correct alignment displayed oddly in IE 6/7.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003402}}
 legend {
   border: 0;
   /* 1 */
   padding: 0;
-  /* 2 */
-}
+  /* 2 */ }
 
 /**
  * 1. Correct font family not being inherited in all browsers.
@@ -448,7 +367,6 @@ legend {
  * 4. Improve appearance and consistency with IE 6/7.
  * 5. Keep form elements constrained in their containers.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003417}}
 button,
 input,
 select,
@@ -464,18 +382,15 @@ textarea {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  /* 5 */
-}
+  /* 5 */ }
 
 /**
  * Address Firefox 4+ setting `line-height` on `input` using `!important` in
  * the UA stylesheet.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003436}}
 button,
 input {
-  line-height: normal;
-}
+  line-height: normal; }
 
 /**
  * Address inconsistent `text-transform` inheritance for `button` and `select`.
@@ -483,11 +398,9 @@ input {
  * Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+.
  * Correct `select` style inheritance in Firefox 4+ and Opera.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003447}}
 button,
 select {
-  text-transform: none;
-}
+  text-transform: none; }
 
 /**
  * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
@@ -498,7 +411,6 @@ select {
  * 4. Remove inner spacing in IE 7 without affecting normal text inputs.
  *    Known issue: inner spacing remains in IE 6.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003461}}
 button,
 html input[type="button"],
 input[type="reset"],
@@ -506,17 +418,14 @@ input[type="submit"] {
   -webkit-appearance: button;
   /* 2 */
   cursor: pointer;
-  /* 3 */
-}
+  /* 3 */ }
 
 /**
  * Re-set default cursor for disabled elements.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003475}}
 button[disabled],
 html input[disabled] {
-  cursor: default;
-}
+  cursor: default; }
 
 /**
  * 1. Address box sizing set to `content-box` in IE 8/9.
@@ -524,7 +433,6 @@ html input[disabled] {
  * 3. Remove excess padding in IE 7.
  *    Known issue: excess padding remains in IE 6.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003486}}
 input[type="checkbox"],
 input[type="radio"] {
   -moz-box-sizing: border-box;
@@ -532,65 +440,53 @@ input[type="radio"] {
   box-sizing: border-box;
   /* 1 */
   padding: 0;
-  /* 2 */
-}
+  /* 2 */ }
 
 /**
  * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
  * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
  *    (include `-moz` to future-proof).
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003501}}
 input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
-  /* 2 */
-}
+  /* 2 */ }
 
 /**
  * Remove inner padding and search cancel button in Safari 5 and Chrome
  * on OS X.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003510}}
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
+  -webkit-appearance: none; }
 
 /* Remove inner padding and border in Firefox 4+. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003516}}
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;
-  padding: 0;
-}
+  padding: 0; }
 
 /**
  * 1. Remove default vertical scrollbar in IE 8/9.
  * 2. Improve readability and alignment in all browsers.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003526}}
 textarea {
   overflow: auto;
   /* 1 */
   vertical-align: top;
-  /* 2 */
-}
+  /* 2 */ }
 
 /* Drupal-style form labels. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003532}}
 label {
   display: block;
-  font-weight: bold;
-}
+  font-weight: bold; }
 
 /**
  * Tables
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_normalize\.scss}line{font-family:\00003540}}
 table {
   /* Remove most spacing between table cells. */
   border-collapse: collapse;
@@ -599,74 +495,51 @@ table {
   /* width: 100%; */
   /* Add vertical rhythm margins. */
   margin-top: 2em;
-  margin-bottom: 2em;
-}
+  margin-bottom: 2em; }
 
 /* Layout rules */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_grid\.scss}line{font-family:\0000368}}
 body {
   width: 100%;
-  *zoom: 1;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_grid\.scss}line{font-family:\0000353}}
-body:before, body:after {
-  content: "";
-  display: table;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_grid\.scss}line{font-family:\0000358}}
-body:after {
-  clear: both;
-}
+  *zoom: 1; }
+  body:before, body:after {
+    content: "";
+    display: table; }
+  body:after {
+    clear: both; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_layout\.scss}line{font-family:\0000317}}
 #page {
   float: left;
   margin-left: auto;
   margin-right: auto;
-  max-width: 1600px;
-}
+  max-width: 1600px; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_layout\.scss}line{font-family:\0000322}}
 #header,
 #main {
   display: inline;
   float: left;
   position: relative;
   left: 4.1666667%;
-  width: 91.6666667%;
-}
+  width: 91.6666667%; }
 
 @media screen and (min-width: 1440px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_layout\.scss}line{font-family:\0000329}}
   #header {
-    width: 95.8333333%;
-  }
-}
+    width: 95.8333333%; } }
 @media screen and (max-width: 1023px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_layout\.scss}line{font-family:\0000329}}
   #header {
     left: 0;
-    width: 100%;
-  }
-}
+    width: 100%; } }
 
 @media screen and (max-width: 639px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_layout\.scss}line{font-family:\0000339}}
   #main {
     left: 0;
-    width: 100%;
-  }
-}
+    width: 100%; } }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_layout\.scss}line{font-family:\0000346}}
 #navigation {
   display: inline;
   float: left;
   position: relative;
-  width: 100%;
-}
+  width: 100%; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_layout\.scss}line{font-family:\0000351}}
 #content {
   display: inline;
   float: left;
@@ -674,97 +547,67 @@ body:after {
   padding: 0 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-@media screen and (max-width: 320px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_layout\.scss}line{font-family:\0000351}}
-  #content {
-    width: 100%;
-    left: 0;
-  }
-}
-@media screen and (min-width: 1440px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_layout\.scss}line{font-family:\0000351}}
-  #content {
-    display: inline;
-    float: left;
-    width: 59.09091%;
-    padding: 0 0;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-  }
-}
-@media screen and (min-width: 1440px) and (max-width: 320px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_layout\.scss}line{font-family:\0000351}}
-  #content {
-    width: 100%;
-    left: 0;
-  }
-}
-@media screen and (min-width: 1440px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_layout\.scss}line{font-family:\0000357}}
-  #content #content-top {
-    position: absolute !important;
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
-    clip: rect(1px, 1px, 1px, 1px);
-  }
-}
-@media screen and (max-width: 1023px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_layout\.scss}line{font-family:\0000351}}
-  #content {
-    display: inline;
-    float: left;
-    width: 100%;
-    padding: 0 0;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-  }
-}
-@media screen and (max-width: 1023px) and (max-width: 320px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_layout\.scss}line{font-family:\0000351}}
-  #content {
-    width: 100%;
-    left: 0;
-  }
-}
+  box-sizing: border-box; }
+  @media screen and (max-width: 320px) {
+    #content {
+      width: 100%;
+      left: 0; } }
+  @media screen and (min-width: 1440px) {
+    #content {
+      display: inline;
+      float: left;
+      width: 59.09091%;
+      padding: 0 0;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box; } }
+  @media screen and (min-width: 1440px) and (max-width: 320px) {
+    #content {
+      width: 100%;
+      left: 0; } }
+  @media screen and (min-width: 1440px) {
+      #content #content-top {
+        position: absolute !important;
+        height: 1px;
+        width: 1px;
+        overflow: hidden;
+        clip: rect(1px, 1px, 1px, 1px); } }
+  @media screen and (max-width: 1023px) {
+    #content {
+      display: inline;
+      float: left;
+      width: 100%;
+      padding: 0 0;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box; } }
+  @media screen and (max-width: 1023px) and (max-width: 320px) {
+    #content {
+      width: 100%;
+      left: 0; } }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_layout\.scss}line{font-family:\0000367}}
 .content-inner {
   display: inline;
   float: left;
   position: relative;
   left: 6.6666667%;
-  width: 86.6666667%;
-}
-@media screen and (min-width: 1440px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_layout\.scss}line{font-family:\0000367}}
-  .content-inner {
-    left: 7.6923077%;
-    width: 76.9230769%;
-  }
-}
-@media screen and (max-width: 1023px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_layout\.scss}line{font-family:\0000367}}
-  .content-inner {
-    left: 4.5454545%;
-    width: 90.9090909%;
-  }
-}
+  width: 86.6666667%; }
+  @media screen and (min-width: 1440px) {
+    .content-inner {
+      left: 7.6923077%;
+      width: 76.9230769%; } }
+  @media screen and (max-width: 1023px) {
+    .content-inner {
+      left: 4.5454545%;
+      width: 90.9090909%; } }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_layout\.scss}line{font-family:\0000383}}
 .region-sidebar-first {
   position: absolute !important;
   height: 1px;
   width: 1px;
   overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
-}
+  clip: rect(1px, 1px, 1px, 1px); }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_layout\.scss}line{font-family:\0000387}}
 .region-sidebar-second {
   display: inline;
   float: left;
@@ -772,39 +615,28 @@ body:after {
   padding: 0 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-@media screen and (max-width: 320px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_layout\.scss}line{font-family:\0000387}}
-  .region-sidebar-second {
-    width: 100%;
-    left: 0;
-  }
-}
-@media screen and (max-width: 1023px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_layout\.scss}line{font-family:\0000387}}
-  .region-sidebar-second {
-    display: inline;
-    float: left;
-    width: 90.90909%;
-    padding: 0 0;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    left: 4.54545%;
-    position: relative;
-  }
-}
-@media screen and (max-width: 1023px) and (max-width: 320px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_layout\.scss}line{font-family:\0000387}}
-  .region-sidebar-second {
-    width: 100%;
-    left: 0;
-  }
-}
+  box-sizing: border-box; }
+  @media screen and (max-width: 320px) {
+    .region-sidebar-second {
+      width: 100%;
+      left: 0; } }
+  @media screen and (max-width: 1023px) {
+    .region-sidebar-second {
+      display: inline;
+      float: left;
+      width: 90.90909%;
+      padding: 0 0;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      left: 4.54545%;
+      position: relative; } }
+  @media screen and (max-width: 1023px) and (max-width: 320px) {
+    .region-sidebar-second {
+      width: 100%;
+      left: 0; } }
 
 @media screen and (min-width: 1440px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_layout\.scss}line{font-family:\0000398}}
   .region-sidebar-first {
     position: static !important;
     clip: auto;
@@ -817,19 +649,13 @@ body:after {
     padding: 0 0;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-  }
-}
-@media screen and (min-width: 1440px) and (max-width: 320px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_layout\.scss}line{font-family:\0000398}}
-  .region-sidebar-first {
-    width: 100%;
-    left: 0;
-  }
-}
+    box-sizing: border-box; } }
+  @media screen and (min-width: 1440px) and (max-width: 320px) {
+    .region-sidebar-first {
+      width: 100%;
+      left: 0; } }
 
 @media screen and (min-width: 1440px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_layout\.scss}line{font-family:\00003102}}
   .region-sidebar-second {
     display: inline;
     float: left;
@@ -837,16 +663,11 @@ body:after {
     padding: 0 0;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-  }
-}
-@media screen and (min-width: 1440px) and (max-width: 320px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_layout\.scss}line{font-family:\00003102}}
-  .region-sidebar-second {
-    width: 100%;
-    left: 0;
-  }
-}
+    box-sizing: border-box; } }
+  @media screen and (min-width: 1440px) and (max-width: 320px) {
+    .region-sidebar-second {
+      width: 100%;
+      left: 0; } }
 
 /* Component (SMACSS module) rules */
 /**
@@ -861,7 +682,6 @@ body:after {
 /**
  * Wireframes.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\0000315}}
 .with-wireframes #header,
 .with-wireframes #main,
 .with-wireframes #content,
@@ -870,14 +690,12 @@ body:after {
 .with-wireframes .region-sidebar-second,
 .with-wireframes #footer,
 .with-wireframes .region-bottom {
-  outline: 1px solid #ccc;
-}
+  outline: 1px solid #ccc; }
 
 /**
  * Accessibility features.
  */
 /* element-invisible as defined by http://snook.ca/archives/html_and_css/hiding-content-for-accessibility */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\0000339}}
 .element-invisible,
 .element-focusable,
 #navigation .block-menu .block__title,
@@ -886,153 +704,115 @@ body:after {
   height: 1px;
   width: 1px;
   overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
-}
+  clip: rect(1px, 1px, 1px, 1px); }
 
 /* Turns off the element-invisible effect. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\0000345}}
 .element-focusable:active, .element-focusable:focus {
   position: static !important;
   clip: auto;
   height: auto;
   width: auto;
-  overflow: auto;
-}
+  overflow: auto; }
 
 /*
  * The skip-link link will be completely hidden until a user tabs to the link.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\0000362}}
 #skip-link {
-  margin: 0;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\0000365}}
-#skip-link a,
-#skip-link a:visited {
-  display: block;
-  width: 100%;
-  padding: 2px 0 3px 0;
-  text-align: center;
-  background-color: #666;
-  color: #fff;
-}
+  margin: 0; }
+  #skip-link a,
+  #skip-link a:visited {
+    display: block;
+    width: 100%;
+    padding: 2px 0 3px 0;
+    text-align: center;
+    background-color: #666;
+    color: #fff; }
 
 /**
  * Branding header.
  */
 /* Wrapping link for logo. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\0000381}}
 .header__logo {
   float: left;
   /* LTR */
   margin: 0;
-  padding: 0;
-}
+  padding: 0; }
 
 /* Logo image. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\0000388}}
 .header__logo-image {
-  vertical-align: bottom;
-}
+  vertical-align: bottom; }
 
 /* Wrapper for website name and slogan. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\0000393}}
 .header__name-and-slogan {
-  float: left;
-}
+  float: left; }
 
 /* The name of the website. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\0000398}}
 .header__site-name {
   margin: 0;
   font-size: 2em;
-  line-height: 2em;
-}
+  line-height: 2em; }
 
 /* The link around the name of the website. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003105}}
 .header__site-link:link, .header__site-link:visited {
   color: #000;
-  text-decoration: none;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003111}}
+  text-decoration: none; }
 .header__site-link:hover, .header__site-link:focus {
-  text-decoration: underline;
-}
+  text-decoration: underline; }
 
 /* The slogan (or tagline) of a website. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003118}}
 .header__site-slogan {
-  margin: 0;
-}
+  margin: 0; }
 
 /* The secondary menu (login, etc.) */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003123}}
 .header__secondary-menu {
   float: right;
-  /* LTR */
-}
+  /* LTR */ }
 
 /* Wrapper for any blocks placed in the header region. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003128}}
 .header__region {
   /* Clear the logo. */
-  clear: both;
-}
+  clear: both; }
 
 /**
  * Navigation bar.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003136}}
 #navigation {
   /* Sometimes you want to prevent overlapping with main div. */
   /* overflow: hidden; */
-  /* Main menu and secondary menu links and menu block links. */
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003140}}
-#navigation .block {
-  margin-bottom: 0;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003150}}
-#navigation .links,
-#navigation .menu {
-  margin: 0;
-  padding: 0;
-  text-align: left;
-  /* LTR */
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003156}}
-#navigation .links li,
-#navigation .menu li {
-  /* A simple method to get navigation links to appear in one line. */
-  float: left;
-  /* LTR */
-  padding: 0 10px 0 0;
-  /* LTR */
-  list-style-type: none;
-  list-style-image: none;
-}
+  /* Main menu and secondary menu links and menu block links. */ }
+  #navigation .block {
+    margin-bottom: 0; }
+  #navigation .links,
+  #navigation .menu {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    /* LTR */ }
+    #navigation .links li,
+    #navigation .menu li {
+      /* A simple method to get navigation links to appear in one line. */
+      float: left;
+      /* LTR */
+      padding: 0 10px 0 0;
+      /* LTR */
+      list-style-type: none;
+      list-style-image: none; }
 
 /**
  * Breadcrumb navigation.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003170}}
 .breadcrumb ol {
   margin: 0;
-  padding: 0;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003174}}
+  padding: 0; }
 .breadcrumb li {
   display: inline;
   list-style-type: none;
   margin: 0;
-  padding: 0;
-}
+  padding: 0; }
 
 /**
  * Titles.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003185}}
 .page__title,
 .node__title,
 .block__title,
@@ -1040,13 +820,11 @@ body:after {
 .comments__form-title,
 .comment__title {
   /* Comment title. */
-  margin: 0;
-}
+  margin: 0; }
 
 /**
  * Messages.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003197}}
 .messages, .messages--status, .messages--warning, .messages--error {
   margin: 2em 0;
   padding: 10px 10px 10px 50px;
@@ -1055,64 +833,46 @@ body:after {
   background-position: 8px 8px;
   /* LTR */
   background-repeat: no-repeat;
-  border: 1px solid #be7;
-}
+  border: 1px solid #be7; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003212}}
 .messages--warning {
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAACuElEQVRIiWP4//8/Ay0xSYqntTpnT252zqeJBf0Njhsykrz/pyd6/e9vcNpGVQv6q2wlm0qc/r0+IPD/3UG+/61l9v9mdrjIUc2C7hqHUzc3S///eZwBjO9tF/vfWe1wjioWTKixVm8otPn38wQT3IKfxxn/t5Va/utpsNSg2ILWcttrNzdJgQ3+dpQRjEHs+9tE/zeXWt+gyILOamuTqlxrsOtPLub+7+emBsSq/88v5wL7oqHQ9H9nmbkF2RbUF1rev7lJEuziuU3i/90ddcB4UZsoJC62ifyvK7R4QJYFrcUGrmUZ5v9hYb9hosh/bzcDMN42VRgeF9W5hv8bi/XdSbagKtfs2c1NEvCIPbaQ/7+/pwkYn17Ki0hR24T/l2eZPCfJgsZ83dCiNOP/yCnn7iau/8G+5mD8aBsHSoqqyNL9X5erHUm0BcVpRm9ubhZHMoTh/4eDzP/DA23+RwTZ/P96hAlF7t5Wof8FyfpvibKgNk8noyDZ4D9quofg1Bjr/1kJlhjiIF+Upmn/r83RzCJoQXaC3qcbm8SwGMLwvybP/H8jMGlik7u7VeB/Zqz2J7wWVGdr1uTG62J1PQgfWST1/+hiCaxyIF8UJqv9r8hQrcVpQVqkzrcbG0WwGvB2H/P/lnx5MAaxsam5vYn3f2KY+jesFpSlqfZnxWjidP2OGWL/g/0swBjExu4Lhv958Ur/i5KU+lEsCA1lYI4JUv95bZ0gTo2Pt3P+z0myBmMQG5e6mxu4/kf4Kf8EmQm3oCRNebKrvSawIGPBqRG9sMOp5hjjfwdrlf/58bKT4RaUpWvtcLZV/39iscD/H0AFP46jYwYiMeP/44u4/9tbKQODSXUH3II9G7v18hI0n8YGKv+IDVT6joxj/BVx4mgcOCde/SnITPRUJAHEGlTCEkQV19TAAN8FC67hZdFXAAAAAElFTkSuQmCC');
-  border-color: #ed5;
-}
+  border-color: #ed5; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003221}}
 .messages--error {
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAACpElEQVR42rWWTUgbQRiGQ0Tx4MWDeFM8eBA9iKAoggiCoCiiIiL4L3oQV1CJB0UEf6iRYFpK7UniTw9VSqL2kvQsVDBpSZrtRo35czVNW3oprRf17exSl4yzu1ikAy9h59vvedhkMrMGAGoxknAk2w8MJ/WosXThiZkZt9jdLeglPjn5ATc3mhJNuNjbK0QbG3ExMICL/n6IfX0gcxB7ekDAELu6IHZ2IlJbi1hLS1BLogmPtbUhMTv7oMSamzUlqnByMxLT0/8STQkDj9TV4ZLj5OysrODl8jIu5Gs68dFR7JG6dWkJ0fFx+TpSX89IDMnwcHU1yKec12Yz3rlc4HkeLwjkXJpPip3U3+7vIx6P4ymph4eG5PlwTQ0lMdytlmBxMWKtrXLeT0zA5XTibvj9fjxfXETkb/3N/Dz2dneVuiTZtliU/rPSUsQ5ziuxZYG03IIlJdKKUPJjdRUAKMmzuTnskB/VYbdTtd9HR4g2NCi9Z2VliDY1BSnBaUEBzsrLqXyzWCiQ9HU5HA4afniIUFWV0hOqqMBpURErOM7NxWlhIZOvCwvA7S3Uxq+DA5AnZ3pO8vJYQSArC8c5Oeqx2Rj4udeLQH6+6v2B7GxW8DkjA0JmJpONwUHY7XZGIAgCzCYTeJUewmIFfqMRfEoKlQ2yJbza2oLWcLvdeDI2hk/3+iQWKzAYkJzNjg5srq9TwJ9OJ76YTNScx+ORJT66X1/grKyEbW2NgfPp6XKd/JMZySrHaQsSU1Oe+0/w3WpVgyu5HBlR6lc+H8gioevDwz6JrWwV5+3txyoSFk5DcOX1MnCyJ4Vwfb1zt1UY9SR8aioDpuppaVpwZbPTl+hHF04dOKzk8XBF8DgJC3/woU/W/EciOtELOWi8DDwp//215Q+p7kiKh2lQSAAAAABJRU5ErkJggg==');
-  border-color: #ed541d;
-}
+  border-color: #ed541d; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003231}}
 .messages__list {
-  margin: 0;
-}
+  margin: 0; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003234}}
 .messages__item {
-  list-style-image: none;
-}
+  list-style-image: none; }
 
 /* Core/module installation error messages. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003239}}
 .messages--error p.error {
-  color: #333;
-}
+  color: #333; }
 
 /* System status report. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003244}}
 .ok,
 .messages--status {
   background-color: #f8fff0;
-  color: #234600;
-}
+  color: #234600; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003249}}
 .warning,
 .messages--warning {
   background-color: #fffce5;
-  color: #840;
-}
+  color: #840; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003254}}
 .error,
 .messages--error {
   background-color: #fef5f1;
-  color: #8c2e0b;
-}
+  color: #8c2e0b; }
 
 /**
  * Tabs.
  */
 /* Basic positioning styles shared by primary and secondary tabs. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003265}}
 .tabs-primary, .tabs-secondary {
   *zoom: 1;
   background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjEuMCIgeDI9IjAuNSIgeTI9IjAuMCI+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjYmJiYmJiIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
@@ -1126,38 +886,28 @@ body:after {
   border-bottom: 1px solid #bbb \0/ie;
   margin: 2em 0;
   padding: 0 2px;
-  white-space: nowrap;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_grid\.scss}line{font-family:\0000353}}
-.tabs-primary:before, .tabs-secondary:before, .tabs-primary:after, .tabs-secondary:after {
-  content: "";
-  display: table;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_grid\.scss}line{font-family:\0000358}}
-.tabs-primary:after, .tabs-secondary:after {
-  clear: both;
-}
+  white-space: nowrap; }
+  .tabs-primary:before, .tabs-secondary:before, .tabs-primary:after, .tabs-secondary:after {
+    content: "";
+    display: table; }
+  .tabs-primary:after, .tabs-secondary:after {
+    clear: both; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003275}}
 .tabs-primary__tab, .tabs-primary__tab.is-active, .tabs-secondary__tab,
 .tabs-secondary__tab.is-active {
   float: left;
   /* LTR */
-  margin: 0 3px;
-}
+  margin: 0 3px; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003279}}
 a.tabs-primary__tab-link, a.tabs-primary__tab-link.is-active, a.tabs-secondary__tab-link, a.tabs-secondary__tab-link.is-active {
   border: 1px solid #e9e9e9;
   border-right: 0;
   border-bottom: 0;
   display: block;
   line-height: 2em;
-  text-decoration: none;
-}
+  text-decoration: none; }
 
 /* Primary tabs. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003292}}
 .tabs-primary__tab, .tabs-primary__tab.is-active {
   -moz-border-radius-topleft: 4px;
   -webkit-border-top-left-radius: 4px;
@@ -1169,15 +919,11 @@ a.tabs-primary__tab-link, a.tabs-primary__tab-link.is-active, a.tabs-secondary__
   border: 1px solid #bbb;
   border-bottom-color: transparent;
   /* IE 9 and earlier don't understand gradients. */
-  border-bottom: 0 \0/ie;
-}
+  border-bottom: 0 \0/ie; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003301}}
 .tabs-primary__tab.is-active {
-  border-bottom-color: #fff;
-}
+  border-bottom-color: #fff; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003307}}
 a.tabs-primary__tab-link, a.tabs-primary__tab-link.is-active {
   -moz-border-radius-topleft: 4px;
   -webkit-border-top-left-radius: 4px;
@@ -1193,16 +939,12 @@ a.tabs-primary__tab-link, a.tabs-primary__tab-link.is-active {
   background-color: #dedede;
   letter-spacing: 1px;
   padding: 0 1em;
-  text-align: center;
-}
+  text-align: center; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003317}}
 a.tabs-primary__tab-link:hover, a.tabs-primary__tab-link:focus {
   background-color: #e9e9e9;
-  border-color: #f2f2f2;
-}
+  border-color: #f2f2f2; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003321}}
 a.tabs-primary__tab-link:active, a.tabs-primary__tab-link.is-active {
   background-color: transparent;
   *zoom: 1;
@@ -1213,24 +955,18 @@ a.tabs-primary__tab-link:active, a.tabs-primary__tab-link.is-active {
   background-image: -moz-linear-gradient(#e9e9e9, rgba(233, 233, 233, 0));
   background-image: -webkit-linear-gradient(#e9e9e9, rgba(233, 233, 233, 0));
   background-image: linear-gradient(#e9e9e9, rgba(233, 233, 233, 0));
-  border-color: #fff;
-}
+  border-color: #fff; }
 
 /* Secondary tabs. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003345}}
 .tabs-secondary {
   font-size: .9em;
   /* Collapse bottom margin of ul.primary. */
-  margin-top: -2em;
-}
+  margin-top: -2em; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003351}}
 .tabs-secondary__tab,
 .tabs-secondary__tab.is-active {
-  margin: 1em 3px;
-}
+  margin: 1em 3px; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003358}}
 a.tabs-secondary__tab-link, a.tabs-secondary__tab-link.is-active {
   -moz-border-radius: 0.75em;
   -webkit-border-radius: 0.75em;
@@ -1242,85 +978,65 @@ a.tabs-secondary__tab-link, a.tabs-secondary__tab-link.is-active {
   text-shadow: 1px 1px 0 #fff;
   background-color: #f2f2f2;
   color: #666;
-  padding: 0 .5em;
-}
+  padding: 0 .5em; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003367}}
 a.tabs-secondary__tab-link:hover, a.tabs-secondary__tab-link:focus {
   background-color: #dedede;
   border-color: #999;
-  color: #333;
-}
+  color: #333; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003372}}
 a.tabs-secondary__tab-link:active, a.tabs-secondary__tab-link.is-active {
   text-shadow: 1px 1px 0 #333;
   background-color: #666;
   border-color: #000;
-  color: #fff;
-}
+  color: #fff; }
 
 /**
  * Inline styles.
  */
 /* List of links generated by theme_links(). */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003400}}
 .inline {
   display: inline;
-  padding: 0;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003404}}
-.inline li {
-  display: inline;
-  list-style-type: none;
-  padding: 0 1em 0 0;
-  /* LTR */
-}
+  padding: 0; }
+  .inline li {
+    display: inline;
+    list-style-type: none;
+    padding: 0 1em 0 0;
+    /* LTR */ }
 
 /* The inline field label used by the Fences module. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003412}}
 span.field-label {
   padding: 0 1em 0 0;
-  /* LTR */
-}
+  /* LTR */ }
 
 /**
  * "More" links.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003419}}
 .more-link {
   text-align: right;
-  /* LTR */
-}
+  /* LTR */ }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003422}}
 .more-help-link {
   text-align: right;
-  /* LTR */
-}
+  /* LTR */ }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003425}}
 .more-help-link a {
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA7UlEQVR42qWTPQqDQBCFcwSPkCNITpAj5AjeIm1uYpkyR7Cy2Mot7OwsBAsRwUKwmOwLGRle3EIy8PyBfZ/z3J2TiPylz8VWWZZpUB40BonRKyizaxkA88MYYiqCEgv4MTvnZJom0VqWRbz3FlJZgLYtqmEY1Lg9r+sKsIXcLSC3AC019H0vqLquLeC5AfiHYSGkcdAJimKIBQiJ4+CO92OAtm0FNc8zOjkMwE5Q63FAtbeg6zpAYvG8BWR7i5qmQYwY4MIHqYhE2DOPQWcGJBQF2XU72ZzyUeZ5GCNt5/hybJgYdAXsq5sOEE/jG6dC5IOqCXTmAAAAAElFTkSuQmCC');
   background-position: 0 50%;
   /* LTR */
   background-repeat: no-repeat;
   padding: 1px 0 1px 20px;
-  /* LTR */
-}
+  /* LTR */ }
 
 /**
  * Pager.
  */
 /* A list of page numbers when more than 1 page of content is available. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003440}}
 .pager {
   clear: both;
   padding: 0;
-  text-align: center;
-}
+  text-align: center; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003445}}
 .pager-item,
 .pager-first,
 .pager-previous,
@@ -1330,79 +1046,61 @@ span.field-label {
   display: inline;
   padding: 0 0.5em;
   list-style-type: none;
-  background-image: none;
-}
+  background-image: none; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003452}}
 .pager-item,
 .pager-first,
 .pager-previous,
 .pager-next,
 .pager-last,
 .pager-ellipsis {
-  /* A concatenation of several list items using an ellipsis. */
-}
+  /* A concatenation of several list items using an ellipsis. */ }
 
 /* The current page's list item. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003462}}
 .pager-current {
-  font-weight: bold;
-}
+  font-weight: bold; }
 
 /**
  * Blocks.
  */
 /* Block wrapper. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003472}}
 .block {
-  margin-bottom: 2em;
-}
+  margin-bottom: 2em; }
 
 /**
  * Menus.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003479}}
 .menu__item.is-leaf {
   list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHBAMAAAA2fErgAAAAD1BMVEX///+/v7+Li4sAAADAwMBFvsw8AAAAAXRSTlMAQObYZgAAAB1JREFUCFtjYAADYwMGBmYVZSDhKAwkFJWhYiAAAB2+Aa/9ugeaAAAAAElFTkSuQmCC');
-  list-style-type: square;
-}
+  list-style-type: square; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003486}}
 .menu__item.is-expanded {
   list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHAQMAAAD+nMWQAAAABlBMVEX///8AAABVwtN+AAAAAXRSTlMAQObYZgAAABJJREFUeJxj+MdQw2DBIMAABgAUsAHD3c3BpwAAAABJRU5ErkJggg==');
-  list-style-type: circle;
-}
+  list-style-type: circle; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003493}}
 .menu__item.is-collapsed {
   list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHAQMAAAD+nMWQAAAABlBMVEX///8AAABVwtN+AAAAAXRSTlMAQObYZgAAABFJREFUCB1jVmCGQClmEWYOAAZ8AMy3HPLXAAAAAElFTkSuQmCC');
   /* LTR */
-  list-style-type: disc;
-}
+  list-style-type: disc; }
 
 /* The active item in a Drupal menu. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003502}}
 .menu a.active {
-  color: #000;
-}
+  color: #000; }
 
 /**
  * Marker.
  */
 /* The "new" or "updated" marker. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003511}}
 .new,
 .update {
   color: #c00;
   /* Remove background highlighting from <mark> in normalize. */
-  background-color: transparent;
-}
+  background-color: transparent; }
 
 /**
  * Unpublished note.
  */
 /* The word "Unpublished" displayed underneath the content. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003523}}
 .unpublished {
   height: 0;
   overflow: visible;
@@ -1416,115 +1114,82 @@ span.field-label {
   text-transform: uppercase;
   text-align: center;
   /* A very nice CSS3 property. */
-  word-wrap: break-word;
-}
+  word-wrap: break-word; }
 
 /**
  * Comments.
  */
 /* Wrapper for the list of comments and its title. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003551}}
 .comments {
-  margin: 2em 0;
-}
+  margin: 2em 0; }
 
 /* Preview of the comment before submitting new or updated comment. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003556}}
 .comment-preview {
   /* Drupal core will use a #ffffea background. See #1110842. */
-  background-color: #ffffea;
-}
+  background-color: #ffffea; }
 
 /* Wrapper for a single comment. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003562}}
 .comment {
-  /* Comment's permalink wrapper. */
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003565}}
-.comment .permalink {
-  text-transform: uppercase;
-  font-size: 75%;
-}
+  /* Comment's permalink wrapper. */ }
+  .comment .permalink {
+    text-transform: uppercase;
+    font-size: 75%; }
 
 /* Nested comments are indented. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003572}}
 .indented {
   /* Drupal core uses a 25px left margin. */
   margin-left: 34px;
-  /* LTR */
-}
+  /* LTR */ }
 
 /**
  * Forms.
  */
 /* Wrapper for a form element (or group of form elements) and its label. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003582}}
 .form-item {
   margin: 2em 0;
   /* Pack groups of checkboxes and radio buttons closer together. */
   /* Form items in a table. */
   /* Highlight the form elements that caused a form submission error. */
-  /* The descriptive help text (separate from the label). */
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003586}}
-.form-checkboxes .form-item, .form-radios .form-item {
-  /* Drupal core uses "0.4em 0". */
-  margin: 0;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003593}}
-tr.odd .form-item, tr.even .form-item {
-  margin: 0;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003599}}
-.form-item input.error,
-.form-item textarea.error,
-.form-item select.error {
-  border: 1px solid #c00;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003606}}
-.form-item .description {
-  font-size: 0.85em;
-}
+  /* The descriptive help text (separate from the label). */ }
+  .form-checkboxes .form-item, .form-radios .form-item {
+    /* Drupal core uses "0.4em 0". */
+    margin: 0; }
+  tr.odd .form-item, tr.even .form-item {
+    margin: 0; }
+  .form-item input.error,
+  .form-item textarea.error,
+  .form-item select.error {
+    border: 1px solid #c00; }
+  .form-item .description {
+    font-size: 0.85em; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003613}}
 .form-type-radio .description,
 .form-type-checkbox .description {
-  margin-left: 2.4em;
-}
+  margin-left: 2.4em; }
 
 /* The part of the label that indicates a required field. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003619}}
 .form-required {
-  color: #c00;
-}
+  color: #c00; }
 
 /* Labels for radios and checkboxes. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003624}}
 label.option {
   display: inline;
-  font-weight: normal;
-}
+  font-weight: normal; }
 
 /* Buttons used by contrib modules like Media. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003630}}
 a.button {
   -moz-appearance: button;
-  -webkit-appearance: button;
-}
+  -webkit-appearance: button; }
 
 /* Password confirmation. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003635}}
 .password-parent,
 .confirm-parent {
-  margin: 0;
-}
+  margin: 0; }
 
 /* Drupal's default login form block. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003641}}
 #user-login-form {
   text-align: left;
-  /* LTR */
-}
+  /* LTR */ }
 
 /**
  * OpenID
@@ -1533,83 +1198,59 @@ a.button {
  * styling of list items.
  */
 /* OpenID creates a new ul above the login form's links. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003653}}
 .openid-links {
   /* Position OpenID's ul next to the rest of the links. */
-  margin-bottom: 0;
-}
+  margin-bottom: 0; }
 
 /* The "Log in using OpenID" and "Cancel OpenID login" links. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003659}}
 .openid-link,
 .user-link {
-  margin-top: 2em;
-}
+  margin-top: 2em; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003663}}
 html.js #user-login-form li.openid-link,
 #user-login-form li.openid-link {
   /* Un-do some of the padding on the ul list. */
   margin-left: -20px;
-  /* LTR */
-}
+  /* LTR */ }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003668}}
 #user-login ul {
-  margin: 2em 0;
-}
+  margin: 2em 0; }
 
 /**
  * Drupal admin tables.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003676}}
 form th {
   text-align: left;
   /* LTR */
   padding-right: 1em;
   /* LTR */
-  border-bottom: 3px solid #ccc;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003681}}
+  border-bottom: 3px solid #ccc; }
 form tbody {
-  border-top: 1px solid #ccc;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003684}}
+  border-top: 1px solid #ccc; }
 form table ul {
-  margin: 0;
-}
+  margin: 0; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003688}}
 tr.even,
 tr.odd {
   background-color: #eee;
   border-bottom: 1px solid #ccc;
-  padding: 0.1em 0.6em;
-}
+  padding: 0.1em 0.6em; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003694}}
 tr.even {
-  background-color: #fff;
-}
+  background-color: #fff; }
 
 /* Markup generated by theme_tablesort_indicator(). */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003709}}
 td.active {
-  background-color: #ddd;
-}
+  background-color: #ddd; }
 
 /* Center checkboxes inside table cell. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003714}}
 td.checkbox,
 th.checkbox {
-  text-align: center;
-}
+  text-align: center; }
 
 /* Drupal core wrongly puts this in system.menus.css. Since we override that, add it back. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003720}}
 td.menu-disabled {
-  background: #ccc;
-}
+  background: #ccc; }
 
 /**
  * Autocomplete.
@@ -1617,107 +1258,80 @@ td.menu-disabled {
  * @see autocomplete.js
  */
 /* Suggestion list. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003731}}
 #autocomplete .selected {
   background: #0072b9;
-  color: #fff;
-}
+  color: #fff; }
 
 /**
  * Collapsible fieldsets.
  *
  * @see collapse.js
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003742}}
 html.js .collapsible .fieldset-legend {
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHAQMAAAD+nMWQAAAABlBMVEX///8AAABVwtN+AAAAAXRSTlMAQObYZgAAABJJREFUeJxj+MdQw2DBIMAABgAUsAHD3c3BpwAAAABJRU5ErkJggg==');
   background-position: 5px 65%;
   /* LTR */
   background-repeat: no-repeat;
   padding-left: 15px;
-  /* LTR */
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003751}}
+  /* LTR */ }
 html.js .collapsed .fieldset-legend {
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHAQMAAAD+nMWQAAAABlBMVEX///8AAABVwtN+AAAAAXRSTlMAQObYZgAAABFJREFUCB1jVmCGQClmEWYOAAZ8AMy3HPLXAAAAAElFTkSuQmCC');
   /* LTR */
   background-position: 5px 50%;
-  /* LTR */
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003758}}
+  /* LTR */ }
 .fieldset-legend .summary {
   color: #999;
   font-size: 0.9em;
-  margin-left: 0.5em;
-}
+  margin-left: 0.5em; }
 
 /**
  * TableDrag behavior.
  *
  * @see tabledrag.js
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003770}}
 tr.drag {
-  background-color: #fffff0;
-}
+  background-color: #fffff0; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003773}}
 tr.drag-previous {
-  background-color: #ffd;
-}
+  background-color: #ffd; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003776}}
 .tabledrag-toggle-weight {
-  font-size: 0.9em;
-}
+  font-size: 0.9em; }
 
 /**
  * TableSelect behavior.
  *
  * @see tableselect.js
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003785}}
 tr.selected td {
-  background: #ffc;
-}
+  background: #ffc; }
 
 /**
  * Progress bar.
  *
  * @see progress.js
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003794}}
 .progress {
-  font-weight: bold;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003797}}
-.progress .bar {
-  background: #ccc;
-  border-color: #666;
-  margin: 0 0.2em;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/components\/_misc\.scss}line{font-family:\00003803}}
-.progress .filled {
-  background-color: #0072b9;
-  background-image: url('../images/progress.gif?1398863088');
-}
+  font-weight: bold; }
+  .progress .bar {
+    background: #ccc;
+    border-color: #666;
+    margin: 0 0.2em;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px; }
+  .progress .filled {
+    background-color: #0072b9;
+    background-image: url('../images/progress.gif?1398863088'); }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_global\.scss}line{font-family:\000033}}
 h1, h2, h3, h4, h5, h6 {
   color: #2E2B31;
   font-family: "brandon-grotesque", Arial, Helvetica, sans-serif;
-  font-weight: normal;
-}
+  font-weight: normal; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_global\.scss}line{font-family:\0000310}}
 body {
-  background: #2E2B31;
-}
+  background: #2E2B31; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_global\.scss}line{font-family:\0000314}}
 #page {
   background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjEuMCIgeDI9IjAuNSIgeTI9IjAuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2VjMWMyNCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzllMWY2MyIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
   background-size: 100%;
@@ -1726,55 +1340,77 @@ body {
   background-image: -webkit-linear-gradient(bottom, #ec1c24, #9e1f63);
   background-image: linear-gradient(to top, #ec1c24, #9e1f63);
   overflow: hidden;
-  width: 100%;
-}
+  width: 100%; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_global\.scss}line{font-family:\0000323}}
 #header,
 #main {
-  background: #FFFFFF;
-}
+  background: #FFFFFF; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_global\.scss}line{font-family:\0000328}}
 p {
   line-height: 1.533333333;
-  margin: 0.8em 0;
-}
+  margin: 0.8em 0; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_global\.scss}line{font-family:\0000333}}
 blockquote {
   line-height: 1.533333333;
-  margin: 1em 34px;
-}
+  margin: 1em 34px; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_global\.scss}line{font-family:\0000338}}
 .breadcrumb {
   font-family: Tahoma, Verdana, "DejaVu Sans", sans-serif;
   font-size: 0.733333333em;
   margin-top: 24px;
-  text-transform: uppercase;
-}
+  text-transform: uppercase; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_global\.scss}line{font-family:\0000346}}
+/*
+ ** Form Elements
+ */
 label {
+  color: #4D4F46;
   font-weight: 500;
-  font-family: "brandon-grotesque", Arial, Helvetica, sans-serif;
+  font-family: "franklin-gothic-urw", "Times New Roman", Times, Georgia, serif;
+  font-size: 0.8em;
+  text-transform: uppercase; }
+
+input {
+  border: 1px solid #949691;
+  color: #4D4F46;
+  font-family: "franklin-gothic-urw", "Times New Roman", Times, Georgia, serif;
+  font-size: 14px;
+  height: 32px;
+  padding-left: 5px;
+  padding-right: 5px; }
+
+.form-submit {
+  background-color: #9E1F63;
+  color: #FFFFFF;
   text-transform: uppercase;
-}
+  border: none; }
+
+#autocomplete {
+  border-color: #949691; }
+
+.reference-autocomplete,
+#autocomplete li {
+  color: #4D4F46;
+  font-family: "franklin-gothic-urw", "Times New Roman", Times, Georgia, serif;
+  font-size: 14px; }
+
+#autocomplete li.selected {
+  background-color: #FFF766;
+  color: #4D4F46; }
+
+html.js input.form-autocomplete {
+  background-position: 100% 10px; }
 
 /**
  * Header Styling
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_header\.scss}line{font-family:\000035}}
 .header__site-name {
   position: absolute !important;
   height: 1px;
   width: 1px;
   overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
-}
+  clip: rect(1px, 1px, 1px, 1px); }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_header\.scss}line{font-family:\000039}}
 #logo {
   left: 4.54545%;
   position: relative;
@@ -1787,97 +1423,69 @@ label {
   box-sizing: border-box;
   margin-top: 108px;
   margin-bottom: 24px;
-  position: relative;
-}
-@media screen and (max-width: 320px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_header\.scss}line{font-family:\000039}}
-  #logo {
-    width: 100%;
-    left: 0;
-  }
-}
-@media screen and (min-width: 1024px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_header\.scss}line{font-family:\000039}}
-  #logo {
-    height: 50px;
-  }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_header\.scss}line{font-family:\0000320}}
-  #logo .header__logo-image {
-    position: absolute;
-    bottom: 0;
-  }
-}
-@media screen and (min-width: 1440px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_header\.scss}line{font-family:\000039}}
-  #logo {
-    display: inline;
-    float: left;
-    width: 20.45455%;
-    padding: 0 0;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    left: 2.27273%;
-    position: relative;
-  }
-}
-@media screen and (min-width: 1440px) and (max-width: 320px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_header\.scss}line{font-family:\000039}}
-  #logo {
-    width: 100%;
-    left: 0;
-  }
-}
+  position: relative; }
+  @media screen and (max-width: 320px) {
+    #logo {
+      width: 100%;
+      left: 0; } }
+  @media screen and (min-width: 1024px) {
+    #logo {
+      height: 50px; }
+      #logo .header__logo-image {
+        position: absolute;
+        bottom: 0; } }
+  @media screen and (min-width: 1440px) {
+    #logo {
+      display: inline;
+      float: left;
+      width: 20.45455%;
+      padding: 0 0;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      left: 2.27273%;
+      position: relative; } }
+  @media screen and (min-width: 1440px) and (max-width: 320px) {
+    #logo {
+      width: 100%;
+      left: 0; } }
 
-@media screen and (max-width: 1023px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_header\.scss}line{font-family:\000039}}
-  #logo {
-    display: inline;
-    float: left;
-    width: 90.90909%;
-    padding: 0 0;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    left: 4.54545%;
-    position: relative;
-    margin: 30px auto;
-    text-align: center;
-  }
-}
-@media screen and (max-width: 1023px) and (max-width: 320px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_header\.scss}line{font-family:\000039}}
-  #logo {
-    width: 100%;
-    left: 0;
-  }
-}
+  @media screen and (max-width: 1023px) {
+    #logo {
+      display: inline;
+      float: left;
+      width: 90.90909%;
+      padding: 0 0;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      left: 4.54545%;
+      position: relative;
+      margin: 30px auto;
+      text-align: center; } }
+  @media screen and (max-width: 1023px) and (max-width: 320px) {
+    #logo {
+      width: 100%;
+      left: 0; } }
 
-@media screen and (max-width: 639px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_header\.scss}line{font-family:\000039}}
-  #logo {
-    display: inline;
-    float: left;
-    width: 81.81818%;
-    padding: 0 0;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    left: 9.09091%;
-    position: relative;
-    margin: 65px auto 0;
-    padding-bottom: 20%;
-  }
-}
-@media screen and (max-width: 639px) and (max-width: 320px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_header\.scss}line{font-family:\000039}}
-  #logo {
-    width: 100%;
-    left: 0;
-  }
-}
+  @media screen and (max-width: 639px) {
+    #logo {
+      display: inline;
+      float: left;
+      width: 81.81818%;
+      padding: 0 0;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      left: 9.09091%;
+      position: relative;
+      margin: 65px auto 0;
+      padding-bottom: 20%; } }
+  @media screen and (max-width: 639px) and (max-width: 320px) {
+    #logo {
+      width: 100%;
+      left: 0; } }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_header\.scss}line{font-family:\0000346}}
 .header__region {
   display: inline;
   float: left;
@@ -1889,422 +1497,297 @@ label {
   left: 9.09091%;
   position: relative;
   clear: none;
-  margin-top: 101px;
-}
-@media screen and (max-width: 320px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_header\.scss}line{font-family:\0000346}}
-  .header__region {
-    width: 100%;
-    left: 0;
-  }
-}
-@media screen and (min-width: 1440px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_header\.scss}line{font-family:\0000346}}
-  .header__region {
-    display: inline;
-    float: left;
-    width: 27.27273%;
-    padding: 0 0;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    left: 2.27273%;
-    position: relative;
-  }
-}
-@media screen and (min-width: 1440px) and (max-width: 320px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_header\.scss}line{font-family:\0000346}}
-  .header__region {
-    width: 100%;
-    left: 0;
-  }
-}
+  margin-top: 101px; }
+  @media screen and (max-width: 320px) {
+    .header__region {
+      width: 100%;
+      left: 0; } }
+  @media screen and (min-width: 1440px) {
+    .header__region {
+      display: inline;
+      float: left;
+      width: 27.27273%;
+      padding: 0 0;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      left: 2.27273%;
+      position: relative; } }
+  @media screen and (min-width: 1440px) and (max-width: 320px) {
+    .header__region {
+      width: 100%;
+      left: 0; } }
 
 /**
  * Header Blocks
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_header\.scss}line{font-family:\0000365}}
 .header__region .tout-menu {
   position: absolute !important;
   height: 1px;
   width: 1px;
   overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_header\.scss}line{font-family:\0000371}}
+  clip: rect(1px, 1px, 1px, 1px); }
 .header__region .block-logintoboggan {
   color: #949691;
   float: right;
   font-family: "franklin-gothic-urw", "Times New Roman", Times, Georgia, serif;
   font-size: 0.8em;
-  margin-bottom: 0;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_header\.scss}line{font-family:\0000378}}
-.header__region .block-logintoboggan a {
-  color: #949691;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_header\.scss}line{font-family:\0000384}}
+  margin-bottom: 0; }
+  .header__region .block-logintoboggan a {
+    color: #949691; }
 .header__region .search-box {
   clear: right;
   float: right;
-  margin-bottom: 0;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_header\.scss}line{font-family:\0000390}}
-.header__region .search-box label {
-  position: absolute !important;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_header\.scss}line{font-family:\0000394}}
-.header__region .search-box .views-exposed-widget {
-  padding: 0;
-  margin: 0;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_header\.scss}line{font-family:\0000399}}
-.header__region .search-box .form-text {
-  border: 1px solid #949691;
-  font-family: "franklin-gothic-urw", "Times New Roman", Times, Georgia, serif;
-  font-size: 0.8em;
-  height: 20px;
-  padding-left: 10px;
-  width: 99%;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_header\.scss}line{font-family:\00003108}}
-.header__region .search-box .form-submit {
-  background: #949691 url("../images/submit-button.png") no-repeat 50% 50%;
-  border: none;
-  margin: 6px 0 0;
-  padding: 0;
-  text-indent: -9999px;
-  width: 100%;
-  height: 100%;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_header\.scss}line{font-family:\00003118}}
-.header__region .search-box .views-submit-button {
-  position: relative;
-  margin: 0;
-  padding: 0;
-  width: 40px;
-  height: 20px;
-}
+  margin-bottom: 0; }
+  .header__region .search-box label {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px); }
+  .header__region .search-box .views-exposed-widget {
+    padding: 0;
+    margin: 0; }
+  .header__region .search-box .form-text {
+    border: 1px solid #949691;
+    font-family: "franklin-gothic-urw", "Times New Roman", Times, Georgia, serif;
+    font-size: 0.8em;
+    height: 20px;
+    padding-left: 5px;
+    width: 99%; }
+  .header__region .search-box .form-submit {
+    background: #949691 url("../images/submit-button.png") no-repeat 50% 50%;
+    border: none;
+    margin: 6px 0 0;
+    padding: 0;
+    text-indent: -9999px;
+    width: 100%;
+    height: 100%; }
+  .header__region .search-box .views-submit-button {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 40px;
+    height: 20px; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_navigation\.scss}line{font-family:\000033}}
 #navigation {
   background: #2E2B31;
   font-family: "brandon-grotesque", Arial, Helvetica, sans-serif;
-  text-transform: uppercase;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_navigation\.scss}line{font-family:\000038}}
-#navigation .region-navigation {
-  display: inline;
-  float: left;
-  position: relative;
-  left: 2.0833333%;
-  width: 95.8333333%;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_navigation\.scss}line{font-family:\0000314}}
-#navigation .links,
-#navigation .menu {
-  height: 70px;
-  text-align: justify;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_navigation\.scss}line{font-family:\0000319}}
-#navigation .links li,
-#navigation .menu li {
-  float: none;
-  display: inline-block;
-  padding: 0;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_navigation\.scss}line{font-family:\0000327}}
-#navigation ul:after {
-  content: '';
-  width: 100%;
-  /* Ensures there are at least 2 lines of text, so justification works */
-  display: inline-block;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_navigation\.scss}line{font-family:\0000333}}
-#navigation li {
-  display: inline;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_navigation\.scss}line{font-family:\0000337}}
-#navigation a:link,
-#navigation a:visited {
-  color: #FFF100;
-  display: block;
-  padding: 20px 9px;
-}
-@media screen and (min-width: 1440px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_navigation\.scss}line{font-family:\0000337}}
-  #navigation a:link,
-  #navigation a:visited {
-    padding: 20px 29px;
-  }
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_navigation\.scss}line{font-family:\0000348}}
-#navigation a.active {
-  background: #4E5047;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_navigation\.scss}line{font-family:\0000351}}
-#navigation a:hover {
-  background: #60625A;
-  color: #fff87f;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_navigation\.scss}line{font-family:\0000357}}
-#navigation li.first a:link,
-#navigation li.first a:visited,
-#navigation li.first a.active,
-#navigation li.first a:hover {
-  background: #FFF100;
-  color: #2E2B31;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-@media screen and (max-width: 1024px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_navigation\.scss}line{font-family:\0000373}}
-  #navigation:after {
-    content: " ";
-    border-top: 1px solid #FFFFFF;
-    display: block;
+  text-transform: uppercase; }
+  #navigation .region-navigation {
+    display: inline;
+    float: left;
     position: relative;
-    top: 70px;
-    width: 100%;
-  }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_navigation\.scss}line{font-family:\0000382}}
+    left: 2.0833333%;
+    width: 95.8333333%; }
   #navigation .links,
   #navigation .menu {
-    height: 140px;
-  }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_navigation\.scss}line{font-family:\0000388}}
-  #navigation .block-menu-block {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 614px;
-  }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_navigation\.scss}line{font-family:\0000395}}
-  #navigation li a {
-    padding-left: 19px;
-    padding-right: 19px;
-  }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_navigation\.scss}line{font-family:\00003101}}
-  #navigation li:nth-child(-n+5) a {
-    padding-left: 22px;
-    padding-right: 22px;
-  }
-}
+    height: 70px;
+    text-align: justify; }
+    #navigation .links li,
+    #navigation .menu li {
+      float: none;
+      display: inline-block;
+      padding: 0; }
+  #navigation ul:after {
+    content: '';
+    width: 100%;
+    /* Ensures there are at least 2 lines of text, so justification works */
+    display: inline-block; }
+  #navigation li {
+    display: inline; }
+  #navigation a:link,
+  #navigation a:visited {
+    color: #FFF100;
+    display: block;
+    padding: 20px 9px; }
+    @media screen and (min-width: 1440px) {
+      #navigation a:link,
+      #navigation a:visited {
+        padding: 20px 29px; } }
+  #navigation a.active {
+    background: #4E5047; }
+  #navigation a:hover {
+    background: #60625A;
+    color: #fff87f; }
+  #navigation li.first a:link,
+  #navigation li.first a:visited,
+  #navigation li.first a.active,
+  #navigation li.first a:hover {
+    background: #FFF100;
+    color: #2E2B31;
+    padding-left: 20px;
+    padding-right: 20px; }
+  @media screen and (max-width: 1024px) {
+    #navigation:after {
+      content: " ";
+      border-top: 1px solid #FFFFFF;
+      display: block;
+      position: relative;
+      top: 70px;
+      width: 100%; }
+    #navigation .links,
+    #navigation .menu {
+      height: 140px; }
+    #navigation .block-menu-block {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 614px; }
+    #navigation li a {
+      padding-left: 19px;
+      padding-right: 19px; }
+    #navigation li:nth-child(-n+5) a {
+      padding-left: 22px;
+      padding-right: 22px; } }
 
 /*
  ** Off Canvas Styling
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000370}}
 body {
-  overflow-x: hidden;
-}
+  overflow-x: hidden; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000374}}
 #header-mobile {
-  display: none;
-}
+  display: none; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000381}}
 .region-tout .block-menu-block.first,
 .region-tout .search-box {
   transition: 0.5s all ease;
   float: left;
   position: absolute;
   width: 75%;
-  left: -100%;
-}
-@media screen and (max-width: 639px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000381}}
-  .region-tout .block-menu-block.first,
-  .region-tout .search-box {
-    width: 91.6666667%;
-  }
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000386}}
+  left: -100%; }
+  @media screen and (max-width: 639px) {
+    .region-tout .block-menu-block.first,
+    .region-tout .search-box {
+      width: 91.6666667%; } }
 .region-tout .tout-menu,
 .region-tout .block-logintoboggan {
   transition: 0.5s all ease;
   float: left;
   position: absolute;
   width: 75%;
-  right: -100%;
-}
-@media screen and (max-width: 639px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000386}}
-  .region-tout .tout-menu,
-  .region-tout .block-logintoboggan {
-    width: 91.6666667%;
-  }
-}
+  right: -100%; }
+  @media screen and (max-width: 639px) {
+    .region-tout .tout-menu,
+    .region-tout .block-logintoboggan {
+      width: 91.6666667%; } }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000394}}
 .tout-close-left {
   transition: 0.5s all ease;
   float: left;
   position: absolute;
   width: 75%;
   left: -100%;
-  width: auto;
-}
-@media screen and (max-width: 639px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000394}}
-  .tout-close-left {
-    width: 91.6666667%;
-  }
-}
+  width: auto; }
+  @media screen and (max-width: 639px) {
+    .tout-close-left {
+      width: 91.6666667%; } }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000398}}
 .tout-close-right {
   transition: 0.5s all ease;
   float: left;
   position: absolute;
   width: 75%;
   right: -100%;
-  width: auto;
-}
-@media screen and (max-width: 639px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000398}}
-  .tout-close-right {
-    width: 91.6666667%;
-  }
-}
+  width: auto; }
+  @media screen and (max-width: 639px) {
+    .tout-close-right {
+      width: 91.6666667%; } }
 
 @media screen and (max-width: 1023px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003106}}
   .header__region {
     position: absolute !important;
     height: 1px;
     width: 1px;
     overflow: hidden;
-    clip: rect(1px, 1px, 1px, 1px);
-  }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003108}}
-  .header__region .search-box,
-  .header__region .block-logintoboggan {
-    position: absolute !important;
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
-    clip: rect(1px, 1px, 1px, 1px);
-  }
-}
+    clip: rect(1px, 1px, 1px, 1px); }
+    .header__region .search-box,
+    .header__region .block-logintoboggan {
+      position: absolute !important;
+      height: 1px;
+      width: 1px;
+      overflow: hidden;
+      clip: rect(1px, 1px, 1px, 1px); } }
 @media screen and (max-width: 1023px) and (max-width: 639px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003116}}
   #navigation {
     position: absolute !important;
     height: 1px;
     width: 1px;
     overflow: hidden;
-    clip: rect(1px, 1px, 1px, 1px);
-  }
+    clip: rect(1px, 1px, 1px, 1px); }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003120}}
   .header__region .tout-menu {
     position: absolute !important;
     height: 1px;
     width: 1px;
     overflow: hidden;
-    clip: rect(1px, 1px, 1px, 1px);
-  }
-}
+    clip: rect(1px, 1px, 1px, 1px); } }
 @media screen and (max-width: 1023px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003127}}
   #header {
     left: 16.6666667%;
-    width: 66.6666667%;
-  }
+    width: 66.6666667%; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003133}}
   #header-mobile {
     position: absolute;
     width: 100%;
-    display: block;
-  }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003139}}
-  #header-mobile h2 {
-    color: #FFF100;
-    display: block;
-    height: 0;
-    padding-bottom: 16.66666667%;
-    width: 16.6666667% !important;
-    margin: 0;
-    text-indent: -9999px;
-  }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003148}}
-  #header-mobile h2.search-header {
-    clear: left;
-    float: left;
-  }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003152}}
-  #header-mobile h2.search-header:after {
-    content: "\f002";
-    float: left;
-    font-family: "FontAwesome";
-    padding: 35%;
-    text-indent: 0;
-  }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003161}}
-  #header-mobile h2.login-header {
-    float: right;
-  }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003164}}
-  #header-mobile h2.login-header:after {
-    content: "\f007";
-    float: right;
-    font-family: "FontAwesome";
-    padding: 35%;
-    text-indent: 0;
-  }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003173}}
-  #header-mobile h2.menu-header, #header-mobile h2.tout-header {
-    display: none;
-  }
-}
-@media screen and (max-width: 1023px) and (max-width: 639px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003181}}
-  #header-mobile h2.menu-header {
-    display: block;
-    float: left;
-    width: 16.6666667% !important;
-  }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003187}}
-  #header-mobile h2.menu-header:after {
-    content: "\f0c9";
-    float: left;
-    font-family: "FontAwesome";
-    padding: 35%;
-    text-indent: 0;
-  }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003196}}
-  #header-mobile h2.tout-header {
-    display: block;
-    clear: right;
-    float: right;
-    top: 54px;
-  }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003202}}
-  #header-mobile h2.tout-header:after {
-    content: "\f07a";
-    float: right;
-    font-family: "FontAwesome";
-    padding: 35%;
-    text-indent: 0;
-  }
-}
+    display: block; }
+    #header-mobile h2 {
+      color: #FFF100;
+      display: block;
+      height: 0;
+      padding-bottom: 16.66666667%;
+      width: 16.6666667% !important;
+      margin: 0;
+      text-indent: -9999px; }
+      #header-mobile h2.search-header {
+        clear: left;
+        float: left; }
+        #header-mobile h2.search-header:after {
+          content: "\f002";
+          float: left;
+          font-family: "FontAwesome";
+          padding: 35%;
+          text-indent: 0; }
+      #header-mobile h2.login-header {
+        float: right; }
+        #header-mobile h2.login-header:after {
+          content: "\f007";
+          float: right;
+          font-family: "FontAwesome";
+          padding: 35%;
+          text-indent: 0; }
+      #header-mobile h2.menu-header, #header-mobile h2.tout-header {
+        display: none; } }
+    @media screen and (max-width: 1023px) and (max-width: 639px) {
+      #header-mobile h2.menu-header {
+        display: block;
+        float: left;
+        width: 16.6666667% !important; }
+        #header-mobile h2.menu-header:after {
+          content: "\f0c9";
+          float: left;
+          font-family: "FontAwesome";
+          padding: 35%;
+          text-indent: 0; }
+      #header-mobile h2.tout-header {
+        display: block;
+        clear: right;
+        float: right;
+        top: 54px; }
+        #header-mobile h2.tout-header:after {
+          content: "\f07a";
+          float: right;
+          font-family: "FontAwesome";
+          padding: 35%;
+          text-indent: 0; } }
 
 @media screen and (max-width: 1023px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003215}}
   #page {
     transition: 0.5s all ease;
     margin: 0;
     float: left;
-    position: relative;
-  }
+    position: relative; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003223}}
   .region-tout .block-menu-block.first,
   .region-tout .search-box,
   .region-tout .block-logintoboggan,
@@ -2315,54 +1798,38 @@ body {
     font-size: 1.6em;
     font-weight: 900;
     min-height: 100%;
-    text-transform: uppercase;
-  }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003235}}
-  .region-tout .block-menu-block.first a,
-  .region-tout .search-box a,
-  .region-tout .block-logintoboggan a,
-  .region-tout .tout-menu a {
-    color: #FFF100;
-  }
+    text-transform: uppercase; }
+    .region-tout .block-menu-block.first a,
+    .region-tout .search-box a,
+    .region-tout .block-logintoboggan a,
+    .region-tout .tout-menu a {
+      color: #FFF100; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003247}}
   .region-tout .block-menu-block.first h2.block__title {
     position: absolute !important;
     height: 1px;
     width: 1px;
     overflow: hidden;
-    clip: rect(1px, 1px, 1px, 1px);
-  }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003251}}
+    clip: rect(1px, 1px, 1px, 1px); }
   .region-tout .block-menu-block.first ul {
-    list-style-type: none;
-  }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003254}}
-  .region-tout .block-menu-block.first ul li.menu__item.is-leaf {
-    list-style: none;
-    margin-bottom: 0.5em;
-  }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003274}}
+    list-style-type: none; }
+    .region-tout .block-menu-block.first ul li.menu__item.is-leaf {
+      list-style: none;
+      margin-bottom: 0.5em; }
   .region-tout .tout-menu h2.block__title {
     position: absolute !important;
     height: 1px;
     width: 1px;
     overflow: hidden;
-    clip: rect(1px, 1px, 1px, 1px);
-  }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003278}}
+    clip: rect(1px, 1px, 1px, 1px); }
   .region-tout .tout-menu ul {
-    list-style-type: none;
-  }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003281}}
-  .region-tout .tout-menu ul li.menu__item.is-leaf {
-    list-style: none;
-    margin-bottom: 0.5em;
-    font-size: 18px;
-    font-weight: 500;
-  }
+    list-style-type: none; }
+    .region-tout .tout-menu ul li.menu__item.is-leaf {
+      list-style: none;
+      margin-bottom: 0.5em;
+      font-size: 18px;
+      font-weight: 500; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003293}}
   .menu-active .tout-close-left, .search-active .tout-close-left {
     font-family: "FontAwesome";
     font-size: 1.6em;
@@ -2370,17 +1837,13 @@ body {
     cursor: pointer;
     text-indent: -9999px;
     z-index: 10;
-    left: 0;
-  }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000362}}
-  .menu-active .tout-close-left:after, .search-active .tout-close-left:after {
-    content: "\f00d";
-    color: yellow;
-    text-indent: 0;
-    float: left;
-  }
+    left: 0; }
+    .menu-active .tout-close-left:after, .search-active .tout-close-left:after {
+      content: "\f00d";
+      color: yellow;
+      text-indent: 0;
+      float: left; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003300}}
   .login-active .tout-close-right, .tout-active .tout-close-right {
     font-family: "FontAwesome";
     font-size: 1.6em;
@@ -2388,127 +1851,73 @@ body {
     cursor: pointer;
     text-indent: -9999px;
     z-index: 10;
-    right: 0;
-  }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000362}}
-  .login-active .tout-close-right:after, .tout-active .tout-close-right:after {
-    content: "\f00d";
-    color: yellow;
-    text-indent: 0;
-    float: left;
-  }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003305}}
-  .login-active .tout-close-right:after, .tout-active .tout-close-right:after {
-    float: right;
-  }
+    right: 0; }
+    .login-active .tout-close-right:after, .tout-active .tout-close-right:after {
+      content: "\f00d";
+      color: yellow;
+      text-indent: 0;
+      float: left; }
+    .login-active .tout-close-right:after, .tout-active .tout-close-right:after {
+      float: right; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003313}}
   .menu-active .block-menu-block.first {
     width: 75%;
-    left: 0;
-  }
-}
-@media screen and (max-width: 1023px) and (max-width: 639px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003313}}
-  .menu-active .block-menu-block.first {
-    width: 91.6666667%;
-  }
-}
+    left: 0; } }
+  @media screen and (max-width: 1023px) and (max-width: 639px) {
+    .menu-active .block-menu-block.first {
+      width: 91.6666667%; } }
 @media screen and (max-width: 1023px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003318}}
   .menu-active #page {
-    margin-left: 75%;
-  }
-}
-@media screen and (max-width: 1023px) and (max-width: 639px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003318}}
-  .menu-active #page {
-    margin-left: 91.6666667%;
-  }
-}
+    margin-left: 75%; } }
+  @media screen and (max-width: 1023px) and (max-width: 639px) {
+    .menu-active #page {
+      margin-left: 91.6666667%; } }
 
 @media screen and (max-width: 1023px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003324}}
   .search-active .region-tout .search-box {
     width: 75%;
-    left: 0;
-  }
-}
-@media screen and (max-width: 1023px) and (max-width: 639px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003324}}
-  .search-active .region-tout .search-box {
-    width: 91.6666667%;
-  }
-}
+    left: 0; } }
+  @media screen and (max-width: 1023px) and (max-width: 639px) {
+    .search-active .region-tout .search-box {
+      width: 91.6666667%; } }
 @media screen and (max-width: 1023px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003329}}
   .search-active #page {
-    margin-left: 75%;
-  }
-}
-@media screen and (max-width: 1023px) and (max-width: 639px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003329}}
-  .search-active #page {
-    margin-left: 91.6666667%;
-  }
-}
+    margin-left: 75%; } }
+  @media screen and (max-width: 1023px) and (max-width: 639px) {
+    .search-active #page {
+      margin-left: 91.6666667%; } }
 
 @media screen and (max-width: 1023px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003335}}
   .login-active .block-logintoboggan {
     width: 75%;
-    right: 0;
-  }
-}
-@media screen and (max-width: 1023px) and (max-width: 639px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003335}}
-  .login-active .block-logintoboggan {
-    width: 91.6666667%;
-  }
-}
+    right: 0; } }
+  @media screen and (max-width: 1023px) and (max-width: 639px) {
+    .login-active .block-logintoboggan {
+      width: 91.6666667%; } }
 @media screen and (max-width: 1023px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003340}}
   .login-active #page {
-    margin-left: -75%;
-  }
-}
-@media screen and (max-width: 1023px) and (max-width: 639px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003340}}
-  .login-active #page {
-    margin-left: -91.6666667%;
-  }
-}
+    margin-left: -75%; } }
+  @media screen and (max-width: 1023px) and (max-width: 639px) {
+    .login-active #page {
+      margin-left: -91.6666667%; } }
 
 @media screen and (max-width: 1023px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003346}}
   .tout-active .tout-menu {
     width: 75%;
-    right: 0;
-  }
-}
-@media screen and (max-width: 1023px) and (max-width: 639px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003346}}
-  .tout-active .tout-menu {
-    width: 91.6666667%;
-  }
-}
+    right: 0; } }
+  @media screen and (max-width: 1023px) and (max-width: 639px) {
+    .tout-active .tout-menu {
+      width: 91.6666667%; } }
 @media screen and (max-width: 1023px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003351}}
   .tout-active #page {
-    margin-left: -75%;
-  }
-}
-@media screen and (max-width: 1023px) and (max-width: 639px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\00003351}}
-  .tout-active #page {
-    margin-left: -91.6666667%;
-  }
-}
+    margin-left: -75%; } }
+  @media screen and (max-width: 1023px) and (max-width: 639px) {
+    .tout-active #page {
+      margin-left: -91.6666667%; } }
 
 /*
  ** Slider
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_slider\.scss}line{font-family:\000035}}
 #slider {
   background: #FFFFFF;
   bottom: 20px;
@@ -2518,91 +1927,67 @@ body {
   width: 400px;
   -moz-box-shadow: #777 0 0 10px;
   -webkit-box-shadow: #777 0 0 10px;
-  box-shadow: #777 0 0 10px;
-}
-@media screen and (max-width: 1023px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_slider\.scss}line{font-family:\000035}}
-  #slider {
-    position: relative;
-    bottom: auto;
-    width: 100%;
-    right: auto;
-    display: inline;
-    float: left;
-    width: 100%;
-    padding: 0 0;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-  }
-}
-@media screen and (max-width: 1023px) and (max-width: 320px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_slider\.scss}line{font-family:\000035}}
-  #slider {
-    width: 100%;
-    left: 0;
-  }
-}
+  box-shadow: #777 0 0 10px; }
+  @media screen and (max-width: 1023px) {
+    #slider {
+      position: relative;
+      bottom: auto;
+      width: 100%;
+      right: auto;
+      display: inline;
+      float: left;
+      width: 100%;
+      padding: 0 0;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      -moz-box-shadow: none;
+      -webkit-box-shadow: none;
+      box-shadow: none; } }
+  @media screen and (max-width: 1023px) and (max-width: 320px) {
+    #slider {
+      width: 100%;
+      left: 0; } }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_slider\.scss}line{font-family:\0000325}}
-#slider a.close {
-  font-family: "FontAwesome";
-  font-size: 1.6em;
-  padding: 12px 24px;
-  cursor: pointer;
-  text-indent: -9999px;
-  z-index: 10;
-  padding: 0;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_off-canvas\.scss}line{font-family:\0000362}}
-#slider a.close:after {
-  content: "\f00d";
-  color: yellow;
-  text-indent: 0;
-  float: left;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_slider\.scss}line{font-family:\0000329}}
-#slider a.close:after {
-  color: #4D4F46;
-  float: right;
-}
+  #slider a.close {
+    font-family: "FontAwesome";
+    font-size: 1.6em;
+    padding: 12px 24px;
+    cursor: pointer;
+    text-indent: -9999px;
+    z-index: 10;
+    padding: 0; }
+    #slider a.close:after {
+      content: "\f00d";
+      color: yellow;
+      text-indent: 0;
+      float: left; }
+    #slider a.close:after {
+      color: #4D4F46;
+      float: right; }
 
 /*
  ** Issue Page Styling
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\000037}}
 .node-type-issue .group_issue_title {
-  display: block;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000310}}
-.node-type-issue .group_issue_title .field-name-title-field,
-.node-type-issue .group_issue_title .field-name-field-issue-season-and-year,
-.node-type-issue .group_issue_title .field-name-field-issue-year {
-  display: inline-block;
-  font-family: "brandon-grotesque", Arial, Helvetica, sans-serif;
-  font-size: 1.6em;
-  font-weight: 900;
-  margin-right: 6px;
-  text-transform: uppercase;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000320}}
-.node-type-issue .group_issue_title .field-name-title-field div,
-.node-type-issue .group_issue_title .field-name-field-issue-season-and-year div,
-.node-type-issue .group_issue_title .field-name-field-issue-year div {
-  display: inline-block;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000325}}
-.node-type-issue .group_issue_title .field-name-field-issue-year {
-  margin-bottom: 24px;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000329}}
-.node-type-issue .group_issue_title .field-name-title-field:after {
-  content: ",";
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000334}}
+  display: block; }
+  .node-type-issue .group_issue_title .field-name-title-field,
+  .node-type-issue .group_issue_title .field-name-field-issue-season-and-year,
+  .node-type-issue .group_issue_title .field-name-field-issue-year {
+    display: inline-block;
+    font-family: "brandon-grotesque", Arial, Helvetica, sans-serif;
+    font-size: 1.6em;
+    font-weight: 900;
+    margin-right: 6px;
+    text-transform: uppercase; }
+    .node-type-issue .group_issue_title .field-name-title-field div,
+    .node-type-issue .group_issue_title .field-name-field-issue-season-and-year div,
+    .node-type-issue .group_issue_title .field-name-field-issue-year div {
+      display: inline-block; }
+  .node-type-issue .group_issue_title .field-name-field-issue-year {
+    margin-bottom: 24px; }
+  .node-type-issue .group_issue_title .field-name-title-field:after {
+    content: ","; }
 .node-type-issue .field-name-field-issue-number,
 .node-type-issue .display-price,
 .node-type-issue .sell-price {
@@ -2611,31 +1996,21 @@ body {
   font-family: "franklin-gothic-urw", "Times New Roman", Times, Georgia, serif;
   font-size: 0.866666667em;
   font-weight: normal;
-  line-height: 1;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000345}}
+  line-height: 1; }
 .node-type-issue .display-price {
   clear: none;
   border-right: 1px solid #4D4F46;
   float: none;
   margin-right: 7px;
-  padding: 0 7px 0 0;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000353}}
+  padding: 0 7px 0 0; }
 .node-type-issue .field-name-field-issue-number {
-  display: block;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000356}}
-.node-type-issue .field-name-field-issue-number .field-item {
-  display: inline-block;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000359}}
-.node-type-issue .field-name-field-issue-number .field-item:before {
-  content: "Issue";
-  display: inline;
-  margin-right: 3px;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000368}}
+  display: block; }
+  .node-type-issue .field-name-field-issue-number .field-item {
+    display: inline-block; }
+    .node-type-issue .field-name-field-issue-number .field-item:before {
+      content: "Issue";
+      display: inline;
+      margin-right: 3px; }
 .node-type-issue .add-to-cart input {
   background: #9E1F63;
   border: none;
@@ -2644,162 +2019,114 @@ body {
   font-size: 0.733333333em;
   line-height: 1;
   padding: 5px 20px;
-  text-transform: uppercase;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000373}}
+  text-transform: uppercase; }
 .node-type-issue .field-name-field-cover-lines {
   color: #2E2B31;
   font-family: "brandon-grotesque", Arial, Helvetica, sans-serif;
   font-size: 1.066666667em;
   font-weight: 500;
   line-height: 1.3125;
-  text-transform: uppercase;
-}
+  text-transform: uppercase; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000383}}
 .field-group-div {
   *zoom: 1;
   display: block;
-  clear: left;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_grid\.scss}line{font-family:\0000353}}
-.field-group-div:before, .field-group-div:after {
-  content: "";
-  display: table;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_grid\.scss}line{font-family:\0000358}}
-.field-group-div:after {
-  clear: both;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000389}}
-.field-group-div:before, .field-group-div:after {
-  display: inline;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\0000394}}
-.field-group-div > h3 {
-  clear: left;
-  font-family: "brandon-grotesque", Arial, Helvetica, sans-serif;
-  font-size: 1.333333333em;
-  font-weight: normal;
-  margin-top: 23px;
-  margin-bottom: 0;
-  text-transform: uppercase;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\00003103}}
-.field-group-div .field {
-  color: #4D4F46;
-  font-family: "franklin-gothic-urw", "Times New Roman", Times, Georgia, serif;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\00003108}}
-.field-group-div .field-name-field-headline,
-.field-group-div .field-name-title-field,
-.field-group-div .field-name-field-subhead,
-.field-group-div .field-name-field-sub-head,
-.field-group-div .field-name-field-author-text,
-.field-group-div .field-name-field-content-author,
-.field-group-div .field-name-field-article .field-name-title-field {
-  display: inline;
-  font-size: 1em;
-  line-height: 1.2;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\00003120}}
-.field-group-div .field-name-field-headline div,
-.field-group-div .field-name-title-field div,
-.field-group-div .field-name-field-subhead div,
-.field-group-div .field-name-field-sub-head div,
-.field-group-div .field-name-field-author-text div,
-.field-group-div .field-name-field-content-author div,
-.field-group-div .field-name-field-article .field-name-title-field div {
-  display: inline;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\00003125}}
-.field-group-div .field-name-field-headline,
-.field-group-div .field-name-field-article .field-name-title-field {
-  display: inline;
-  font-family: "brandon-grotesque", Arial, Helvetica, sans-serif;
-  margin-right: 6px;
-  text-transform: uppercase;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\00003132}}
-.field-group-div .field-name-field-headline .field-item:after,
-.field-group-div .field-name-field-article .field-name-title-field .field-item:after {
-  content: ":";
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\00003136}}
-.field-group-div .field-name-field-headline h3,
-.field-group-div .field-name-field-article .field-name-title-field h3 {
-  display: inline-block;
-  font-size: 1.066666667em;
-  margin: 0;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\00003143}}
-.field-group-div .field-type-entityreference {
-  display: inline;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\00003146}}
-.field-group-div .field-type-entityreference h1,
-.field-group-div .field-type-entityreference h3,
-.field-group-div .field-type-entityreference h5 {
-  display: inline-block;
-  font-size: 1em !important;
-  line-height: 1.2 !important;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\00003156}}
-.field-group-div .field-type-entityreference div {
-  margin: 0;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\00003162}}
-.field-group-div .field-type-entityreference .field-name-title-field .field-item:after {
-  content: "";
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\00003166}}
-.field-group-div .field-type-entityreference .field-name-title-field a:after {
-  content: ":";
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\00003171}}
-.field-group-div .field-type-entityreference .clearfix:after {
-  clear: none;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\00003176}}
-.field-group-div .field-name-field-author-text,
-.field-group-div .field-name-field-content-author {
-  font-size: 12px;
-  margin-left: 6px !important;
-  margin-bottom: 12px !important;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\00003182}}
-.field-group-div .field-name-field-author-text h5,
-.field-group-div .field-name-field-content-author h5 {
-  font-size: 12px;
-  display: inline-block;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\00003187}}
-.field-group-div .field-name-field-author-text:before,
-.field-group-div .field-name-field-content-author:before {
-  content: "|";
-  padding-right: 6px;
-  position: relative;
-  top: -1px;
-}
+  clear: left; }
+  .field-group-div:before, .field-group-div:after {
+    content: "";
+    display: table; }
+  .field-group-div:after {
+    clear: both; }
+  .field-group-div:before, .field-group-div:after {
+    display: inline; }
+  .field-group-div > h3 {
+    clear: left;
+    font-family: "brandon-grotesque", Arial, Helvetica, sans-serif;
+    font-size: 1.333333333em;
+    font-weight: normal;
+    margin-top: 23px;
+    margin-bottom: 0;
+    text-transform: uppercase; }
+  .field-group-div .field {
+    color: #4D4F46;
+    font-family: "franklin-gothic-urw", "Times New Roman", Times, Georgia, serif; }
+  .field-group-div .field-name-field-headline,
+  .field-group-div .field-name-title-field,
+  .field-group-div .field-name-field-subhead,
+  .field-group-div .field-name-field-sub-head,
+  .field-group-div .field-name-field-author-text,
+  .field-group-div .field-name-field-content-author,
+  .field-group-div .field-name-field-article .field-name-title-field {
+    display: inline;
+    font-size: 1em;
+    line-height: 1.2; }
+    .field-group-div .field-name-field-headline div,
+    .field-group-div .field-name-title-field div,
+    .field-group-div .field-name-field-subhead div,
+    .field-group-div .field-name-field-sub-head div,
+    .field-group-div .field-name-field-author-text div,
+    .field-group-div .field-name-field-content-author div,
+    .field-group-div .field-name-field-article .field-name-title-field div {
+      display: inline; }
+  .field-group-div .field-name-field-headline,
+  .field-group-div .field-name-field-article .field-name-title-field {
+    display: inline;
+    font-family: "brandon-grotesque", Arial, Helvetica, sans-serif;
+    margin-right: 6px;
+    text-transform: uppercase; }
+    .field-group-div .field-name-field-headline .field-item:after,
+    .field-group-div .field-name-field-article .field-name-title-field .field-item:after {
+      content: ":"; }
+    .field-group-div .field-name-field-headline h3,
+    .field-group-div .field-name-field-article .field-name-title-field h3 {
+      display: inline-block;
+      font-size: 1.066666667em;
+      margin: 0; }
+  .field-group-div .field-type-entityreference {
+    display: inline; }
+    .field-group-div .field-type-entityreference h1,
+    .field-group-div .field-type-entityreference h3,
+    .field-group-div .field-type-entityreference h5 {
+      display: inline-block;
+      font-size: 1em !important;
+      line-height: 1.2 !important;
+      margin-top: 0;
+      margin-bottom: 0; }
+    .field-group-div .field-type-entityreference div {
+      margin: 0; }
+    .field-group-div .field-type-entityreference .field-name-title-field .field-item:after {
+      content: ""; }
+    .field-group-div .field-type-entityreference .field-name-title-field a:after {
+      content: ":"; }
+    .field-group-div .field-type-entityreference .clearfix:after {
+      clear: none; }
+  .field-group-div .field-name-field-author-text,
+  .field-group-div .field-name-field-content-author {
+    font-size: 12px;
+    margin-left: 6px !important;
+    margin-bottom: 12px !important; }
+    .field-group-div .field-name-field-author-text h5,
+    .field-group-div .field-name-field-content-author h5 {
+      font-size: 12px;
+      display: inline-block; }
+    .field-group-div .field-name-field-author-text:before,
+    .field-group-div .field-name-field-content-author:before {
+      content: "|";
+      padding-right: 6px;
+      position: relative;
+      top: -1px; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\00003196}}
 .group_purchase_info {
   float: right;
   max-width: 40%;
-  margin-bottom: 24px;
-}
+  margin-bottom: 24px; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_issue\.scss}line{font-family:\00003202}}
 .group_issue_title {
-  float: none;
-}
+  float: none; }
 
 /*
  ** Article Pages
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_article\.scss}line{font-family:\000037}}
 .field-name-field-genre .field-item {
   background: #FFF766;
   color: #2E2B31;
@@ -2810,14 +2137,10 @@ body {
   margin-bottom: 16px;
   margin-right: 2px;
   padding: 0 12px;
-  text-transform: uppercase;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_article\.scss}line{font-family:\0000319}}
-.field-name-field-genre .field-item a {
-  color: #2E2B31;
-}
+  text-transform: uppercase; }
+  .field-name-field-genre .field-item a {
+    color: #2E2B31; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_article\.scss}line{font-family:\0000328}}
 .node-type-article h1,
 .node-type-article .field-name-field-sub-head,
 .node-type-podcast h1,
@@ -2827,37 +2150,27 @@ body {
   text-transform: uppercase;
   font-weight: 900;
   line-height: 1.166666667;
-  margin: 0;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_article\.scss}line{font-family:\0000339}}
+  margin: 0; }
 .node-type-article .field-name-field-sub-head,
 .node-type-podcast .field-name-field-sub-head {
   font-weight: 400;
-  margin-bottom: 22px;
-}
+  margin-bottom: 22px; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_article\.scss}line{font-family:\0000346}}
 .field-name-field-text-author-interviewer {
   color: #4D4F46;
   display: block;
   font-family: "franklin-gothic-urw", "Times New Roman", Times, Georgia, serif;
   font-size: 0.933333333em;
-  line-height: 1.142857144;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_article\.scss}line{font-family:\0000353}}
-.field-name-field-text-author-interviewer p {
-  margin: 0;
-}
+  line-height: 1.142857144; }
+  .field-name-field-text-author-interviewer p {
+    margin: 0; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_article\.scss}line{font-family:\0000360}}
 .node-type-article .field-name-field-text-author-interviewer:before,
 .node-type-podcast .field-name-field-text-author-interviewer:before {
   content: "By:";
   float: left;
-  padding-right: 3px;
-}
+  padding-right: 3px; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_article\.scss}line{font-family:\0000368}}
 .node-type-article article > .form-item.form-type-item,
 .node-type-podcast article > .form-item.form-type-item,
 .field-name-field-general-topic,
@@ -2867,94 +2180,72 @@ body {
   font-family: "franklin-gothic-urw", "Times New Roman", Times, Georgia, serif;
   font-size: 12px;
   line-height: 1;
-  margin: -3px 0 8px;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_article\.scss}line{font-family:\0000379}}
-.node-type-article article > .form-item.form-type-item h2,
-.node-type-podcast article > .form-item.form-type-item h2,
-.field-name-field-general-topic h2,
-.field-name-field-specific-topic h2 {
-  font-size: 12px;
-  line-height: 1;
-  margin: 0;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_article\.scss}line{font-family:\0000385}}
-.node-type-article article > .form-item.form-type-item .field-item,
-.node-type-podcast article > .form-item.form-type-item .field-item,
-.field-name-field-general-topic .field-item,
-.field-name-field-specific-topic .field-item {
-  display: inline-block;
-  margin-right: 6px;
-}
+  margin: -3px 0 8px; }
+  .node-type-article article > .form-item.form-type-item h2,
+  .node-type-podcast article > .form-item.form-type-item h2,
+  .field-name-field-general-topic h2,
+  .field-name-field-specific-topic h2 {
+    font-size: 12px;
+    line-height: 1;
+    margin: 0; }
+  .node-type-article article > .form-item.form-type-item .field-item,
+  .node-type-podcast article > .form-item.form-type-item .field-item,
+  .field-name-field-general-topic .field-item,
+  .field-name-field-specific-topic .field-item {
+    display: inline-block;
+    margin-right: 6px; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_article\.scss}line{font-family:\0000394}}
 .node-type-article article > .form-item.form-type-item:after,
 .node-type-podcast article > .form-item.form-type-item:after {
-  content: ",";
-}
+  content: ","; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_article\.scss}line{font-family:\00003100}}
 .field-name-field-body {
   color: #2E2B31;
   margin-bottom: 24px;
-  position: relative;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_article\.scss}line{font-family:\00003105}}
-.field-name-field-body:after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  width: 220px;
-  height: 1px;
-  background: #949691;
-}
+  position: relative; }
+  .field-name-field-body:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 220px;
+    height: 1px;
+    background: #949691; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_article\.scss}line{font-family:\00003116}}
 .field-name-field-content-credit {
   color: #4D4F46;
   font-family: "franklin-gothic-urw", "Times New Roman", Times, Georgia, serif;
   font-size: 0.8em;
   line-height: 1.166666667;
-  margin-bottom: 16px;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_article\.scss}line{font-family:\00003123}}
-.field-name-field-content-credit p {
-  margin: 0;
-}
+  margin-bottom: 16px; }
+  .field-name-field-content-credit p {
+    margin: 0; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_article\.scss}line{font-family:\00003129}}
 .node-type-article article > ul.links.inline,
 .node-type-podcast article > ul.links.inline {
   position: absolute !important;
   height: 1px;
   width: 1px;
   overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
-}
+  clip: rect(1px, 1px, 1px, 1px); }
 
 /*
  ** Genre Pages
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_genre\.scss}line{font-family:\000036}}
 .view-genres .field-name-field-genre {
   position: absolute !important;
   height: 1px;
   width: 1px;
   overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
-}
+  clip: rect(1px, 1px, 1px, 1px); }
 
 /*
  ** Comments
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_comment\.scss}line{font-family:\000036}}
 #comments {
   border-top: 1px solid #949691;
   margin-top: 32px;
-  padding-top: 28px;
-}
+  padding-top: 28px; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_comment\.scss}line{font-family:\0000313}}
 h2.comments__title,
 h2.comments__form-title {
   color: #2E2B31;
@@ -2963,10 +2254,8 @@ h2.comments__form-title {
   font-weight: 900;
   line-height: 1;
   margin: 0 0 24px;
-  text-transform: uppercase;
-}
+  text-transform: uppercase; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_comment\.scss}line{font-family:\0000325}}
 h3.comment__title {
   color: #2E2B31;
   font-family: "brandon-grotesque", Arial, Helvetica, sans-serif;
@@ -2974,111 +2263,73 @@ h3.comment__title {
   font-weight: 500;
   line-height: 1.125;
   margin: 0 0 5px;
-  text-transform: uppercase;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_comment\.scss}line{font-family:\0000334}}
-h3.comment__title a.permalink {
-  color: #2E2B31;
-  font-size: inherit;
-}
+  text-transform: uppercase; }
+  h3.comment__title a.permalink {
+    color: #2E2B31;
+    font-size: inherit; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_comment\.scss}line{font-family:\0000341}}
 #comments p.submitted {
   color: #4D4F46;
   font-family: "franklin-gothic-urw", "Times New Roman", Times, Georgia, serif;
   font-size: 0.666666667em;
   line-height: 1.2;
-  margin: 0 0 10px;
-}
+  margin: 0 0 10px; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_comment\.scss}line{font-family:\0000350}}
 article.comment {
-  margin-bottom: 24px;
-}
+  margin-bottom: 24px; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_comment\.scss}line{font-family:\0000355}}
 .comment .field-name-comment-body {
   font-family: "franklin-gothic-urw", "Times New Roman", Times, Georgia, serif;
   font-size: 13px;
-  line-height: 20px;
-}
+  line-height: 20px; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_comment\.scss}line{font-family:\0000362}}
 .ajax-comment-wrapper {
   margin-bottom: 48px;
-  position: relative;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_comment\.scss}line{font-family:\0000367}}
-.ajax-comment-wrapper:after {
-  content: "";
-  position: absolute;
-  bottom: -20px;
-  width: 220px;
-  height: 1px;
-  background: #949691;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_comment\.scss}line{font-family:\0000376}}
-.ajax-comment-wrapper.indented {
-  margin-bottom: 0;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_comment\.scss}line{font-family:\0000379}}
-.ajax-comment-wrapper.indented:after {
-  background: none;
-}
+  position: relative; }
+  .ajax-comment-wrapper:after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    width: 220px;
+    height: 1px;
+    background: #949691; }
+  .ajax-comment-wrapper.indented {
+    margin-bottom: 0; }
+    .ajax-comment-wrapper.indented:after {
+      background: none; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_comment\.scss}line{font-family:\0000387}}
 #comment-form .form-item {
-  margin: 0;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_comment\.scss}line{font-family:\0000390}}
+  margin: 0; }
 #comment-form a.username {
-  font-family: "brandon-grotesque", Arial, Helvetica, sans-serif;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_comment\.scss}line{font-family:\0000393}}
+  font-family: "brandon-grotesque", Arial, Helvetica, sans-serif; }
 #comment-form label {
-  margin: 10px 0 3px;
-}
+  margin: 10px 0 3px; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_comment\.scss}line{font-family:\00003100}}
 .ui-accordion .ui-accordion-icons,
 .ui-accordion .ui-accordion-header {
   padding: 0;
-  margin: 0;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_comment\.scss}line{font-family:\00003105}}
+  margin: 0; }
 .ui-accordion .ui-accordion-header {
-  margin: 0 0 16px;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_comment\.scss}line{font-family:\00003108}}
+  margin: 0 0 16px; }
 .ui-accordion .ui-corner-all, .ui-accordion .ui-corner-bottom, .ui-accordion .ui-corner-right, .ui-accordion .ui-corner-br {
-  border-radius: 0;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_comment\.scss}line{font-family:\00003111}}
+  border-radius: 0; }
 .ui-accordion .ui-state-default, .ui-accordion .ui-widget-content .ui-state-default, .ui-accordion .ui-widget-header .ui-state-default {
   background: none;
-  border: none;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_comment\.scss}line{font-family:\00003115}}
+  border: none; }
 .ui-accordion .ui-accordion-header .ui-accordion-header-icon {
-  background-image: none;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_comment\.scss}line{font-family:\00003118}}
+  background-image: none; }
 .ui-accordion .ui-accordion-content {
-  padding: 0;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_comment\.scss}line{font-family:\00003121}}
+  padding: 0; }
 .ui-accordion .ui-widget-content {
   background: none;
   border: none;
   color: #2E2B31;
   height: auto !important;
-  overflow: visible;
-}
+  overflow: visible; }
 
 /**
  * Bitchmart Styles
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_bmart\.scss}line{font-family:\000036}}
 .bmart #page {
   background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjEuMCIgeDI9IjAuNSIgeTI9IjAuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2FhZDI3YiIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzAwYWRlZSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
   background-size: 100%;
@@ -3086,17 +2337,14 @@ article.comment {
   background-image: -moz-linear-gradient(bottom, #aad27b, #00adee);
   background-image: -webkit-linear-gradient(bottom, #aad27b, #00adee);
   background-image: linear-gradient(to top, #aad27b, #00adee);
-  overflow: hidden;
-}
+  overflow: hidden; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_bmart\.scss}line{font-family:\0000313}}
 .bmart .breadcrumb {
   position: absolute !important;
   height: 1px;
   width: 1px;
   overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
-}
+  clip: rect(1px, 1px, 1px, 1px); }
 
 /**
  * @file
@@ -3110,62 +2358,45 @@ article.comment {
  */
 @media print {
   /* Underline all links. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_print\.scss}line{font-family:\0000315}}
   a:link,
   a:visited {
     text-decoration: underline !important;
-    /* Don't underline header. */
-  }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_print\.scss}line{font-family:\0000320}}
-  a:link.header__site-link,
-  a:visited.header__site-link {
-    text-decoration: none !important;
-  }
+    /* Don't underline header. */ }
+    a:link.header__site-link,
+    a:visited.header__site-link {
+      text-decoration: none !important; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_print\.scss}line{font-family:\0000325}}
   #content {
     /* Add visible URL after links. */
     /* Only display useful links. */
-    /* Add visible title after abbreviations. */
-  }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_print\.scss}line{font-family:\0000327}}
-  #content a[href]:after {
-    content: " (" attr(href) ")";
-    font-weight: normal;
-    font-size: 15px;
-  }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_print\.scss}line{font-family:\0000334}}
-  #content a[href^="javascript:"]:after,
-  #content a[href^="#"]:after {
-    content: "";
-  }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_print\.scss}line{font-family:\0000340}}
-  #content abbr[title]:after {
-    content: " (" attr(title) ")";
-  }
+    /* Add visible title after abbreviations. */ }
+    #content a[href]:after {
+      content: " (" attr(href) ")";
+      font-weight: normal;
+      font-size: 15px; }
+    #content a[href^="javascript:"]:after,
+    #content a[href^="#"]:after {
+      content: ""; }
+    #content abbr[title]:after {
+      content: " (" attr(title) ")"; }
 
   /* Un-float the content. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_print\.scss}line{font-family:\0000346}}
   #content {
     float: none !important;
     width: 100% !important;
     margin: 0 !important;
-    padding: 0 !important;
-  }
+    padding: 0 !important; }
 
   /* Turn off any background colors or images. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_print\.scss}line{font-family:\0000354}}
   body,
   #page,
   #main,
   #content {
     color: #000;
     background-color: transparent !important;
-    background-image: none !important;
-  }
+    background-image: none !important; }
 
   /* Hide sidebars and nav elements. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/candice\/Documents\/bitch\/vagrant\/bitchmedia\/public\/sites\/all\/themes\/bitch\/sass\/_print\.scss}line{font-family:\0000364}}
   #skip-link,
   #toolbar,
   #navigation,
@@ -3181,9 +2412,7 @@ article.comment {
   .pager,
   .feed-icons {
     visibility: hidden;
-    display: none;
-  }
-}
+    display: none; } }
 /* SMACSS theme rules */
 /* @import "theme-A"; */
 /* @import "theme-B"; */

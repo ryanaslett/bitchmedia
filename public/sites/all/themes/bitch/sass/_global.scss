@@ -42,9 +42,51 @@ blockquote {
   text-transform: uppercase;
 }
 
-// Form Elements
+/*
+ ** Form Elements
+ */
 label {
+  color: $text-gray;
   font-weight: 500;
-  font-family: $brandon;
+  font-family: $franklin-gothic;
+  font-size: 0.8em; // 0.8em * 15px = 12px
   text-transform: uppercase;
+}
+
+// All Inputs
+input, {
+  border: 1px solid $button-gray;
+  color: $text-gray;
+  font-family: $franklin-gothic;
+  font-size: 14px;
+  height: 32px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+// Submit buttons
+.form-submit {
+  background-color: $plum;
+  color: $white;
+  text-transform: uppercase;
+  border: none;
+}
+
+// Autocomplete adjustments
+#autocomplete {
+  border-color: $button-gray;
+}
+.reference-autocomplete,
+#autocomplete li {
+  color: $text-gray;
+  font-family: $franklin-gothic;
+  font-size: 14px;
+}
+#autocomplete li.selected { 
+  background-color: $light-yellow;
+  color: $text-gray;
+}
+// Adjust position on throbber
+html.js input.form-autocomplete {
+  background-position: 100% 10px;
 }
