@@ -1,0 +1,20 @@
+diff --git a/includes/database/query.inc b/includes/database/query.inc
+index 8beeef1..76d7009 100644
+--- a/includes/database/query.inc
++++ b/includes/database/query.inc
+@@ -1065,7 +1065,14 @@ class UpdateQuery extends Query implements QueryConditionInterface {
+    * Implements QueryConditionInterface::arguments().
+    */
+   public function arguments() {
+-    return $this->condition->arguments();
++    $args = $this->condition->arguments();
++
++    $fields = $this->fields;
++    $max_placeholder = 0;
++    foreach ($fields as $field => $value) {
++      $args[':db_update_placeholder_' . ($max_placeholder++)] = $value;
++    }
++    return $args;
+   }
+ 
+   /**
