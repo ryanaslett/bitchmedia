@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * bitch_content..inc
+ * bitch_content.multifield.inc
  */
 
 /**
@@ -12,6 +12,7 @@ function bitch_content_multifield_default_multifield() {
 
   $multifield = new stdClass();
   $multifield->disabled = FALSE; /* Edit this to true to make a default multifield disabled initially */
+  $multifield->api_version = 1;
   $multifield->machine_name = 'content_metadata';
   $multifield->label = 'Content Metadata';
   $multifield->description = '';
@@ -19,6 +20,7 @@ function bitch_content_multifield_default_multifield() {
 
   $multifield = new stdClass();
   $multifield->disabled = FALSE; /* Edit this to true to make a default multifield disabled initially */
+  $multifield->api_version = 1;
   $multifield->machine_name = 'gallery_image';
   $multifield->label = 'Gallery Image';
   $multifield->description = '';
@@ -26,6 +28,7 @@ function bitch_content_multifield_default_multifield() {
 
   $multifield = new stdClass();
   $multifield->disabled = FALSE; /* Edit this to true to make a default multifield disabled initially */
+  $multifield->api_version = 1;
   $multifield->machine_name = 'list_item';
   $multifield->label = 'List Item';
   $multifield->description = '';
@@ -33,6 +36,7 @@ function bitch_content_multifield_default_multifield() {
 
   $multifield = new stdClass();
   $multifield->disabled = FALSE; /* Edit this to true to make a default multifield disabled initially */
+  $multifield->api_version = 1;
   $multifield->machine_name = 'magazine_content';
   $multifield->label = 'Magazine Content';
   $multifield->description = 'magazine_content';
@@ -40,6 +44,7 @@ function bitch_content_multifield_default_multifield() {
 
   $multifield = new stdClass();
   $multifield->disabled = FALSE; /* Edit this to true to make a default multifield disabled initially */
+  $multifield->api_version = 1;
   $multifield->machine_name = 'magazine_review';
   $multifield->label = 'Magazine Review';
   $multifield->description = '';
@@ -47,6 +52,7 @@ function bitch_content_multifield_default_multifield() {
 
   $multifield = new stdClass();
   $multifield->disabled = FALSE; /* Edit this to true to make a default multifield disabled initially */
+  $multifield->api_version = 1;
   $multifield->machine_name = 'question_and_answer';
   $multifield->label = 'Question and Answer';
   $multifield->description = '';

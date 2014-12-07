@@ -174,6 +174,7 @@ function bitch_users_field_default_field_bases() {
       'entity_translation_sync' => array(
         0 => 'id',
       ),
+      'hide_blank_items' => TRUE,
     ),
     'translatable' => 0,
     'type' => 'social_media_link',
@@ -247,6 +248,7 @@ function bitch_users_field_default_field_bases() {
       'entity_translation_sync' => array(
         0 => 'id',
       ),
+      'hide_blank_items' => TRUE,
     ),
     'translatable' => 0,
     'type' => 'social_media_link',
@@ -320,6 +322,7 @@ function bitch_users_field_default_field_bases() {
       'entity_translation_sync' => array(
         0 => 'id',
       ),
+      'hide_blank_items' => TRUE,
     ),
     'translatable' => 0,
     'type' => 'social_media_link',
@@ -457,6 +460,7 @@ function bitch_users_field_default_field_bases() {
       'entity_translation_sync' => array(
         0 => 'id',
       ),
+      'hide_blank_items' => TRUE,
     ),
     'translatable' => 0,
     'type' => 'social_media_link',
@@ -738,6 +742,7 @@ function bitch_users_field_default_field_bases() {
       'entity_translation_sync' => array(
         0 => 'id',
       ),
+      'hide_blank_items' => TRUE,
     ),
     'translatable' => 0,
     'type' => 'tracked_link',
@@ -811,6 +816,7 @@ function bitch_users_field_default_field_bases() {
       'entity_translation_sync' => array(
         0 => 'id',
       ),
+      'hide_blank_items' => TRUE,
     ),
     'translatable' => 0,
     'type' => 'social_media_link',
@@ -884,6 +890,7 @@ function bitch_users_field_default_field_bases() {
       'entity_translation_sync' => array(
         0 => 'id',
       ),
+      'hide_blank_items' => TRUE,
     ),
     'translatable' => 0,
     'type' => 'social_media_link',
@@ -989,6 +996,7 @@ function bitch_users_field_default_field_bases() {
       'entity_translation_sync' => array(
         0 => 'id',
       ),
+      'hide_blank_items' => TRUE,
     ),
     'translatable' => 0,
     'type' => 'tracked_link',

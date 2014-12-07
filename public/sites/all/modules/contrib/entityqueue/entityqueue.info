@@ -22,11 +22,3 @@ files[] = includes/entityqueue.controller.inc
 ; Views handlers.
 files[] = includes/views/entityqueue_handler_relationship_entityqueue.inc
 files[] = includes/views/entityqueue_handler_sort_position.inc
-
-
-; Information added by drush on 2014-03-25
-version = "7.x-1.0-alpha1"
-core = "7.x"
-project = "entityqueue"
-datestamp = "1395758977"
-

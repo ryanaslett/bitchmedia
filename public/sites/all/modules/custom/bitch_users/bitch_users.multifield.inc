@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * bitch_users..inc
+ * bitch_users.multifield.inc
  */
 
 /**
@@ -12,6 +12,7 @@ function bitch_users_multifield_default_multifield() {
 
   $multifield = new stdClass();
   $multifield->disabled = FALSE; /* Edit this to true to make a default multifield disabled initially */
+  $multifield->api_version = 1;
   $multifield->machine_name = 'social_media_link';
   $multifield->label = 'Social Media Link';
   $multifield->description = 'social_media_link';
@@ -19,6 +20,7 @@ function bitch_users_multifield_default_multifield() {
 
   $multifield = new stdClass();
   $multifield->disabled = FALSE; /* Edit this to true to make a default multifield disabled initially */
+  $multifield->api_version = 1;
   $multifield->machine_name = 'tracked_link';
   $multifield->label = 'Tracked Link';
   $multifield->description = '';

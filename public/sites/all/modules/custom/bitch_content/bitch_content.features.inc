@@ -5,6 +5,15 @@
  */
 
 /**
+ * Implements hook_entityqueue_api().
+ */
+function bitch_content_entityqueue_api($module = NULL, $api = NULL) {
+  if ($module == "entityqueue" && $api == "entityqueue_default") {
+    return array("version" => "1");
+  }
+}
+
+/**
  * Implements hook_ctools_plugin_api().
  */
 function bitch_content_ctools_plugin_api($module = NULL, $api = NULL) {
@@ -13,6 +22,9 @@ function bitch_content_ctools_plugin_api($module = NULL, $api = NULL) {
   }
   if ($module == "multifield" && $api == "") {
     return array("version" => "");
+  }
+  if ($module == "multifield" && $api == "multifield") {
+    return array("version" => "1");
   }
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");

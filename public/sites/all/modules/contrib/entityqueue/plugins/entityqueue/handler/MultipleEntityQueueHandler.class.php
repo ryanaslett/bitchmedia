@@ -38,4 +38,21 @@ class MultipleEntityQueueHandler extends SimpleEntityQueueHandler {
     return $form;
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function loadFromCode() {}
+
+  /**
+   * {@inheritdoc}
+   */
+  public function insert() {}
+
+  /**
+   * {@inheritdoc}
+   */
+  public function canDeleteSubqueue(EntitySubqueue $subqueue) {
+    return TRUE;
+  }
+
 }

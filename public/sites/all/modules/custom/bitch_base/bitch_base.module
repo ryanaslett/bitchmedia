@@ -301,3 +301,14 @@ function bitch_base_node_view($node, $view_mode, $langcode) {
     '#label_display' => 'inline',
   );
 }
+
+/**
+ * Implements hook_entity_view_mode_alter().
+ */
+function bitch_base_entity_view_mode_alter(&$view_mode, $context) {
+  // Change the view mode to full column for column articles.
+//  if ($context['entity_type'] == 'node' && $context['entity']->type == 'article') {
+//
+//    $view_mode = 'teaser';
+//  }
+}
