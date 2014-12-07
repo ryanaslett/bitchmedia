@@ -235,9 +235,7 @@ function bitch_issues_field_group_info() {
     'label' => 'Issue Title',
     'weight' => '0',
     'children' => array(
-      0 => 'field_issue_season_and_year',
-      1 => 'field_issue_year',
-      2 => 'title_field',
+      0 => 'title_field',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -807,9 +805,11 @@ function bitch_issues_field_group_info() {
     'children' => array(
       0 => 'field_issue_cover',
       1 => 'field_issue_number',
-      2 => 'display_price',
-      3 => 'sell_price',
-      4 => 'add_to_cart',
+      2 => 'field_issue_season_and_year',
+      3 => 'field_issue_year',
+      4 => 'display_price',
+      5 => 'sell_price',
+      6 => 'add_to_cart',
     ),
     'format_type' => 'div',
     'format_settings' => array(
