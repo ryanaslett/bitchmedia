@@ -229,7 +229,7 @@ function multifield_field_presave($entity_type, $entity, $field, $instance, $lan
     // Allow other modules to manipulate the items before saving.
     foreach (module_implements('multifield_field_presave') as $module) {
       $function = $module . '_multifield_field_presave';
-      $function($entity_type, $entity, $field, $instance, &$items);
+      $function($entity_type, $entity, $field, $instance, $items);
     }
   }
 
