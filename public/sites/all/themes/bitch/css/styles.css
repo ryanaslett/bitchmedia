@@ -1363,7 +1363,8 @@ blockquote {
 /*
  ** Form Elements
  */
-label {
+label,
+.form-item .description {
   color: #4D4F46;
   font-weight: 500;
   font-family: "franklin-gothic-urw", "Times New Roman", Times, Georgia, serif;
@@ -1383,10 +1384,8 @@ input {
   background-color: #9E1F63;
   color: #FFFFFF;
   text-transform: uppercase;
-  border: none; }
-  .form-submit:after {
-    font-family: "FontAwesome";
-    content: "\f105"; }
+  border: none;
+  padding: 0 16px; }
 
 #autocomplete {
   border-color: #949691; }
@@ -1974,55 +1973,57 @@ body {
  */
 .node-type-issue .group_issue_title {
   display: block; }
-  .node-type-issue .group_issue_title .field-name-title-field,
-  .node-type-issue .group_issue_title .field-name-field-issue-season-and-year,
-  .node-type-issue .group_issue_title .field-name-field-issue-year {
+  .node-type-issue .group_issue_title .field-name-title-field {
     display: inline-block;
     font-family: "brandon-grotesque", Arial, Helvetica, sans-serif;
     font-size: 1.6em;
     font-weight: 900;
     margin-right: 6px;
+    margin-bottom: 24px;
     text-transform: uppercase; }
-    .node-type-issue .group_issue_title .field-name-title-field div,
-    .node-type-issue .group_issue_title .field-name-field-issue-season-and-year div,
-    .node-type-issue .group_issue_title .field-name-field-issue-year div {
-      display: inline-block; }
-  .node-type-issue .group_issue_title .field-name-field-issue-year {
-    margin-bottom: 24px; }
-  .node-type-issue .group_issue_title .field-name-title-field:after {
-    content: ","; }
 .node-type-issue .field-name-field-issue-number,
 .node-type-issue .display-price,
-.node-type-issue .sell-price {
+.node-type-issue .sell-price,
+.node-type-issue .field-name-field-issue-season-and-year,
+.node-type-issue .field-name-field-issue-year {
   color: #4D4F46;
-  display: inline-block;
+  float: left;
   font-family: "franklin-gothic-urw", "Times New Roman", Times, Georgia, serif;
   font-size: 0.866666667em;
   font-weight: normal;
   line-height: 1; }
 .node-type-issue .display-price {
-  clear: none;
+  clear: left;
   border-right: 1px solid #4D4F46;
-  float: none;
   margin-right: 7px;
   padding: 0 7px 0 0; }
-.node-type-issue .field-name-field-issue-number {
+.node-type-issue .field-name-field-issue-number .field-item {
+  display: inline-block;
+  border-right: 1px solid #4D4F46;
+  margin-right: 7px;
+  padding: 0 7px 0 0; }
+  .node-type-issue .field-name-field-issue-number .field-item:before {
+    content: "Issue";
+    display: inline;
+    margin-right: 3px; }
+.node-type-issue .field-name-field-issue-season-and-year {
+  margin-right: 3px; }
+.node-type-issue .field-name-field-issue-year {
+  margin-bottom: 8px; }
+.node-type-issue .sell-price {
+  margin-bottom: 15px; }
+.node-type-issue .add-to-cart {
+  clear: left;
   display: block; }
-  .node-type-issue .field-name-field-issue-number .field-item {
-    display: inline-block; }
-    .node-type-issue .field-name-field-issue-number .field-item:before {
-      content: "Issue";
-      display: inline;
-      margin-right: 3px; }
-.node-type-issue .add-to-cart input {
-  background: #9E1F63;
-  border: none;
-  color: #FFF100;
-  font-family: Tahoma, Verdana, "DejaVu Sans", sans-serif;
-  font-size: 0.733333333em;
-  line-height: 1;
-  padding: 5px 20px;
-  text-transform: uppercase; }
+  .node-type-issue .add-to-cart input {
+    background: #9E1F63;
+    border: none;
+    color: #FFF100;
+    font-family: Tahoma, Verdana, "DejaVu Sans", sans-serif;
+    font-size: 0.733333333em;
+    line-height: 1;
+    padding: 5px 20px;
+    text-transform: uppercase; }
 .node-type-issue .field-name-field-cover-lines {
   color: #2E2B31;
   font-family: "brandon-grotesque", Arial, Helvetica, sans-serif;

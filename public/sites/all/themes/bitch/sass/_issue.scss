@@ -7,35 +7,24 @@
   .group_issue_title {
     display: block;
 
-    .field-name-title-field,
-    .field-name-field-issue-season-and-year,
-    .field-name-field-issue-year {
+    .field-name-title-field {
       display: inline-block;
       font-family: $brandon;
       font-size: 1.6em;
       font-weight: 900;
       margin-right: 6px;
-      text-transform: uppercase;
-
-      div {
-        display: inline-block;
-      }
-    }
-
-    .field-name-field-issue-year {
       margin-bottom: $margin-large;
-    }
-
-    .field-name-title-field:after {
-      content: ",";
+      text-transform: uppercase;
     }
   }
 
   .field-name-field-issue-number,
   .display-price,
-  .sell-price {
+  .sell-price,
+  .field-name-field-issue-season-and-year,
+  .field-name-field-issue-year {
     color: $text-gray;
-    display: inline-block;
+    float: left;
     font-family: $franklin-gothic;
     font-size: 0.866666667em; // .866666667 * 15px = 13px
     font-weight: normal;
@@ -43,18 +32,19 @@
   }
 
   .display-price {
-    clear: none;
+    clear: left;
     border-right: 1px solid $text-gray;
-    float: none;
     margin-right: 7px;
     padding: 0 7px 0 0;
   }
 
   .field-name-field-issue-number {
-    display: block;
     
     .field-item {
       display: inline-block;
+      border-right: 1px solid $text-gray;
+      margin-right: 7px;
+      padding: 0 7px 0 0;
     
       &:before {
         content: "Issue";
@@ -64,7 +54,22 @@
     }
   }
 
+  .field-name-field-issue-season-and-year {
+    margin-right: 3px;
+  }
+
+  .field-name-field-issue-year {
+    margin-bottom: 8px;
+  }
+
+  .sell-price {
+    margin-bottom: 15px;
+  }
+
   .add-to-cart {
+    clear: left;
+    display: block;
+
     input {
       @include button;
     }

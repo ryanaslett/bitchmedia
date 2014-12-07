@@ -45,7 +45,8 @@ blockquote {
 /*
  ** Form Elements
  */
-label {
+label,
+.form-item .description {
   color: $text-gray;
   font-weight: 500;
   font-family: $franklin-gothic;
@@ -70,11 +71,7 @@ input {
   color: $white;
   text-transform: uppercase;
   border: none;
-
-  &:after {
-    font-family: $font-awesome;
-    content: "\f105";
-  }
+  padding: 0 16px;
 }
 
 // Autocomplete adjustments
