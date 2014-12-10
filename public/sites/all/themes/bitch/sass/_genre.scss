@@ -6,4 +6,9 @@
   .field-name-field-genre {
     @include element-invisible;
   }
+
+  // Hide images embedded in teasers
+  p > img {
+    @include element-invisible;
+  }
 }
