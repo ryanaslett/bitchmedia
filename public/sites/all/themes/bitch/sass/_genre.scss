@@ -2,13 +2,168 @@
  ** Genre Pages
  */
 
-.view-genres {
-  .field-name-field-genre {
+.page-genres {
+
+  // Hide genre tags, images embedded in teasers, and breadcrumbs
+  .field-name-field-genre,
+  p > img,
+  .breadcrumb {
     @include element-invisible;
   }
 
-  // Hide images embedded in teasers
-  p > img {
-    @include element-invisible;
+  // Genre Title
+  h1#page-title {
+    font-family: $brandon;
+    font-weight: 900;
+    font-size: 1.6em; // 1.6 * 15px = 24px
+    line-height: 1.5;
+    margin-top: 24px;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+  }
+
+  article {
+
+    // Set line height for title, reset for p
+    line-height: 1.5;
+
+    // Featured Article Title and Subtitle
+    .field-name-title-field h2,
+    .field-name-title-field h3,
+    .field-name-title-field h4,
+    .field-name-field-sub-head {
+      color: $dark;
+      font-family: $brandon;
+      font-size: 1.333333333em; // 1.333333333 * 15px = 20px
+      text-transform: uppercase;
+
+      a {
+        color: $dark;
+      }
+    }
+
+    // Bold titles only
+    .field-name-title-field h2,
+    .field-name-title-field h3,
+    .field-name-title-field h4 {
+      font-weight: 900;
+    }
+
+
+    // Display all Article titles and subtitles inline
+    .field-name-title-field,
+    .field-name-field-sub-head {
+      display: inline;
+      line-height: 0;
+
+      div,
+      h2,
+      h3,
+      h4,
+      a {
+        display: inline;
+        line-height: 1;
+      }
+    }
+
+    // Add colon before subhead
+    .field-name-title-field a {
+      &:after {
+        content: ":";
+        font-weight: 900;
+        padding-right: 3px;
+        position: relative;
+        top: -2px;
+      }
+    }
+
+      // Author byline and link
+    .field-name-field-content-author {
+      color: $text-gray;
+      font-family: $franklin-gothic;
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 8px;
+      
+      h5 {
+        font-size: 14px;
+        line-height: 1.5;
+        display: inline;
+        margin: 0;
+      }
+
+      div,
+      p {
+        display: inline;
+      }
+    }
+
+    // Date
+    .form-item.form-type-item {
+      color: $text-gray;
+      font-family: $franklin-gothic;
+      font-size: 10px;
+      line-height: 1;
+      margin-bottom: 12px;
+      margin-top: 0;
+    }
+  }
+
+  // Featured Article
+  .attachment-before .view-genres:first-child {
+
+    margin-bottom: 44px;
+
+    .field-name-field-feature-image {
+      margin-top: 26px;
+      margin-bottom: 8px;
+    }
+  }
+
+  // Secondary Articles
+  .attachment-before .view-genres:nth-child(2) {
+     // First secondary article
+    .views-row-1 {
+      margin-bottom: 36px;
+    }
+
+    // Second secondary article
+    .views-row-2 {
+      margin-bottom: 44px;
+    }
+
+    // Featured image
+    .field-name-field-metadata {
+      float: left;
+      padding-right: 24px;
+      width: 30%;
+    }
+  }
+
+  // Tertiary Articles
+  .attachment-before .view-genres:nth-child(3) {
+     // Last paragraph 
+    .views-row {
+      float: left;
+      margin-bottom: 24px;
+      width: 50%;
+
+      .field-name-title-field h3,
+      .field-name-field-sub-head {
+        font-size: 1.2em; // 1.2 * 15px = 18px
+      }
+    }
+  }
+
+  // Pager
+  ul.pager {
+    font-family: $tahoma;
+    font-size: 11px;
+    text-transform: uppercase;
+
+    li.pager-current {
+      background: $yellow;
+      font-weight: normal;
+    }
   }
 }

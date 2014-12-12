@@ -84,10 +84,22 @@
         <?php print render($page['content']); ?>
         <?php print $feed_icons; ?>
       </div>
-    </div>
+
+      <?php
+        // Render the content bottom to see if there's anything in it
+        $content_bottom  = render($page['content_bottom']);
+      ?>
+
+      <?php if ($content_bottom): ?>
+        <div id="content-bottom">
+          <?php print $content_bottom; ?>
+        </div>
+      <?php endif; ?>
+
+    </div><!-- Content -->
 
     <?php
-      // Render the content top to see if there's anything in it
+      // Render the slider to see if there's anything in it
       $slider  = render($page['slider']);
     ?>
 

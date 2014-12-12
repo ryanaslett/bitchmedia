@@ -91,6 +91,7 @@ regions[highlighted]    = Highlighted
 regions[help]           = Help
 regions[content_top]    = Content Top
 regions[content]        = Content
+regions[content_bottom] = Content Bottom
 regions[slider]         = Slider
 regions[sidebar_first]  = First sidebar
 regions[sidebar_second] = Second sidebar

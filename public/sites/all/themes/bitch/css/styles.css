@@ -2235,18 +2235,111 @@ body {
 /*
  ** Genre Pages
  */
-.view-genres .field-name-field-genre {
+.page-genres .field-name-field-genre,
+.page-genres p > img,
+.page-genres .breadcrumb {
   position: absolute !important;
   height: 1px;
   width: 1px;
   overflow: hidden;
   clip: rect(1px, 1px, 1px, 1px); }
-.view-genres p > img {
-  position: absolute !important;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px); }
+.page-genres h1#page-title {
+  font-family: "brandon-grotesque", Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  font-size: 1.6em;
+  line-height: 1.5;
+  margin-top: 24px;
+  margin-bottom: 18px;
+  text-transform: uppercase; }
+.page-genres article {
+  line-height: 1.5; }
+  .page-genres article .field-name-title-field h2,
+  .page-genres article .field-name-title-field h3,
+  .page-genres article .field-name-title-field h4,
+  .page-genres article .field-name-field-sub-head {
+    color: #2E2B31;
+    font-family: "brandon-grotesque", Arial, Helvetica, sans-serif;
+    font-size: 1.333333333em;
+    text-transform: uppercase; }
+    .page-genres article .field-name-title-field h2 a,
+    .page-genres article .field-name-title-field h3 a,
+    .page-genres article .field-name-title-field h4 a,
+    .page-genres article .field-name-field-sub-head a {
+      color: #2E2B31; }
+  .page-genres article .field-name-title-field h2,
+  .page-genres article .field-name-title-field h3,
+  .page-genres article .field-name-title-field h4 {
+    font-weight: 900; }
+  .page-genres article .field-name-title-field,
+  .page-genres article .field-name-field-sub-head {
+    display: inline;
+    line-height: 0; }
+    .page-genres article .field-name-title-field div,
+    .page-genres article .field-name-title-field h2,
+    .page-genres article .field-name-title-field h3,
+    .page-genres article .field-name-title-field h4,
+    .page-genres article .field-name-title-field a,
+    .page-genres article .field-name-field-sub-head div,
+    .page-genres article .field-name-field-sub-head h2,
+    .page-genres article .field-name-field-sub-head h3,
+    .page-genres article .field-name-field-sub-head h4,
+    .page-genres article .field-name-field-sub-head a {
+      display: inline;
+      line-height: 1; }
+  .page-genres article .field-name-title-field a:after {
+    content: ":";
+    font-weight: 900;
+    padding-right: 3px;
+    position: relative;
+    top: -2px; }
+  .page-genres article .field-name-field-content-author {
+    color: #4D4F46;
+    font-family: "franklin-gothic-urw", "Times New Roman", Times, Georgia, serif;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 8px; }
+    .page-genres article .field-name-field-content-author h5 {
+      font-size: 14px;
+      line-height: 1.5;
+      display: inline;
+      margin: 0; }
+    .page-genres article .field-name-field-content-author div,
+    .page-genres article .field-name-field-content-author p {
+      display: inline; }
+  .page-genres article .form-item.form-type-item {
+    color: #4D4F46;
+    font-family: "franklin-gothic-urw", "Times New Roman", Times, Georgia, serif;
+    font-size: 10px;
+    line-height: 1;
+    margin-bottom: 12px;
+    margin-top: 0; }
+.page-genres .attachment-before .view-genres:first-child {
+  margin-bottom: 44px; }
+  .page-genres .attachment-before .view-genres:first-child .field-name-field-feature-image {
+    margin-top: 26px;
+    margin-bottom: 8px; }
+.page-genres .attachment-before .view-genres:nth-child(2) .views-row-1 {
+  margin-bottom: 36px; }
+.page-genres .attachment-before .view-genres:nth-child(2) .views-row-2 {
+  margin-bottom: 44px; }
+.page-genres .attachment-before .view-genres:nth-child(2) .field-name-field-metadata {
+  float: left;
+  padding-right: 24px;
+  width: 30%; }
+.page-genres .attachment-before .view-genres:nth-child(3) .views-row {
+  float: left;
+  margin-bottom: 24px;
+  width: 50%; }
+  .page-genres .attachment-before .view-genres:nth-child(3) .views-row .field-name-title-field h3,
+  .page-genres .attachment-before .view-genres:nth-child(3) .views-row .field-name-field-sub-head {
+    font-size: 1.2em; }
+.page-genres ul.pager {
+  font-family: Tahoma, Verdana, "DejaVu Sans", sans-serif;
+  font-size: 11px;
+  text-transform: uppercase; }
+  .page-genres ul.pager li.pager-current {
+    background: #FFF100;
+    font-weight: normal; }
 
 /*
  ** Comments
