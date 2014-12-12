@@ -2329,10 +2329,18 @@ body {
 .page-genres .attachment-before .view-genres:nth-child(3) .views-row {
   float: left;
   margin-bottom: 24px;
-  width: 50%; }
+  width: 47.5%; }
+  .page-genres .attachment-before .view-genres:nth-child(3) .views-row:nth-child(2n-1) {
+    padding-right: 5%; }
   .page-genres .attachment-before .view-genres:nth-child(3) .views-row .field-name-title-field h3,
   .page-genres .attachment-before .view-genres:nth-child(3) .views-row .field-name-field-sub-head {
     font-size: 1.2em; }
+.page-genres .attachment-before .view-genres:nth-child(3) .field-name-field-feature-image img {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px); }
 .page-genres ul.pager {
   font-family: Tahoma, Verdana, "DejaVu Sans", sans-serif;
   font-size: 11px;
@@ -2340,6 +2348,26 @@ body {
   .page-genres ul.pager li.pager-current {
     background: #FFF100;
     font-weight: normal; }
+.page-genres .attachment-after .view-genres .view-header h3 {
+  background: #FFF766;
+  display: inline-block;
+  font-family: Tahoma, Verdana, "DejaVu Sans", sans-serif;
+  font-size: 0.666666667em;
+  line-height: 2em;
+  margin-bottom: 16px;
+  margin-right: 2px;
+  padding: 0 12px;
+  text-transform: uppercase; }
+.page-genres .attachment-after .view-genres .views-row {
+  float: left;
+  margin-bottom: 24px;
+  width: 47.5%; }
+  .page-genres .attachment-after .view-genres .views-row:nth-child(2n-1) {
+    padding-right: 5%; }
+.page-genres .attachment-after .view-genres .field-name-field-metadata {
+  float: left;
+  padding-right: 10px;
+  width: 35%; }
 
 /*
  ** Comments

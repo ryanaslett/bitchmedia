@@ -142,16 +142,26 @@
 
   // Tertiary Articles
   .attachment-before .view-genres:nth-child(3) {
-     // Last paragraph 
+
+    // Layout
     .views-row {
       float: left;
       margin-bottom: 24px;
-      width: 50%;
+      width: 47.5%;
+
+      &:nth-child(2n-1) {
+        padding-right: 5%;
+      }
 
       .field-name-title-field h3,
       .field-name-field-sub-head {
         font-size: 1.2em; // 1.2 * 15px = 18px
       }
+    }
+
+    // Hide all tertiary images
+    .field-name-field-feature-image img {
+      @include element-invisible;
     }
   }
 
@@ -164,6 +174,41 @@
     li.pager-current {
       background: $yellow;
       font-weight: normal;
+    }
+  }
+
+  // Best of Bitch
+  .attachment-after .view-genres { // TODO Replace with content bottom?
+
+    // Header
+    .view-header h3 {
+      background: $light-yellow;
+      display: inline-block;
+      font-family: $tahoma;
+      font-size: 0.666666667em; // 0.666666667 * 15px = 10px
+      line-height: 2em; // 2 * 10px = 20px
+      margin-bottom: 16px;
+      margin-right: 2px;
+      padding: 0 12px;
+      text-transform: uppercase;
+    }
+
+    // Layout
+    .views-row {
+      float: left;
+      margin-bottom: 24px;
+      width: 47.5%;
+
+      &:nth-child(2n-1) {
+        padding-right: 5%;
+      }
+    }
+
+    // Featured image
+    .field-name-field-metadata {
+      float: left;
+      padding-right: 10px;
+      width: 35%;
     }
   }
 }
