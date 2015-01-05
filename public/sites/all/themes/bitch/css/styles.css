@@ -1361,6 +1361,15 @@ blockquote {
   text-transform: uppercase; }
 
 /*
+ ** Content Styles
+ */
+article.node h1, article.node h2, article.node h3, article.node h4, article.node h5, article.node h6 {
+  font-weight: 500;
+  text-transform: uppercase; }
+article.node h1 {
+  font-weight: 900; }
+
+/*
  ** Form Elements
  */
 label,
