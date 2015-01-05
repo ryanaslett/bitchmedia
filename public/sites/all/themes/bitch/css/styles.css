@@ -2131,7 +2131,10 @@ body {
 /*
  ** Article Pages
  */
-.field-name-field-genre .field-item {
+.field-name-field-genre .field-item,
+.field-name-field-genre h2,
+.field-name-field-podcast-series .taxonomy-term .field-item,
+.field-name-field-podcast-series .taxonomy-term h2 {
   background: #FFF766;
   color: #2E2B31;
   display: inline-block;
@@ -2142,7 +2145,10 @@ body {
   margin-right: 2px;
   padding: 0 12px;
   text-transform: uppercase; }
-  .field-name-field-genre .field-item a {
+  .field-name-field-genre .field-item a,
+  .field-name-field-genre h2 a,
+  .field-name-field-podcast-series .taxonomy-term .field-item a,
+  .field-name-field-podcast-series .taxonomy-term h2 a {
     color: #2E2B31; }
 
 .node-type-article h1,

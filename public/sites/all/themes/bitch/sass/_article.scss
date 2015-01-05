@@ -3,8 +3,10 @@
  */
 
 // Genre links
-.field-name-field-genre {
-  .field-item {
+.field-name-field-genre,
+.field-name-field-podcast-series .taxonomy-term {
+  .field-item,
+  h2 {
     background: $light-yellow;
     color: $dark;
     display: inline-block;
