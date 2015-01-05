@@ -2292,9 +2292,10 @@ body {
     .page-genres article .field-name-field-sub-head a {
       display: inline;
       line-height: 1; }
-  .page-genres article .field-name-title-field a:after {
+  .page-genres article .field-name-field-sub-head .field-item:before {
     content: ":";
     font-weight: 900;
+    margin-left: -3px;
     padding-right: 3px;
     position: relative;
     top: -2px; }
@@ -2312,6 +2313,10 @@ body {
     .page-genres article .field-name-field-content-author div,
     .page-genres article .field-name-field-content-author p {
       display: inline; }
+  .page-genres article .field-name-field-short-bio p:before {
+    content: ":";
+    margin-left: -3px;
+    padding-right: 3px; }
   .page-genres article .form-item.form-type-item {
     color: #4D4F46;
     font-family: "franklin-gothic-urw", "Times New Roman", Times, Georgia, serif;
@@ -2355,7 +2360,8 @@ body {
     background: #FFF100;
     font-weight: normal; }
 .page-genres .attachment-after .view-genres .view-header h3 {
-  background: #FFF766;
+  background: #2E2B31;
+  color: #FFF766;
   display: inline-block;
   font-family: Tahoma, Verdana, "DejaVu Sans", sans-serif;
   font-size: 0.666666667em;

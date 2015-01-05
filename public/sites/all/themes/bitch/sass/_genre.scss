@@ -67,10 +67,11 @@
     }
 
     // Add colon before subhead
-    .field-name-title-field a {
-      &:after {
+    .field-name-field-sub-head .field-item {
+      &:before {
         content: ":";
         font-weight: 900;
+        margin-left: -3px;
         padding-right: 3px;
         position: relative;
         top: -2px;
@@ -95,6 +96,14 @@
       div,
       p {
         display: inline;
+      }
+    }
+
+    .field-name-field-short-bio {
+      p:before {
+        content: ":";
+        margin-left: -3px;
+        padding-right: 3px;
       }
     }
 
@@ -182,7 +191,8 @@
 
     // Header
     .view-header h3 {
-      background: $light-yellow;
+      background: $dark;
+      color: $light-yellow;
       display: inline-block;
       font-family: $tahoma;
       font-size: 0.666666667em; // 0.666666667 * 15px = 10px
