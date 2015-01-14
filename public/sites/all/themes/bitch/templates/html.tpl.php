@@ -16,7 +16,7 @@
 <head>
   <?php print $head; ?>
   <title><?php print $head_title; ?></title>
-
+  <meta name="google-site-verification" content="B3VMHVpsFft5PGrRBR5s7WobFkKfb70x3pqF5-nHjiY" />
   <?php if ($default_mobile_metatags): ?>
     <meta name="MobileOptimized" content="width">
     <meta name="HandheldFriendly" content="true">
@@ -28,9 +28,9 @@
   <?php print $scripts; ?>
 
   <!-- Typekit Embed Code -->
-  <script src="//use.typekit.net/ioe6ejf.js"></script>
+  <script src="//use.typekit.net/szo8dcy.js"></script>
   <script>try{Typekit.load();}catch(e){}</script>
-  
+
   <?php if ($add_html5_shim and !$add_respond_js): ?>
     <!--[if lt IE 9]>
     <script src="<?php print $base_path . $path_to_zen; ?>/js/html5.js"></script>
