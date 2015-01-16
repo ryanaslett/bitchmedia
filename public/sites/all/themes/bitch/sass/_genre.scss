@@ -91,19 +91,16 @@
         line-height: 1.5;
         display: inline;
         margin: 0;
+        text-transform: none;
       }
 
       div,
       p {
         display: inline;
       }
-    }
 
-    .field-name-field-short-bio {
-      p:before {
-        content: ":";
-        margin-left: -3px;
-        padding-right: 3px;
+      .field-name-field-short-bio {
+        @include element-invisible;
       }
     }
 

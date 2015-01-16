@@ -2321,14 +2321,17 @@ body {
       font-size: 14px;
       line-height: 1.5;
       display: inline;
-      margin: 0; }
+      margin: 0;
+      text-transform: none; }
     .page-genres article .field-name-field-content-author div,
     .page-genres article .field-name-field-content-author p {
       display: inline; }
-  .page-genres article .field-name-field-short-bio p:before {
-    content: ":";
-    margin-left: -3px;
-    padding-right: 3px; }
+    .page-genres article .field-name-field-content-author .field-name-field-short-bio {
+      position: absolute !important;
+      height: 1px;
+      width: 1px;
+      overflow: hidden;
+      clip: rect(1px, 1px, 1px, 1px); }
   .page-genres article .form-item.form-type-item {
     color: #4D4F46;
     font-family: "franklin-gothic-urw", "Times New Roman", Times, Georgia, serif;
