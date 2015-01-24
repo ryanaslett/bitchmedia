@@ -33,7 +33,7 @@ function bitch_content_frame_menu_block_defaults() {
   $menu_block->description = '';
   $menu_block->depth = 0;
   $menu_block->expanded = 0;
-  $menu_block->follow = '';
+  $menu_block->follow = '0';
   $menu_block->level = 1;
   $menu_block->parent = 'menu-pitch-menu:0';
   $menu_block->sort = 0;
