@@ -19,3 +19,18 @@ function bitch_base_update_7100() {
     LEFT JOIN users_roles ur ON ur.uid = fdfca.field_content_author_target_id AND ur.rid = 3
   WHERE ur.rid IS NULL");
 }
+
+/**
+ * Enables various modules to support social media and content exports.
+ */
+function base_update_7101() {
+  module_enable(array(
+    'uuid',
+    'uuid_features',
+    'bean_uuid',
+    'icon',
+    'icon_field',
+    'fontawesome',
+    'bitch_social_media',
+  ));
+}
