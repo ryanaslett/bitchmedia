@@ -1,0 +1,52 @@
+diff --git a/public/sites/all/modules/contrib/multifield/multifield.field.inc b/public/sites/all/modules/contrib/multifield/multifield.field.inc
+index 5ccfec8..428f337 100644
+--- a/public/sites/all/modules/contrib/multifield/multifield.field.inc
++++ b/public/sites/all/modules/contrib/multifield/multifield.field.inc
+@@ -50,7 +50,7 @@ function multifield_field_info() {
+           'hide_blank_items' => TRUE,
+           'entity_translation_sync' => array('id'),
+         ),
+-        'no_ui' => TRUE,
++        'no_ui' => FALSE,
+       );
+     }
+   }
+diff --git a/public/sites/all/modules/contrib/multifield/multifield.module b/public/sites/all/modules/contrib/multifield/multifield.module
+index 3ec4bf0..bec2f3b 100644
+--- a/public/sites/all/modules/contrib/multifield/multifield.module
++++ b/public/sites/all/modules/contrib/multifield/multifield.module
+@@ -675,3 +675,34 @@ function multifield_migrate_api() {
+     'field handlers' => array('MultifieldMigrateFieldHandler'),
+   );
+ }
++
++/**
++ * Implements hook_theme().
++ */
++function multifield_theme() {
++  return array(
++    'multifield' => array(
++      'render element' => 'element',
++    ),
++  );
++}
++
++/**
++ * Implements hook_preprocess_field().
++ *
++ * Adds a theme suggestions for multifield so we can theme multifields
++ * independently of their subordinate fields. *
++ */
++function multifield_preprocess_field(&$variables, $hook) {
++  $element = $variables['element'];
++
++  if ($variables['element']['#formatter'] == 'multifield_default') {
++    $variables['theme_hook_suggestions'] = array_merge($variables['theme_hook_suggestions'], array(
++      'multifield',
++      'multifield__' . $element['#field_type'],
++      'multifield__' . $element['#field_name'],
++      'multifield__' . $element['#bundle'],
++      'multifield__' . $element['#field_name'] . '__' . $element['#bundle'],
++    ));
++  }
++}
