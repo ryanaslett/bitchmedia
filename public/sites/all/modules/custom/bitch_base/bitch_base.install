@@ -34,3 +34,12 @@ function bitch_base_update_7101() {
     'bitch_social_media',
   ));
 }
+
+/**
+ * Deletes the social icon field.
+ *
+ * It has been replaced by the fontawesome service icon field.
+ */
+function bitch_base_update_7102() {
+  field_delete_field('field_social_icon');
+}
