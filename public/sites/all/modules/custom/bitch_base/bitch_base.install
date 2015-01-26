@@ -23,7 +23,7 @@ function bitch_base_update_7100() {
 /**
  * Enables various modules to support social media and content exports.
  */
-function base_update_7101() {
+function bitch_base_update_7101() {
   module_enable(array(
     'uuid',
     'uuid_features',
