@@ -7,8 +7,8 @@ dependencies[] = "image"
 dependencies[] = "rdf"
 dependencies[] = "recipe"
 dependencies[] = "schemaorg"
-features[field][] = "node-recipe-field_schemaorg_image"
-features[schemaorg][] = "node-recipe"
+#features[field][] = "node-recipe-field_schemaorg_image"
+#features[schemaorg][] = "node-recipe"
 
 
 ; Information added by drush on 2013-09-25

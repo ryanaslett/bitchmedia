@@ -1,0 +1,209 @@
+/*
+ ** Issue Page Styling
+ */
+
+.node-type-issue {
+  
+  .group_issue_title {
+    display: block;
+
+    .field-name-title-field {
+      display: inline-block;
+      font-family: $brandon;
+      font-size: 1.6em;
+      font-weight: 900;
+      margin-right: 6px;
+      margin-bottom: $margin-large;
+      text-transform: uppercase;
+    }
+  }
+
+  .field-name-field-issue-number,
+  .display-price,
+  .sell-price,
+  .field-name-field-issue-season-and-year,
+  .field-name-field-issue-year {
+    color: $text-gray;
+    float: left;
+    font-family: $franklin-gothic;
+    font-size: 0.866666667em; // .866666667 * 15px = 13px
+    font-weight: normal;
+    line-height: 1;
+  }
+
+  .display-price {
+    clear: left;
+    border-right: 1px solid $text-gray;
+    margin-right: 7px;
+    padding: 0 7px 0 0;
+  }
+
+  .field-name-field-issue-number {
+    
+    .field-item {
+      display: inline-block;
+      border-right: 1px solid $text-gray;
+      margin-right: 7px;
+      padding: 0 7px 0 0;
+    
+      &:before {
+        content: "Issue";
+        display: inline;
+        margin-right: 3px;
+      }
+    }
+  }
+
+  .field-name-field-issue-season-and-year {
+    margin-right: 3px;
+  }
+
+  .field-name-field-issue-year {
+    margin-bottom: 8px;
+  }
+
+  .sell-price {
+    margin-bottom: 15px;
+  }
+
+  .add-to-cart {
+    clear: left;
+    display: block;
+
+    input {
+      @include button;
+    }
+  }
+
+  .field-name-field-cover-lines {
+    color: $dark;
+    font-family: $brandon;
+    font-size: 1.066666667em; // 1.06667 * 15 = 16px
+    font-weight: 500;
+    line-height: 1.3125;
+    text-transform: uppercase;
+  }
+}
+
+.field-group-div {
+
+  @include clearfix;
+  display: block;
+  clear: left;
+
+  &:before,
+  &:after {
+    display: inline;
+  }
+
+  > h3 {
+    clear: left;
+    font-family: $brandon;
+    font-size: 1.333333333em;
+    font-weight: normal;
+    margin-top: 23px;
+    margin-bottom: 0;
+    text-transform: uppercase;
+  }
+  .field {
+    color: $text-gray;
+    font-family: $franklin-gothic;
+  }
+
+  .field-name-field-headline,
+  .field-name-title-field,
+  .field-name-field-subhead,
+  .field-name-field-sub-head,
+  .field-name-field-author-text,
+  .field-name-field-content-author,
+  .field-name-field-article .field-name-title-field {
+    display: inline;
+    font-size: 1em; // 1 * 15 = 15px
+    line-height: 1.2; // 1.8 * 15 = 27px
+
+
+    div {
+      display: inline;
+    }
+  }
+
+  .field-name-field-headline,
+  .field-name-field-article .field-name-title-field {
+    display: inline;
+    font-family: $brandon;
+    margin-right: 6px;
+    text-transform: uppercase;
+    
+    .field-item:after {
+      content: ":";
+    }
+
+    h3 {
+      display: inline-block;
+      font-size: 1.066666667em;
+      margin: 0;
+    }
+  }
+
+  .field-type-entityreference {
+    display: inline;
+
+    h1,
+    h3,
+    h5 {
+      display: inline-block;
+      font-size: 1em !important; // 1 * 15 = 15px
+      line-height: 1.2 !important; // 1.8 * 15 = 27px
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    div {
+      margin: 0;
+    }
+
+    .field-name-title-field {
+
+      .field-item:after {
+        content: "";
+      }
+
+      a:after {
+        content: ":";
+      }
+    }
+    // Reset clearfix on articles in entityref
+    .clearfix:after {
+      clear: none;
+    }
+  }
+
+  .field-name-field-author-text,
+  .field-name-field-content-author {
+    font-size: 12px;
+    margin-left: 6px !important;
+    margin-bottom: 12px !important;
+
+    h5 {
+      font-size: 12px;
+      display: inline-block;
+    }
+
+    &:before {
+      content: "|";
+      padding-right: 6px;
+      position: relative;
+      top: -1px;
+    }
+  }
+}
+
+.group_purchase_info {
+  float: right;
+  max-width: 40%;
+  margin-bottom: $margin-large;
+}
+
+.group_issue_title {
+  float: none;
+}

@@ -1,0 +1,16 @@
+diff --git a/drupal_apc_cache.inc b/drupal_apc_cache.inc
+index 0578f92..9066ce0 100644
+--- a/drupal_apc_cache.inc
++++ b/drupal_apc_cache.inc
+@@ -301,11 +301,6 @@ class DrupalAPCCache implements DrupalCacheInterface {
+   }
+ 
+   public static function remoteFlush() {
+-    if (!module_exists('apc')) {
+-      drush_log('You need to enable the APC module for remote cache clearing to work. Run drush pm-enable apc.', 'error');
+-      return;
+-    }
+-
+     global $base_url;
+     if (!empty(self::$remoteClears)) {
+       // optimize '*' clears.

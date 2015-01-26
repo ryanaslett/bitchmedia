@@ -1081,7 +1081,7 @@ class UpdateQuery extends Query implements QueryConditionInterface {
     $fields = $this->fields;
     $max_placeholder = 0;
     foreach ($fields as $field => $value) {
-        $args[':db_update_placeholder_' . ($max_placeholder++)] = $value;
+      $args[':db_update_placeholder_' . ($max_placeholder++)] = $value;
     }
     return $args;
   }

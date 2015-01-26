@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Bitch Editor Settings feature.
+ */
+
+include_once 'bitch_editor_settings.features.inc';

@@ -52,9 +52,19 @@ function bitch_preprocess_html(&$variables, $hook) {
  * @param $hook
  *   The name of the template being rendered ("page" in this case.)
  */
-/* -- Delete this line if you want to use this function
 function bitch_preprocess_page(&$variables, $hook) {
-  $variables['sample_variable'] = t('Lorem ipsum.');
+  if (isset($variables['section_title'])) {
+    $section_title = $variables['section_title'];
+
+    if ($section_title == 'bmart') { 
+      $variables['logo'] = path_to_theme() . '/images/bmart_logo.png';
+      // @TODO change path to home to bmart
+    }
+  }
+
+  // Add Accordion JQuery Library
+  drupal_add_library('system', 'ui.accordion');
+
 }
 // */
 
@@ -70,12 +80,6 @@ function bitch_preprocess_page(&$variables, $hook) {
 function bitch_preprocess_node(&$variables, $hook) {
   $variables['sample_variable'] = t('Lorem ipsum.');
 
-  // Optionally, run node-type-specific preprocess functions, like
-  // bitch_preprocess_node_page() or bitch_preprocess_node_story().
-  $function = __FUNCTION__ . '_' . $variables['node']->type;
-  if (function_exists($function)) {
-    $function($variables, $hook);
-  }
 }
 // */
 
@@ -130,3 +134,15 @@ function bitch_preprocess_block(&$variables, $hook) {
   //}
 }
 // */
+
+/* 
+ * Override search block
+ */
+
+/*function bitch_form_alter(&$form, $form_state, $form_id) {
+  if($form['#id'] == 'views-exposed-form-test-search-box-search-page') {
+    if (empty($_GET['exposed_filter_name']))  {
+      $form_state['input']['exposed_filter_name'] = 'default_value';
+    }
+  }
+}*/

@@ -66,7 +66,7 @@ stylesheets[all][] = css/styles.css
 
 ; Optionally add some JavaScripts to your theme.
 
-;scripts[] = js/script.js
+scripts[] = js/script.js
 
 
 
@@ -89,10 +89,14 @@ regions[header]         = Header
 regions[navigation]     = Navigation bar
 regions[highlighted]    = Highlighted
 regions[help]           = Help
+regions[content_top]    = Content Top
 regions[content]        = Content
+regions[content_bottom] = Content Bottom
+regions[slider]         = Slider
 regions[sidebar_first]  = First sidebar
 regions[sidebar_second] = Second sidebar
 regions[footer]         = Footer
+regions[tout]           = Tout
 regions[bottom]         = Page bottom
 
 ; The page_top and page_bottom regions are hidden, which means they will not

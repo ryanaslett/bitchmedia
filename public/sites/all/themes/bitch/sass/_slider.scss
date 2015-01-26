@@ -1,0 +1,36 @@
+/*
+ ** Slider
+ */
+
+#slider {
+
+  background: $white;
+  bottom: 20px;
+  padding: 10px;
+  position: fixed;
+  right: -430px;
+  width: 400px;
+  @include box-shadow(#777 0 0 10px);
+
+  // Display just below content on tablet and phone
+  @media screen and (max-width: $laptop - 1) {
+    position: relative;
+    bottom: auto;
+    width: 100%;
+    right: auto;
+    @include column(22);
+    @include box-shadow(none);
+  }
+
+  a.close {
+    @include close-button;
+    padding: 0;
+
+    &:after {
+      color: $text-gray;
+      float: right;
+    }
+  }
+
+  // @TODO theme block content when block is available
+}

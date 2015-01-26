@@ -14,9 +14,20 @@
 
 /* Layout rules */
 @import "grid";
+@import "layout";
 
 /* Component (SMACSS module) rules */
 @import "components/misc";
+@import "global";
+@import "header";
+@import "navigation";
+@import "off-canvas";
+@import "slider";
+@import "issue";
+@import "article";
+@import "genre";
+@import "comment";
+@import "bmart";
 // Optionally, add your own components here.
 @import "print";
 

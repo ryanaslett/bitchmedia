@@ -1,0 +1,107 @@
+// Navigation Styling
+
+#navigation {
+  background: #2E2B31;
+  font-family: $brandon;
+  text-transform: uppercase;
+
+  .region-navigation {
+    @include grid-empty;
+    left: 2.0833333%; // 0.5 / 24 total columns
+    width: 95.8333333%; // 23 / 24 total columns
+  }
+
+  .links,
+  .menu {
+    height: 70px;
+    text-align: justify;
+
+    li {
+      float: none;
+      display: inline-block;
+      padding: 0;
+    }
+  }
+
+  // Use justify to center items in menu
+  ul:after {
+    content: '';
+    width: 100%; /* Ensures there are at least 2 lines of text, so justification works */
+    display: inline-block;
+  }
+
+  li {
+    display: inline;
+  }
+
+  a:link,
+  a:visited {
+    color: $yellow;
+    display: block;
+    padding: 20px 9px;
+
+    // Extend padding for larger screens
+    @media screen and (min-width: $desktop) {
+      padding: 20px 29px;
+    }
+  }
+  a.active {
+    background: #4E5047;
+  }
+  a:hover {
+    background: #60625A;
+    color: #fff87f;
+  }
+
+  li.first {
+    a:link,
+    a:visited,
+    a.active,
+    a:hover {
+      background: $yellow;
+      color: $dark;
+      padding-left: 20px;
+      padding-right: 20px;
+    } 
+  }
+
+  // Secondary links bg: 4D4F46
+
+  @media screen and (max-width: $laptop) {
+
+    // Faux line break between nav lines
+    &:after {
+      content: " ";
+      border-top: 1px solid $white;
+      display: block;
+      position: relative;
+      top: 70px;
+      width: 100%;
+    }
+
+    .links,
+    .menu {
+      height: 140px;
+    }
+
+    // Restrict width of tablet nav and center
+    .block-menu-block {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 614px;
+    }
+
+    // Increase left and right padding
+    li a {
+      padding-left: 19px;
+      padding-right: 19px;
+    }
+
+    // Increase padding on first 5 list items
+    li:nth-child(-n+5) a {
+      padding-left: 22px;
+      padding-right: 22px;
+    }
+  }
+
+}

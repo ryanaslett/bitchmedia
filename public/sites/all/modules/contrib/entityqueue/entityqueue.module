@@ -81,7 +81,7 @@ function entityqueue_permission() {
     ),
   );
 
-  $queues = entityqueue_queue_load_multiple();
+  $queues = entityqueue_queue_load_multiple(array(), TRUE);
   $handlers = ctools_get_plugins('entityqueue', 'handler');
   foreach ($queues as $name => $queue) {
     if ($handlers[$queue->handler]['queue type'] == 'multiple') {
@@ -220,9 +220,9 @@ function entityqueue_queue_load($name) {
  * @return EntityQueue[]
  *   An array of EntityQueue objects, keyed by queue name.
  */
-function entityqueue_queue_load_multiple($names = array()) {
+function entityqueue_queue_load_multiple($names = array(), $reset = FALSE) {
   ctools_include('export');
-  $queues = !empty($names) ? ctools_export_load_object('entityqueue_queue', 'names', $names) : ctools_export_crud_load_all('entityqueue_queue');
+  $queues = !empty($names) ? ctools_export_load_object('entityqueue_queue', 'names', $names) : ctools_export_crud_load_all('entityqueue_queue', $reset);
 
   // Bail out early if we haven't found any queues.
   if (empty($queues)) {
@@ -284,6 +284,13 @@ function entityqueue_queue_delete($queue) {
     ->entityCondition('bundle', $queue->name);
   $result = $query->execute();
   if (!empty($result['entityqueue_subqueue'])) {
+    if ($queue->export_type == EXPORT_IN_CODE + EXPORT_IN_DATABASE) {
+      db_delete('entityqueue_queue')
+        ->condition('name', $queue->name)
+        ->execute();
+
+      return;
+    }
     entity_delete_multiple('entityqueue_subqueue', array_keys($result['entityqueue_subqueue']));
   }
 
@@ -428,9 +435,18 @@ function entityqueue_access($op, $entity = NULL, $account = NULL, $entity_type =
 /**
  * Menu access callback.
  */
-function entityqueue_queue_access($op, EntityQueue $queue) {
+function entityqueue_queue_access($op, $queue) {
+  if (is_object($queue) && ($queue instanceof EntityQueue)) {
+    $queue_name = $queue->name;
+  }
+  elseif (is_string($queue)) {
+    $queue_name = $queue;
+  }
+  else {
+    return;
+  }
   $stub = (object) array(
-    'queue' => $queue->name,
+    'queue' => $queue_name,
   );
   return entity_access($op, 'entityqueue_subqueue', $stub);
 }
@@ -515,46 +531,76 @@ function entityqueue_subqueue_load_by_target_type($target_type) {
 }
 
 /**
- * Implements hook_block_view_alter().
+ * Implements hook_contextual_links_view_alter().
  */
-function entityqueue_block_view_alter(&$data, $block) {
-  if ($data == NULL || !isset($data['content']) || !is_array($data['content'])) {
+function entityqueue_contextual_links_view_alter(&$element, $items) {
+  // Do not add contextual link on view preview.
+  if (module_exists('views_ui') && views_ui_contextual_links_suppress()) {
     return;
   }
-  // Add contextual links for blocks provided by Views that have a Entityqueue
-  // relationship.
-  $content = &$data['content'];
-  if ($block->module == 'views' && !empty($content['#contextual_links']['views_ui'])) {
-    $view_name = $content['#views_contextual_links_info']['views_ui']['view_name'];
-    $view_display_id = $content['#views_contextual_links_info']['views_ui']['view_display_id'];
 
-    // Get the view object from views contextual info or initialize it manually.
-    if (!empty($content['#views_contextual_links_info']['views_ui']['view'])) {
-      $view = $content['#views_contextual_links_info']['views_ui']['view'];
-    }
-    else {
-      $view = views_get_view($view_name);
-    }
-    $view->init_display();
+  // Add contextual link "Edit entityqueue".
+  $views_ui_element = array();
+  if (isset($element['#element']['#views_contextual_links_info']['views_ui'])) {
+    $views_ui_element = $element['#element']['#views_contextual_links_info']['views_ui'];
+  }
+  // In case of block #views_contextual_links_info element is inside of
+  // 'content' and not '#element' directly.
+  // @see http://drupal.org/node/1413596#comment-5912688
+  if (empty($views_ui_element) && isset($element['#element']['content']['#views_contextual_links_info']['views_ui'])) {
+    $views_ui_element = $element['#element']['content']['#views_contextual_links_info']['views_ui'];
+  }
 
+  if (!empty($views_ui_element['view_display_id']) && isset($views_ui_element['view'])) {
+    $display_id = $views_ui_element['view_display_id'];
+    $view = $views_ui_element['view'];
+    $view->build($display_id);
+
+    // Proceed only if there is entityqueue sort criteria available.
+    if (!$sort_key = entityqueue_get_entityqueue_sort($view)) {
+      return;
+    }
     // Get view display relationships.
-    $relationships = $view->display[$view_display_id]->handler->get_option('relationships');
+    $relationships = $view->display[$display_id]->handler->get_option('relationships');
     foreach ($relationships as $relationship) {
       if ($relationship['field'] == 'entityqueue_relationship') {
         $referenced_subqueues = array_keys(array_filter($relationship['queues']));
+        if (!empty($referenced_subqueues)) {
+          // Contextual links can handle only one set of links coming from a module,
+          // so we'll have to settle for the first referenced queue.
+          $subqueue = entityqueue_subqueue_load(reset($referenced_subqueues));
 
-        // Contextual links can handle only one set of links coming from a module,
-        // so we'll have to settle for the first referenced queue.
-        $subqueue = entityqueue_subqueue_load(reset($referenced_subqueues));
-
-        $link = array('entityqueue' => array('admin/structure/entityqueue/list', array($subqueue->queue, 'subqueues', $subqueue->name, 'edit')));
-        $content['#contextual_links'] = array_merge($link, $content['#contextual_links']);
-        $content['#entityqueue_contextual_links_info'] = array(
-          'subqueue' => $subqueue,
-        );
+          if ($subqueue) {
+            $path = 'admin/structure/entityqueue/list/' . $subqueue->name . '/subqueues/' . $subqueue->subqueue_id . '/edit';
+            $element['#links']['entityqueue-order'] = array(
+              'title' => t('Edit subqueue'),
+              'href' => $path,
+              'query' => array('destination' => current_path()),
+            );
+          }
+        }
       }
     }
   }
+}
+
+/**
+ * Get the entityqueue position sort of a view if there is one and return its
+ * ID. If there are multiple of these sorts the first is returned.
+ *
+ * @param $view
+ *   The view object.
+ *
+ * @return
+ *   The ID of the sort or FALSE if there isn't one.
+ */
+function entityqueue_get_entityqueue_sort($view) {
+  foreach ($view->sort as $id => $sort) {
+    if ($sort->definition['handler'] == 'entityqueue_handler_sort_position') {
+      return $id;
+    }
+  }
+  return FALSE;
 }
 
 /**
@@ -646,7 +692,18 @@ function _entityqueue_get_target_field_name($entity_type) {
  *   An EntityQueue object.
  */
 function _entityqueue_queue_ensure_instance(EntityQueue $queue) {
+  $all_queue_names = variable_get('entityqueue_queue_names', array());
+  if (!in_array($queue->name, $all_queue_names)) {
+    $all_queue_names[] = $queue->name;
+    variable_set('entityqueue_queue_names', $all_queue_names);
+  }
+
   $field_name = _entityqueue_get_target_field_name($queue->target_type);
+  $all_eq_fields = variable_get('entityqueue_field_names', array());
+  if (!in_array($field_name, $all_eq_fields)) {
+    $all_eq_fields[] = $field_name;
+    variable_set('entityqueue_field_names', $all_eq_fields);
+  }
   $handler_settings = array(
     'behaviors' => array(
       'entityqueue' => array(
@@ -688,8 +745,8 @@ function _entityqueue_create_entityreference_field($queue, $field_name, $entity_
 
   // Look for or add the specified entityreference field to the requested entity
   // bundle.
-  $field = field_info_field($field_name);
-  $instance = field_info_instance($entity_type, $field_name, $bundle);
+  $field = field_read_field($field_name);
+  $instance = field_read_instance($entity_type, $field_name, $bundle);
 
   if (empty($field)) {
     $field = array(
@@ -820,7 +877,13 @@ function entityqueue_field_widget_form(&$form, &$form_state, $field, $instance, 
         'id' => $table_id,
         'class' => $table_classes,
       ),
+      '#attached' => array(
+        'js' => array(
+          drupal_get_path('module', 'entityqueue') . '/js/entityqueue.widget.js' => array('type' => 'file'),
+        ),
+      ),
     );
+
     $rows = array();
     $values = isset($form_state['values'][$field_name][$langcode]) ? $form_state['values'][$field_name][$langcode] : $items;
     if (!empty($values)) {
@@ -861,6 +924,7 @@ function entityqueue_field_widget_form(&$form, &$form_state, $field, $instance, 
         '#type' => 'button',
         '#value' => t('Remove'),
         '#name' => $field_name . '_remove_' . $key,
+        '#validate' => array(),
         '#ajax' => array(
           'callback' => 'entityqueue_field_widget_ajax_callback',
           'wrapper' => $table_id,
@@ -924,7 +988,6 @@ function entityqueue_field_widget_form(&$form, &$form_state, $field, $instance, 
     );
 
     $subform['#element_validate'] = array('entityqueue_widget_dragtable_element_validate');
-
     return $subform;
   }
 }
@@ -983,19 +1046,57 @@ function entityqueue_field_widget_ajax_callback($form, $form_state) {
   $field_name = $form_state['triggering_element']['#parents'][0];
   $lang = $form[$field_name]['#language'];
   $form_state['rebuild'] = TRUE;
-  $table_id = '#' . drupal_clean_css_identifier('entityqueue-dragtable-' . $field_name);
-  $markup = drupal_render($form[$field_name][$lang]['items']);
-  $commands[] = ajax_command_replace($table_id, $markup);
-  $input_id = $table_id . '-add';
-  $commands[] = ajax_command_invoke($input_id, 'val', array(''));
-  $warning = array(
-    '#prefix' => '<div class="tabledrag-changed-warning messages warning"><span class="warning tabledrag-changed">*</span>',
-    '#suffix' => '</div>',
-    '#markup' => t('Changes will not be saved until the form is submitted.'),
+  $form[$field_name][$lang]['add']['#value'] = '';
+  $markup = drupal_render($form[$field_name]);
+
+  $commands[] = ajax_command_replace('.' . drupal_clean_css_identifier('field-name-' . $field_name) , $markup);
+
+
+  $add_id = drupal_clean_css_identifier('entityqueue-dragtable-' . $field_name . '-add');
+  $commands[] = ajax_command_invoke('#' . $add_id, 'val', array(''));
+  $settings = array(
+    drupal_clean_css_identifier('entityqueue-dragtable-' . $field_name) => true,
   );
-  $commands[] = ajax_command_before($table_id, drupal_render($warning));
+  drupal_add_js(array('entityqueue_changed' => $settings), 'setting');
   return array(
     '#type' => 'ajax',
     '#commands' => $commands,
   );
+}
+
+/**
+ * Ajax form callback.
+ */
+function entityqueue_subqueue_ajax_callback($form, $form_state) {
+  $settings = array(
+    drupal_clean_css_identifier('entityqueue-dragtable-' . $form_state['field_name']) => true,
+  );
+  drupal_add_js(array('entityqueue_changed' => $settings), 'setting');
+
+  $markup = drupal_render($form);
+  $commands[] = ajax_command_replace('#' . $form_state['form_wrapper_id'] , $markup);
+
+  return array(
+    '#type' => 'ajax',
+    '#commands' => $commands,
+  );
+}
+
+/**
+ * Workaround for missing breadcrumbs on callback and action paths.
+ *
+ * Shamelessly stolen from http://drupal.org/project/xmlsitemap
+ *
+ * @todo Remove when http://drupal.org/node/576290 is fixed.
+ */
+function _entityqueue_set_breadcrumb($path = 'admin/structure/entityqueue') {
+  $breadcrumb = array();
+  $path = explode('/', $path);
+  do {
+    $menu_path = implode('/', $path);
+    $menu_item = menu_get_item($menu_path);
+    array_unshift($breadcrumb, l($menu_item['title'], $menu_path));
+  } while (array_pop($path) && !empty($path));
+  array_unshift($breadcrumb, l(t('Home'), NULL));
+  drupal_set_breadcrumb($breadcrumb);
 }

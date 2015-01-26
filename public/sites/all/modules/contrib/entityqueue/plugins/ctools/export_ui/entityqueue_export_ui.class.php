@@ -25,6 +25,7 @@ class entityqueue_export_ui extends ctools_export_ui {
   public function subqueues_page($js, $input, EntityQueue $queue) {
     $plugin = $this->plugin;
     drupal_set_title($this->get_page_title('subqueues', $queue));
+    _entityqueue_set_breadcrumb();
 
     $header = array(
       array(
@@ -59,10 +60,14 @@ class entityqueue_export_ui extends ctools_export_ui {
 
     $rows = array();
     foreach ($subqueues as $subqueue) {
-      $ops = '';
+      $ops = array();
       if (entity_access('update', 'entityqueue_subqueue', $subqueue)) {
         $edit_op = str_replace('%entityqueue_subqueue', $subqueue->subqueue_id, ctools_export_ui_plugin_menu_path($plugin, 'edit subqueue', $queue->name));
-        $ops = l(t('edit items'), $edit_op);
+        $ops[] = l(t('edit items'), $edit_op);
+      }
+      if (entity_access('delete', 'entityqueue_subqueue', $subqueue)) {
+        $delete_op = str_replace('%entityqueue_subqueue', $subqueue->subqueue_id, ctools_export_ui_plugin_menu_path($plugin, 'delete subqueue', $queue->name));
+        $ops[] = l(t('delete subqueue'), $delete_op);
       }
       $rows[] = array(
         'data' => array(
@@ -75,7 +80,7 @@ class entityqueue_export_ui extends ctools_export_ui {
             'class' => array('entityqueue-ui-subqueue-label')
           ),
           array(
-            'data' => $ops,
+            'data' => implode(' | ', $ops),
             'class' => array('entityqueue-ui-subqueue-operations')
           ),
         ),
@@ -118,7 +123,16 @@ class entityqueue_export_ui extends ctools_export_ui {
    */
   public function subqueue_edit_page($js, $input, EntityQueue $queue, EntitySubqueue $subqueue) {
     drupal_set_title(t('Edit %subqueue', array('%subqueue' => $subqueue->label)), PASS_THROUGH);
+    _entityqueue_set_breadcrumb();
     return drupal_get_form('entityqueue_subqueue_edit_form', $queue, $subqueue);
+  }
+
+  /**
+   * Page callback; Displays the subqueue delete form.
+   */
+  public function subqueue_delete_page($js, $input, EntityQueue $queue, EntitySubqueue $subqueue) {
+    _entityqueue_set_breadcrumb();
+    return drupal_get_form('entityqueue_subqueue_delete_form', $queue, $subqueue);
   }
 
   /**
@@ -130,6 +144,9 @@ class entityqueue_export_ui extends ctools_export_ui {
     // @todo This is quite inefficient to do here but ctools_export_load_object()
     // doesn't help us.
     if (!empty($this->items)) {
+      foreach ($this->items as $name => $queue) {
+        $this->items[$name]->subitems = 0;
+      }
       $query = new EntityFieldQuery();
       $query
         ->entityCondition('entity_type', $this->entityType)
@@ -179,6 +196,7 @@ class entityqueue_export_ui extends ctools_export_ui {
     $handlers = ctools_get_plugins('entityqueue', 'handler');
     if ($handlers[$queue->handler]['queue type'] == 'single') {
       unset($operations['subqueues']);
+      unset($operations['delete subqueue']);
       $operations['edit subqueue']['href'] = str_replace('%entityqueue_subqueue', $queue->subqueue_id, $operations['edit subqueue']['href']);
     }
     else {
@@ -286,6 +304,23 @@ function entityqueue_subqueue_edit_form($form, &$form_state, EntityQueue $queue,
 
   field_attach_form('entityqueue_subqueue', $subqueue, $form, $form_state);
 
+  // Since the form has ajax buttons, the $wrapper_id will change each time
+  // one of those buttons is clicked. Therefore the whole form has to be
+  // replaced, otherwise the buttons will have the old $wrapper_id and will only
+  // work on the first click.
+  $field_name = _entityqueue_get_target_field_name($queue->target_type);
+  if (isset($form_state['form_wrapper_id'])) {
+    $wrapper_id = $form_state['form_wrapper_id'];
+  }
+  else {
+    $wrapper_id = drupal_html_id($field_name . '-wrapper');
+  }
+  $form_state['form_wrapper_id'] = $wrapper_id;
+  $form_state['field_name'] = $field_name;
+
+  $form['#prefix'] = '<div id="' . $wrapper_id . '">';
+  $form['#suffix'] = '</div>';
+
   // Entity type (bundle) is needed by entity_form_submit_build_entity().
   $form['queue'] = array(
     '#type' => 'value',
@@ -299,6 +334,37 @@ function entityqueue_subqueue_edit_form($form, &$form_state, EntityQueue $queue,
     '#weight' => 40,
   );
 
+  $form['actions']['reverse'] = array(
+    '#type' => 'button',
+    '#value' => t('Reverse'),
+    '#weight' => 41,
+    '#validate' => array('entityqueue_subqueue_reverse_validate'),
+    '#ajax' => array(
+      'callback' => 'entityqueue_subqueue_ajax_callback',
+      'wrapper' => $wrapper_id,
+    ),
+  );
+  $form['actions']['shuffle'] = array(
+    '#type' => 'button',
+    '#value' => t('Shuffle'),
+    '#weight' => 42,
+    '#validate' => array('entityqueue_subqueue_shuffle_validate'),
+    '#ajax' => array(
+      'callback' => 'entityqueue_subqueue_ajax_callback',
+      'wrapper' => $wrapper_id,
+    ),
+  );
+  $form['actions']['clear'] = array(
+    '#type' => 'button',
+    '#value' => t('Clear'),
+    '#weight' => 43,
+    '#validate' => array('entityqueue_subqueue_clear_validate'),
+    '#ajax' => array(
+      'callback' => 'entityqueue_subqueue_ajax_callback',
+      'wrapper' => $wrapper_id,
+    ),
+  );
+
   $form['#validate'][] = 'entityqueue_subqueue_edit_form_validate';
   $form['#submit'][] = 'entityqueue_subqueue_edit_form_submit';
 
@@ -310,6 +376,78 @@ function entityqueue_subqueue_edit_form($form, &$form_state, EntityQueue $queue,
  */
 function entityqueue_subqueue_edit_form_validate($form, &$form_state) {
   entity_form_field_validate('entityqueue_subqueue', $form, $form_state);
+}
+
+/**
+ * Validation callback to reverse items in the subqueue.
+ */
+function entityqueue_subqueue_reverse_validate($form, &$form_state) {
+  $queue = $form_state['entityqueue_queue'];
+  $field_name = _entityqueue_get_target_field_name($queue->target_type);
+  $lang = $form[$field_name]['#language'];
+  foreach(array('input', 'values') as $state) {
+    if (isset($form_state[$state][$field_name][$lang])) {
+      $field_values = $form_state[$state][$field_name][$lang];
+      foreach ($field_values as $key => $value) {
+        if (!is_numeric($key) || empty($value['target_id']) || $value['target_id'] == '_none') {
+          unset($field_values[$key]);
+        }
+      }
+      $field_values = array_reverse($field_values);
+      // Set weights according to their new order.
+      foreach ($field_values as $key => $value) {
+        if (is_numeric($key)) {
+          $field_values[$key]['_weight'] = $key;
+        }
+      }
+      $form_state[$state][$field_name][$lang] = $field_values;
+    }
+  }
+}
+
+/**
+ * Validation callback to shuffle items in the subqueue.
+ */
+function entityqueue_subqueue_shuffle_validate($form, &$form_state) {
+  $queue = $form_state['entityqueue_queue'];
+  $field_name = _entityqueue_get_target_field_name($queue->target_type);
+  $lang = $form[$field_name]['#language'];
+  foreach(array('input', 'values') as $state) {
+    if (isset($form_state[$state][$field_name][$lang])) {
+      $field_values = $form_state[$state][$field_name][$lang];
+      foreach ($field_values as $key => $value) {
+        if (!is_numeric($key) || empty($value['target_id']) || $value['target_id'] == '_none') {
+          unset($field_values[$key]);
+        }
+      }
+      shuffle($field_values);
+      // Set weights according to their new order.
+      foreach ($field_values as $key => $value) {
+        if (is_numeric($key)) {
+          $field_values[$key]['_weight'] = $key;
+        }
+      }
+      $form_state[$state][$field_name][$lang] = $field_values;
+    }
+  }
+}
+
+/**
+ * Validation callback to clear items in the subqueue.
+ */
+function entityqueue_subqueue_clear_validate($form, &$form_state) {
+  $queue = $form_state['entityqueue_queue'];
+  $field_name = _entityqueue_get_target_field_name($queue->target_type);
+  $lang = $form[$field_name]['#language'];
+  foreach(array('input', 'values') as $state) {
+    $form_state[$state][$field_name][$lang] = array();
+  }
+  if (isset($form_state['build_info']['args'][1])) {
+    $subqueue = $form_state['build_info']['args'][1];
+    if (isset($subqueue->{$field_name}[$lang])) {
+      $form_state['build_info']['args'][1]->{$field_name}[$lang] = array();
+    }
+  }
 }
 
 /**
@@ -332,4 +470,46 @@ function entityqueue_subqueue_edit_form_submit($form, &$form_state) {
   else {
     $form_state['redirect'] = $plugin_base_path . '/list/' . $queue->name . '/subqueues';
   }
+}
+
+/**
+ * Form callback.
+ */
+function entityqueue_subqueue_delete_form($form, &$form_state, $queue, $subqueue) {
+  $handler = entityqueue_get_handler($queue);
+  // If they can't delete this subqueue, return access denied.
+  if (!$handler->canDeleteSubqueue($subqueue)) {
+    drupal_set_message(t('The %queue: %subqueue subqueue cannot be deleted.', array(
+      '%queue' => $queue->label,
+      '%subqueue' => $subqueue->label,
+    )), 'warning');
+    drupal_access_denied();
+    drupal_exit();
+  }
+
+  $form['#queue'] = $queue;
+  $form['#subqueue'] = $subqueue;
+  $form['subqueue_id'] = array(
+    '#type' => 'value',
+    '#value' => $subqueue->subqueue_id,
+  );
+  return confirm_form($form, t('Are you sure you want to delete %queue: %subqueue?', array(
+    '%queue' => $queue->label,
+    '%subqueue' => $subqueue->label,
+  )), 'admin/structure/entityqueue/list/' . $queue->name . '/subqueues', NULL, t('Delete'));
+}
+
+/**
+ * Form submit handler.
+ * @see entityqueue_subqueue_delete_form()
+ */
+function entityqueue_subqueue_delete_form_submit($form, &$form_state) {
+  $queue = $form['#queue'];
+  $subqueue = $form['#subqueue'];
+  $handler = entityqueue_get_handler($queue);
+
+  if ($handler->canDeleteSubqueue($subqueue)) {
+    entity_delete('entityqueue_subqueue', $subqueue->subqueue_id);
+  }
+  $form_state['redirect'] = 'admin/structure/entityqueue/list/' . $queue->name . '/subqueues';
 }

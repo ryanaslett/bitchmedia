@@ -1,0 +1,114 @@
+// Global Styles
+
+h1,h2,h3,h4,h5,h6 {
+  color: $dark;
+  font-family: $font-header;
+  font-weight: normal;
+}
+
+// Background gradients
+body {
+  background: $dark;
+}
+
+#page {
+  $svg-gradient-shim-threshold: 1 !global;
+  @include background-image(
+    linear-gradient(to top, #EC1C24, #9E1F63)
+  );
+  overflow: hidden;
+  width: 100%;
+}
+
+#header,
+#main {
+  background: $white;
+}
+
+p {
+  line-height: 1.533333333;
+  margin: 0.8em 0;
+}
+
+blockquote {
+  line-height: 1.533333333;
+  margin: 1em $indent-amount;
+}
+
+.breadcrumb {
+  font-family: $tahoma;
+  font-size: 0.733333333em;
+  margin-top: $margin-large;
+  text-transform: uppercase;
+}
+
+/*
+ ** Content Styles
+ */
+
+article.node {
+  h1,h2,h3,h4,h5,h6 {
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    font-weight: 900;
+  }
+}
+
+.content-inner {
+  margin-top: 2em;
+}
+
+/*
+ ** Form Elements
+ */
+
+label,
+.form-item .description {
+  color: $text-gray;
+  font-weight: 500;
+  font-family: $franklin-gothic;
+  font-size: 0.8em; // 0.8em * 15px = 12px
+  text-transform: uppercase;
+}
+
+// All Inputs
+input {
+  border: 1px solid $button-gray;
+  color: $text-gray;
+  font-family: $franklin-gothic;
+  font-size: 14px;
+  height: 32px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+// Submit buttons
+.form-submit {
+  background-color: $plum;
+  color: $white;
+  text-transform: uppercase;
+  border: none;
+  padding: 0 16px;
+}
+
+// Autocomplete adjustments
+#autocomplete {
+  border-color: $button-gray;
+}
+.reference-autocomplete,
+#autocomplete li {
+  color: $text-gray;
+  font-family: $franklin-gothic;
+  font-size: 14px;
+}
+#autocomplete li.selected { 
+  background-color: $light-yellow;
+  color: $text-gray;
+}
+// Adjust position on throbber
+html.js input.form-autocomplete {
+  background-position: 100% 10px;
+}

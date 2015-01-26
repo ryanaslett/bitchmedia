@@ -1,0 +1,130 @@
+/*
+ ** Comments
+ */
+
+// Comments Section
+#comments {
+  border-top: 1px solid $button-gray;
+  margin-top: 32px;
+  padding-top: 28px;
+}
+
+// Comments header
+h2.comments__title,
+h2.comments__form-title {
+  color: $category-black;
+  font-family: $brandon;
+  font-size: 1.2em; // 1.2 * 15px = 18px
+  font-weight: 900;
+  line-height: 1;
+  margin: 0 0 24px;
+  text-transform: uppercase;
+}
+
+// Individual comment title
+h3.comment__title {
+  color: $category-black;
+  font-family: $brandon;
+  font-size: 1.066666667em; // 1.066666667 * 15 = 16px
+  font-weight: 500;
+  line-height: 1.125; // 1.125 * 16px = 18px
+  margin: 0 0 5px;
+  text-transform: uppercase;
+
+  a.permalink {
+    color: $category-black;
+    font-size: inherit;
+  }
+}
+
+// Individual comment submitted info
+#comments p.submitted {
+  color: $text-gray;
+  font-family: $franklin-gothic;
+  font-size: 0.666666667em; // .666666667 * 15 = 10px
+  line-height: 1.2; // 1.2 * 10 = 12px
+  margin: 0 0 10px;
+}
+
+// Individual comment
+article.comment {
+  margin-bottom: 24px;
+}
+
+// Comment body
+.comment .field-name-comment-body {
+  font-family: $franklin-gothic;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+// Set of comments and replies
+.ajax-comment-wrapper { // @TODO Can we use this class? Where is the ajax from?
+  //border-bottom: 1px solid $button-gray;
+  margin-bottom: 48px;
+  position: relative;
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    width: 220px;
+    height: 1px;
+    background: $button-gray;
+  }
+
+  &.indented {
+    margin-bottom: 0;
+
+    &:after {
+      background: none;
+    }
+  }
+}
+
+// Comment form
+#comment-form {
+  .form-item {
+    margin: 0;
+  }
+  a.username {
+    font-family: $brandon;
+  }
+  label {
+    margin: 10px 0 3px;
+  }
+}
+
+// jQuery Accordion Resets
+.ui-accordion {
+  .ui-accordion-icons,
+  .ui-accordion-header {
+    padding: 0;
+    margin: 0;
+  }
+  .ui-accordion-header {
+    margin: 0 0 24px;
+  }
+  .ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br {
+    border-radius: 0;
+  }
+  .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    background: none;
+    border: none;
+  }
+  .ui-accordion-header .ui-accordion-header-icon {
+    background-image: none;
+  }
+  .ui-accordion-content {
+    padding: 0
+  }
+  .ui-widget-content {
+    background: none;
+    border: none;
+    color: $dark;
+    height: auto !important;
+    overflow: visible;
+  }
+  .ui-widget {
+  }
+}

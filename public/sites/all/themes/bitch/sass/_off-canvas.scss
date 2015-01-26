@@ -1,0 +1,355 @@
+/*
+ ** Off Canvas Styling
+ */
+
+$tout-button-height: 54px;
+$tablet-button-height: 106px;
+$transition: .5s all ease;
+
+@mixin tout-position {
+  transition: $transition;
+  float: left;
+  position: absolute;
+  width: 75%; // 18 / 24 total columns
+
+  @media screen and (max-width: $tablet - 1) {
+    width: 91.6666667%; // 22 / 24 total columns
+  }
+}
+
+@mixin tout-position-left {
+  @include tout-position;
+  left: -100%;
+}
+
+@mixin tout-position-right {
+  @include tout-position;
+  right: -100%;
+}
+
+@mixin tout-active {
+  width: 75%; // 18 / 24 total columns
+
+  @media screen and (max-width: $tablet - 1) {
+    width: 91.6666667%; // 22 / 24 total columns
+  }
+}
+
+@mixin page-position-left {
+  margin-left: 75%; // 18 / 24 total columns
+
+  @media screen and (max-width: $tablet - 1) {
+    margin-left: 91.6666667%; // 22 / 24 total columns
+  }
+}
+
+@mixin page-position-right {
+  margin-left: -75%; // 18 / 24 total columns
+
+  @media screen and (max-width: $tablet - 1) {
+    margin-left: -91.6666667%; // 22 / 24 total columns
+  }
+}
+
+@mixin close-button {
+  font-family: $font-awesome;
+  font-size: 1.6em;
+  padding: 12px 24px;
+  cursor: pointer;
+  text-indent: -9999px;
+  z-index: 10;
+
+  &:after {
+    content: "\f00d"; // .fa-remove
+    color: yellow;
+    text-indent: 0;
+    float: left;
+  }
+}
+
+body {
+  overflow-x: hidden;
+}
+
+#header-mobile {
+  display: none;
+}
+
+// Set up positioning and transition effect for off-screen canvases
+.region-tout {
+
+  .block-menu-block.first,
+  .search-box {
+    @include tout-position-left;
+  }
+
+  .tout-menu,
+  .block-logintoboggan {
+    @include tout-position-right;
+  }
+
+}
+
+// Set up positioning and transition effect for close buttons
+.tout-close-left {
+  @include tout-position-left;
+  width: auto;
+}
+ .tout-close-right {
+  @include tout-position-right;
+  width: auto;
+}
+
+@media screen and (max-width: $laptop - 1) {
+
+  // Hide search and user menu for tablet
+  .header__region {
+    @include element-invisible;
+    .search-box,
+    .block-logintoboggan {
+      @include element-invisible;
+    }
+  }
+
+  // Hide navigation and tout menu for phone
+  @media screen and (max-width: $tablet - 1) {
+    #navigation {
+      @include element-invisible;
+    }
+    .header__region {
+      .tout-menu {
+        @include element-invisible;
+      }
+    }
+  }
+
+  // Resize header
+  #header {
+    left: 16.6666667%; // 4 / 24 toal columns
+    width: 66.6666667%; // 16 / 24 total columns
+  }
+
+  // Header Buttons
+  #header-mobile {
+    position: absolute;
+    width: 100%;
+    display: block;
+
+    // Add buttons for tablet
+    h2 {
+      color: $yellow;
+      display: block;
+      height: 0;
+      padding-bottom: 16.66666667%;
+      width: 16.6666667% !important; // 4 / 24 total columns
+      margin: 0;
+      text-indent: -9999px;
+
+      &.search-header {
+        clear: left;
+        float: left;
+
+        &:after {
+          content: "\f002"; // .fa-search
+          float: left;
+          font-family: $font-awesome;
+          padding: 35%;
+          text-indent: 0;
+        }
+      }
+
+      &.login-header {
+        float: right;
+
+        &:after {
+          content: "\f007"; // .fa-user
+          float: right;
+          font-family: $font-awesome;
+          padding: 35%;
+          text-indent: 0;
+        }
+      }
+
+      &.menu-header,
+      &.tout-header {
+        display: none;
+      }
+
+      // Add buttons for phone, reposition search button
+      @media screen and (max-width: $tablet - 1 ) {
+
+        &.menu-header {
+          display: block;
+          float: left;
+          width: 16.6666667% !important; // 4 / 24 total columns
+
+
+          &:after {
+            content: "\f0c9"; // .fa-bars
+            float: left;
+            font-family: $font-awesome;
+            padding: 35%;
+            text-indent: 0;
+          }
+        }
+
+        &.tout-header {
+          display: block;
+          clear: right;
+          float: right;
+          top: $tout-button-height;
+
+          &:after {
+            content: "\f07a"; // .fa-shopping-cart
+            float: right;
+            font-family: $font-awesome;
+            padding: 35%;
+            text-indent: 0;
+          }
+        }
+      }
+    }
+  }
+
+  // Set up positioning and transition effect for #page
+  #page {
+    transition: $transition;
+    margin: 0;
+    float: left;
+    position: relative;
+  }
+
+  .region-tout {
+    .block-menu-block.first,
+    .search-box,
+    .block-logintoboggan,
+    .tout-menu {
+      background: $dark;
+      color: $yellow;
+      font-family: $brandon;
+      font-size: 1.6em;
+      font-weight: 900;
+      min-height: 100%;
+      text-transform: uppercase;
+
+      a {
+        color: $yellow;
+      }
+    }
+  }
+
+  // Individual tout block styling
+  .region-tout {
+
+    // Main Menu
+    .block-menu-block.first {
+
+      h2.block__title {
+        @include element-invisible;
+      }
+
+      ul {
+        list-style-type: none;
+
+        li.menu__item.is-leaf {
+          list-style: none;
+          margin-bottom: 0.5em;
+        }
+      }
+    }
+
+    // Search block
+    .search-box {
+
+    }
+
+    // Login block
+    .block-logintoboggan {
+
+    }
+
+    // Tout menu
+    .tout-menu {
+
+      h2.block__title {
+        @include element-invisible;
+      }
+
+      ul {
+        list-style-type: none;
+
+        li.menu__item.is-leaf {
+          list-style: none;
+          margin-bottom: 0.5em;
+          font-size: 18px;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+
+  // Close buttons
+  .tout-close-left {
+    .menu-active &,
+    .search-active & {
+      @include close-button;
+      left: 0;
+    }
+  }
+  .tout-close-right {
+    .login-active &,
+    .tout-active & {
+      @include close-button;
+      right: 0;
+      
+      &:after {
+        float: right;
+      }
+    }
+  }
+
+  // Active tout blocks positioning
+  .menu-active {
+    .block-menu-block.first {
+      @include tout-active;
+      left: 0;
+    }
+
+    #page {
+      @include page-position-left;
+    }
+  }
+
+  .search-active {
+    .region-tout .search-box {
+      @include tout-active;
+      left: 0;
+    }
+
+    #page {
+      @include page-position-left;
+    }
+  }
+
+  .login-active {
+    .block-logintoboggan {
+      @include tout-active;
+      right: 0;
+    }
+
+    #page {
+      @include page-position-right;
+    }
+  }
+
+  .tout-active {
+    .tout-menu {
+      @include tout-active;
+      right: 0;
+    }
+
+    #page {
+      @include page-position-right;
+    }
+  }
+}

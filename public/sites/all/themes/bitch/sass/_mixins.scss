@@ -35,3 +35,22 @@
     @include element-invisible-off;
   }
 }
+
+// Use for grid items with custom width and position
+@mixin grid-empty {
+  display: inline;
+  float: left;
+  position: relative;
+}
+
+// Button styles
+@mixin button($text: $yellow, $bg: $plum) {
+  background: $bg;
+  border: none;
+  color: $text;
+  font-family: $tahoma;
+  font-size: 0.733333333em; // 0.733333333 * 15 = 11px
+  line-height: 1;
+  padding: 5px 20px;
+  text-transform: uppercase;
+}
