@@ -31,8 +31,19 @@ function multifield_uuid_entity_features_export_render_alter($entity_type, &$exp
  * Implements hook_uuid_entity_features_rebuild_alter().
  */
 function multifield_uuid_entity_features_rebuild_alter($entity_type, &$entity, $data, $module) {
-  $fields = multifield_get_field_items_iterator($entity, $entity_type);
-  _entity_reference_uuid_entity_features_rebuild_fetch_uuid_references($fields);
+  if ($entity_type == 'multifield') {
+    return;
+  }
+  $multifields = multifield_get_field_items_iterator($export, $entity_type);
+  $module = 'multifield';
+  foreach ($multifields as $multifield_type) {
+    foreach ($multifield_type as $language => $multifield_instances) {
+      foreach ($multifield_instances as $multifield_instance) {
+        $type = 'multifield';
+        drupal_alter('uuid_entity_features_rebuild', $type, $multifield_instance, $multifield_instance, $module);
+      }
+    }
+  }
 }
 
 /**
