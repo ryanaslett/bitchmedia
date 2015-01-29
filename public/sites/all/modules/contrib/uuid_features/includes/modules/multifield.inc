@@ -6,6 +6,7 @@
 
 /**
  * Implements hook_uuid_entity_features_export_render_alter().
+ * TODO: the classes that get created should be turned back into regular ol arrays at this stage.
  */
 function multifield_uuid_entity_features_export_render_alter($entity_type, &$export, &$entity, $module) {
 
@@ -29,18 +30,21 @@ function multifield_uuid_entity_features_export_render_alter($entity_type, &$exp
 
 /**
  * Implements hook_uuid_entity_features_rebuild_alter().
+ * TODO: the classes that get created should be turned back into regular ol arrays at this stage.
  */
-function multifield_uuid_entity_features_rebuild_alter($entity_type, &$entity, $data, $module) {
+function multifield_uuid_entity_features_rebuild_alter($entity_type, &$export, &$entity, $module) {
   if ($entity_type == 'multifield') {
     return;
   }
   $multifields = multifield_get_field_items_iterator($export, $entity_type);
   $module = 'multifield';
   foreach ($multifields as $multifield_type) {
-    foreach ($multifield_type as $language => $multifield_instances) {
-      foreach ($multifield_instances as $multifield_instance) {
+    foreach ($multifield_type as $language => &$multifield_instances) {
+      foreach ($multifield_instances as &$multifield_instance) {
         $type = 'multifield';
         drupal_alter('uuid_entity_features_rebuild', $type, $multifield_instance, $multifield_instance, $module);
+        // Convert the multifield back to an array.
+        $multifield_instance = (array) $multifield_instance;
       }
     }
   }
@@ -78,7 +82,7 @@ function multifield_get_field_items_iterator(&$export, $entity_type) {
 
         foreach ($field as $language => &$field_items) {
           $ids = multifield_items_extract_ids($field_items);
-          $entities = entity_load('multifield', $ids);
+          $entities = array_values(entity_load('multifield', $ids));
           $field[$language] = $entities;
         }
       }
@@ -86,6 +90,6 @@ function multifield_get_field_items_iterator(&$export, $entity_type) {
     }
   }
 
-  //$return['field_site_social_media']['und']['1868090']->field_social_media_reference['und'][0]['target_id'] = "FOOQINGA";
+//$return['field_site_social_media']['und']['1868090']->field_social_media_reference['und'][0]['target_id'] = "FOOQINGA";
   return $return;
 }
