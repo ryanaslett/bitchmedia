@@ -30,7 +30,6 @@ function bitch_social_media_uuid_features_default_terms() {
         0 => array(
           'value' => 'Facebook',
           'format' => NULL,
-          'safe_value' => 'Facebook',
         ),
       ),
     ),
@@ -40,13 +39,10 @@ function bitch_social_media_uuid_features_default_terms() {
           'value' => '',
           'summary' => NULL,
           'format' => 'raw_html',
-          'safe_value' => '',
           'safe_summary' => '',
         ),
       ),
     ),
-    'name_original' => 'Facebook',
-    'description_original' => NULL,
     'metatags' => array(),
   );
   $terms[] = array(
@@ -69,7 +65,6 @@ function bitch_social_media_uuid_features_default_terms() {
         0 => array(
           'value' => 'Twitter',
           'format' => NULL,
-          'safe_value' => 'Twitter',
         ),
       ),
     ),
@@ -79,13 +74,10 @@ function bitch_social_media_uuid_features_default_terms() {
           'value' => '',
           'summary' => '',
           'format' => 'raw_html',
-          'safe_value' => '',
           'safe_summary' => '',
         ),
       ),
     ),
-    'name_original' => 'Twitter',
-    'description_original' => NULL,
     'metatags' => array(),
   );
   $terms[] = array(
@@ -108,7 +100,6 @@ function bitch_social_media_uuid_features_default_terms() {
         0 => array(
           'value' => 'Instagram',
           'format' => NULL,
-          'safe_value' => 'Instagram',
         ),
       ),
     ),
@@ -118,13 +109,10 @@ function bitch_social_media_uuid_features_default_terms() {
           'value' => '',
           'summary' => '',
           'format' => 'raw_html',
-          'safe_value' => '',
           'safe_summary' => '',
         ),
       ),
     ),
-    'name_original' => 'Instagram',
-    'description_original' => NULL,
     'metatags' => array(),
   );
   $terms[] = array(
@@ -147,7 +135,6 @@ function bitch_social_media_uuid_features_default_terms() {
         0 => array(
           'value' => 'Tumblr',
           'format' => NULL,
-          'safe_value' => 'Tumblr',
         ),
       ),
     ),
@@ -157,13 +144,10 @@ function bitch_social_media_uuid_features_default_terms() {
           'value' => 'Tumblr',
           'summary' => NULL,
           'format' => 'raw_html',
-          'safe_value' => 'Tumblr',
           'safe_summary' => '',
         ),
       ),
     ),
-    'name_original' => 'Tumblr',
-    'description_original' => 'Tumblr',
     'metatags' => array(),
   );
   $terms[] = array(
@@ -186,7 +170,6 @@ function bitch_social_media_uuid_features_default_terms() {
         0 => array(
           'value' => 'Google+',
           'format' => NULL,
-          'safe_value' => 'Google+',
         ),
       ),
     ),
@@ -196,13 +179,10 @@ function bitch_social_media_uuid_features_default_terms() {
           'value' => '',
           'summary' => '',
           'format' => 'raw_html',
-          'safe_value' => '',
           'safe_summary' => '',
         ),
       ),
     ),
-    'name_original' => 'Google+',
-    'description_original' => NULL,
     'metatags' => array(),
   );
   $terms[] = array(
@@ -225,7 +205,6 @@ function bitch_social_media_uuid_features_default_terms() {
         0 => array(
           'value' => 'Pinterest',
           'format' => NULL,
-          'safe_value' => 'Pinterest',
         ),
       ),
     ),
@@ -235,13 +214,10 @@ function bitch_social_media_uuid_features_default_terms() {
           'value' => 'Pinterest',
           'summary' => NULL,
           'format' => 'raw_html',
-          'safe_value' => 'Pinterest',
           'safe_summary' => '',
         ),
       ),
     ),
-    'name_original' => 'Pinterest',
-    'description_original' => 'Pinterest',
     'metatags' => array(),
   );
   return $terms;
