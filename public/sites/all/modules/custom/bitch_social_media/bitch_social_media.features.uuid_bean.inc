@@ -27,7 +27,7 @@ function bitch_social_media_uuid_features_default_beans() {
     'uuid' => '1bd88be2-5bac-4107-a294-4ad87e594d4e',
     'field_site_social_media' => array(
       'und' => array(
-        1868087 => array(
+        0 => array(
           'id' => 1868087,
           'field_link_url' => array(
             'und' => array(
@@ -71,7 +71,7 @@ function bitch_social_media_uuid_features_default_beans() {
           ),
           'type' => 'social_media_link',
         ),
-        1868088 => array(
+        1 => array(
           'id' => 1868088,
           'field_link_url' => array(
             'und' => array(
@@ -115,7 +115,7 @@ function bitch_social_media_uuid_features_default_beans() {
           ),
           'type' => 'social_media_link',
         ),
-        1868089 => array(
+        2 => array(
           'id' => 1868089,
           'field_link_url' => array(
             'und' => array(
@@ -159,7 +159,7 @@ function bitch_social_media_uuid_features_default_beans() {
           ),
           'type' => 'social_media_link',
         ),
-        1868090 => array(
+        3 => array(
           'id' => 1868090,
           'field_link_url' => array(
             'und' => array(
@@ -232,7 +232,7 @@ function bitch_social_media_uuid_features_default_beans() {
     'uuid' => 'a299eb23-dd2d-477f-b3bd-ba86f2ccd8e5',
     'field_site_social_media' => array(
       'und' => array(
-        1868084 => array(
+        0 => array(
           'id' => 1868084,
           'field_link_url' => array(
             'und' => array(
@@ -276,7 +276,7 @@ function bitch_social_media_uuid_features_default_beans() {
           ),
           'type' => 'social_media_link',
         ),
-        1868083 => array(
+        1 => array(
           'id' => 1868083,
           'field_link_url' => array(
             'und' => array(
@@ -320,7 +320,7 @@ function bitch_social_media_uuid_features_default_beans() {
           ),
           'type' => 'social_media_link',
         ),
-        1868086 => array(
+        2 => array(
           'id' => 1868086,
           'field_link_url' => array(
             'und' => array(
@@ -364,7 +364,7 @@ function bitch_social_media_uuid_features_default_beans() {
           ),
           'type' => 'social_media_link',
         ),
-        1868085 => array(
+        3 => array(
           'id' => 1868085,
           'field_link_url' => array(
             'und' => array(
