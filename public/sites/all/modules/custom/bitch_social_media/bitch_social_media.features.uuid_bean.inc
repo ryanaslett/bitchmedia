@@ -13,7 +13,7 @@ function bitch_social_media_uuid_features_default_beans() {
   $beans[] = array(
     'label' => 'Social Media Footer Block',
     'description' => NULL,
-    'title' => NULL,
+    'title' => '',
     'type' => 'site_social_media_block',
     'data' => array(
       'view_mode' => 'default',
@@ -196,8 +196,8 @@ function bitch_social_media_uuid_features_default_beans() {
           'field_social_media_reference' => array(
             'und' => array(
               0 => array(
-                'target_id' => '824ad932-1567-459b-8627-58c53ba5aafb',
-                'uuid' => '824ad932-1567-459b-8627-58c53ba5aafb',
+                'target_id' => '624cd659-a8c5-4fbe-a1b2-f8817a6378aa',
+                'uuid' => '624cd659-a8c5-4fbe-a1b2-f8817a6378aa',
               ),
             ),
           ),
@@ -218,7 +218,7 @@ function bitch_social_media_uuid_features_default_beans() {
   $beans[] = array(
     'label' => 'Site Social Media',
     'description' => NULL,
-    'title' => NULL,
+    'title' => '',
     'type' => 'site_social_media_block',
     'data' => array(
       'view_mode' => 'default',
@@ -401,8 +401,8 @@ function bitch_social_media_uuid_features_default_beans() {
           'field_social_media_reference' => array(
             'und' => array(
               0 => array(
-                'target_id' => '824ad932-1567-459b-8627-58c53ba5aafb',
-                'uuid' => '824ad932-1567-459b-8627-58c53ba5aafb',
+                'target_id' => '624cd659-a8c5-4fbe-a1b2-f8817a6378aa',
+                'uuid' => '624cd659-a8c5-4fbe-a1b2-f8817a6378aa',
               ),
             ),
           ),
