@@ -24,6 +24,7 @@ function multifield_uuid_entity_features_export_render_alter($entity_type, &$exp
     }
   }
    #_entity_reference_uuid_entity_features_export_set_uuid_references($fields);
+  $foo = '';
 }
 
 /**
@@ -63,16 +64,17 @@ function multifield_get_field_items_iterator(&$export, $entity_type) {
         // Sets field to a reference on the export.
         $field = &$export->{$info['field_name']};
         // Gather all the ids from the export.
-        // TODO: fix this to use _multifield_field_item_to_entity.
+
         foreach ($field as $language => &$field_items) {
           $ids = multifield_items_extract_ids($field_items);
           $entities = entity_load('multifield', $ids);
-          $return[$info['field_name']] = array(
-            $language => &$entities,
-          );
+          $field[$language] = $entities;
         }
       }
+      $return[$info['field_name']] = $field;
     }
   }
+
+  //$return['field_site_social_media']['und']['1868090']->field_social_media_reference['und'][0]['target_id'] = "FOOQINGA";
   return $return;
 }
