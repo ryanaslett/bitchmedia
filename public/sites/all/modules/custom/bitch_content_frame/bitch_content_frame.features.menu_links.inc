@@ -550,41 +550,6 @@ function bitch_content_frame_menu_default_menu_links() {
     'weight' => 0,
     'customized' => 0,
   );
-  // Exported menu link: user-menu_log-out:user/logout
-  $menu_links['user-menu_log-out:user/logout'] = array(
-    'menu_name' => 'user-menu',
-    'link_path' => 'user/logout',
-    'router_path' => 'user/logout',
-    'link_title' => 'Log out',
-    'options' => array(
-      'identifier' => 'user-menu_log-out:user/logout',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 10,
-    'customized' => 0,
-  );
-  // Exported menu link: user-menu_user-account:user
-  $menu_links['user-menu_user-account:user'] = array(
-    'menu_name' => 'user-menu',
-    'link_path' => 'user',
-    'router_path' => 'user',
-    'link_title' => 'User account',
-    'options' => array(
-      'alter' => TRUE,
-      'identifier' => 'user-menu_user-account:user',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -10,
-    'customized' => 0,
-  );
   // Translatables
   // Included for use with string extractors like potx.
   t('Activism');
@@ -601,7 +566,6 @@ function bitch_content_frame_menu_default_menu_links() {
   t('FAQ');
   t('Give a gift');
   t('Internships');
-  t('Log out');
   t('Magazine');
   t('Media');
   t('Music');
@@ -612,7 +576,6 @@ function bitch_content_frame_menu_default_menu_links() {
   t('Screen');
   t('Shop');
   t('Subscribe');
-  t('User account');
   t('Vampires');
 
 
