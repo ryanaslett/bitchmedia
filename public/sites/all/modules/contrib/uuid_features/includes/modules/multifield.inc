@@ -22,7 +22,7 @@ function multifield_uuid_entity_features_export_render_alter($entity_type, &$exp
         $type = 'multifield';
         drupal_alter('uuid_entity_features_export_render', $type, $multifield_instance, $multifield_instance, $module);
         $multifield_instance = _multifield_field_entity_to_item($multifield_instance);
-        unset($multifield_instance['id']);
+        //unset($multifield_instance['id']);
       }
     }
   }
@@ -47,7 +47,7 @@ function multifield_uuid_entity_features_rebuild_alter($entity_type, &$export, &
         drupal_alter('uuid_entity_features_rebuild', $type, $multifield_instance, $multifield_instance, $module);
         // Convert the multifield back to an array.
         $multifield_instance = _multifield_field_entity_to_item($multifield_instance);
-        unset($multifield_instance['id']);
+        //unset($multifield_instance['id']);
       }
     }
   }
