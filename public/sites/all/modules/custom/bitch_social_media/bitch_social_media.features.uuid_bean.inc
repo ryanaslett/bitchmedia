@@ -28,7 +28,6 @@ function bitch_social_media_uuid_features_default_beans() {
     'field_site_social_media' => array(
       'und' => array(
         0 => array(
-          'id' => 1868087,
           'field_link_url' => array(
             'und' => array(
               0 => array(
@@ -69,10 +68,8 @@ function bitch_social_media_uuid_features_default_beans() {
               ),
             ),
           ),
-          'type' => 'social_media_link',
         ),
         1 => array(
-          'id' => 1868088,
           'field_link_url' => array(
             'und' => array(
               0 => array(
@@ -113,10 +110,8 @@ function bitch_social_media_uuid_features_default_beans() {
               ),
             ),
           ),
-          'type' => 'social_media_link',
         ),
         2 => array(
-          'id' => 1868089,
           'field_link_url' => array(
             'und' => array(
               0 => array(
@@ -157,10 +152,8 @@ function bitch_social_media_uuid_features_default_beans() {
               ),
             ),
           ),
-          'type' => 'social_media_link',
         ),
         3 => array(
-          'id' => 1868090,
           'field_link_url' => array(
             'und' => array(
               0 => array(
@@ -201,7 +194,6 @@ function bitch_social_media_uuid_features_default_beans() {
               ),
             ),
           ),
-          'type' => 'social_media_link',
         ),
       ),
     ),
@@ -233,7 +225,6 @@ function bitch_social_media_uuid_features_default_beans() {
     'field_site_social_media' => array(
       'und' => array(
         0 => array(
-          'id' => 1868084,
           'field_link_url' => array(
             'und' => array(
               0 => array(
@@ -274,10 +265,8 @@ function bitch_social_media_uuid_features_default_beans() {
               ),
             ),
           ),
-          'type' => 'social_media_link',
         ),
         1 => array(
-          'id' => 1868083,
           'field_link_url' => array(
             'und' => array(
               0 => array(
@@ -318,10 +307,8 @@ function bitch_social_media_uuid_features_default_beans() {
               ),
             ),
           ),
-          'type' => 'social_media_link',
         ),
         2 => array(
-          'id' => 1868086,
           'field_link_url' => array(
             'und' => array(
               0 => array(
@@ -362,10 +349,8 @@ function bitch_social_media_uuid_features_default_beans() {
               ),
             ),
           ),
-          'type' => 'social_media_link',
         ),
         3 => array(
-          'id' => 1868085,
           'field_link_url' => array(
             'und' => array(
               0 => array(
@@ -406,7 +391,6 @@ function bitch_social_media_uuid_features_default_beans() {
               ),
             ),
           ),
-          'type' => 'social_media_link',
         ),
       ),
     ),
