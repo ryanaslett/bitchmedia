@@ -6,11 +6,10 @@
 
 /**
  * Implements hook_uuid_entity_features_export_render_alter().
- * TODO: the classes that get created should be turned back into regular ol arrays at this stage.
  */
 function multifield_uuid_entity_features_export_render_alter($entity_type, &$export, &$entity, $module) {
 
-  // prevent recursive loop
+  // Prevent Recursion.
   if ($entity_type == 'multifield') {
     return;
   }
@@ -22,18 +21,13 @@ function multifield_uuid_entity_features_export_render_alter($entity_type, &$exp
         $type = 'multifield';
         drupal_alter('uuid_entity_features_export_render', $type, $multifield_instance, $multifield_instance, $module);
         $multifield_instance = _multifield_field_entity_to_item($multifield_instance);
-        //$multifield_instance = (array) $multifield_instance;
-        //unset($multifield_instance['id']);
       }
     }
   }
-   #_entity_reference_uuid_entity_features_export_set_uuid_references($fields);
-  $foo = '';
 }
 
 /**
  * Implements hook_uuid_entity_features_rebuild_alter().
- * TODO: the classes that get created should be turned back into regular ol arrays at this stage.
  */
 function multifield_uuid_entity_features_rebuild_alter($entity_type, &$export, &$entity, $module) {
   if ($entity_type == 'multifield') {
@@ -48,8 +42,6 @@ function multifield_uuid_entity_features_rebuild_alter($entity_type, &$export, &
         drupal_alter('uuid_entity_features_rebuild', $type, $multifield_instance, $multifield_instance, $module);
         // Convert the multifield back to an array.
         $multifield_instance = _multifield_field_entity_to_item($multifield_instance);
-        //$multifield_instance = (array) $multifield_instance;
-        //unset($multifield_instance['id']);
       }
     }
   }
@@ -58,22 +50,21 @@ function multifield_uuid_entity_features_rebuild_alter($entity_type, &$export, &
 /**
  * Helper function to get multifields on an entity.
  *
- *
  * @param object $export
  *   The entity object to export e.g. a node/bean/etc.
  *
  * @return array
- *   A list of multifield entities to be further processed.
+ *   An array of multifields as entities.
  */
 function multifield_get_field_items_iterator(&$export, $entity_type) {
-  // Get all the field definitions off of the parent entity
+  // Get the field definitions from the parent entity.
   list($entity_id, $revision_id, $export_bundle) = entity_extract_ids($entity_type, $export);
   $field_definitions = field_info_instances($entity_type, $export_bundle);
   if (!isset($export_bundle)) {
     $field_definitions = reset($field_definitions);
   }
   $return = array();
-  // Load up all the field definitions and find the multifield ones
+  // Loop through the field definitions and find the multifields.
   foreach ($field_definitions as $field_instance) {
     // Get the info for a specific field so we can see
     // if it is a multifield or not.
@@ -96,7 +87,5 @@ function multifield_get_field_items_iterator(&$export, $entity_type) {
       $return[$info['field_name']] = $field;
     }
   }
-
-//$return['field_site_social_media']['und']['1868090']->field_social_media_reference['und'][0]['target_id'] = "FOOQINGA";
   return $return;
 }
