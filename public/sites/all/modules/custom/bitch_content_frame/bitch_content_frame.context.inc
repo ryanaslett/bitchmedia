@@ -61,6 +61,12 @@ function bitch_content_frame_context_default_contexts() {
           'region' => 'navigation',
           'weight' => '-17',
         ),
+        'menu_block-4' => array(
+          'module' => 'menu_block',
+          'delta' => '4',
+          'region' => 'navigation',
+          'weight' => '-10',
+        ),
         'bean-social-media-footer-block' => array(
           'module' => 'bean',
           'delta' => 'social-media-footer-block',

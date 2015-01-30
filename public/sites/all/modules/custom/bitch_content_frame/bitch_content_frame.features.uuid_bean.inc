@@ -13,7 +13,7 @@ function bitch_content_frame_uuid_features_default_beans() {
   $beans[] = array(
     'label' => 'Copyright Block',
     'description' => NULL,
-    'title' => NULL,
+    'title' => '',
     'type' => 'rich_text_block',
     'data' => array(
       'view_mode' => 'default',
