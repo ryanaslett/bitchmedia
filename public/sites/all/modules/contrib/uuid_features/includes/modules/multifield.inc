@@ -21,8 +21,8 @@ function multifield_uuid_entity_features_export_render_alter($entity_type, &$exp
       foreach ($multifield_instances as &$multifield_instance) {
         $type = 'multifield';
         drupal_alter('uuid_entity_features_export_render', $type, $multifield_instance, $multifield_instance, $module);
-        //$multifield_instance = _multifield_field_entity_to_item($multifield_instance);
-        $multifield_instance = (array) $multifield_instance;
+        $multifield_instance = _multifield_field_entity_to_item($multifield_instance);
+        //$multifield_instance = (array) $multifield_instance;
         //unset($multifield_instance['id']);
       }
     }
@@ -47,8 +47,8 @@ function multifield_uuid_entity_features_rebuild_alter($entity_type, &$export, &
         $type = 'multifield';
         drupal_alter('uuid_entity_features_rebuild', $type, $multifield_instance, $multifield_instance, $module);
         // Convert the multifield back to an array.
-        //$multifield_instance = _multifield_field_entity_to_item($multifield_instance);
-        $multifield_instance = (array) $multifield_instance;
+        $multifield_instance = _multifield_field_entity_to_item($multifield_instance);
+        //$multifield_instance = (array) $multifield_instance;
         //unset($multifield_instance['id']);
       }
     }
@@ -58,11 +58,12 @@ function multifield_uuid_entity_features_rebuild_alter($entity_type, &$export, &
 /**
  * Helper function to get multifields on an entity.
  *
+ *
  * @param object $export
- *   The entity object to export e.g. a node.
+ *   The entity object to export e.g. a node/bean/etc.
  *
  * @return array
- *   A filtered list of fields of the same type.
+ *   A list of multifield entities to be further processed.
  */
 function multifield_get_field_items_iterator(&$export, $entity_type) {
   // Get all the field definitions off of the parent entity
@@ -79,16 +80,17 @@ function multifield_get_field_items_iterator(&$export, $entity_type) {
     $info = field_info_field($field_instance['field_name']);
     // If the field is a multifield, proceed.
     if ($info['module'] == 'multifield') {
+      $multifield_machine_name = multifield_extract_multifield_machine_name($info);
       // If the field is set.
       if (isset($export->{$info['field_name']})) {
         // Sets field to a reference on the export.
         $field = &$export->{$info['field_name']};
-        // Gather all the ids from the export.
-
+        // Add the field type to the entities and make them pseudo entities.
         foreach ($field as $language => &$field_items) {
-          $ids = multifield_items_extract_ids($field_items);
-          $entities = array_values(entity_load('multifield', $ids));
-          $field[$language] = $entities;
+          foreach ($field_items as &$multifield) {
+            $multifield = _multifield_field_item_to_entity($multifield_machine_name, $multifield);
+          }
+          $field[$language] = $field_items;
         }
       }
       $return[$info['field_name']] = $field;

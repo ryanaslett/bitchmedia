@@ -69,7 +69,6 @@ function bitch_social_media_uuid_features_default_beans() {
               ),
             ),
           ),
-          'type' => 'social_media_link',
         ),
         1 => array(
           'id' => 1868088,
@@ -113,7 +112,6 @@ function bitch_social_media_uuid_features_default_beans() {
               ),
             ),
           ),
-          'type' => 'social_media_link',
         ),
         2 => array(
           'id' => 1868089,
@@ -157,7 +155,6 @@ function bitch_social_media_uuid_features_default_beans() {
               ),
             ),
           ),
-          'type' => 'social_media_link',
         ),
         3 => array(
           'id' => 1868090,
@@ -196,12 +193,11 @@ function bitch_social_media_uuid_features_default_beans() {
           'field_social_media_reference' => array(
             'und' => array(
               0 => array(
-                'target_id' => '624cd659-a8c5-4fbe-a1b2-f8817a6378aa',
-                'uuid' => '624cd659-a8c5-4fbe-a1b2-f8817a6378aa',
+                'target_id' => '824ad932-1567-459b-8627-58c53ba5aafb',
+                'uuid' => '824ad932-1567-459b-8627-58c53ba5aafb',
               ),
             ),
           ),
-          'type' => 'social_media_link',
         ),
       ),
     ),
@@ -274,7 +270,6 @@ function bitch_social_media_uuid_features_default_beans() {
               ),
             ),
           ),
-          'type' => 'social_media_link',
         ),
         1 => array(
           'id' => 1868083,
@@ -318,7 +313,6 @@ function bitch_social_media_uuid_features_default_beans() {
               ),
             ),
           ),
-          'type' => 'social_media_link',
         ),
         2 => array(
           'id' => 1868086,
@@ -362,7 +356,6 @@ function bitch_social_media_uuid_features_default_beans() {
               ),
             ),
           ),
-          'type' => 'social_media_link',
         ),
         3 => array(
           'id' => 1868085,
@@ -401,12 +394,11 @@ function bitch_social_media_uuid_features_default_beans() {
           'field_social_media_reference' => array(
             'und' => array(
               0 => array(
-                'target_id' => '624cd659-a8c5-4fbe-a1b2-f8817a6378aa',
-                'uuid' => '624cd659-a8c5-4fbe-a1b2-f8817a6378aa',
+                'target_id' => '824ad932-1567-459b-8627-58c53ba5aafb',
+                'uuid' => '824ad932-1567-459b-8627-58c53ba5aafb',
               ),
             ),
           ),
-          'type' => 'social_media_link',
         ),
       ),
     ),
