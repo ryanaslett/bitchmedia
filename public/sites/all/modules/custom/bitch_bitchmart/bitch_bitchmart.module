@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Bitchmart feature.
+ */
+
+include_once 'bitch_bitchmart.features.inc';
