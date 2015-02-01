@@ -308,6 +308,13 @@ function bitch_users_user_default_permissions() {
     'module' => 'exclude_node_title',
   );
 
+  // Exported permission: 'administer fancybox'.
+  $permissions['administer fancybox'] = array(
+    'name' => 'administer fancybox',
+    'roles' => array(),
+    'module' => 'fancybox',
+  );
+
   // Exported permission: 'administer features'.
   $permissions['administer features'] = array(
     'name' => 'administer features',
