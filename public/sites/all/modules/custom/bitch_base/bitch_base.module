@@ -141,18 +141,18 @@ function bitch_base_multifield__tracked_link($variables) {
  * Formats a tracked-link with google analytics event tracking codes.
  */
 function bitch_base_multifield__social_media_link($variables) {
-  $element = &$variables['element'];
+  $elements = &$variables['element'];
+  $output = '';
+  foreach (element_children($elements) as $key) {
+    if (isset($elements[$key]['field_link_url'])) {
+      $link_markup = '<a href="' . $elements[$key]['field_link_url'][0]['#markup'] . '" target="_blank" onClick="_gaq.push([\'_trackEvent\', \'' . $elements[$key]['field_analytics_event'][0]['#markup'] . '\', \'' . $elements[$key]['field_analytics_action'][0]['#markup'] . '\', \'' . $elements[$key]['field_analytics_label'][0]['#markup'] . '\']);">' . drupal_render($elements[$key]['field_social_media_reference']) . '</a>';
 
-  if (isset($element[0]['field_link_url'])) {
-    $output = '<a href="' . $element[0]['field_link_url'][0]['#markup'] . '" target="_blank" onClick="_gaq.push([\'_trackEvent\', \'' . $element[0]['field_analytics_event'][0]['#markup'] . '\', \'' . $element[0]['field_analytics_action'][0]['#markup'] . '\', \'' . $element[0]['field_analytics_label'][0]['#markup'] . '\']);">' . drupal_render($element[0]['field_social_media_reference']) . '</a>';
+      $output .= '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $link_markup . '</div>';
 
-    $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
-    hide($element);
-    return $output;
+    }
   }
-  else {
-    return ' ';
-  }
+  hide($elements);
+  return $output;
 }
 
 /**
@@ -220,24 +220,27 @@ function bitch_base_multifield_field_presave($entity_type, $entity, $field, $ins
   if(($field['type'] == 'tracked_link') || ($field['type'] == 'social_media_link')){
     $things = multifield_type_get_subfields($field['type']);
 
-    // If the label is set to default and its on a user object, that label should be the username.
+    // If the label is set to default and its on a user object, that label
+    // should be the username.
     if ($entity_type == 'user') {
       $items[0]['field_analytics_label'][LANGUAGE_NONE][0]['value'] = $entity->name;
     }
 
-    if (!empty($items[0]['field_link_url'][LANGUAGE_NONE][0]['value'])) {
-      // We want to make sure that the multifields retain their default values if nothing is set.
-      foreach ($things as $field) {
-        // If the label is still default, set it to username
-        if (empty($items[0][$field][LANGUAGE_NONE][0]['value'])) {
-          $items[0][$field] = $instance['default_value'][0][$field];
-        }
-      }
-    }
+    // TODO: revisit default social media links on user profiles.
+//    if (!empty($items[0]['field_link_url'][LANGUAGE_NONE][0]['value'])) {
+//      // We want to make sure that the multifields retain their default values
+//      // if nothing is set.
+//      foreach ($things as $field) {
+//        if (empty($items[0][$field][LANGUAGE_NONE][0]['value'])) {
+//          $items[0][$field] = $instance['default_value'][0][$field];
+//        }
+//      }
+//    }
     // If the label is still not set, set it to the URL.
-    if (empty($items[0]['field_link_label'][LANGUAGE_NONE][0]['value']) && !empty($items[0]['field_link_url'][LANGUAGE_NONE][0]['value'])) {
-      $items[0]['field_link_label'][LANGUAGE_NONE][0]['value'] = $items[0]['field_link_url'][LANGUAGE_NONE][0]['value'];
-    }
+    // I dont think there is a field_link_label anymore? Maybe on tracked links?
+//    if (empty($items[0]['field_link_label'][LANGUAGE_NONE][0]['value']) && !empty($items[0]['field_link_url'][LANGUAGE_NONE][0]['value'])) {
+//      $items[0]['field_link_label'][LANGUAGE_NONE][0]['value'] = $items[0]['field_link_url'][LANGUAGE_NONE][0]['value'];
+//    }
   }
 }
 

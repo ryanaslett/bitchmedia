@@ -1,0 +1,28 @@
+/*
+ ** Footer
+ */
+
+.menu-name-menu-footer-menu {
+
+  font-family: $franklin-gothic;
+
+  a {
+    color: $light-yellow;
+  }
+
+  .menu__item.is-leaf {
+    display: inline;
+    list-style-type: none;
+    list-style-image: none;
+  }
+
+  ul.menu {
+    padding: 0;
+
+    li {
+      border-right: 1px solid $light-yellow;
+      margin-left: 10px;
+      padding-right: 10px;
+    }
+  }
+}

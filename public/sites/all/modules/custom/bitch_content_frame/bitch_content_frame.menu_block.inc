@@ -29,11 +29,11 @@ function bitch_content_frame_menu_block_defaults() {
   $menu_block->disabled = FALSE; /* Edit this to true to make a default menu_block disabled initially */
   $menu_block->api_version = 1;
   $menu_block->name = '2';
-  $menu_block->label = 'Menu Block: Tout Menu';
+  $menu_block->label = 'Menu Block: Support Menu';
   $menu_block->description = '';
   $menu_block->depth = 0;
   $menu_block->expanded = 0;
-  $menu_block->follow = '';
+  $menu_block->follow = '0';
   $menu_block->level = 1;
   $menu_block->parent = 'menu-pitch-menu:0';
   $menu_block->sort = 0;

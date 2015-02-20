@@ -50,7 +50,7 @@ function multifield_field_info() {
           'hide_blank_items' => TRUE,
           'entity_translation_sync' => array('id'),
         ),
-        'no_ui' => TRUE,
+        'no_ui' => FALSE,
       );
     }
   }

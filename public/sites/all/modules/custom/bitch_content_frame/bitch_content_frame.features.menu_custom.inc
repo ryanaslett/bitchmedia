@@ -25,8 +25,8 @@ function bitch_content_frame_menu_default_menu_custom() {
   // Exported menu: menu-pitch-menu.
   $menus['menu-pitch-menu'] = array(
     'menu_name' => 'menu-pitch-menu',
-    'title' => 'Pitch Menu',
-    'description' => 'This is the menu button where we ask people to upgrae',
+    'title' => 'Support Menu',
+    'description' => 'This is the menu button where we ask people to upgrade',
   );
   // Exported menu: menu-topics-menu.
   $menus['menu-topics-menu'] = array(
@@ -44,12 +44,12 @@ function bitch_content_frame_menu_default_menu_custom() {
   // Included for use with string extractors like potx.
   t('Footer Menu');
   t('Main menu');
-  t('Pitch Menu');
+  t('Support Menu');
   t('The <em>Main</em> menu is used on many sites to show the major sections of the site, often in a top navigation bar.');
   t('The <em>User</em> menu contains links related to the user\'s account, as well as the \'Log out\' link.');
   t('The menu that has additional links at the bottom of the page.');
   t('This is for the minor topics that show up under the main menu');
-  t('This is the menu button where we ask people to upgrae');
+  t('This is the menu button where we ask people to upgrade');
   t('Topics Menu');
   t('User menu');
 

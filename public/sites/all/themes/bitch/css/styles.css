@@ -636,6 +636,13 @@ body {
       width: 100%;
       left: 0; } }
 
+.menu-name-menu-footer-menu {
+  display: inline;
+  float: left;
+  position: relative;
+  left: 4.1666667%;
+  width: 91.6666667%; }
+
 @media screen and (min-width: 1440px) {
   .region-sidebar-first {
     position: static !important;
@@ -1656,6 +1663,24 @@ html.js input.form-autocomplete {
     #navigation li:nth-child(-n+5) a {
       padding-left: 22px;
       padding-right: 22px; } }
+
+/*
+ ** Footer
+ */
+.menu-name-menu-footer-menu {
+  font-family: "franklin-gothic-urw", "Times New Roman", Times, Georgia, serif; }
+  .menu-name-menu-footer-menu a {
+    color: #FFF766; }
+  .menu-name-menu-footer-menu .menu__item.is-leaf {
+    display: inline;
+    list-style-type: none;
+    list-style-image: none; }
+  .menu-name-menu-footer-menu ul.menu {
+    padding: 0; }
+    .menu-name-menu-footer-menu ul.menu li {
+      border-right: 1px solid #FFF766;
+      margin-left: 10px;
+      padding-right: 10px; }
 
 /*
  ** Off Canvas Styling

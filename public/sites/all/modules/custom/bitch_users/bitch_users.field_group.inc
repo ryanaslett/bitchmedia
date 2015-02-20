@@ -55,6 +55,7 @@ function bitch_users_field_group_info() {
       1 => 'field_short_bio',
       2 => 'field_signature',
       3 => 'field_real_name',
+      4 => 'field_long_biography',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

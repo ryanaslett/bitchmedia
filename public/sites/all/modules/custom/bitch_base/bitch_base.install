@@ -1,0 +1,45 @@
+<?php
+/**
+ * @file
+ * Contains database update hooks to allow for portability
+ */
+
+/**
+ * Adds role for former authors.
+ */
+function bitch_base_update_7100() {
+  // Create the role for former authors.
+  db_query("INSERT INTO {role} SET rid = 16, name = 'Former Content Author', weight = 24");
+  // Update all former authors to grant the role.
+  db_query("INSERT INTO {users_roles}
+  SELECT DISTINCT
+    fdfca.field_content_author_target_id,
+    16
+  FROM field_data_field_content_author fdfca
+    LEFT JOIN users_roles ur ON ur.uid = fdfca.field_content_author_target_id AND ur.rid = 3
+  WHERE ur.rid IS NULL");
+}
+
+/**
+ * Enables various modules to support social media and content exports.
+ */
+function bitch_base_update_7101() {
+  module_enable(array(
+    'uuid',
+    'uuid_features',
+    'bean_uuid',
+    'icon',
+    'icon_field',
+    'fontawesome',
+    'bitch_social_media',
+  ));
+}
+
+/**
+ * Deletes the social icon field.
+ *
+ * It has been replaced by the fontawesome service icon field.
+ */
+function bitch_base_update_7102() {
+  field_delete_field('field_social_icon');
+}

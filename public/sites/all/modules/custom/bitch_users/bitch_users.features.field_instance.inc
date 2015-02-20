@@ -25,10 +25,11 @@ function bitch_users_field_default_field_instances() {
         'weight' => 2,
       ),
       'link_view' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'text_plain',
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'multifield',
@@ -92,10 +93,11 @@ function bitch_users_field_default_field_instances() {
         'weight' => 1,
       ),
       'link_view' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'text_plain',
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'multifield',
@@ -159,10 +161,11 @@ function bitch_users_field_default_field_instances() {
         'weight' => 3,
       ),
       'link_view' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'text_plain',
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'multifield',
@@ -226,10 +229,11 @@ function bitch_users_field_default_field_instances() {
         'weight' => 0,
       ),
       'link_view' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'text_plain',
+        'weight' => 1,
       ),
     ),
     'entity_type' => 'multifield',
@@ -308,9 +312,13 @@ function bitch_users_field_default_field_instances() {
         'weight' => 4,
       ),
       'link_view' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 0,
+          'view_mode' => 'social_media_icon',
+        ),
+        'type' => 'entityreference_entity_view',
         'weight' => 0,
       ),
     ),
@@ -672,74 +680,6 @@ An example url would be \'itms://itunes.apple.com/podcast/bitch-radio/id33019567
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-social_media_websites-field_social_icon'
-  $field_instances['taxonomy_term-social_media_websites-field_social_icon'] = array(
-    'bundle' => 'social_media_websites',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'This field should contain the icon that we\'ll use as part of the icon font to display this social media thing everywhere.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 0,
-      ),
-      'social_media_icon' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'taxonomy_term',
-    'field_name' => 'field_social_icon',
-    'label' => 'Social_Icon',
-    'required' => 0,
-    'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'brief_wysiwyg' => 'brief_wysiwyg',
-          'plain_text' => 'plain_text',
-          'raw_html' => 'raw_html',
-          'wysywyg_format' => 'wysywyg_format',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'brief_wysiwyg' => array(
-              'weight' => 0,
-            ),
-            'plain_text' => array(
-              'weight' => 10,
-            ),
-            'raw_html' => array(
-              'weight' => 0,
-            ),
-            'wysywyg_format' => array(
-              'weight' => 0,
-            ),
-          ),
-        ),
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'multiple_value_widget' => 'table',
-        'size' => 3,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 41,
-    ),
-  );
-
   // Exported field_instance: 'user-user-field_facebook'
   $field_instances['user-user-field_facebook'] = array(
     'bundle' => 'user',
@@ -990,6 +930,85 @@ Additionally, *please* follow these guidelines to set up your author profile wit
       ),
       'type' => 'multifield_default',
       'weight' => 20,
+    ),
+  );
+
+  // Exported field_instance: 'user-user-field_long_biography'
+  $field_instances['user-user-field_long_biography'] = array(
+    'bundle' => 'user',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'author_link' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 15,
+      ),
+    ),
+    'entity_type' => 'user',
+    'field_name' => 'field_long_biography',
+    'label' => 'Long Biography',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'brief_wysiwyg' => 'brief_wysiwyg',
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'full_html_no_auto_line_breaks' => 'full_html_no_auto_line_breaks',
+          'plain_text' => 'plain_text',
+          'raw_html' => 'raw_html',
+          'wysywyg_format' => 'wysywyg_format',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'brief_wysiwyg' => array(
+              'weight' => 0,
+            ),
+            'filtered_html' => array(
+              'weight' => 0,
+            ),
+            'full_html' => array(
+              'weight' => 0,
+            ),
+            'full_html_no_auto_line_breaks' => array(
+              'weight' => 0,
+            ),
+            'plain_text' => array(
+              'weight' => 10,
+            ),
+            'raw_html' => array(
+              'weight' => 0,
+            ),
+            'wysywyg_format' => array(
+              'weight' => 0,
+            ),
+          ),
+        ),
+      ),
+      'text_processing' => 0,
+      'user_register_form' => 0,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'multiple_value_widget' => 'table',
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 24,
     ),
   );
 
@@ -1309,7 +1328,7 @@ Additionally, *please* follow these guidelines to set up your author profile wit
         'rows' => 10,
       ),
       'type' => 'text_textarea',
-      'weight' => 24,
+      'weight' => 25,
     ),
   );
 
@@ -1379,7 +1398,7 @@ Additionally, *please* follow these guidelines to set up your author profile wit
         'rows' => 2,
       ),
       'type' => 'text_textarea',
-      'weight' => 25,
+      'weight' => 26,
     ),
   );
 
@@ -1725,6 +1744,7 @@ An example url would be \'itms://itunes.apple.com/podcast/bitch-radio/id33019567
   t('Instagram');
   t('Link Label');
   t('Link to Site');
+  t('Long Biography');
   t('Pinterest');
   t('Please provide a short bio that you wish users to see when viewing your page.');
   t('Profile Photo');
@@ -1732,8 +1752,6 @@ An example url would be \'itms://itunes.apple.com/podcast/bitch-radio/id33019567
   t('Short Bio');
   t('Signature');
   t('Social Media Reference');
-  t('Social_Icon');
-  t('This field should contain the icon that we\'ll use as part of the icon font to display this social media thing everywhere.');
   t('This is the Category for tracking clicks on this link. Any call to actions that we\'d like the user to attempt should have a category assigned to it');
   t('This is the full url for this social media site, ie https://twitter.com/username or https://facebook.com/pagename');
   t('This is the social media link that this multifield is for.');

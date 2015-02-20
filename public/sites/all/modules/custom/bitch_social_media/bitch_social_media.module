@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the bitch_social_media feature.
+ */
+
+include_once 'bitch_social_media.features.inc';
